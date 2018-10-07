@@ -12,12 +12,14 @@ public class DisjointSet {
   }
 
   public void union(Element a, Element b) {
-    if (a.getRank() > b.getRank()) {
-      b.setParent(a);
+    Element parentA = findSet(a);
+    Element parentB = findSet(b);
+    if (parentA.getRank() > parentB.getRank()) {
+      parentB.setParent(parentA);
     } else {
-      a.setParent(b);
-      if (a.getRank() == b.getRank()) {
-        b.setRank(b.getRank() + 1);
+      parentA.setParent(parentB);
+      if (parentA.getRank() == parentB.getRank()) {
+        parentB.setRank(parentB.getRank() + 1);
       }
     }
   }
