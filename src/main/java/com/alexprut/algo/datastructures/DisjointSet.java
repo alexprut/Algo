@@ -14,6 +14,11 @@ public class DisjointSet {
   public void union(Element a, Element b) {
     Element parentA = findSet(a);
     Element parentB = findSet(b);
+
+    if (parentA.getValue() == parentB.getValue()) {
+      return;
+    }
+
     if (parentA.getRank() > parentB.getRank()) {
       parentB.setParent(parentA);
     } else {
@@ -31,6 +36,10 @@ public class DisjointSet {
 
     s.setParent(findSet(s.parent()));
     return s.parent();
+  }
+
+  public Element findSet(int value) {
+    return findSet(getElement(value));
   }
 
   public Element getElement(int value) {
