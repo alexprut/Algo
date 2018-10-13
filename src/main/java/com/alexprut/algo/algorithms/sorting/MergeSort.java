@@ -23,7 +23,7 @@ public class MergeSort {
   /**
    * Time complexity: Θ(n)
    */
-  public static void merge(int[] arr, int p, int q, int r) {
+  private static void merge(int[] arr, int p, int q, int r) {
     int[] left = new int[q - p + 2];
     int[] right = new int[r - q + 1];
 
@@ -35,7 +35,7 @@ public class MergeSort {
     }
 
     for (int i = 0; i < right.length - 1; i++) {
-      right[i] = arr[i + q];
+      right[i] = arr[i + q + 1];
     }
 
     int i = 0, j = 0;
@@ -44,7 +44,7 @@ public class MergeSort {
         arr[k] = left[i];
         i++;
       } else {
-        arr[k] = left[j];
+        arr[k] = right[j];
         j++;
       }
     }
