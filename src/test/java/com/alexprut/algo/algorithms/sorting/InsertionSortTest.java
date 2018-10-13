@@ -1,10 +1,10 @@
-package com.alexprut.algo.algorithms.search;
+package com.alexprut.algo.algorithms.sorting;
 
 import com.alexprut.algo.algorithms.sorting.InsertionSort;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MergeSortTest {
+public class InsertionSortTest {
 
   @Test
   public void shouldSort() {
