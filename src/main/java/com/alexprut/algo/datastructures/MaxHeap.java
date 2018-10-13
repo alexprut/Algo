@@ -2,9 +2,6 @@ package com.alexprut.algo.datastructures;
 
 public class MaxHeap extends BinaryHeap {
 
-  private int[] elements;
-  private int size = 0;
-
   MaxHeap() {
   }
 
