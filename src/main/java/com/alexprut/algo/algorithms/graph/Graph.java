@@ -1,6 +1,25 @@
 package com.alexprut.algo.algorithms.graph;
 
+import java.util.ArrayList;
+
 public class Graph {
+
+  public static int[][] buildAdjacencyMatrix(ArrayList<Edge> edges, int n) {
+    int[][] adj = new int[n][n];
+
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        adj[i][j] = Integer.MAX_VALUE;
+      }
+    }
+
+    for (Edge edge : edges) {
+      adj[edge.x.value][edge.y.value] = edge.w;
+      adj[edge.y.value][edge.x.value] = edge.w;
+    }
+
+    return adj;
+  }
 
   public static class Node {
 
