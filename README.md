@@ -9,16 +9,26 @@
 </div>
 <br />
 
-Algorithms Implemented
-======================
+Algorithms
+==========
 
-|Algorithm|Average Cost|Worst-case Cost|
-|---|---|---|
+|Algorithm|Worst-case Cost|Average-case Cost|Best-case Cost|
+|---|---|---|---|
+|InsertionSort|Θ(n^2)|Θ(n^2)|O(n)|
+|BubbleSort|O(n^2)|O(n^2)|O(n)|
+|MergeSort|Θ(nlogn)|Θ(nlogn)|Θ(nlogn)|
+|HeapSort|Θ(nlogn)|-|-|
+|QuickSort|Θ(n^2)|Θ(nlogn)|Θ(nlogn)|
+|CountingSort|Θ(k + n)|Θ(k + n)|-|
+|RadixSort|Θ(d(k + n))|Θ(d(k + n))|-|
+|BucketSort|Θ(n^2)|Θ(n)|-|
 
-Data Structures Implemented
-===========================
+Data Structures
+===============
 |Data Structure|Methods|
 |--------------|-------|
+|MaxHeap||
+|MinHeap||
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
 
 License

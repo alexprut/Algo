@@ -10,6 +10,7 @@ public class MergeSort {
    *
    * Space complexity;
    * O(n) total with O(n) auxiliary
+   * the algorithms is not in place
    */
   public static void mergeSort(int[] arr, int p, int r) {
     if (p < r) {
@@ -22,6 +23,7 @@ public class MergeSort {
 
   /**
    * Time complexity: Θ(n)
+   * Time complexity: O(n) total with O(n) auxiliary space
    */
   private static void merge(int[] arr, int p, int q, int r) {
     int[] left = new int[q - p + 2];
