@@ -2,6 +2,11 @@ package com.alexprut.algo.algorithms.sorting;
 
 import com.alexprut.algo.Utils;
 
+/**
+ * Time complexity:
+ * Worst case is O(n^2), when the array is already sorted
+ * Best case is O(nlogn)
+ */
 public class QuickSort {
 
   public static int[] quickSort(int[] arr, int start, int end) {
