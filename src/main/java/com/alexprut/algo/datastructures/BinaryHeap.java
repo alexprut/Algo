@@ -33,6 +33,21 @@ public abstract class BinaryHeap {
   /**
    * Time complexity: O(logn)
    */
+  public int extract() throws Exception {
+    if (size < 1) {
+      throw new Exception("Heap underflow");
+    }
+
+    int extracted = elements[0];
+    elements[0] = elements[size - 1];
+    size--;
+    heapify(0);
+    return extracted;
+  }
+
+  /**
+   * Time complexity: O(logn)
+   */
   public abstract void heapify(int i);
 
   /**

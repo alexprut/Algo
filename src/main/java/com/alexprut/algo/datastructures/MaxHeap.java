@@ -13,6 +13,27 @@ public class MaxHeap extends BinaryHeap {
     return root();
   }
 
+  public int extractMax() throws Exception {
+    return extract();
+  }
+
+  /**
+   * Time complexity: O(logn)
+   */
+  public void increaseKey(int i, int value) throws Exception {
+    if (elements[i] >= value) {
+      throw new Exception("The new key is smaller than the current key");
+    }
+
+    elements[i] = value;
+    while (parent(i) >= 0 && elements[parent(i)] < elements[i]) {
+      int tmp = elements[i];
+      elements[i] = elements[parent(i)];
+      elements[parent(i)] = tmp;
+      i = parent(i);
+    }
+  }
+
   public void insert(int e) {
     size++;
     if (elements.length < size) {
@@ -23,12 +44,11 @@ public class MaxHeap extends BinaryHeap {
       elements = tmp;
     }
     int k = size - 1;
-    elements[k] = e;
-    while (parent(k) >= 0 && elements[parent(k)] < e) {
-      int tmp = elements[parent(k)];
-      elements[parent(k)] = e;
-      elements[k] = tmp;
-      k = parent(k);
+    elements[k] = Integer.MIN_VALUE;
+    try {
+      increaseKey(k, e);
+    } catch (Exception exeption) {
+
     }
   }
 

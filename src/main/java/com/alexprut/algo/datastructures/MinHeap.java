@@ -13,6 +13,10 @@ public class MinHeap extends BinaryHeap {
     return root();
   }
 
+  public int extractMin() throws Exception {
+    return extract();
+  }
+
   public void insert(int e) {
     size++;
     if (elements.length < size) {
