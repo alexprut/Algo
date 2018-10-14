@@ -3,7 +3,7 @@ package com.alexprut.algo.datastructures;
 public class LinkedList {
 
   private Node head;
-  int size;
+  private int size;
 
   LinkedList() {
   }
@@ -30,6 +30,10 @@ public class LinkedList {
 
   public Node head() {
     return head;
+  }
+
+  public int size() {
+    return size;
   }
 
   public static class Node {
