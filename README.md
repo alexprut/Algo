@@ -30,6 +30,7 @@ Data Structures
 |--------------|-------|
 |MaxHeap||
 |MinHeap||
+|Binary Tree||
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
 
 License

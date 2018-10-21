@@ -2,6 +2,10 @@ package com.alexprut.algo;
 
 public class Utils {
 
+  /**
+   * Time complexity: O(1)
+   * Space complexity: O(n) total and O(1) auxiliary
+   */
   public static void swap(int[] arr, int i, int j) {
     int tmp = arr[i];
     arr[i] = arr[j];
@@ -10,6 +14,7 @@ public class Utils {
 
   /**
    * Time complexity: O(n)
+   * Space complexity: O(n) total and O(1) auxiliary
    */
   public static int max(int[] arr) throws Exception {
     if (arr.length == 0) {
@@ -26,6 +31,7 @@ public class Utils {
 
   /**
    * Time complexity: O(n)
+   * Space complexity: O(n) total and O(1) auxiliary
    */
   public static int min(int[] arr) throws Exception {
     if (arr.length == 0) {
