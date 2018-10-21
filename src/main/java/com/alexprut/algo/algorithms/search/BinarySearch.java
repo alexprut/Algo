@@ -7,7 +7,7 @@ public class BinarySearch {
     int end = a.length - 1;
 
     while (start <= end) {
-      int middle = (end - start) / 2 + start;
+      int middle = (start + end) / 2;
       if (a[middle] == v) {
         return middle;
       }

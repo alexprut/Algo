@@ -12,16 +12,17 @@
 Algorithms
 ==========
 
-|Algorithm|Worst-case Cost|Average-case Cost|Best-case Cost|
-|---|---|---|---|
-|InsertionSort|Θ(n^2)|Θ(n^2)|O(n)|
-|BubbleSort|O(n^2)|O(n^2)|O(n)|
-|MergeSort|Θ(nlogn)|Θ(nlogn)|Θ(nlogn)|
-|HeapSort|Θ(nlogn)|-|-|
-|QuickSort|Θ(n^2)|Θ(nlogn)|Θ(nlogn)|
-|CountingSort|Θ(k + n)|Θ(k + n)|-|
-|RadixSort|Θ(d(k + n))|Θ(d(k + n))|-|
-|BucketSort|Θ(n^2)|Θ(n)|-|
+|Algorithm|Worst-case complexity|Average-case complexity|Best-case complexity|Space complexity|
+|:---|:---|:---|:---|:---|
+|InsertionSort|Θ(n^2)|Θ(n^2)|O(n)|-|
+|BubbleSort|O(n^2)|O(n^2)|O(n)|-|
+|MergeSort|Θ(nlogn)|Θ(nlogn)|Θ(nlogn)|-|
+|HeapSort|Θ(nlogn)|-|-|-|
+|QuickSort|Θ(n^2)|Θ(nlogn)|Θ(nlogn)|-|
+|CountingSort|Θ(k + n)|Θ(k + n)|-|-|
+|RadixSort|Θ(d(k + n))|Θ(d(k + n))|-|-|
+|BucketSort|Θ(n^2)|Θ(n)|-|-|
+|Floyd-Warshall|Θ(V^3)|Θ(V^3)|Θ(V^3)|Θ(V^2)|
 
 Data Structures
 ===============
