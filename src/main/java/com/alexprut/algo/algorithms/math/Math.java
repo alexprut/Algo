@@ -13,4 +13,8 @@ public class Math {
 
     return gcd(b, a % b);
   }
+
+  // TODO binomial coefficient
+  // TODO permutation
+  // TODO factorial
 }

@@ -1,16 +1,16 @@
 package com.alexprut.algo.datastructures;
 
-public class DoubleLinkedList {
+public class DoubleLinkedList<T> {
 
-  private Node head;
-  private Node tail;
+  private Node<T> head;
+  private Node<T> tail;
   private int size;
 
   DoubleLinkedList() {
   }
 
-  public void insertFront(int value) {
-    Node node = new Node(value, head, null);
+  public void insertFront(T value) {
+    Node<T> node = new Node<>(value, head, null);
     if (head == null) {
       head = node;
       tail = node;
@@ -23,8 +23,8 @@ public class DoubleLinkedList {
     size++;
   }
 
-  public void insertBack(int value) {
-    Node node = new Node(value, null, tail);
+  public void insertBack(T value) {
+    Node<T> node = new Node<>(value, null, tail);
     if (head == null) {
       head = node;
       tail = node;
@@ -40,49 +40,51 @@ public class DoubleLinkedList {
     return size == 0;
   }
 
-  public int removeFront() throws Exception {
+  public T removeFront() throws Exception {
     size--;
     if (empty()) {
       throw new Exception("DoubleLinkedList underflow");
     }
 
     if (head == tail) {
-      Node node = head;
+      Node<T> node = head;
       head = null;
       tail = null;
       return node.value;
     }
 
-    Node node = head;
+    Node<T> node = head;
     head = node.next;
     head.prev = null;
     return node.value;
   }
 
-  public int removeBack() throws Exception {
+  public T removeBack() throws Exception {
     size--;
     if (empty()) {
       throw new Exception("DoubleLinkedList underflow");
     }
 
     if (head == tail) {
-      Node node = head;
+      Node<T> node = head;
       head = null;
       tail = null;
       return node.value;
     }
 
-    Node node = tail;
+    Node<T> node = tail;
     node.prev.next = null;
     tail = node.prev;
     return node.value;
   }
 
-  public Node head() {
+  // TODO implement the remove method
+
+  public Node<T> head() {
     return head;
   }
 
-  public Node tail() {
+  public Node<T> tail() {
     return tail;
   }
 
@@ -90,35 +92,35 @@ public class DoubleLinkedList {
     return size;
   }
 
-  public static class Node {
+  public static class Node<T> {
 
-    private int value;
-    private Node next;
-    private Node prev;
+    private T value;
+    private Node<T> next;
+    private Node<T> prev;
 
-    public Node(int value, Node next, Node prev) {
+    public Node(T value, Node<T> next, Node<T> prev) {
       this.value = value;
       this.next = next;
       this.next = prev;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
       this.next = next;
     }
 
-    public void setPrev(Node next) {
+    public void setPrev(Node<T> prev) {
       this.prev = prev;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
       return this.next;
     }
 
-    public Node getPrev() {
+    public Node<T> getPrev() {
       return this.prev;
     }
 
-    public int getValue() {
+    public T getValue() {
       return this.value;
     }
   }

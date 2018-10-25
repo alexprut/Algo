@@ -7,7 +7,7 @@ public class StackTest {
 
   @Test
   public void shouldSupportBasicOperations() {
-    Stack stack = new Stack();
+    Stack<Integer> stack = new Stack<>();
     Assert.assertEquals(0, stack.size());
     Assert.assertTrue(stack.empty());
 

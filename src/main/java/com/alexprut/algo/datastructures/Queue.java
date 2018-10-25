@@ -3,23 +3,23 @@ package com.alexprut.algo.datastructures;
 /**
  * FIFO
  */
-public class Queue {
+public class Queue<T> {
 
-  private DoubleLinkedList list;
+  private DoubleLinkedList<T> list;
 
   Queue() {
-    list = new DoubleLinkedList();
+    list = new DoubleLinkedList<>();
   }
 
   public boolean empty() {
     return list.empty();
   }
 
-  public void enqueue(int value) {
+  public void enqueue(T value) {
     list.insertFront(value);
   }
 
-  public int dequeue() throws Exception {
+  public T dequeue() throws Exception {
     return list.removeBack();
   }
 

@@ -7,7 +7,7 @@ public class QueueTest {
 
   @Test
   public void shouldSupportBasicOperations() {
-    Queue queue = new Queue();
+    Queue<Integer> queue = new Queue<>();
     Assert.assertEquals(0, queue.size());
     Assert.assertTrue(queue.empty());
 

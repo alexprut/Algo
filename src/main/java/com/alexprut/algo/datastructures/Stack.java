@@ -3,15 +3,15 @@ package com.alexprut.algo.datastructures;
 /**
  * LIFO
  */
-public class Stack {
+public class Stack<T> {
 
-  private LinkedList list;
+  private LinkedList<T> list;
 
   Stack() {
-    list = new LinkedList();
+    list = new LinkedList<>();
   }
 
-  public void push(int value) {
+  public void push(T value) {
     list.insertFront(value);
   }
 
@@ -23,11 +23,11 @@ public class Stack {
     return list.empty();
   }
 
-  public int pop() throws Exception {
+  public T pop() throws Exception {
     return list.removeFront();
   }
 
-  public void insert(int value) {
+  public void insert(T value) {
     push(value);
   }
 

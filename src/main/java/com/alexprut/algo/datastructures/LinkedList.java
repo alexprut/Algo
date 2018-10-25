@@ -1,15 +1,15 @@
 package com.alexprut.algo.datastructures;
 
-public class LinkedList {
+public class LinkedList<T> {
 
-  private Node head;
+  private Node<T> head;
   private int size;
 
   LinkedList() {
   }
 
-  public void insertFront(int value) {
-    head = new Node(value, head);
+  public void insertFront(T value) {
+    head = new Node<T>(value, head);
     size++;
   }
 
@@ -17,18 +17,20 @@ public class LinkedList {
     return size == 0;
   }
 
-  public int removeFront() throws Exception {
+  public T removeFront() throws Exception {
     size--;
     if (empty()) {
       throw new Exception("LinkedList underflow");
     }
 
-    Node node = head;
+    Node<T> node = head;
     head = node.next;
     return node.value;
   }
 
-  public Node head() {
+  // TODO implement the remove method
+
+  public Node<T> head() {
     return head;
   }
 
@@ -36,25 +38,25 @@ public class LinkedList {
     return size;
   }
 
-  public static class Node {
+  public static class Node<T> {
 
-    private int value;
-    private Node next;
+    private T value;
+    private Node<T> next;
 
-    public Node(int value, Node next) {
+    public Node(T value, Node<T> next) {
       this.value = value;
       this.next = next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
       this.next = next;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
       return this.next;
     }
 
-    public int getValue() {
+    public T getValue() {
       return this.value;
     }
   }
