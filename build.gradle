@@ -3,6 +3,7 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: "jacoco"
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -10,4 +11,12 @@ dependencies {
 
 repositories {
     mavenCentral()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
 }
