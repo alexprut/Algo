@@ -3,8 +3,10 @@ package com.alexprut.algo.algorithms.graph;
 public class FloydWarshall {
 
   /**
-   * Find the shortest path between any pair of two nodes
+   * Find the shortest path between any pair of nodes
+   *
    * Time complexity: Θ(V^3)
+   *
    * Space complexity: Θ(V^2)
    */
   public static int[][] floydWarshall(int[][] adj) {
@@ -15,12 +17,12 @@ public class FloydWarshall {
       int[][] tmp = new int[n][n];
       for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-          tmp[i][j] = Math.min(
-              dp[i][j],
-              (Math.max(dp[i][k], dp[k][j]) == Integer.MAX_VALUE)
-                  ? Integer.MAX_VALUE
-                  : dp[i][k] + dp[k][j]
-          );
+          tmp[i][j] =
+              Math.min(
+                  dp[i][j],
+                  (Math.max(dp[i][k], dp[k][j]) == Integer.MAX_VALUE)
+                      ? Integer.MAX_VALUE
+                      : dp[i][k] + dp[k][j]);
         }
       }
       dp = tmp;

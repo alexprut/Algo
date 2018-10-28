@@ -1,6 +1,5 @@
 package com.alexprut.algo.algorithms.sorting;
 
-import com.alexprut.algo.algorithms.sorting.InsertionSort;
 import org.junit.Assert;
 import org.junit.Test;
 

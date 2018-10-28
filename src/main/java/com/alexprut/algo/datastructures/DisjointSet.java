@@ -2,18 +2,18 @@ package com.alexprut.algo.datastructures;
 
 import java.util.HashMap;
 
-public class DisjointSet {
+public class DisjointSet<T> {
 
-  private HashMap<Integer, Element> sets = new HashMap<>();
+  private HashMap<T, Element<T>> sets = new HashMap<>();
 
-  public Element makeSet(int value) {
-    sets.put(value, new Element(value));
+  public Element<T> makeSet(T value) {
+    sets.put(value, new Element<>(value));
     return sets.get(value);
   }
 
-  public void union(Element a, Element b) {
-    Element parentA = findSet(a);
-    Element parentB = findSet(b);
+  public void union(Element<T> a, Element<T> b) {
+    Element<T> parentA = findSet(a);
+    Element<T> parentB = findSet(b);
 
     if (parentA.getValue() == parentB.getValue()) {
       return;
@@ -29,7 +29,7 @@ public class DisjointSet {
     }
   }
 
-  public Element findSet(Element s) {
+  public Element<T> findSet(Element<T> s) {
     if (s.parent().getValue() == s.getValue()) {
       return s;
     }
@@ -38,21 +38,21 @@ public class DisjointSet {
     return s.parent();
   }
 
-  public Element findSet(int value) {
+  public Element<T> findSet(T value) {
     return findSet(getElement(value));
   }
 
-  public Element getElement(int value) {
+  public Element<T> getElement(T value) {
     return sets.get(value);
   }
 
-  class Element {
+  class Element<T> {
 
-    private Element parent;
+    private Element<T> parent;
     private int rank;
-    private int value;
+    private T value;
 
-    Element(int value) {
+    Element(T value) {
       this.value = value;
       this.rank = 0;
       this.parent = this;
@@ -66,15 +66,15 @@ public class DisjointSet {
       this.rank = rank;
     }
 
-    public int getValue() {
+    public T getValue() {
       return this.value;
     }
 
-    public Element parent() {
+    public Element<T> parent() {
       return this.parent;
     }
 
-    public void setParent(Element parent) {
+    public void setParent(Element<T> parent) {
       this.parent = parent;
     }
   }

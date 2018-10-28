@@ -2,8 +2,7 @@ package com.alexprut.algo.datastructures;
 
 public class MaxHeap extends BinaryHeap {
 
-  MaxHeap() {
-  }
+  MaxHeap() {}
 
   MaxHeap(int[] elements) {
     super(elements);
@@ -17,9 +16,7 @@ public class MaxHeap extends BinaryHeap {
     return extract();
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public void increaseKey(int i, int value) throws Exception {
     if (elements[i] >= value) {
       throw new Exception("The new key is smaller than the current key");
@@ -52,9 +49,7 @@ public class MaxHeap extends BinaryHeap {
     }
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public void heapify(int i) {
     int left = left(i);
     int right = right(i);
@@ -79,8 +74,7 @@ public class MaxHeap extends BinaryHeap {
   /**
    * Time complexity: O(nlogn)
    *
-   * Space complexity:
-   * algorithms is in-place
+   * <p>Space complexity: algorithms is in-place
    */
   public void heapsort() {
     for (int i = size - 1; i >= 1; i--) {

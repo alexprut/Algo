@@ -12,7 +12,7 @@
 Algorithms
 ==========
 
-|Algorithm|Worst-case complexity|Average-case complexity|Best-case complexity|Space complexity|
+|Algorithm|Worst-case time complexity|Average-case time complexity|Best-case time complexity|Auxiliary space complexity|
 |:---|:---|:---|:---|:---|
 |InsertionSort|Θ(n^2)|Θ(n^2)|O(n)|-|
 |BubbleSort|O(n^2)|O(n^2)|O(n)|-|
@@ -32,6 +32,7 @@ Data Structures
 |MinHeap||
 |Binary Tree||
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
+|Trie||
 
 License
 =======

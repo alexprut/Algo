@@ -3,9 +3,7 @@ package com.alexprut.algo.algorithms.sorting;
 import com.alexprut.algo.Utils;
 
 /**
- * Time complexity:
- * Worst case is O(n^2), when the array is already sorted
- * Best case is O(nlogn)
+ * Time complexity: Worst case is O(n^2), when the array is already sorted, best case is O(nlogn)
  */
 public class QuickSort {
 

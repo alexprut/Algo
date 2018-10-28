@@ -1,16 +1,25 @@
 plugins {
     id 'java-library'
+    id "com.diffplug.gradle.spotless" version "3.15.0"
 }
 
 apply plugin: 'java'
 apply plugin: "jacoco"
+apply plugin: "com.diffplug.gradle.spotless"
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile "com.diffplug.spotless:spotless-plugin-gradle:3.15.0"
 }
 
 repositories {
     mavenCentral()
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+    }
 }
 
 jacocoTestReport {

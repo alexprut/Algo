@@ -1,8 +1,6 @@
 package com.alexprut.algo.datastructures;
 
-/**
- * LIFO
- */
+/** LIFO */
 public class Stack<T> {
 
   private LinkedList<T> list;

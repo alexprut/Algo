@@ -1,5 +1,3 @@
 package com.alexprut.algo.algorithms;
 
-public class RabinKarp {
-
-}
+public class RabinKarp {}

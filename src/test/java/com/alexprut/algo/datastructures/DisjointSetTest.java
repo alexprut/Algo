@@ -8,7 +8,7 @@ public class DisjointSetTest {
 
   @Test
   public void shouldUnionSets() {
-    DisjointSet sets = new DisjointSet();
+    DisjointSet<Integer> sets = new DisjointSet<>();
     Element a = sets.makeSet(1);
     Element b = sets.makeSet(2);
     sets.union(a, b);
@@ -16,5 +16,4 @@ public class DisjointSetTest {
     Assert.assertEquals(b.parent().getValue(), b.getValue());
     Assert.assertEquals(b.getRank(), 1);
   }
-
 }

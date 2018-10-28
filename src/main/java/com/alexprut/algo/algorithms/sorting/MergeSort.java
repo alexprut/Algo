@@ -5,12 +5,9 @@ public class MergeSort {
   /**
    * It is a divide-and-conquer algorithms
    *
-   * Time complexity:
-   * Θ(nlogn) in the worst and best case
+   * <p>Time complexity: Θ(nlogn) in the worst and best case
    *
-   * Space complexity;
-   * O(n) total with O(n) auxiliary
-   * the algorithms is not in place
+   * <p>Space complexity; O(n) total with O(n) auxiliary the algorithms is not in place
    */
   public static void mergeSort(int[] arr, int p, int r) {
     if (p < r) {
@@ -23,7 +20,8 @@ public class MergeSort {
 
   /**
    * Time complexity: Θ(n)
-   * Time complexity: O(n) total with O(n) auxiliary space
+   *
+   * <p>Space complexity: O(n) total with O(n) auxiliary space
    */
   private static void merge(int[] arr, int p, int q, int r) {
     int[] left = new int[q - p + 2];

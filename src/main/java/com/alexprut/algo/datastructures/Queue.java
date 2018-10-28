@@ -1,8 +1,6 @@
 package com.alexprut.algo.datastructures;
 
-/**
- * FIFO
- */
+/** FIFO */
 public class Queue<T> {
 
   private DoubleLinkedList<T> list;

@@ -1,5 +1,3 @@
 package com.alexprut.algo.datastructures;
 
-public class AVLTree {
-
-}
+public class AVLTree {}

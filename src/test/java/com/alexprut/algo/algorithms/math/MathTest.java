@@ -13,4 +13,17 @@ public class MathTest {
     Assert.assertEquals(Math.gcd(10, 10), 10);
     Assert.assertEquals(Math.gcd(2, 10), 2);
   }
+
+  @Test
+  public void primalityTest() {
+    Assert.assertTrue(Math.isPrime(2));
+    Assert.assertTrue(Math.isPrime(3));
+    Assert.assertTrue(Math.isPrime(5));
+    Assert.assertFalse(Math.isPrime(-1));
+    Assert.assertFalse(Math.isPrime(0));
+    Assert.assertFalse(Math.isPrime(1));
+    Assert.assertFalse(Math.isPrime(6));
+    Assert.assertFalse(Math.isPrime(9));
+    Assert.assertFalse(Math.isPrime(10));
+  }
 }

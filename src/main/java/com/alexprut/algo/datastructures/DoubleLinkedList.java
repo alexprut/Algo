@@ -6,8 +6,7 @@ public class DoubleLinkedList<T> {
   private Node<T> tail;
   private int size;
 
-  DoubleLinkedList() {
-  }
+  DoubleLinkedList() {}
 
   public void insertFront(T value) {
     Node<T> node = new Node<>(value, head, null);

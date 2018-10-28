@@ -4,7 +4,8 @@ public class Utils {
 
   /**
    * Time complexity: O(1)
-   * Space complexity: O(n) total and O(1) auxiliary
+   *
+   * <p>Space complexity: O(n) total and O(1) auxiliary
    */
   public static void swap(int[] arr, int i, int j) {
     int tmp = arr[i];
@@ -14,7 +15,19 @@ public class Utils {
 
   /**
    * Time complexity: O(n)
-   * Space complexity: O(n) total and O(1) auxiliary
+   *
+   * <p>Space complexity: O(n) total and O(1) auxiliary
+   */
+  public static void reverse(int[] arr, int start, int end) {
+    for (int i = start; i < (start + end) / 2; i++) {
+      Utils.swap(arr, i, end - i);
+    }
+  }
+
+  /**
+   * Time complexity: O(n)
+   *
+   * <p>Space complexity: O(n) total and O(1) auxiliary
    */
   public static int max(int[] arr) throws Exception {
     if (arr.length == 0) {
@@ -31,7 +44,8 @@ public class Utils {
 
   /**
    * Time complexity: O(n)
-   * Space complexity: O(n) total and O(1) auxiliary
+   *
+   * <p>Space complexity: O(n) total and O(1) auxiliary
    */
   public static int min(int[] arr) throws Exception {
     if (arr.length == 0) {

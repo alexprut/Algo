@@ -4,7 +4,8 @@ public class Math {
 
   /**
    * Greatest common divisor, Euclide algorithms
-   * given gcd(a, b) the time complexity is O(b)
+   *
+   * <p>Time complexity: O(b) given gcd(a, b)
    */
   public static int gcd(int a, int b) {
     if (b == 0) {
@@ -12,6 +13,18 @@ public class Math {
     }
 
     return gcd(b, a % b);
+  }
+
+  public static boolean isPrime(int n) {
+    if (n < 2) {
+      return false;
+    }
+    for (int i = 2; i <= java.lang.Math.sqrt(n); i++) {
+      if (n % i == 0) {
+        return false;
+      }
+    }
+    return true;
   }
 
   // TODO binomial coefficient

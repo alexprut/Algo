@@ -2,6 +2,7 @@ package com.alexprut.algo.algorithms.search;
 
 public class BinarySearch {
 
+  /** Time complexity: O(logn) */
   public static int binarySearch(int[] a, int v) {
     int start = 0;
     int end = a.length - 1;
