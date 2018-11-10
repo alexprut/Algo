@@ -23,6 +23,10 @@ Algorithms
 |RadixSort|Θ(d(k + n))|Θ(d(k + n))|-|-|
 |BucketSort|Θ(n^2)|Θ(n)|-|-|
 |Floyd-Warshall|Θ(V^3)|Θ(V^3)|Θ(V^3)|Θ(V^2)|
+|Kruskal|O(ElogV)|-|-|-|
+|Prim|O(ElogV)|-|-|-|
+|Bellman–Ford|Θ(EV)|-|-|Θ(V)|
+|Dijkstra|O(E + VlogV)|-|-|-|
 
 Data Structures
 ===============

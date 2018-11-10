@@ -5,7 +5,7 @@ public class Queue<T> {
 
   private DoubleLinkedList<T> list;
 
-  Queue() {
+  public Queue() {
     list = new DoubleLinkedList<>();
   }
 

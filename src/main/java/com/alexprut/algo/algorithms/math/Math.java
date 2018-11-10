@@ -1,11 +1,13 @@
 package com.alexprut.algo.algorithms.math;
 
+import java.math.BigInteger;
+
 public class Math {
 
   /**
    * Greatest common divisor, Euclide algorithms
    *
-   * <p>Time complexity: O(b) given gcd(a, b)
+   * Time complexity: O(b) given gcd(a, b)
    */
   public static int gcd(int a, int b) {
     if (b == 0) {
@@ -25,6 +27,19 @@ public class Math {
       }
     }
     return true;
+  }
+
+  public static BigInteger factorial(int n) {
+    if (n < 2) {
+      return BigInteger.ONE;
+    }
+
+    BigInteger current = BigInteger.ONE;
+    for (int i = 2; i <= n; i++) {
+      current = current.multiply(BigInteger.valueOf(i));
+    }
+
+    return current;
   }
 
   // TODO binomial coefficient

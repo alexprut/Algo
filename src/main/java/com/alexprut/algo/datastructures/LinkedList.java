@@ -5,7 +5,7 @@ public class LinkedList<T> {
   private Node<T> head;
   private int size;
 
-  LinkedList() {}
+  public LinkedList() {}
 
   public void insertFront(T value) {
     head = new Node<T>(value, head);

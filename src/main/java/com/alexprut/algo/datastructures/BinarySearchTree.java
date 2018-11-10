@@ -5,7 +5,7 @@ public class BinarySearchTree {
   private BinaryNode root;
   private int size;
 
-  BinarySearchTree() {
+  public BinarySearchTree() {
     size = 0;
   }
 

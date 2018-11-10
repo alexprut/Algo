@@ -5,7 +5,7 @@ public class Stack<T> {
 
   private LinkedList<T> list;
 
-  Stack() {
+  public Stack() {
     list = new LinkedList<>();
   }
 

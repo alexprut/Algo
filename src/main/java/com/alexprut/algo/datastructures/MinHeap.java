@@ -2,9 +2,9 @@ package com.alexprut.algo.datastructures;
 
 public class MinHeap extends BinaryHeap {
 
-  MinHeap() {}
+  public MinHeap() {}
 
-  MinHeap(int[] elements) {
+  public MinHeap(int[] elements) {
     super(elements);
   }
 
@@ -60,7 +60,7 @@ public class MinHeap extends BinaryHeap {
   /**
    * Time complexity: O(nlogn)
    *
-   * <p>Space complexity: algorithms is in-place
+   * Space complexity: algorithms is in-place
    */
   public void heapsort() {
     // TODO

@@ -5,7 +5,7 @@ public abstract class BinaryHeap {
   protected int[] elements;
   protected int size = 0;
 
-  BinaryHeap(int[] elements) {
+  public BinaryHeap(int[] elements) {
     this.elements = elements;
     size = elements.length;
     build();
@@ -70,7 +70,7 @@ public abstract class BinaryHeap {
   /**
    * Time complexity: O(nlogn)
    *
-   * <p>Space complexity: algorithms is in-place
+   * Space complexity: algorithms is in-place
    */
   public abstract void heapsort();
 }

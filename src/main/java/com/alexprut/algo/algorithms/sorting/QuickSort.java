@@ -17,7 +17,7 @@ public class QuickSort {
     return arr;
   }
 
-  private static int partition(int[] arr, int start, int end) { // asd
+  private static int partition(int[] arr, int start, int end) {
     int x = arr[end];
     int i = start - 1;
     for (int j = start; j < end; j++) {

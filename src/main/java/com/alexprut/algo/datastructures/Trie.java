@@ -6,7 +6,7 @@ public class Trie {
 
   private Node root = new Node("", true);
 
-  Trie() {}
+  public Trie() {}
 
   public void insert(String word) {
     root.insert("", word);

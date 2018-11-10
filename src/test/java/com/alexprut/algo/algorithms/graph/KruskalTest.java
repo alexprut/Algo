@@ -1,7 +1,7 @@
 package com.alexprut.algo.algorithms.graph;
 
-import com.alexprut.algo.algorithms.graph.Graph.Edge;
-import com.alexprut.algo.algorithms.graph.Graph.Node;
+import com.alexprut.algo.datastructures.Graph.Edge;
+import com.alexprut.algo.datastructures.Graph.Node;
 import com.alexprut.algo.algorithms.graph.mst.Kruskal;
 import java.util.ArrayList;
 import java.util.Collections;
