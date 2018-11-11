@@ -1,6 +1,7 @@
 package com.alexprut.algo.algorithms.math;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 public class Math {
 
@@ -42,7 +43,33 @@ public class Math {
     return current;
   }
 
+  // TODO search a more efficient algorithm
+  public static <T> ArrayList<ArrayList<T>> permute(ArrayList<T> elements) {
+    if (elements.size() == 0) {
+      return new ArrayList<>();
+    }
+
+    if (elements.size() == 1) {
+      ArrayList<ArrayList<T>> tmp = new ArrayList<>();
+      tmp.add(elements);
+      return tmp;
+    }
+
+    ArrayList<ArrayList<T>> perm = new ArrayList<>();
+    for (int i = 0; i < elements.size(); i++) {
+      T current = elements.get(i);
+      ArrayList<T> remaining = new ArrayList<>(elements);
+      remaining.remove(i);
+      ArrayList<ArrayList<T>> recursive = permute(remaining);
+      for (ArrayList<T> elem : recursive) {
+        elem.add(0, current);
+      }
+      perm.addAll(recursive);
+    }
+
+    return perm;
+  }
+
   // TODO binomial coefficient
-  // TODO permutation
   // TODO factorial
 }
