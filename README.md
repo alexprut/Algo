@@ -30,18 +30,35 @@ Algorithms
 |Prim|O(ElogV)|-|-|-|
 |Bellman–Ford|Θ(EV)|-|-|Θ(V)|
 |Dijkstra|O(E + VlogV)|-|-|-|
+|Knuth-Morris-Pratt|-|-|-|-|
+|Maximum SubArray|-|-|-|-|
+|Rabin-Karp|-|-|-|-|
+|Greatest common divisor (gcd)|-|-|-|-|
+|Binary Search|-|-|-|-|
+|Breadth First Search (BFS)|-|-|-|-|
+|Depth First Search (DFS)|-|-|-|-|
+|Topological Sort (DFS)|-|-|-|-|
 
 Data Structures
 ===============
 |Data Structure|Methods|
 |--------------|-------|
-|MaxHeap||
-|MinHeap||
-|Binary Tree||
+|Max Heap|-|
+|Min Heap|-|
+|Binary Tree|-|
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
-|Trie||
-|Stack||
-|Queue||
+|Trie|-|
+|Stack|-|
+|Queue|-|
+|AVL Tree|-|
+|Binary Search Tree|-|
+|Double Linked List|-|
+|Linked List|-|
+|Graph|-|
+|Red-Black Tree|-|
+|Segment Tree|-|
+|B-Tree|-|
+|Fibonacci Heap|-|
 
 License
 =======
