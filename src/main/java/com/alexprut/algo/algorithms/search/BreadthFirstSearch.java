@@ -1,6 +1,5 @@
 package com.alexprut.algo.algorithms.search;
 
-import com.alexprut.algo.datastructures.Pair;
 import com.alexprut.algo.datastructures.Queue;
 import java.util.ArrayList;
 

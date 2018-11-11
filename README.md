@@ -40,6 +40,8 @@ Data Structures
 |Binary Tree||
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
 |Trie||
+|Stack||
+|Queue||
 
 License
 =======

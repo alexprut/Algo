@@ -1,4 +1,4 @@
-package com.alexprut.algo.algorithms.graph;
+package com.alexprut.algo.algorithms.graph.mst;
 
 import com.alexprut.algo.datastructures.Graph.Edge;
 import com.alexprut.algo.datastructures.Graph.Node;

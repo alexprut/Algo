@@ -68,6 +68,10 @@ public class Graph {
     return adjList;
   }
 
+  public ArrayList<Edge> getEdges() {
+    return edges;
+  }
+
   /**
    * Calculates the minimum spanning tree
    */
@@ -76,11 +80,17 @@ public class Graph {
   }
 
   public void addEdge(ArrayList<Edge> edges) {
-    this.edges.addAll(edges);
+    for (Edge edge: edges) {
+      addEdge(edge);
+    }
   }
 
   public void addEdge(Edge edge) {
     edges.add(edge);
+
+    if (!isDirected) {
+      edges.add(new Edge(new Node(edge.y.value()), new Node(edge.x.value()), edge.w));
+    }
   }
 
   public void addEdge(int x, int y, int w) {
