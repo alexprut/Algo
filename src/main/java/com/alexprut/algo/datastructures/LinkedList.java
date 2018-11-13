@@ -28,6 +28,7 @@ public class LinkedList<T> {
   }
 
   // TODO implement the remove method
+  // TODO clone method
 
   public Node<T> head() {
     return head;

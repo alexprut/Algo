@@ -3,6 +3,7 @@ package com.alexprut.algo.datastructures;
 import com.alexprut.algo.algorithms.graph.mst.Kruskal;
 import java.util.ArrayList;
 
+// TODO clone method
 public class Graph {
 
   private boolean isDirected = false;

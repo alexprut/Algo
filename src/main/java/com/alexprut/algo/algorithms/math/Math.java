@@ -11,11 +11,7 @@ public class Math {
    * Time complexity: O(b) given gcd(a, b)
    */
   public static int gcd(int a, int b) {
-    if (b == 0) {
-      return a;
-    }
-
-    return gcd(b, a % b);
+    return (b == 0) ? a : gcd(b, a % b);
   }
 
   public static boolean isPrime(int n) {
