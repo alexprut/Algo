@@ -3,6 +3,8 @@ package com.alexprut.algo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static junit.framework.TestCase.fail;
+
 public class UtilsTest {
 
   @Test
@@ -11,6 +13,7 @@ public class UtilsTest {
     try {
       Assert.assertEquals(9, Utils.max(arr));
     } catch (Exception e) {
+        fail("Should not thrown an exception");
     }
   }
 
@@ -20,6 +23,7 @@ public class UtilsTest {
     try {
       Assert.assertEquals(0, Utils.min(arr));
     } catch (Exception e) {
+        fail("Should not thrown an exception");
     }
   }
 
