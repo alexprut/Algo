@@ -1,6 +1,6 @@
 package com.alexprut.algo.datastructures;
 
-public class LinkedList<T> {
+public class LinkedList<T>  {
 
   private Node<T> head;
   private int size;
@@ -17,10 +17,10 @@ public class LinkedList<T> {
   }
 
   public T removeFront() throws Exception {
-    size--;
     if (empty()) {
       throw new Exception("LinkedList underflow");
     }
+    size--;
 
     Node<T> node = head;
     head = node.next;

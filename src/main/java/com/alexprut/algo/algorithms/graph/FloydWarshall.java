@@ -14,7 +14,7 @@ public class FloydWarshall {
     int[][] dp = adj;
 
     for (int k = 0; k < n; k++) {
-      int[][] tmp = new int[n][n];
+      int[][] tmp = adj.clone();
       for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
           tmp[i][j] =

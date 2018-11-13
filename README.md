@@ -28,7 +28,7 @@ Algorithms
 |Floyd-Warshall|Θ(V^3)|Θ(V^3)|Θ(V^3)|Θ(V^2)|
 |Kruskal|O(ElogV)|-|-|-|
 |Prim|O(ElogV)|-|-|-|
-|Bellman–Ford|Θ(EV)|-|-|Θ(V)|
+|Bellman–Ford|Θ(\|E\|\|V\|)|-|-|Θ(V)|
 |Dijkstra|O(E + VlogV)|-|-|-|
 |Knuth-Morris-Pratt|-|-|-|-|
 |Maximum SubArray|-|-|-|-|
@@ -48,12 +48,12 @@ Data Structures
 |Binary Tree|-|
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
 |Trie|-|
-|Stack|-|
+|Stack|```push()``` - Θ(1), ```pop()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
 |Queue|-|
 |AVL Tree|-|
 |Binary Search Tree|-|
 |Double Linked List|-|
-|Linked List|-|
+|Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |Graph|-|
 |Red-Black Tree|-|
 |Segment Tree|-|
