@@ -6,13 +6,14 @@ import org.junit.Test;
 public class BinarySearchTreeTest {
 
   @Test
-  public void shouldInsertAndRetrieve() {
+  public void shouldInsertAndRetrieveAndSearch() {
     BinarySearchTree bst = new BinarySearchTree();
     Assert.assertEquals(0, bst.size());
 
     bst.insert(1);
     Assert.assertEquals(1, bst.size());
     Assert.assertTrue(bst.contains(1));
+    Assert.assertFalse(bst.contains(2));
     Assert.assertEquals(1, bst.search(1).value());
 
     bst.insert(1);

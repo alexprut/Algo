@@ -50,7 +50,7 @@ Data Structures
 |Stack|```push()``` - Θ(1), ```pop()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
 |Queue|```enqueue()``` - Θ(1), ```dequeue()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
 |AVL Tree|-|
-|Binary Search Tree|-|
+|Binary Search Tree|```insert()``` - O(n), ```search()``` - O(n), ```remove()``` - O(n), ```contains()``` - O(n), ```minimum()``` - O(n), ```maximum()``` - O(n), ```size()``` - Θ(1)|
 |Double Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```insertBack()``` - Θ(1), ```removeBack()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |Graph|-|

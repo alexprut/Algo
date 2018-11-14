@@ -53,6 +53,7 @@ public class BinarySearchTree {
     return search(root, value) != null;
   }
 
+  /** Time complexity: Θ(1) */
   public int size() {
     return this.size;
   }
