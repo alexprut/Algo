@@ -8,14 +8,17 @@ public class Trie {
 
   public Trie() {}
 
+  /** Time complexity: O(|s|) */
   public void insert(String word) {
     root.insert("", word);
   }
 
+  /** Time complexity: O(|s|) */
   public boolean contains(String word) {
     return root.contains(word) != null;
   }
 
+  /** Time complexity: O(|s|) */
   public boolean containsWord(String word) {
     Node node = root.contains(word);
     return node != null && node.isWord;
@@ -41,6 +44,7 @@ public class Trie {
       this.isWord = isWord;
     }
 
+    /** Time complexity: O(|s|) */
     public void insert(String prefix, String suffix) {
       if (!suffix.isEmpty()) {
         size++;
@@ -56,6 +60,7 @@ public class Trie {
       }
     }
 
+    /** Time complexity: O(|s|) */
     public Node contains(String word) {
       if (!word.isEmpty()) {
         Character c = word.charAt(0);

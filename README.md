@@ -46,14 +46,14 @@ Data Structures
 |Max Heap|```max()``` - Θ(1), ```extractMax()``` - O(nlogn), ```increaseKey()``` - O(logn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
 |Min Heap|```min()``` - Θ(1), ```extractMin()``` - O(nlogn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
-|Trie|-|
+|Trie|```insert()``` - O(\|s\|), ```contains()``` - O(\|s\|), ```containsWord()``` - O(\|s\|)|
 |Stack|```push()``` - Θ(1), ```pop()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
 |Queue|```enqueue()``` - Θ(1), ```dequeue()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
-|AVL Tree|-|
 |Binary Search Tree|```insert()``` - O(n), ```search()``` - O(n), ```remove()``` - O(n), ```contains()``` - O(n), ```minimum()``` - O(n), ```maximum()``` - O(n), ```size()``` - Θ(1)|
 |Double Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```insertBack()``` - Θ(1), ```removeBack()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |Graph|-|
+|AVL Tree|-|
 |Red-Black Tree|-|
 |Segment Tree|-|
 |B-Tree|-|
