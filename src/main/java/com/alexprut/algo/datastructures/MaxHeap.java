@@ -8,10 +8,12 @@ public class MaxHeap extends BinaryHeap {
     super(elements);
   }
 
+  /** Time complexity: Θ(1) */
   public int max() {
     return root();
   }
 
+  /** Time complexity: O(logn) */
   public int extractMax() throws Exception {
     return extract();
   }
@@ -31,6 +33,7 @@ public class MaxHeap extends BinaryHeap {
     }
   }
 
+  /** Time complexity: O(logn) */
   public void insert(int e) {
     size++;
     if (elements.length < size) {
@@ -44,7 +47,7 @@ public class MaxHeap extends BinaryHeap {
     elements[k] = Integer.MIN_VALUE;
     try {
       increaseKey(k, e);
-    } catch (Exception exeption) {
+    } catch (Exception exception) {
 
     }
   }

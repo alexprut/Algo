@@ -43,7 +43,7 @@ Data Structures
 ===============
 |Data Structure|Methods|
 |--------------|-------|
-|Max Heap|-|
+|Max Heap|```max()``` - Θ(1), ```extractMax()``` - O(nlogn), ```increaseKey()``` - O(logn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
 |Min Heap|-|
 |Binary Tree|-|
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|

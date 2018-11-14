@@ -13,18 +13,22 @@ public abstract class BinaryHeap {
 
   BinaryHeap() {}
 
+  /** Time complexity: Θ(1) */
   public int parent(int i) {
     return i / 2;
   }
 
+  /** Time complexity: Θ(1) */
   public int left(int i) {
     return 2 * i;
   }
 
+  /** Time complexity: Θ(1) */
   public int right(int i) {
     return 2 * i + 1;
   }
 
+  /** Time complexity: Θ(1) */
   public int root() {
     return elements[0];
   }
@@ -55,6 +59,7 @@ public abstract class BinaryHeap {
   /** Time complexity: O(logn) */
   public abstract void insert(int e);
 
+  /** Time complexity: Θ(1) */
   public int size() {
     return size;
   }
