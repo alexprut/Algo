@@ -52,7 +52,7 @@ Data Structures
 |Queue|-|
 |AVL Tree|-|
 |Binary Search Tree|-|
-|Double Linked List|-|
+|Double Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```insertBack()``` - Θ(1), ```removeBack()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |Graph|-|
 |Red-Black Tree|-|

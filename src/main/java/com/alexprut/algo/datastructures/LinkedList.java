@@ -7,15 +7,24 @@ public class LinkedList<T>  {
 
   public LinkedList() {}
 
+  /**
+   * Time complexity: Θ(1)
+   */
   public void insertFront(T value) {
     head = new Node<T>(value, head);
     size++;
   }
 
+  /**
+   * Time complexity: Θ(1)
+   */
   public boolean empty() {
     return size == 0;
   }
 
+  /**
+   * Time complexity: Θ(1)
+   */
   public T removeFront() throws Exception {
     if (empty()) {
       throw new Exception("LinkedList underflow");
@@ -48,14 +57,23 @@ public class LinkedList<T>  {
       this.next = next;
     }
 
+    /**
+     * Time complexity: Θ(1)
+     */
     public void setNext(Node<T> next) {
       this.next = next;
     }
 
+    /**
+     * Time complexity: Θ(1)
+     */
     public Node<T> getNext() {
       return this.next;
     }
 
+    /**
+     * Time complexity: Θ(1)
+     */
     public T getValue() {
       return this.value;
     }
