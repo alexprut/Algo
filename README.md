@@ -31,10 +31,10 @@ Algorithms
 |Bellman–Ford|Θ(\|E\|\|V\|)|-|-|Θ(V)|
 |Dijkstra|O(\|E\| + \|V\|log\|V\|)|-|-|-|
 |Knuth-Morris-Pratt|-|-|-|-|
-|Maximum SubArray|-|-|-|-|
+|Maximum SubArray|Θ(n)|Θ(n)|Θ(n)|Θ(1)|
 |Rabin-Karp|-|-|-|-|
 |Greatest common divisor (gcd)|-|-|-|-|
-|Binary Search|-|-|-|-|
+|Binary Search|O(nlogn)|O(nlogn)|O(1)|Θ(1)|
 |Breadth First Search (BFS)|-|-|-|-|
 |Depth First Search (DFS)|-|-|-|-|
 |Topological Sort (DFS)|-|-|-|-|
