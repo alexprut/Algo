@@ -26,10 +26,10 @@ Algorithms
 |RadixSort|Θ(d(k + n))|Θ(d(k + n))|-|-|
 |BucketSort|Θ(n^2)|Θ(n)|-|-|
 |Floyd-Warshall|Θ(V^3)|Θ(V^3)|Θ(V^3)|Θ(V^2)|
-|Kruskal|O(ElogV)|-|-|-|
-|Prim|O(ElogV)|-|-|-|
+|Kruskal|O(\|E\|log\|V\|)|-|-|-|
+|Prim|O(\|E\|log\|V\|)|-|-|-|
 |Bellman–Ford|Θ(\|E\|\|V\|)|-|-|Θ(V)|
-|Dijkstra|O(E + VlogV)|-|-|-|
+|Dijkstra|O(\|E\| + \|V\|log\|V\|)|-|-|-|
 |Knuth-Morris-Pratt|-|-|-|-|
 |Maximum SubArray|-|-|-|-|
 |Rabin-Karp|-|-|-|-|
@@ -44,7 +44,7 @@ Data Structures
 |Data Structure|Methods|
 |--------------|-------|
 |Max Heap|```max()``` - Θ(1), ```extractMax()``` - O(nlogn), ```increaseKey()``` - O(logn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
-|Min Heap|-|
+|Min Heap|```min()``` - Θ(1), ```extractMin()``` - O(nlogn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
 |Binary Tree|-|
 |Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
 |Trie|-|

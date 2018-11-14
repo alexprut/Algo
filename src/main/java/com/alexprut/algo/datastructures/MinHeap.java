@@ -8,14 +8,17 @@ public class MinHeap extends BinaryHeap {
     super(elements);
   }
 
+  /** Time complexity: Θ(1) */
   public int min() {
     return root();
   }
 
+  /** Time complexity: O(logn) */
   public int extractMin() throws Exception {
     return extract();
   }
 
+  /** Time complexity: O(logn) */
   public void insert(int e) {
     size++;
     if (elements.length < size) {
