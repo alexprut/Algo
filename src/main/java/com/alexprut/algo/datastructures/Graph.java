@@ -4,6 +4,10 @@ import com.alexprut.algo.algorithms.graph.mst.Kruskal;
 import java.util.ArrayList;
 
 // TODO clone method
+
+/**
+ * Conventions: the nodes are labeled from 0 to n (exclusive)
+ */
 public class Graph {
 
   private boolean isDirected = false;
@@ -47,9 +51,6 @@ public class Graph {
 
     for (Edge edge : edges) {
       adjList.get(edge.x.value).add(new Pair<>(edge.y.value, edge.w));
-      if (!isDirected) {
-        adjList.get(edge.y.value).add(new Pair<>(edge.x.value, edge.w));
-      }
     }
   }
 
@@ -62,7 +63,7 @@ public class Graph {
   }
 
   public ArrayList<ArrayList<Pair<Integer, Integer>>> getAdjacencyList() {
-    if (adjMatrix == null) {
+    if (adjList == null) {
       buildAdjacencyList();
     }
 
