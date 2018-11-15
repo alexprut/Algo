@@ -13,7 +13,7 @@ public class Prim {
    *
    * Space complexity: TODO
    */
-  public static int[] prim(ArrayList<ArrayList<Integer>> adj, int n, int start) {
+  public static int[] prim(ArrayList<ArrayList<Pair<Integer, Integer>>> adj, int n, int start) {
     class CostNodePair extends Pair<Integer, Integer> implements Comparable<CostNodePair> {
 
       CostNodePair(int cost, int node) {
@@ -25,29 +25,36 @@ public class Prim {
       }
     }
 
-    int[] parent = new int[n];
+     int[] parent = new int[n];
+    parent[start] = -1;
     int[] key = new int[n];
     for (int i = 0; i < key.length; i++) {
       key[i] = Integer.MAX_VALUE;
     }
+    key[start] = 0;
     boolean[] visited = new boolean[n];
     // TODO use MinHeap or FibonacciHeap
     PriorityQueue<CostNodePair> minHeap = new PriorityQueue<>();
     minHeap.add(new CostNodePair(0, start));
-    parent[start] = -1;
-    key[start] = 0;
     int counter = 0;
     while (!minHeap.isEmpty() && counter < n) {
       CostNodePair node = minHeap.poll();
-      if (!visited[node.second()]) {
-        visited[node.second()] = true;
-        for (int i = 0; i < adj.get(node.second()).size(); i++) {
-          if (!visited[adj.get(node.second()).get(i)]) {
-            if (adj.get(node.second()).get(adj.get(node.second()).get(i)) < key[adj.get(node.second()).get(i)]) {
-              key[adj.get(node.second()).get(i)] = adj.get(node.second()).get(adj.get(node.second()).get(i));
-              parent[node.second()] = adj.get(node.second()).get(i);
+      int costSoFar = node.first();
+      int x = node.second();
+      counter++;
+      if (!visited[x]) {
+        visited[x] = true;
+
+        for (int i = 0; i < adj.get(x).size(); i++) {
+          int y = adj.get(x).get(i).first();
+          int w = adj.get(x).get(i).second();
+
+          if (!visited[y]) {
+            if (w < key[y]) {
+              key[y] = w;
+              parent[y] = x;
             }
-            minHeap.add(new CostNodePair(key[adj.get(node.second()).get(i)], adj.get(node.second()).get(i)));
+            minHeap.add(new CostNodePair(key[y], y));
           }
         }
       }
