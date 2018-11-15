@@ -25,7 +25,7 @@ public class Prim {
       }
     }
 
-     int[] parent = new int[n];
+    int[] parent = new int[n];
     parent[start] = -1;
     int[] key = new int[n];
     for (int i = 0; i < key.length; i++) {
@@ -39,7 +39,6 @@ public class Prim {
     int counter = 0;
     while (!minHeap.isEmpty() && counter < n) {
       CostNodePair node = minHeap.poll();
-      int costSoFar = node.first();
       int x = node.second();
       counter++;
       if (!visited[x]) {
