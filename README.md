@@ -33,14 +33,14 @@ Algorithms
 |[Prim](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/mst/Prim.java)|O(\|E\|log\|V\|)|-|-|-|
 |[Bellman–Ford](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/BellmanFord.java)|Θ(\|E\|\|V\|)|-|-|Θ(V)|
 |[Dijkstra](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/Dijkstra.java)|O(\|E\| + \|V\|log\|V\|)|-|-|-|
-|Knuth-Morris-Pratt|-|-|-|-|
 |[Maximum SubArray](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/MaximumSubArray.java)|Θ(n)|Θ(n)|Θ(n)|Θ(1)|
+|Knuth-Morris-Pratt|-|-|-|-|
 |Rabin-Karp|-|-|-|-|
 |[Greatest common divisor (gcd)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/math/Math.java#L13)|-|-|-|-|
 |[Binary Search](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/BinarySearch.java)|O(nlogn)|O(nlogn)|O(1)|Θ(1)|
-|Breadth First Search (BFS)|-|-|-|-|
-|Depth First Search (DFS)|-|-|-|-|
-|Topological Sort (DFS)|-|-|-|-|
+|[Breadth First Search (BFS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/BreadthFirstSearch.java#L43)|O(\|E\|+\|V\|)|O(\|E\|+\|V\|)|-|-|
+|[Depth First Search (DFS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/DepthFirstSearch.java#L10)|O(\|E\|+\|V\|)|O(\|E\|+\|V\|)|-|-|
+|[Topological Sort (DFS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/DepthFirstSearch.java#L91)|O(\|E\|+\|V\|)|O(\|E\|+\|V\|)|-|-|
 
 Data Structures
 ===============
