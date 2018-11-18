@@ -1,3 +1,6 @@
+<br />
+<br />
+
 <div align="center">
 <img src="https://github.com/alexprut/Algo/raw/master/src/main/resources/logo.png" width="400" height="auto"/>
 
@@ -43,16 +46,16 @@ Data Structures
 ===============
 |Data Structure|Methods|
 |--------------|-------|
-|Max Heap|```max()``` - Θ(1), ```extractMax()``` - O(nlogn), ```increaseKey()``` - O(logn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
-|Min Heap|```min()``` - Θ(1), ```extractMin()``` - O(nlogn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
-|Disjoint Set|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
-|Trie|```insert()``` - O(\|s\|), ```contains()``` - O(\|s\|), ```containsWord()``` - O(\|s\|)|
-|Stack|```push()``` - Θ(1), ```pop()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
-|Queue|```enqueue()``` - Θ(1), ```dequeue()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
-|Binary Search Tree|```insert()``` - O(n), ```search()``` - O(n), ```remove()``` - O(n), ```contains()``` - O(n), ```minimum()``` - O(n), ```maximum()``` - O(n), ```size()``` - Θ(1)|
-|Double Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```insertBack()``` - Θ(1), ```removeBack()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
-|Linked List|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
-|Graph|-|
+|[Max Heap](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MaxHeap.java)|```max()``` - Θ(1), ```extractMax()``` - O(nlogn), ```increaseKey()``` - O(logn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
+|[Min Heap](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MinHeap.java)|```min()``` - Θ(1), ```extractMin()``` - O(nlogn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
+|[Disjoint Set](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/DisjointSet.java)|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
+|[Trie](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Trie.java)|```insert()``` - O(\|s\|), ```contains()``` - O(\|s\|), ```containsWord()``` - O(\|s\|)|
+|[Stack](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Stack.java)|```push()``` - Θ(1), ```pop()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
+|[Queue](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Queue.java)|```enqueue()``` - Θ(1), ```dequeue()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
+|[Binary Search Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BinarySearchTree.java)|```insert()``` - O(n), ```search()``` - O(n), ```remove()``` - O(n), ```contains()``` - O(n), ```minimum()``` - O(n), ```maximum()``` - O(n), ```size()``` - Θ(1)|
+|[Double Linked List](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/DoubleLinkedList.java)|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```insertBack()``` - Θ(1), ```removeBack()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
+|[Linked List](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/LinkedList.java)|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
+|[Graph](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Graph.java)|-|
 |AVL Tree|-|
 |Red-Black Tree|-|
 |Segment Tree|-|
