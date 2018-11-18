@@ -17,24 +17,24 @@ Algorithms
 
 |Algorithm|Worst-case time complexity|Average-case time complexity|Best-case time complexity|Auxiliary space complexity|
 |:---|:---|:---|:---|:---|
-|InsertionSort|Θ(n^2)|Θ(n^2)|O(n)|-|
-|BubbleSort|O(n^2)|O(n^2)|O(n)|-|
-|MergeSort|Θ(nlogn)|Θ(nlogn)|Θ(nlogn)|-|
-|HeapSort|Θ(nlogn)|-|-|-|
-|QuickSort|Θ(n^2)|Θ(nlogn)|Θ(nlogn)|-|
-|CountingSort|Θ(k + n)|Θ(k + n)|-|-|
+|[Insertion Sort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/InsertionSort.java)|Θ(n^2)|Θ(n^2)|O(n)|-|
+|[BubbleSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/BubbleSort.java)|O(n^2)|O(n^2)|O(n)|-|
+|[MergeSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/MergeSort.java)|Θ(nlogn)|Θ(nlogn)|Θ(nlogn)|-|
+|[HeapSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MaxHeap.java#L82)|Θ(nlogn)|-|-|-|
+|[QuickSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/QuickSort.java)|Θ(n^2)|Θ(nlogn)|Θ(nlogn)|-|
+|[CountingSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/CountingSort.java)|Θ(k + n)|Θ(k + n)|-|-|
 |RadixSort|Θ(d(k + n))|Θ(d(k + n))|-|-|
 |BucketSort|Θ(n^2)|Θ(n)|-|-|
-|Floyd-Warshall|Θ(V^3)|Θ(V^3)|Θ(V^3)|Θ(V^2)|
-|Kruskal|O(\|E\|log\|V\|)|-|-|-|
-|Prim|O(\|E\|log\|V\|)|-|-|-|
-|Bellman–Ford|Θ(\|E\|\|V\|)|-|-|Θ(V)|
-|Dijkstra|O(\|E\| + \|V\|log\|V\|)|-|-|-|
+|[Floyd-Warshall](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/FloydWarshall.java)|Θ(V^3)|Θ(V^3)|Θ(V^3)|Θ(V^2)|
+|[Kruskal](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/mst/Kruskal.java)|O(\|E\|log\|V\|)|-|-|-|
+|[Prim](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/mst/Prim.java)|O(\|E\|log\|V\|)|-|-|-|
+|[Bellman–Ford](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/BellmanFord.java)|Θ(\|E\|\|V\|)|-|-|Θ(V)|
+|[Dijkstra](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/Dijkstra.java)|O(\|E\| + \|V\|log\|V\|)|-|-|-|
 |Knuth-Morris-Pratt|-|-|-|-|
-|Maximum SubArray|Θ(n)|Θ(n)|Θ(n)|Θ(1)|
+|[Maximum SubArray](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/MaximumSubArray.java)|Θ(n)|Θ(n)|Θ(n)|Θ(1)|
 |Rabin-Karp|-|-|-|-|
-|Greatest common divisor (gcd)|-|-|-|-|
-|Binary Search|O(nlogn)|O(nlogn)|O(1)|Θ(1)|
+|[Greatest common divisor (gcd)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/math/Math.java#L13)|-|-|-|-|
+|[Binary Search](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/BinarySearch.java)|O(nlogn)|O(nlogn)|O(1)|Θ(1)|
 |Breadth First Search (BFS)|-|-|-|-|
 |Depth First Search (DFS)|-|-|-|-|
 |Topological Sort (DFS)|-|-|-|-|
