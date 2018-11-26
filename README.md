@@ -11,6 +11,7 @@
 
 [![Code Style](https://img.shields.io/badge/code%20style-google-green.svg?style=flat-square)](https://google.github.io/styleguide/javaguide.html)
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/alexprut/Algo/blob/master/LICENSE)
+[![Build Status](http://img.shields.io/travis/alexprut/Algo/master.svg)](https://travis-ci.org/alexprut/Algo)
 
 </div>
 <br />
