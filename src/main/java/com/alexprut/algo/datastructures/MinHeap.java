@@ -1,5 +1,7 @@
 package com.alexprut.algo.datastructures;
 
+import com.alexprut.algo.Utils;
+
 public class MinHeap extends BinaryHeap {
 
   public MinHeap() {}
@@ -42,21 +44,21 @@ public class MinHeap extends BinaryHeap {
   public void heapify(int i) {
     int left = left(i);
     int right = right(i);
-    int largest = i;
+    int smallest = i;
 
     if (left < size && elements[left] < elements[i]) {
-      largest = left;
+      smallest = left;
     }
 
-    if (right < size && elements[right] < elements[i]) {
-      largest = right;
+    if (right < size && elements[right] < elements[smallest]) {
+      smallest = right;
     }
 
-    if (largest != i) {
-      int tmp = elements[largest];
-      elements[largest] = elements[i];
+    if (smallest != i) {
+      int tmp = elements[smallest];
+      elements[smallest] = elements[i];
       elements[i] = tmp;
-      heapify(largest);
+      heapify(smallest);
     }
   }
 
@@ -66,6 +68,9 @@ public class MinHeap extends BinaryHeap {
    * Space complexity: algorithms is in-place
    */
   public void heapsort() {
-    // TODO
+    super.heapsort();
+    for (int i = 0; i < size / 2; i++) {
+      Utils.swap(elements, i, size - 1 - i) ;
+    }
   }
 }

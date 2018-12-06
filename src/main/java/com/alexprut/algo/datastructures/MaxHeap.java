@@ -62,7 +62,7 @@ public class MaxHeap extends BinaryHeap {
       largest = left;
     }
 
-    if (right < size && elements[right] > elements[i]) {
+    if (right < size && elements[right] > elements[largest]) {
       largest = right;
     }
 
@@ -71,21 +71,6 @@ public class MaxHeap extends BinaryHeap {
       elements[largest] = elements[i];
       elements[i] = tmp;
       heapify(largest);
-    }
-  }
-
-  /**
-   * Time complexity: O(nlogn)
-   *
-   * Space complexity: algorithms is in-place
-   */
-  public void heapsort() {
-    for (int i = size - 1; i >= 1; i--) {
-      int tmp = elements[0];
-      elements[0] = elements[i];
-      elements[i] = tmp;
-      size--;
-      heapify(0);
     }
   }
 }
