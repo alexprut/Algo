@@ -40,46 +40,48 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-signing {
-    sign configurations.archives
-}
+if (project.hasProperty('ossrhUsername')) {
+    signing {
+        sign configurations.archives
+    }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
 
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
 
-            pom.project {
-                name 'Algo'
-                packaging 'jar'
-                description 'Classic Algorithms and Data Structures implemented in Java'
-                url 'https://github.com/alexprut/Algo'
-
-                scm {
-                    connection 'scm:git:git://github.com/alexprut/Algo.git'
-                    developerConnection 'scm:git:ssh://github.com/alexprut/Algo.git'
+                pom.project {
+                    name 'Algo'
+                    packaging 'jar'
+                    description 'Classic Algorithms and Data Structures implemented in Java'
                     url 'https://github.com/alexprut/Algo'
-                }
 
-                licenses {
-                    license {
-                        name 'MIT License'
-                        url 'https://github.com/alexprut/Algo/blob/master/LICENSE'
+                    scm {
+                        connection 'scm:git:git://github.com/alexprut/Algo.git'
+                        developerConnection 'scm:git:ssh://github.com/alexprut/Algo.git'
+                        url 'https://github.com/alexprut/Algo'
                     }
-                }
 
-                developers {
-                    developer {
-                        id 'alexprut'
-                        name 'Alex Prut'
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'https://github.com/alexprut/Algo/blob/master/LICENSE'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'alexprut'
+                            name 'Alex Prut'
+                        }
                     }
                 }
             }
