@@ -1,10 +1,15 @@
 plugins {
+    id 'maven'
+    id 'signing'
+    id 'java'
+    id "jacoco"
     id 'java-library'
     id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 
-apply plugin: 'java'
-apply plugin: "jacoco"
+group = "com.alexprut"
+archivesBaseName = "algo"
+version = "v0.1.0"
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -18,5 +23,66 @@ jacocoTestReport {
     reports {
         xml.enabled true
         csv.enabled true
+    }
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Algo'
+                packaging 'jar'
+                description 'Classic Algorithms and Data Structures implemented in Java'
+                url 'https://github.com/alexprut/Algo'
+
+                scm {
+                    connection 'scm:git:git://github.com/alexprut/Algo.git'
+                    developerConnection 'scm:git:ssh://github.com/alexprut/Algo.git'
+                    url 'https://github.com/alexprut/Algo'
+                }
+
+                licenses {
+                    license {
+                        name 'MIT License'
+                        url 'https://github.com/alexprut/Algo/blob/master/LICENSE'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'alexprut'
+                        name 'Alex Prut'
+                    }
+                }
+            }
+        }
     }
 }
