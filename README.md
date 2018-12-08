@@ -13,6 +13,8 @@
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/alexprut/Algo/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/alexprut/Algo.svg?branch=master)](https://travis-ci.org/alexprut/Algo)
 [![Coverage Status](https://coveralls.io/repos/github/alexprut/Algo/badge.svg?branch=master)](https://coveralls.io/github/alexprut/Algo?branch=master)
+[![GitHub release](https://img.shields.io/github/release/alexprut/Algo.svg)](https://github.com/alexprut/Algo/releases)
+
 
 </div>
 <br />
