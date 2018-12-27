@@ -10,7 +10,7 @@ package com.alexprut.algo.datastructures;
  */
 public class RedBlackTree {
 
-  Node root;
+  private Node root;
 
   RedBlackTree() {
   }
@@ -36,7 +36,7 @@ public class RedBlackTree {
       root = x;
     } else if (x.value() < p.value()) {
       p.setLeft(x);
-    } else{
+    } else {
       p.setRight(x);
     }
     insertFixup(x);
@@ -45,15 +45,60 @@ public class RedBlackTree {
   /**
    * Time complexity: O(logn)
    */
-  public void insertFixup(Node x) {
-    // TODO implement
+  private void insertFixup(Node x) {
+    while (x.parent != null && x.parent.isRed()) {
+      if (x.parent == x.parent.parent.left) {
+        Node y = x.parent.parent.right;
+        if (y.isRed()) {
+          // case 1
+          x.parent.setBlackColor();
+          y.setBlackColor();
+          x.parent.parent.setRedColor();
+          x = x.parent.parent;
+        } else if (x == x.parent.right) {
+          // case 2
+          x = x.parent;
+          leftRotation(x);
+        }
+        // case 3
+        x.parent.setBlackColor();
+        x.parent.parent.setRedColor();
+        rightRotation(x.parent.parent);
+      } else {
+        Node y = x.parent.parent.left;
+        if (y.isRed()) {
+          // case 1
+          x.parent.setBlackColor();
+          y.setBlackColor();
+          x.parent.parent.setRedColor();
+          x = x.parent.parent;
+        } else if (x == x.parent.left) {
+          // case 2
+          x = x.parent;
+          rightRotation(x);
+        }
+        // case 3
+        x.parent.setBlackColor();
+        x.parent.parent.setRedColor();
+        leftRotation(x.parent.parent);
+      }
+    }
+    root.setBlackColor();
   }
 
   /**
    * Time complexity: O(logn)
    */
   public boolean search(int value) {
-    return true;
+    Node tmp = root;
+    while (tmp != null) {
+      if (tmp.value == value) {
+        return true;
+      }
+      tmp = (value < tmp.value) ? tmp.left : tmp.right;
+    }
+
+    return false;
   }
 
   /**
@@ -66,7 +111,7 @@ public class RedBlackTree {
   /**
    * Time complexity: Θ(1)
    */
-  private void leftRotation(Node x) {
+  protected void leftRotation(Node x) {
     Node y = x.right;
     x.right = y.left;
     if (y.left == null) {
@@ -87,7 +132,7 @@ public class RedBlackTree {
   /**
    * Time complexity: Θ(1)
    */
-  private void rightRotation(Node x) {
+  protected void rightRotation(Node x) {
     Node y = x.left;
     x.left = y.right;
     if (y.right == null) {
@@ -105,16 +150,9 @@ public class RedBlackTree {
     x.parent = x;
   }
 
-  /**
-   * Number of black nodes on any simple path from, but not including, a node x down to a leaf
-   */
-  public int blackHeight() {
-    return -1;
-  }
-
   // TODO implement functions: predecessor, successor, min, max
 
-  public static class Node {
+  protected static class Node {
 
     private int value;
     private boolean color; // when true then color is Red, otherwise Black
