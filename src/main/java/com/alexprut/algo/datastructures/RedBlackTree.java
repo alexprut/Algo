@@ -10,7 +10,7 @@ package com.alexprut.algo.datastructures;
  */
 public class RedBlackTree {
 
-  private Node root;
+  protected Node root;
 
   RedBlackTree() {
   }
@@ -45,11 +45,11 @@ public class RedBlackTree {
   /**
    * Time complexity: O(logn)
    */
-  private void insertFixup(Node x) {
+  protected void insertFixup(Node x) {
     while (x.parent != null && x.parent.isRed()) {
       if (x.parent == x.parent.parent.left) {
         Node y = x.parent.parent.right;
-        if (y.isRed()) {
+        if (y != null && y.isRed()) {
           // case 1
           x.parent.setBlackColor();
           y.setBlackColor();
@@ -59,14 +59,15 @@ public class RedBlackTree {
           // case 2
           x = x.parent;
           leftRotation(x);
+        } else {
+          // case 3
+          x.parent.setBlackColor();
+          x.parent.parent.setRedColor();
+          rightRotation(x.parent.parent);
         }
-        // case 3
-        x.parent.setBlackColor();
-        x.parent.parent.setRedColor();
-        rightRotation(x.parent.parent);
       } else {
         Node y = x.parent.parent.left;
-        if (y.isRed()) {
+        if (y != null && y.isRed()) {
           // case 1
           x.parent.setBlackColor();
           y.setBlackColor();
@@ -76,11 +77,12 @@ public class RedBlackTree {
           // case 2
           x = x.parent;
           rightRotation(x);
+        } else {
+          // case 3
+          x.parent.setBlackColor();
+          x.parent.parent.setRedColor();
+          leftRotation(x.parent.parent);
         }
-        // case 3
-        x.parent.setBlackColor();
-        x.parent.parent.setRedColor();
-        leftRotation(x.parent.parent);
       }
     }
     root.setBlackColor();
@@ -105,6 +107,7 @@ public class RedBlackTree {
    * Time complexity: O(logn)
    */
   public boolean delete(int value) {
+    // TODO implement
     return true;
   }
 
@@ -114,7 +117,7 @@ public class RedBlackTree {
   protected void leftRotation(Node x) {
     Node y = x.right;
     x.right = y.left;
-    if (y.left == null) {
+    if (y.left != null) {
       y.left.parent = x;
     }
     y.parent = x.parent;
@@ -126,7 +129,7 @@ public class RedBlackTree {
       x.parent.right = y;
     }
     y.left = x;
-    x.parent = x;
+    x.parent = y;
   }
 
   /**
@@ -135,7 +138,7 @@ public class RedBlackTree {
   protected void rightRotation(Node x) {
     Node y = x.left;
     x.left = y.right;
-    if (y.right == null) {
+    if (y.right != null) {
       y.right.parent = x;
     }
     y.parent = x.parent;
@@ -147,7 +150,7 @@ public class RedBlackTree {
       x.parent.left = y;
     }
     y.right = x;
-    x.parent = x;
+    x.parent = y;
   }
 
   // TODO implement functions: predecessor, successor, min, max
@@ -181,16 +184,26 @@ public class RedBlackTree {
       return this.right;
     }
 
+    public Node parent() {
+      return this.parent;
+    }
+
     public boolean isRed() {
       return this.color;
     }
 
     public void setLeft(Node left) {
       this.left = left;
+      left.parent = this;
     }
 
     public void setRight(Node right) {
       this.right = right;
+      right.parent = this;
+    }
+
+    public void setParent(Node parent) {
+      this.parent = parent;
     }
 
     public void setRedColor() {
