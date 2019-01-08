@@ -61,8 +61,8 @@ Data Structures
 |[Double Linked List](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/DoubleLinkedList.java)|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```insertBack()``` - Θ(1), ```removeBack()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |[Linked List](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/LinkedList.java)|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |[Graph](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Graph.java)|```buildAdjacencyMatrix()``` - Θ(\|V\|^2 + \|E\|), ```buildAdjacencyList()``` - Θ(\|V\|^2 + \|E\|), ```addEdge()``` - Θ(1)|
+|[Red-Black Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/RedBlackTree.java)|```insert()``` - O(logn), ```search()``` - O(logn)|
 |AVL Tree|-|
-|Red-Black Tree|-|
 |Segment Tree|-|
 |B-Tree|-|
 |Fibonacci Heap|-|
