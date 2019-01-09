@@ -29,4 +29,23 @@ public class BinarySearchTreeTest {
     Assert.assertEquals(2, bst.maximum().value());
     Assert.assertEquals(1, bst.minimum().value());
   }
+
+  @Test
+  public void shouldInsertAndRetrieveAndSearchAndDelete() {
+    BinarySearchTree bst = new BinarySearchTree();
+    for (int i = 0; i < 1000; i++) {
+      bst.insert(i);
+    }
+
+    for (int i = 0; i < 1000; i++) {
+      Assert.assertEquals(i, bst.search(i).value());
+    }
+
+    for (int i = 0; i < 1000; i++) {
+      bst.delete(bst.search(i));
+      Assert.assertEquals(null, bst.search(i));
+    }
+
+    Assert.assertEquals(0, bst.size());
+  }
 }

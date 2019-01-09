@@ -16,7 +16,7 @@ public class BinarySearchTree {
     if (root == null) {
       root = node;
     } else {
-      insert(root, node);
+      insert(node);
     }
     size++;
   }
@@ -27,8 +27,36 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public void remove(BinaryNode node) {
-    // TODO
+  public void delete(BinaryNode node) {
+    if (node.left == null) {
+      transplant(node, node.right);
+    } else if (node.right == null) {
+      transplant(node, node.left);
+    } else {
+      BinaryNode y = minimum(node.right);
+      if (y.parent() != node) {
+        transplant(y, y.right);
+        y.right = node.right;
+        y.right.parent = y;
+      }
+      transplant(node, y);
+      y.left = node.left;
+      y.left.parent = y;
+    }
+    size--;
+  }
+
+  private void transplant(BinaryNode u, BinaryNode v) {
+    if (u.parent == null) {
+      root = v;
+    } else if (u == u.parent.left) {
+      u.parent.left = v;
+    } else {
+      u.parent.right = v;
+    }
+    if (v != null) {
+      v.parent = u.parent;
+    }
   }
 
   // TODO successor
@@ -59,19 +87,24 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  private void insert(BinaryNode parent, BinaryNode node) {
-    if (parent.value() < node.value()) {
-      if (parent.right == null) {
-        parent.right = node;
+  private void insert(BinaryNode node) {
+    BinaryNode y = null;
+    BinaryNode x = root;
+    while (x != null) {
+      y = x;
+      if (node.value() < x.value()) {
+        x = x.left();
       } else {
-        insert(parent.right, node);
+        x = x.right();
       }
+    }
+    node.setParent(y);
+    if (y == null) {
+      root = node;
+    } else if (node.value() < y.value()) {
+      y.left = node;
     } else {
-      if (parent.left == null) {
-        parent.left = node;
-      } else {
-        insert(parent.left, node);
-      }
+      y.right = node;
     }
   }
 
@@ -104,6 +137,7 @@ public class BinarySearchTree {
   public static class BinaryNode {
 
     private int value;
+    private BinaryNode parent;
     private BinaryNode left;
     private BinaryNode right;
 
@@ -115,12 +149,20 @@ public class BinarySearchTree {
       return this.value;
     }
 
+    public BinaryNode parent() {
+      return this.parent;
+    }
+
     public BinaryNode left() {
       return this.left;
     }
 
     public BinaryNode right() {
       return this.right;
+    }
+
+    public void setParent(BinaryNode parent) {
+      this.parent = parent;
     }
 
     public void setLeft(BinaryNode left) {
