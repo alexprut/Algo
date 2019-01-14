@@ -57,11 +57,11 @@ Data Structures
 |[Trie](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Trie.java)|```insert()``` - O(\|s\|), ```contains()``` - O(\|s\|), ```containsWord()``` - O(\|s\|)|
 |[Stack](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Stack.java)|```push()``` - Θ(1), ```pop()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
 |[Queue](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Queue.java)|```enqueue()``` - Θ(1), ```dequeue()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1)|
-|[Binary Search Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BinarySearchTree.java)|```insert()``` - O(n), ```search()``` - O(n), ```remove()``` - O(n), ```contains()``` - O(n), ```minimum()``` - O(n), ```maximum()``` - O(n), ```size()``` - Θ(1)|
+|[Binary Search Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BinarySearchTree.java)|```insert()``` - O(n), ```search()``` - O(n), ```delete()``` - O(n), ```contains()``` - O(n), ```minimum()``` - O(n), ```maximum()``` - O(n), ```size()``` - Θ(1)|
 |[Double Linked List](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/DoubleLinkedList.java)|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```insertBack()``` - Θ(1), ```removeBack()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |[Linked List](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/LinkedList.java)|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |[Graph](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Graph.java)|```buildAdjacencyMatrix()``` - Θ(\|V\|^2 + \|E\|), ```buildAdjacencyList()``` - Θ(\|V\|^2 + \|E\|), ```addEdge()``` - Θ(1)|
-|[Red-Black Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/RedBlackTree.java)|```insert()``` - O(logn), ```search()``` - O(logn)|
+|[Red-Black Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/RedBlackTree.java)|```insert()``` - O(logn), ```search()``` - O(logn), ```delete()``` - O(logn), ```minimum()``` - O(logn), ```maximum()``` - O(logn)|
 |AVL Tree|-|
 |Segment Tree|-|
 |B-Tree|-|

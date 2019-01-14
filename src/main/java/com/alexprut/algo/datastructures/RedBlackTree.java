@@ -11,6 +11,7 @@ package com.alexprut.algo.datastructures;
 public class RedBlackTree {
 
   protected Node root;
+  private int size;
 
   RedBlackTree() {
   }
@@ -40,6 +41,7 @@ public class RedBlackTree {
       p.setRight(x);
     }
     insertFixup(x);
+    size++;
   }
 
   /**
@@ -92,23 +94,192 @@ public class RedBlackTree {
    * Time complexity: O(logn)
    */
   public boolean search(int value) {
-    Node tmp = root;
-    while (tmp != null) {
-      if (tmp.value == value) {
-        return true;
-      }
-      tmp = (value < tmp.value) ? tmp.left : tmp.right;
-    }
-
-    return false;
+    return search(root, value) != null;
   }
 
   /**
    * Time complexity: O(logn)
    */
-  public boolean delete(int value) {
-    // TODO implement
-    return true;
+  public Node search(Node root, int value) {
+    Node tmp = root;
+    while (tmp != null) {
+      if (tmp.value == value) {
+        return tmp;
+      }
+      tmp = (value < tmp.value) ? tmp.left : tmp.right;
+    }
+
+    return null;
+  }
+
+  /**
+   * Time complexity: O(logn)
+   */
+  public void delete(int value) {
+    delete(search(root, value));
+    size--;
+  }
+
+  /**
+   * Time complexity: O(logn)
+   */
+  public void delete(Node node) {
+    Node x;
+    Node y = node;
+    Boolean isOriginalColorRed = y.color;
+    if (node.left == null) {
+      x = node.right;
+      transplant(node, node.right);
+    } else if (node.right == null) {
+      x = node.left;
+      transplant(node, node.left);
+    } else {
+      y = minimum(node.right);
+      isOriginalColorRed = y.color;
+      x = y.right;
+      if (y.parent == node) {
+        x.parent = y;
+      } else {
+        transplant(y, y.right);
+        y.right = node.right;
+        y.right.parent = y;
+      }
+      transplant(node, y);
+      y.left = node.left;
+      y.left.parent = y;
+      y.color = node.color;
+    }
+    if (!isOriginalColorRed) {
+      deleteFixup(x);
+    }
+  }
+
+  protected void deleteFixup(Node x) {
+    while (x != root && !x.isRed()) {
+      if (x == x.parent.left) {
+        Node w = x.parent.right;
+        if (w.isRed()) {
+          // Case 1
+          w.setBlackColor();
+          x.parent.setRedColor();
+          leftRotation(x.parent);
+          w = x.parent.right;
+        }
+        if (w.left != null && w.right != null && !w.left.isRed() && !w.right.isRed()) {
+          // Case 2
+          w.setRedColor();
+          x = x.parent;
+        } else if (w.right != null && !w.right.isRed()) {
+          // Case 3
+          w.left.setBlackColor();
+          w.setRedColor();
+          rightRotation(w);
+          w = x.parent.right;
+        } else {
+          // Case 4
+          w.color = x.parent.color;
+          x.parent.setBlackColor();
+          w.right.setBlackColor();
+          leftRotation(x.parent);
+          x = root;
+        }
+      } else {
+        Node w = x.parent.left;
+        if (w.isRed()) {
+          // Case 1
+          w.setBlackColor();
+          x.parent.setRedColor();
+          rightRotation(x.parent);
+          w = x.parent.left;
+        }
+        if (w.left != null && w.right != null && !w.right.isRed() && !w.left.isRed()) {
+          // Case 2
+          w.setRedColor();
+          x = x.parent;
+        } else if (w.left != null && !w.left.isRed()) {
+          // Case 3
+          w.right.setBlackColor();
+          w.setRedColor();
+          leftRotation(w);
+          w = x.parent.left;
+        } else {
+          // Case 4
+          w.color = x.parent.color;
+          x.parent.setBlackColor();
+          w.left.setBlackColor();
+          rightRotation(x.parent);
+          x = root;
+        }
+      }
+    }
+    x.setBlackColor();
+  }
+
+  protected void transplant(Node u, Node v) {
+    if (u.parent == null) {
+      root = v;
+    } else if (u == u.parent.left) {
+      u.parent.left = v;
+    } else if (u == u.parent.right) {
+      u.parent.right = v;
+    }
+    v.parent = u.parent; // TODO check if creates problems
+  }
+
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   */
+  public Node minimum() {
+    return minimum(root);
+  }
+
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   */
+  public Node maximum() {
+    return maximum(root);
+  }
+
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   */
+  private Node minimum(Node node) {
+    if (node == null || node.left == null) {
+      return node;
+    }
+    return minimum(node.left);
+  }
+
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   */
+  private Node maximum(Node node) {
+    if (node == null || node.right == null) {
+      return node;
+    }
+    return maximum(node.right);
+  }
+
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   */
+  private Node successor(Node node) {
+    if (node.right != null) {
+      return minimum(node.right);
+    }
+    Node y = node.parent;
+    while (y != null && node == y.right) {
+      node = y;
+      y = y.parent;
+    }
+    return y;
+  }
+
+  /**
+   * Time complexity: Θ(1)
+   */
+  public int size() {
+    return this.size;
   }
 
   /**
