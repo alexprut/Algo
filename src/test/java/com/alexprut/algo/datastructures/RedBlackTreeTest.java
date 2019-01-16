@@ -11,11 +11,23 @@ public class RedBlackTreeTest {
     RedBlackTree tree = new RedBlackTree();
     for (int i = 0; i < 1000; i++) {
       tree.insert(i);
-    }
-
-    for (int i = 0; i < 1000; i++) {
       Assert.assertEquals(true, tree.search(i));
     }
+  }
+
+  @Test
+  public void shouldInsertAndDeleteAndSearch() {
+    RedBlackTree tree = new RedBlackTree();
+    for (int i = 0; i < 100000; i++) {
+      tree.insert(i);
+    }
+
+    for (int i = 0; i < 100000; i++) {
+      tree.delete(i);
+      Assert.assertEquals(false, tree.search(i));
+    }
+
+    Assert.assertEquals(0, tree.size());
   }
 
   @Test
