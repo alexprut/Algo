@@ -46,6 +46,11 @@ public class BinarySearchTree {
     size--;
   }
 
+  /**
+   * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
+   *
+   * Time complexity: O(1)
+   */
   private void transplant(BinaryNode u, BinaryNode v) {
     if (u.parent == null) {
       root = v;
@@ -59,7 +64,21 @@ public class BinarySearchTree {
     }
   }
 
-  // TODO successor
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   */
+  protected BinaryNode successor(BinaryNode x) {
+    if (x.right != null) {
+      return minimum(x);
+    }
+    BinaryNode y = x.parent;
+    while (y != null && x == y.right) {
+      x = y;
+      y = y.parent;
+    }
+    return y;
+  }
+
   // TODO predecessor
   // TODO inOrderVisit
   // TODO preOrderVisit
