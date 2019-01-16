@@ -123,33 +123,33 @@ public class RedBlackTree {
   /**
    * Time complexity: O(logn)
    */
-  public void delete(Node node) {
+  public void delete(Node z) {
     Node x;
-    Node y = node;
+    Node y = z;
     Boolean isOriginalColorRed = y.color;
-    if (node.left == null) {
-      x = node.right;
-      transplant(node, node.right);
-    } else if (node.right == null) {
-      x = node.left;
-      transplant(node, node.left);
+    if (z.left == null) {
+      x = z.right;
+      transplant(z, z.right);
+    } else if (z.right == null) {
+      x = z.left;
+      transplant(z, z.left);
     } else {
-      y = minimum(node.right);
+      y = minimum(z.right);
       isOriginalColorRed = y.color;
       x = y.right;
-      if (y.parent == node) {
+      if (y.parent == z) {
         x.parent = y;
       } else {
         transplant(y, y.right);
-        y.right = node.right;
+        y.right = z.right;
         y.right.parent = y;
       }
-      transplant(node, y);
-      y.left = node.left;
+      transplant(z, y);
+      y.left = z.left;
       y.left.parent = y;
-      y.color = node.color;
+      y.color = z.color;
     }
-    if (!isOriginalColorRed) {
+    if (x != null && !isOriginalColorRed) {
       deleteFixup(x);
     }
   }
@@ -215,6 +215,11 @@ public class RedBlackTree {
     x.setBlackColor();
   }
 
+  /**
+   * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
+   *
+   * Time complexity: O(1)
+   */
   protected void transplant(Node u, Node v) {
     if (u.parent == null) {
       root = v;
@@ -223,7 +228,9 @@ public class RedBlackTree {
     } else if (u == u.parent.right) {
       u.parent.right = v;
     }
-    v.parent = u.parent; // TODO check if creates problems
+    if (v != null) {
+      v.parent = u.parent;
+    }
   }
 
   /**
@@ -324,7 +331,7 @@ public class RedBlackTree {
     x.parent = y;
   }
 
-  // TODO implement functions: predecessor, successor, min, max
+  // TODO implement functions: predecessor
 
   protected static class Node {
 
