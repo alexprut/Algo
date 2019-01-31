@@ -62,8 +62,9 @@ Data Structures
 |[Linked List](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/LinkedList.java)|```insertFront()``` - Θ(1), ```removeFront()``` - Θ(1), ```head()``` - Θ(1), ```size()``` - Θ(1)|
 |[Graph](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Graph.java)|```buildAdjacencyMatrix()``` - Θ(\|V\|^2 + \|E\|), ```buildAdjacencyList()``` - Θ(\|V\|^2 + \|E\|), ```addEdge()``` - Θ(1)|
 |[Red-Black Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/RedBlackTree.java)|```insert()``` - O(logn), ```search()``` - O(logn), ```delete()``` - O(logn), ```minimum()``` - O(logn), ```maximum()``` - O(logn), ```successor()``` - O(logn)|
-|AVL Tree|-|
+|[Interval Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/IntervalTree.java)|```insert()``` - O(logn), ```search()``` - O(logn), ```find()``` - O(logn), ```delete()``` - O(logn), ```minimum()``` - O(logn), ```maximum()``` - O(logn), ```successor()``` - O(logn)|
 |Segment Tree|-|
+|AVL Tree|-|
 |B-Tree|-|
 |Fibonacci Heap|-|
 
