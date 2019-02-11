@@ -46,7 +46,7 @@ public class SegmentTree {
     int diff = newValue - elements[i];
     elements[i] = newValue;
 
-    update(0, tree.length - 1, i, diff, 0);
+    update(0, elements.length - 1, i, diff, 0);
   }
 
   public int search(int startInterval, int endInterval) {
