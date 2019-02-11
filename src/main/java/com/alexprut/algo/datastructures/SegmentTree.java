@@ -3,7 +3,7 @@ package com.alexprut.algo.datastructures;
 /**
  * Stores intervals, and optimized for "which of these intervals contains a given point" queries.
  */
-public class SegmentTree {
+abstract class SegmentTree {
 
   private int elements[];
   private int tree[];
@@ -21,32 +21,42 @@ public class SegmentTree {
     }
 
     if (end < startInterval || start > endInterval) {
-      return 0;
+      return searchUtilDefault();
     }
 
     int mid = middle(start, end);
-    return search(start, mid, startInterval, endInterval, left(current)) +
-        search(mid + 1, end, startInterval, endInterval, right(current));
+    return calculate(
+        search(start, mid, startInterval, endInterval, left(current)),
+        search(mid + 1, end, startInterval, endInterval, right(current))
+    );
   }
 
-  private void update(int start, int end, int i, int diff, int current) {
+  protected abstract int searchUtilDefault();
+
+  protected abstract int calculate(int left, int right);
+
+  private void update(int start, int end, int i, int current) {
     if (i < start || i > end) {
       return;
     }
 
-    tree[current] = tree[current] + diff;
-    if (end != start) {
-      int mid = middle(start, end);
-      update(start, mid, i, diff, left(current));
-      update(mid + 1, end, i, diff, right(current));
+    if (start == end) {
+      tree[current] = elements[start];
+      return;
     }
+
+    int mid = middle(start, end);
+    update(start, mid, i, left(current));
+    update(mid + 1, end, i, right(current));
+
+    tree[current] = calculate(tree[left(current)], tree[right(current)]);
   }
 
+
   public void update(int i, int newValue) {
-    int diff = newValue - elements[i];
     elements[i] = newValue;
 
-    update(0, elements.length - 1, i, diff, 0);
+    update(0, elements.length - 1, i, 0);
   }
 
   public int search(int startInterval, int endInterval) {
@@ -60,8 +70,10 @@ public class SegmentTree {
     }
 
     int middle = middle(startInterval, endInterval);
-    tree[current] = build(startInterval, middle, left(current)) +
-        build(middle + 1, endInterval, right(current));
+    tree[current] = calculate(
+        build(startInterval, middle, left(current)),
+        build(middle + 1, endInterval, right(current))
+    );
     return tree[current];
   }
 
@@ -75,5 +87,50 @@ public class SegmentTree {
 
   protected int middle(int start, int end) {
     return (start + end) / 2;
+  }
+
+  public static class SumSegmentTree extends SegmentTree {
+
+    public SumSegmentTree(int arr[]) {
+      super(arr);
+    }
+
+    protected int searchUtilDefault() {
+      return 0;
+    }
+
+    protected int calculate(int leftValue, int rightValue) {
+      return leftValue + rightValue;
+    }
+  }
+
+  public static class MinSegmentTree extends SegmentTree {
+
+    public MinSegmentTree(int arr[]) {
+      super(arr);
+    }
+
+    protected int searchUtilDefault() {
+      return Integer.MAX_VALUE;
+    }
+
+    protected int calculate(int leftValue, int rightValue) {
+      return Math.min(leftValue, rightValue);
+    }
+  }
+
+  public static class MaxSegmentTree extends SegmentTree {
+
+    public MaxSegmentTree(int arr[]) {
+      super(arr);
+    }
+
+    protected int searchUtilDefault() {
+      return Integer.MIN_VALUE;
+    }
+
+    protected int calculate(int leftValue, int rightValue) {
+      return Math.max(leftValue, rightValue);
+    }
   }
 }
