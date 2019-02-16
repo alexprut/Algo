@@ -15,6 +15,9 @@ abstract class SegmentTree {
     build(0, elements.length - 1, 0);
   }
 
+  /**
+   * Time complexity: O(logn)
+   */
   private int search(int start, int end, int startInterval, int endInterval, int current) {
     if (startInterval <= start && endInterval >= end) {
       return tree[current];
@@ -31,10 +34,19 @@ abstract class SegmentTree {
     );
   }
 
+  /**
+   * Time complexity: O(1)
+   */
   protected abstract int searchUtilDefault();
 
+  /**
+   * Time complexity: O(1)
+   */
   protected abstract int calculate(int left, int right);
 
+  /**
+   * Time complexity: O(logn)
+   */
   private void update(int start, int end, int i, int current) {
     if (i < start || i > end) {
       return;
@@ -52,17 +64,25 @@ abstract class SegmentTree {
     tree[current] = calculate(tree[left(current)], tree[right(current)]);
   }
 
-
+  /**
+   * Time complexity: O(logn)
+   */
   public void update(int i, int newValue) {
     elements[i] = newValue;
 
     update(0, elements.length - 1, i, 0);
   }
 
+  /**
+   * Time complexity: O(logn)
+   */
   public int search(int startInterval, int endInterval) {
     return search(0, elements.length - 1, startInterval, endInterval, 0);
   }
 
+  /**
+   * Time complexity: O(n)
+   */
   private int build(int startInterval, int endInterval, int current) {
     if (startInterval == endInterval) {
       tree[current] = elements[startInterval];
@@ -77,14 +97,23 @@ abstract class SegmentTree {
     return tree[current];
   }
 
+  /**
+   * Time complexity: O(1)
+   */
   protected int left(int i) {
     return i * 2 + 1;
   }
 
+  /**
+   * Time complexity: O(1)
+   */
   protected int right(int i) {
     return i * 2 + 2;
   }
 
+  /**
+   * Time complexity: O(1)
+   */
   protected int middle(int start, int end) {
     return (start + end) / 2;
   }
