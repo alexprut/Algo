@@ -3,6 +3,8 @@ package com.alexprut.algo.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class BinarySearchTreeTest {
 
   @Test
@@ -47,5 +49,33 @@ public class BinarySearchTreeTest {
     }
 
     Assert.assertEquals(0, bst.size());
+  }
+
+  @Test
+  public void shouldPreOrderVisit() {
+    /*
+              4
+           /    \
+          2      6
+         / \    /
+        1   3  5
+     */
+    BinarySearchTree bst = new BinarySearchTree();
+    bst.insert(4);
+    bst.insert(2);
+    bst.insert(1);
+    bst.insert(3);
+    bst.insert(6);
+    bst.insert(5);
+
+    ArrayList<Integer> expected = new ArrayList<>();
+    expected.add(4);
+    expected.add(2);
+    expected.add(1);
+    expected.add(3);
+    expected.add(6);
+    expected.add(5);
+
+    Assert.assertEquals(expected, bst.preOrderVisit());
   }
 }

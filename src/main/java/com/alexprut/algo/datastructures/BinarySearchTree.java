@@ -1,5 +1,7 @@
 package com.alexprut.algo.datastructures;
 
+import java.util.ArrayList;
+
 public class BinarySearchTree {
 
   private BinaryNode root;
@@ -81,8 +83,32 @@ public class BinarySearchTree {
 
   // TODO predecessor
   // TODO inOrderVisit
-  // TODO preOrderVisit
   // TODO postOrderVisit
+
+  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  public ArrayList<Integer> preOrderVisit() {
+    if (root == null) {
+      return new ArrayList<>();
+    }
+    ArrayList<Integer> result = new ArrayList<>();
+    Stack<BinaryNode> stack = new Stack<>();
+    stack.push(root);
+    while (!stack.empty()) {
+      try {
+        BinaryNode current = stack.pop();
+        result.add(current.value);
+        if (current.right != null) {
+            stack.push(current.right);
+        }
+          if (current.left != null) {
+              stack.push(current.left);
+          }
+      } catch (Exception e) {}
+    }
+
+    return result;
+  }
+
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive */
   private BinaryNode search(BinaryNode node, int value) {
