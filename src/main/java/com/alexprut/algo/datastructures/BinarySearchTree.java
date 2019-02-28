@@ -82,8 +82,6 @@ public class BinarySearchTree {
   }
 
   // TODO predecessor
-  // TODO inOrderVisit
-  // TODO postOrderVisit
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
   public ArrayList<Integer> preOrderVisit() {
@@ -109,6 +107,58 @@ public class BinarySearchTree {
     return result;
   }
 
+  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  public ArrayList<Integer> inOrderVisit() {
+    if (root == null) {
+      return new ArrayList<>();
+    }
+    BinaryNode node = root;
+    ArrayList<Integer> result = new ArrayList<>();
+    Stack<BinaryNode> stack = new Stack<>();
+    while (!stack.empty() || node != null) {
+      try {
+        if (node != null) {
+          stack.push(node);
+          node = node.left;
+        } else {
+          node = stack.pop();
+          result.add(node.value);
+          node = node.right;
+        }
+      } catch (Exception e) {}
+    }
+
+    return result;
+  }
+
+  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  public ArrayList<Integer> postOrderVisit() {
+    if (root == null) {
+      return new ArrayList<>();
+    }
+    ArrayList<Integer> result = new ArrayList<>();
+    Stack<BinaryNode> stack = new Stack<>();
+    BinaryNode node = root;
+    BinaryNode lastVisited = null;
+    while (!stack.empty() || node != null) {
+      try {
+        if (node != null) {
+          stack.push(node);
+          node = node.left;
+        } else {
+          BinaryNode tmp = stack.peek();
+          if (tmp.right != null && lastVisited != tmp.right) {
+            node = tmp.right;
+          } else {
+            result.add(tmp.value);
+            lastVisited = stack.pop();
+          }
+        }
+      } catch (Exception e) {}
+    }
+
+    return result;
+  }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive */
   private BinaryNode search(BinaryNode node, int value) {

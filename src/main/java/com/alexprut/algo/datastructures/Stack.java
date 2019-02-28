@@ -5,6 +5,15 @@ public class Stack<T> {
 
   private LinkedList<T> list;
 
+  /**
+   * Time complexity: Θ(1)
+   */
+  public T peek() throws Exception {
+    T tmp = pop();
+    push(tmp);
+    return tmp;
+  }
+
   public Stack() {
     list = new LinkedList<>();
   }

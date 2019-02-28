@@ -78,4 +78,64 @@ public class BinarySearchTreeTest {
 
     Assert.assertEquals(expected, bst.preOrderVisit());
   }
+
+  @Test
+  public void shouldInOrderVisit() {
+    /*
+              4
+           /    \
+          2      6
+         / \    / \
+        1   3  5   7
+     */
+    BinarySearchTree bst = new BinarySearchTree();
+    bst.insert(4);
+    bst.insert(2);
+    bst.insert(1);
+    bst.insert(3);
+    bst.insert(6);
+    bst.insert(5);
+    bst.insert(7);
+
+    ArrayList<Integer> expected = new ArrayList<>();
+    expected.add(1);
+    expected.add(2);
+    expected.add(3);
+    expected.add(4);
+    expected.add(5);
+    expected.add(6);
+    expected.add(7);
+
+    Assert.assertEquals(expected, bst.inOrderVisit());
+  }
+
+  @Test
+  public void shouldPostOrderVisit() {
+    /*
+              4
+           /    \
+          2      6
+         / \    / \
+        1   3  5   7
+     */
+    BinarySearchTree bst = new BinarySearchTree();
+    bst.insert(4);
+    bst.insert(2);
+    bst.insert(1);
+    bst.insert(3);
+    bst.insert(6);
+    bst.insert(5);
+    bst.insert(7);
+
+    ArrayList<Integer> expected = new ArrayList<>();
+    expected.add(1);
+    expected.add(3);
+    expected.add(2);
+    expected.add(5);
+    expected.add(7);
+    expected.add(6);
+    expected.add(4);
+
+    Assert.assertEquals(expected, bst.postOrderVisit());
+  }
 }
