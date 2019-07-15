@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 // TODO clone method
 
-/**
- * Conventions: the nodes are labeled from 0 to n (exclusive)
- */
+/** Conventions: the nodes are labeled from 0 to n (exclusive) */
 public class Graph {
 
   private boolean isDirected = false;
@@ -74,15 +72,13 @@ public class Graph {
     return edges;
   }
 
-  /**
-   * Calculates the minimum spanning tree
-   */
+  /** Calculates the minimum spanning tree */
   public ArrayList<Edge> mst() {
     return Kruskal.kruskal(edges, n);
   }
 
   public void addEdge(ArrayList<Edge> edges) {
-    for (Edge edge: edges) {
+    for (Edge edge : edges) {
       addEdge(edge);
     }
   }

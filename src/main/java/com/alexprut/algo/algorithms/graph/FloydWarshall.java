@@ -5,9 +5,9 @@ public class FloydWarshall {
   /**
    * Find the shortest path between any pair of nodes
    *
-   * Time complexity: Θ(V^3)
+   * <p>Time complexity: Θ(V^3)
    *
-   * Space complexity: Θ(V^2)
+   * <p>Space complexity: Θ(V^2)
    */
   public static int[][] floydWarshall(int[][] adj) {
     int n = adj.length;

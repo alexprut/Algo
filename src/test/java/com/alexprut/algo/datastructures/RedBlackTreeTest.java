@@ -33,12 +33,12 @@ public class RedBlackTreeTest {
   @Test
   public void shouldRotateLeft() {
     /*
-          x                           y
-         / \     leftRotate(x)       / \
-        w   y    ------------>      x   z
-           / \                     / \
-          u   z                   w   u
-     */
+         x                           y
+        / \     leftRotate(x)       / \
+       w   y    ------------>      x   z
+          / \                     / \
+         u   z                   w   u
+    */
     RedBlackTree tree = new RedBlackTree();
     Node x = new Node(1);
     Node y = new Node(2);
@@ -69,12 +69,12 @@ public class RedBlackTreeTest {
   @Test
   public void shouldRotateRight() {
     /*
-          x                            y
-         / \     rightRotate(y)       / \
-        w   y    <-------------      x   z
-           / \                      / \
-          u   z                    w   u
-     */
+         x                            y
+        / \     rightRotate(y)       / \
+       w   y    <-------------      x   z
+          / \                      / \
+         u   z                    w   u
+    */
     RedBlackTree tree = new RedBlackTree();
     Node x = new Node(1);
     Node y = new Node(2);
@@ -105,55 +105,55 @@ public class RedBlackTreeTest {
   @Test
   public void shouldTestInsertFixup() {
     /*
-       B = Black
-       R = Red
-                                 11,B
-                                /    \
-                             2,R      14,B
-                            /   \         \
-                         1,B     7,B       15,R
-                                /   \
-                             5,R     8,R
-                            /
-                         4,R
-
-                                  | Case 1
-                                  ˅
-
-                                 11,B
-                                /    \
-                             2,R      14,B
-                            /   \         \
-                         1,B     7,R       15,R
-                                /   \
-                             5,B     8,B
-                            /
-                         4,R
-
-                                  | Case 2
-                                  ˅
-
-                                 11,B
-                                /    \
-                             7,R      14,B
-                            /   \         \
-                         2,R     8,B       15,R
-                        /   \
-                    1,B     5,B
+      B = Black
+      R = Red
+                                11,B
+                               /    \
+                            2,R      14,B
+                           /   \         \
+                        1,B     7,B       15,R
+                               /   \
+                            5,R     8,R
                            /
                         4,R
 
-                                  | Case 3
-                                  ˅
+                                 | Case 1
+                                 ˅
 
-                                 7,B
-                             /        \
-                          2,R          11,R
-                         /   \        /    \
-                      1,B     5,B  8,B      14,B
-                             /                  \
-                          4,R                    15,R
-     */
+                                11,B
+                               /    \
+                            2,R      14,B
+                           /   \         \
+                        1,B     7,R       15,R
+                               /   \
+                            5,B     8,B
+                           /
+                        4,R
+
+                                 | Case 2
+                                 ˅
+
+                                11,B
+                               /    \
+                            7,R      14,B
+                           /   \         \
+                        2,R     8,B       15,R
+                       /   \
+                   1,B     5,B
+                          /
+                       4,R
+
+                                 | Case 3
+                                 ˅
+
+                                7,B
+                            /        \
+                         2,R          11,R
+                        /   \        /    \
+                     1,B     5,B  8,B      14,B
+                            /                  \
+                         4,R                    15,R
+    */
 
     RedBlackTree tree = new RedBlackTree();
     Node x = new Node(11);

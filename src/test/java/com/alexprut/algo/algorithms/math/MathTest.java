@@ -42,43 +42,62 @@ public class MathTest {
   @Test
   public void permuteTest() {
     ArrayList<ArrayList<Integer>> expected = new ArrayList<>();
-    expected.add(new ArrayList<Integer>() {{
-      add(1);
-      add(2);
-      add(3);
-    }});
-    expected.add(new ArrayList<Integer>() {{
-      add(1);
-      add(3);
-      add(2);
-    }});
-    expected.add(new ArrayList<Integer>() {{
-      add(2);
-      add(1);
-      add(3);
-    }});
-    expected.add(new ArrayList<Integer>() {{
-      add(2);
-      add(3);
-      add(1);
-    }});
-    expected.add(new ArrayList<Integer>() {{
-      add(3);
-      add(1);
-      add(2);
-    }});
-    expected.add(new ArrayList<Integer>() {{
-      add(3);
-      add(2);
-      add(1);
-    }});
+    expected.add(
+        new ArrayList<Integer>() {
+          {
+            add(1);
+            add(2);
+            add(3);
+          }
+        });
+    expected.add(
+        new ArrayList<Integer>() {
+          {
+            add(1);
+            add(3);
+            add(2);
+          }
+        });
+    expected.add(
+        new ArrayList<Integer>() {
+          {
+            add(2);
+            add(1);
+            add(3);
+          }
+        });
+    expected.add(
+        new ArrayList<Integer>() {
+          {
+            add(2);
+            add(3);
+            add(1);
+          }
+        });
+    expected.add(
+        new ArrayList<Integer>() {
+          {
+            add(3);
+            add(1);
+            add(2);
+          }
+        });
+    expected.add(
+        new ArrayList<Integer>() {
+          {
+            add(3);
+            add(2);
+            add(1);
+          }
+        });
     ArrayList<Integer> elements = new ArrayList<>();
     elements.add(1);
     elements.add(2);
     elements.add(3);
 
     Assert.assertArrayEquals(expected.toArray(), Math.permute(elements).toArray());
-    Assert.assertArrayEquals((new ArrayList<ArrayList<Character>>()).toArray(),
+    Assert.assertArrayEquals(
+        (new ArrayList<ArrayList<Character>>()).toArray(),
         Math.permute(new ArrayList<>()).toArray());
   }
 }

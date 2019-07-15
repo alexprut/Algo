@@ -8,7 +8,7 @@ public class Math {
   /**
    * Greatest common divisor, Euclide algorithms
    *
-   * Time complexity: O(b) given gcd(a, b)
+   * <p>Time complexity: O(b) given gcd(a, b)
    */
   public static int gcd(int a, int b) {
     return (b == 0) ? a : gcd(b, a % b);

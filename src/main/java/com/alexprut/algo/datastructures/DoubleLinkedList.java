@@ -8,9 +8,7 @@ public class DoubleLinkedList<T> {
 
   public DoubleLinkedList() {}
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   public void insertFront(T value) {
     Node<T> node = new Node<>(value, head, null);
     if (head == null) {
@@ -25,9 +23,7 @@ public class DoubleLinkedList<T> {
     size++;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   public void insertBack(T value) {
     Node<T> node = new Node<>(value, null, tail);
     if (head == null) {
@@ -42,16 +38,12 @@ public class DoubleLinkedList<T> {
     size++;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   public boolean empty() {
     return size == 0;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   public T removeFront() throws Exception {
     if (empty()) {
       throw new Exception("DoubleLinkedList underflow");
@@ -71,9 +63,7 @@ public class DoubleLinkedList<T> {
     return node.value;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   public T removeBack() throws Exception {
     if (empty()) {
       throw new Exception("DoubleLinkedList underflow");

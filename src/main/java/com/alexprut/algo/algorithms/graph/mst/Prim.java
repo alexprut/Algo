@@ -9,9 +9,9 @@ public class Prim {
   /**
    * Finds the minimum spanning tree (MST) of an undirected graph
    *
-   * Time complexity: O(|E|log|V|)
+   * <p>Time complexity: O(|E|log|V|)
    *
-   * Space complexity: TODO
+   * <p>Space complexity: TODO
    */
   public static int[] prim(ArrayList<ArrayList<Pair<Integer, Integer>>> adj, int n, int start) {
     class CostNodePair extends Pair<Integer, Integer> implements Comparable<CostNodePair> {

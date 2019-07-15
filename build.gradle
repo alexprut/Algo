@@ -5,6 +5,7 @@ plugins {
     id "jacoco"
     id 'java-library'
     id 'com.github.kt3k.coveralls' version '2.6.3'
+    id 'com.github.sherter.google-java-format' version '0.8'
 }
 
 group = "com.alexprut"

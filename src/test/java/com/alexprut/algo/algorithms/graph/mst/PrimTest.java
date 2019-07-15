@@ -14,13 +14,13 @@ public class PrimTest {
     g.addEdge(0, 2, 3);
     g.addEdge(2, 3, 1);
 
-    Assert.assertArrayEquals(new int[]{-1, 0, 0, 2}, Prim.prim(g.getAdjacencyList(), 4, 0));
-    Assert.assertArrayEquals(new int[]{2, 0, 3, -1}, Prim.prim(g.getAdjacencyList(), 4, 3));
+    Assert.assertArrayEquals(new int[] {-1, 0, 0, 2}, Prim.prim(g.getAdjacencyList(), 4, 0));
+    Assert.assertArrayEquals(new int[] {2, 0, 3, -1}, Prim.prim(g.getAdjacencyList(), 4, 3));
   }
 
   @Test
   public void singleNodeMst() {
     Graph g = new Graph(1);
-    Assert.assertArrayEquals(new int[]{-1}, Prim.prim(g.getAdjacencyList(), 1, 0));
+    Assert.assertArrayEquals(new int[] {-1}, Prim.prim(g.getAdjacencyList(), 1, 0));
   }
 }

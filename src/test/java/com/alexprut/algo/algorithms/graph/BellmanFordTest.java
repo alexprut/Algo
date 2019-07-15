@@ -1,12 +1,12 @@
 package com.alexprut.algo.algorithms.graph;
 
+import static junit.framework.TestCase.fail;
+
 import com.alexprut.algo.datastructures.Graph;
 import com.alexprut.algo.datastructures.Graph.Edge;
 import com.alexprut.algo.datastructures.Graph.Node;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static junit.framework.TestCase.fail;
 
 public class BellmanFordTest {
 
@@ -14,7 +14,7 @@ public class BellmanFordTest {
   public void disconnectedGraph() {
     Graph g = new Graph(3);
 
-    int[] expectedDistances = new int[]{0, Integer.MAX_VALUE, Integer.MAX_VALUE};
+    int[] expectedDistances = new int[] {0, Integer.MAX_VALUE, Integer.MAX_VALUE};
 
     try {
       Assert.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 3, 0));
@@ -31,7 +31,7 @@ public class BellmanFordTest {
     g.addEdge(new Edge(new Node(0), new Node(2), 4));
     g.addEdge(new Edge(new Node(2), new Node(3), 4));
 
-    int[] expectedDistances = new int[]{0, 4, 4, 5};
+    int[] expectedDistances = new int[] {0, 4, 4, 5};
 
     try {
       Assert.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 4, 0));
@@ -48,7 +48,7 @@ public class BellmanFordTest {
     g.addEdge(new Edge(new Node(0), new Node(2), 4));
     g.addEdge(new Edge(new Node(2), new Node(3), 4));
 
-    int[] expectedDistances = new int[]{0, 4, 4, 3};
+    int[] expectedDistances = new int[] {0, 4, 4, 3};
 
     try {
       Assert.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 4, 0));

@@ -2,7 +2,6 @@ package com.alexprut.algo.algorithms.graph.mst;
 
 import com.alexprut.algo.datastructures.Graph.Edge;
 import com.alexprut.algo.datastructures.Graph.Node;
-import com.alexprut.algo.algorithms.graph.mst.Kruskal;
 import java.util.ArrayList;
 import java.util.Collections;
 import org.junit.Assert;

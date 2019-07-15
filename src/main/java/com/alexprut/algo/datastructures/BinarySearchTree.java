@@ -51,7 +51,7 @@ public class BinarySearchTree {
   /**
    * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
    *
-   * Time complexity: O(1)
+   * <p>Time complexity: O(1)
    */
   private void transplant(BinaryNode u, BinaryNode v) {
     if (u.parent == null) {
@@ -66,9 +66,7 @@ public class BinarySearchTree {
     }
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
-   */
+  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
   protected BinaryNode successor(BinaryNode x) {
     if (x.right != null) {
       return minimum(x);
@@ -96,12 +94,13 @@ public class BinarySearchTree {
         BinaryNode current = stack.pop();
         result.add(current.value);
         if (current.right != null) {
-            stack.push(current.right);
+          stack.push(current.right);
         }
-          if (current.left != null) {
-              stack.push(current.left);
-          }
-      } catch (Exception e) {}
+        if (current.left != null) {
+          stack.push(current.left);
+        }
+      } catch (Exception e) {
+      }
     }
 
     return result;
@@ -125,7 +124,8 @@ public class BinarySearchTree {
           result.add(node.value);
           node = node.right;
         }
-      } catch (Exception e) {}
+      } catch (Exception e) {
+      }
     }
 
     return result;
@@ -154,7 +154,8 @@ public class BinarySearchTree {
             lastVisited = stack.pop();
           }
         }
-      } catch (Exception e) {}
+      } catch (Exception e) {
+      }
     }
 
     return result;

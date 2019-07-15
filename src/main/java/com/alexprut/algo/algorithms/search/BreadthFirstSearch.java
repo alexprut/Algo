@@ -8,7 +8,7 @@ public class BreadthFirstSearch {
   /**
    * Time complexity: O(V + E)
    *
-   * Space complexity: O(V)
+   * <p>Space complexity: O(V)
    */
   public int[] shortestPath(ArrayList<ArrayList<Integer>> adj, int start) throws Exception {
     int[] shortestPaths = new int[adj.size()];
@@ -38,7 +38,7 @@ public class BreadthFirstSearch {
   /**
    * Time complexity: O(V + E)
    *
-   * Space complexity: O(V)
+   * <p>Space complexity: O(V)
    */
   public int[] predecessorSubgraph(ArrayList<ArrayList<Integer>> adj, int start) throws Exception {
     int[] parent = new int[adj.size()];

@@ -3,7 +3,6 @@ package com.alexprut.algo.algorithms.graph;
 import com.alexprut.algo.datastructures.Graph;
 import com.alexprut.algo.datastructures.Graph.Edge;
 import com.alexprut.algo.datastructures.Graph.Node;
-import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 

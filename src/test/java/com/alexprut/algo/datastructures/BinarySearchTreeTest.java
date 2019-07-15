@@ -1,9 +1,8 @@
 package com.alexprut.algo.datastructures;
 
+import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 public class BinarySearchTreeTest {
 
@@ -54,12 +53,12 @@ public class BinarySearchTreeTest {
   @Test
   public void shouldPreOrderVisit() {
     /*
-              4
-           /    \
-          2      6
-         / \    /
-        1   3  5
-     */
+             4
+          /    \
+         2      6
+        / \    /
+       1   3  5
+    */
     BinarySearchTree bst = new BinarySearchTree();
     bst.insert(4);
     bst.insert(2);
@@ -82,12 +81,12 @@ public class BinarySearchTreeTest {
   @Test
   public void shouldInOrderVisit() {
     /*
-              4
-           /    \
-          2      6
-         / \    / \
-        1   3  5   7
-     */
+             4
+          /    \
+         2      6
+        / \    / \
+       1   3  5   7
+    */
     BinarySearchTree bst = new BinarySearchTree();
     bst.insert(4);
     bst.insert(2);
@@ -112,12 +111,12 @@ public class BinarySearchTreeTest {
   @Test
   public void shouldPostOrderVisit() {
     /*
-              4
-           /    \
-          2      6
-         / \    / \
-        1   3  5   7
-     */
+             4
+          /    \
+         2      6
+        / \    / \
+       1   3  5   7
+    */
     BinarySearchTree bst = new BinarySearchTree();
     bst.insert(4);
     bst.insert(2);

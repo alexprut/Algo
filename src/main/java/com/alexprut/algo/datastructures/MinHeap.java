@@ -65,12 +65,12 @@ public class MinHeap extends BinaryHeap {
   /**
    * Time complexity: O(nlogn)
    *
-   * Space complexity: algorithms is in-place
+   * <p>Space complexity: algorithms is in-place
    */
   public void heapsort() {
     super.heapsort();
     for (int i = 0; i < size / 2; i++) {
-      Utils.swap(elements, i, size - 1 - i) ;
+      Utils.swap(elements, i, size - 1 - i);
     }
   }
 }

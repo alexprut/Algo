@@ -7,7 +7,7 @@ public class BubbleSort {
   /**
    * Time complexity: O(n^2) in the worst case, O(n) in the best case, when the array is sorted
    *
-   * Space complexity: O(n) total with O(1) auxiliary
+   * <p>Space complexity: O(n) total with O(1) auxiliary
    */
   public static int[] bubbleSort(int[] arr) {
     boolean swapped = true;

@@ -4,11 +4,12 @@ package com.alexprut.algo.algorithms;
 public class MaximumSubarray {
 
   /**
-   * Finds the contiguous sub-array within a one-dimensional array, a[1...n], of numbers which has the largest sum
+   * Finds the contiguous sub-array within a one-dimensional array, a[1...n], of numbers which has
+   * the largest sum
    *
-   * Time complexity: Θ(n)
+   * <p>Time complexity: Θ(n)
    *
-   * Space complexity: Θ(n) total with Θ(1) auxiliary
+   * <p>Space complexity: Θ(n) total with Θ(1) auxiliary
    */
   public static int maximumSubarray(int[] elements) {
     if (elements.length == 0) {

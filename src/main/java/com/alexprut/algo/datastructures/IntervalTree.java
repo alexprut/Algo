@@ -4,7 +4,7 @@ package com.alexprut.algo.datastructures;
  * Stores intervals as well, but optimized for "which of these intervals overlap with a given
  * interval" queries. It can also be used for point queries - similar to segment tree.
  *
- * The Interval Tree data structure is implemented by using a Red-Black Tree The intervals are
+ * <p>The Interval Tree data structure is implemented by using a Red-Black Tree The intervals are
  * closed TODO extend the Red-Black Tree data structure
  */
 public class IntervalTree {
@@ -12,13 +12,9 @@ public class IntervalTree {
   protected IntervalNode root;
   private int size;
 
-  IntervalTree() {
-  }
+  IntervalTree() {}
 
-  /**
-   * Time complexity: O(logn)
-   * TODO check that the low is less than the high
-   */
+  /** Time complexity: O(logn) TODO check that the low is less than the high */
   public void insert(int low, int high) {
     IntervalNode x = new IntervalNode(low, high, true);
     IntervalNode p = null;
@@ -45,9 +41,7 @@ public class IntervalTree {
     size++;
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   protected void insertFixup(IntervalNode x) {
     while (x.parent != null && x.parent.isRed()) {
       if (x.parent == x.parent.parent.left) {
@@ -91,16 +85,12 @@ public class IntervalTree {
     root.setBlackColor();
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public boolean search(int low, int high) {
     return search(root, new IntervalNode(low, high)) != null;
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public IntervalNode search(IntervalNode root, IntervalNode x) {
     IntervalNode tmp = root;
     while (tmp != null) {
@@ -113,16 +103,12 @@ public class IntervalTree {
     return null;
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public IntervalNode find(int low, int high) {
     return find(root, new IntervalNode(low, high));
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public IntervalNode find(IntervalNode root, IntervalNode x) {
     IntervalNode tmp = root;
     while (tmp != null && !doOverlap(tmp, x)) {
@@ -136,26 +122,20 @@ public class IntervalTree {
     return tmp;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   public static boolean doOverlap(IntervalNode a, IntervalNode b) {
     return a.low <= b.high && b.low <= a.high;
   }
 
   // TODO implement findAll function
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public void delete(int low, int high) {
     delete(search(root, new IntervalNode(low, high)));
     size--;
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public void delete(IntervalNode z) {
     IntervalNode x;
     IntervalNode y = z;
@@ -252,7 +232,7 @@ public class IntervalTree {
   /**
    * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
    *
-   * Time complexity: Θ(1)
+   * <p>Time complexity: Θ(1)
    */
   protected void transplant(IntervalNode u, IntervalNode v) {
     if (u.parent == null) {
@@ -267,23 +247,17 @@ public class IntervalTree {
     }
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   public IntervalNode minimum() {
     return minimum(root);
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   public IntervalNode maximum() {
     return maximum(root);
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   private IntervalNode minimum(IntervalNode node) {
     if (node == null || node.left == null) {
       return node;
@@ -291,9 +265,7 @@ public class IntervalTree {
     return minimum(node.left);
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   private IntervalNode maximum(IntervalNode node) {
     if (node == null || node.right == null) {
       return node;
@@ -301,9 +273,7 @@ public class IntervalTree {
     return maximum(node.right);
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   private IntervalNode successor(IntervalNode node) {
     if (node.right != null) {
       return minimum(node.right);
@@ -316,19 +286,17 @@ public class IntervalTree {
     return y;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   public int size() {
     return this.size;
   }
 
   protected void maxCalculate(IntervalNode x) {
     x.max = x.high;
-    if (x!= null && x.left != null) {
+    if (x != null && x.left != null) {
       x.max = Math.max(x.max, x.left.max);
     }
-    if (x!= null && x.right != null) {
+    if (x != null && x.right != null) {
       x.max = Math.max(x.max, x.right.max);
     }
   }
@@ -340,9 +308,7 @@ public class IntervalTree {
     }
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   protected void leftRotation(IntervalNode x) {
     IntervalNode y = x.right;
     x.right = y.left;
@@ -363,9 +329,7 @@ public class IntervalTree {
     maxCalculate(x.parent);
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   protected void rightRotation(IntervalNode x) {
     IntervalNode y = x.left;
     x.left = y.right;

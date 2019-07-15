@@ -5,7 +5,7 @@ import com.alexprut.algo.Utils;
 /**
  * Assumes that each of the n input elements is an integer in the range 0 to k, for some integer k
  *
- * Time complexity: Θ(n)
+ * <p>Time complexity: Θ(n)
  */
 public class CountingSort {
 

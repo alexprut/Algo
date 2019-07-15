@@ -88,8 +88,11 @@ public class DepthFirstSearch {
     return topologicalSort;
   }
 
-  private void dfsTopologicalSort(ArrayList<ArrayList<Integer>> adj, int node,
-      boolean visited[], ArrayList<Integer> topologicalSort)
+  private void dfsTopologicalSort(
+      ArrayList<ArrayList<Integer>> adj,
+      int node,
+      boolean visited[],
+      ArrayList<Integer> topologicalSort)
       throws Exception {
     for (int i = 0; i < adj.get(node).size(); i++) {
       int y = adj.get(node).get(i);

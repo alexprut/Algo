@@ -1,24 +1,19 @@
 package com.alexprut.algo.datastructures;
 
 /**
- * A red-black tree is a binary tree that satisfies the following red-black properties:
- * 1) Every node is either red or black
- * 2) The root is black
- * 3) Every leaf (NULL) is black
- * 4) If a node is red, then both its children are black
- * 5) For each node, all simple paths from the node to descendant leaves contain the same number of black nodes
+ * A red-black tree is a binary tree that satisfies the following red-black properties: 1) Every
+ * node is either red or black 2) The root is black 3) Every leaf (NULL) is black 4) If a node is
+ * red, then both its children are black 5) For each node, all simple paths from the node to
+ * descendant leaves contain the same number of black nodes
  */
 public class RedBlackTree {
 
   protected Node root;
   private int size;
 
-  RedBlackTree() {
-  }
+  RedBlackTree() {}
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public void insert(int value) {
     Node x = new Node(value, true);
     Node p = null;
@@ -44,9 +39,7 @@ public class RedBlackTree {
     size++;
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   protected void insertFixup(Node x) {
     while (x.parent != null && x.parent.isRed()) {
       if (x.parent == x.parent.parent.left) {
@@ -90,16 +83,12 @@ public class RedBlackTree {
     root.setBlackColor();
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public boolean search(int value) {
     return search(root, value) != null;
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public Node search(Node root, int value) {
     Node tmp = root;
     while (tmp != null) {
@@ -112,17 +101,13 @@ public class RedBlackTree {
     return null;
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public void delete(int value) {
     delete(search(root, value));
     size--;
   }
 
-  /**
-   * Time complexity: O(logn)
-   */
+  /** Time complexity: O(logn) */
   public void delete(Node z) {
     Node x;
     Node y = z;
@@ -218,7 +203,7 @@ public class RedBlackTree {
   /**
    * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
    *
-   * Time complexity: O(1)
+   * <p>Time complexity: O(1)
    */
   protected void transplant(Node u, Node v) {
     if (u.parent == null) {
@@ -233,23 +218,17 @@ public class RedBlackTree {
     }
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   public Node minimum() {
     return minimum(root);
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   public Node maximum() {
     return maximum(root);
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   private Node minimum(Node node) {
     if (node == null || node.left == null) {
       return node;
@@ -257,9 +236,7 @@ public class RedBlackTree {
     return minimum(node.left);
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   private Node maximum(Node node) {
     if (node == null || node.right == null) {
       return node;
@@ -267,9 +244,7 @@ public class RedBlackTree {
     return maximum(node.right);
   }
 
-  /**
-   * Time complexity: O(logn) if the tree is balanced
-   */
+  /** Time complexity: O(logn) if the tree is balanced */
   private Node successor(Node node) {
     if (node.right != null) {
       return minimum(node.right);
@@ -282,16 +257,12 @@ public class RedBlackTree {
     return y;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   public int size() {
     return this.size;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   protected void leftRotation(Node x) {
     Node y = x.right;
     x.right = y.left;
@@ -310,9 +281,7 @@ public class RedBlackTree {
     x.parent = y;
   }
 
-  /**
-   * Time complexity: Θ(1)
-   */
+  /** Time complexity: Θ(1) */
   protected void rightRotation(Node x) {
     Node y = x.left;
     x.left = y.right;
