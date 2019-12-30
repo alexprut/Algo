@@ -40,7 +40,6 @@ public class BTree<T extends Comparable> {
 	protected void create() {
 		Node<T> x = allocateNode();
 		x.isLeaf = true;
-		x.nKeys = 0;
 		diskWrite(x);
 		root = x;
 	}
@@ -48,19 +47,27 @@ public class BTree<T extends Comparable> {
 	/**
 	 * Time complexity: O(th) = O(tlog_t(n))
 	 */
-	public Pair<Node<T>, Integer> search(Node<T> x, T k) {
+	protected Pair<Node<T>, Integer> search(Node<T> x, T k) {
 		int i = 0;
-		while (i < x.nKeys && k.compareTo(x.key.get(i)) > 0) {
+		while (i < x.key.size() && k.compareTo(x.key.get(i)) > 0) {
 			i++;
 		}
-		if (i < x.nKeys && k.compareTo(x.key.get(i)) == 0) {
+		if (i < x.key.size() && k.compareTo(x.key.get(i)) == 0) {
 			return new Pair<>(x, i);
 		}
 		if (x.isLeaf) {
 			return null;
 		}
-		// TODO implement diskRead(x.children.get(i);
+		// TODO implement
+		// diskRead(x.children.get(i);
 		return search(x.children.get(i), k);
+	}
+
+	/**
+	 * Time complexity: O(th) = O(tlog_t(n))
+	 */
+	public boolean search(T k) {
+		return search(root, k) != null;
 	}
 
 	/**
@@ -68,14 +75,11 @@ public class BTree<T extends Comparable> {
 	 */
 	public void insert(T k) {
 		Node<T> tmp = root;
-		if (root.nKeys == 2 * t - 1) {
+		if (root.key.size() == 2 * t - 1) {
 			Node<T> s = allocateNode();
 			root = s;
 			s.isLeaf = false;
-			s.nKeys = 0;
 			s.children.add(tmp);
-			s.children.add(null);
-			s.key.add(null);
 			splitChild(s, 0);
 			insertNonFull(s, k);
 		} else {
@@ -83,43 +87,44 @@ public class BTree<T extends Comparable> {
 		}
 	}
 
-	public void splitChild(Node<T> x, int i) {
-		Node<T> newNode = allocateNode();
-		Node<T> toSplitNode = x.children.get(i);
-		newNode.isLeaf = toSplitNode.isLeaf;
-		newNode.nKeys = t - 1;
-		for (int j = 0; j < t - 1; j++) {
-			newNode.key.add(
-					toSplitNode.key.get(j + t)
-			);
+	protected void splitChild(Node<T> parent, int index) {
+		Node<T> newNodeToRight = allocateNode();
+		Node<T> toSplitNode = parent.children.get(index);
+		newNodeToRight.isLeaf = toSplitNode.isLeaf;
+		for (int i = 0; i < t - 1; i++) {
+			newNodeToRight.key.add(toSplitNode.key.get(i + t));
+		}
+		for (int i = 0; i < t - 1; i++) {
+			toSplitNode.key.remove(toSplitNode.key.size() - 1);
 		}
 		if (!toSplitNode.isLeaf) {
-			for (int j = 0; j < t; j++) {
-				newNode.children.add(
-						toSplitNode.children.get(j + t)
-				);
+			for (int i = 0; i < t; i++) {
+				newNodeToRight.children.add(toSplitNode.children.get(i + t));
+			}
+			for (int i = 0; i < t; i++) {
+				toSplitNode.children.remove(toSplitNode.children.size() - 1);
 			}
 		}
-		toSplitNode.nKeys = t - 1;
-		for (int j = x.nKeys; j > i + 1; j--) {
-			x.children.set(
-					j + 1,
-					x.children.get(j)
-			);
+
+		parent.children.add(null);
+		for (int i = parent.children.size() - 1; i > index + 1; i--) {
+			parent.children.set(i, parent.children.get(i - 1));
 		}
-		x.children.set(i + 1, newNode);
-		for (int j = x.nKeys; j > i; j--) {
-			x.key.set(j + 1, x.key.get(j));
+		parent.children.set(index + 1, newNodeToRight);
+
+		parent.key.add(null);
+		for (int i = parent.key.size() - 1; i > index; i--) {
+			parent.key.set(i, parent.key.get(i - 1));
 		}
-		x.key.set(i, toSplitNode.key.get(t));
-		x.nKeys++;
+		parent.key.set(index, toSplitNode.key.get(t - 1));
+		toSplitNode.key.remove(t - 1);
 		diskWrite(toSplitNode);
-		diskWrite(newNode);
-		diskWrite(x);
+		diskWrite(newNodeToRight);
+		diskWrite(parent);
 	}
 
 	public void insertNonFull(Node<T> x, T k) {
-		int i = x.nKeys - 1;
+		int i = x.key.size() - 1;
 		if (x.isLeaf) {
 			x.key.add(null);
 			while (i >= 0 && k.compareTo(x.key.get(i)) < 0) {
@@ -130,7 +135,6 @@ public class BTree<T extends Comparable> {
 				i--;
 			}
 			x.key.set(i + 1, k);
-			x.nKeys++;
 			diskWrite(x);
 		} else {
 			while (i >= 1 && k.compareTo(x.key.get(i)) < 0) {
@@ -138,7 +142,7 @@ public class BTree<T extends Comparable> {
 			}
 			i++;
 			diskRead(x.children.get(i));
-			if (x.children.get(i).nKeys == 2 * t - 1) {
+			if (x.children.get(i).key.size() == 2 * t - 1) {
 				splitChild(x, i);
 				if (k.compareTo(x.key.get(i)) > 0) {
 					i++;
@@ -150,10 +154,9 @@ public class BTree<T extends Comparable> {
 
 	protected static class Node<T> {
 
-		private int nKeys;
-		private boolean isLeaf;
-		private ArrayList<T> key = new ArrayList<>();
-		private ArrayList<Node<T>> children = new ArrayList<>();
+		protected boolean isLeaf;
+		protected ArrayList<T> key = new ArrayList<>();
+		protected ArrayList<Node<T>> children = new ArrayList<>();
 
 		Node() {
 		}
