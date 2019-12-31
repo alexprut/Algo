@@ -65,7 +65,7 @@ Data Structures
 |[Interval Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/IntervalTree.java)|```insert()``` - O(logn), ```search()``` - O(logn), ```find()``` - O(logn), ```delete()``` - O(logn), ```minimum()``` - O(logn), ```maximum()``` - O(logn), ```successor()``` - O(logn)|
 |[Segment Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/SegmentTree.java)|```build()``` - O(n), ```update()``` - O(logn), ```search()``` - O(logn)|
 |AVL Tree|-|
-|[B-Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BTree.java)|```insert()``` - O(th), ```search()``` - O(th)|
+|[B-Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BTree.java)|```insert()``` - O(th), ```search()``` - O(th), ```delete()``` - O(th)|
 |Fibonacci Heap|-|
 
 License
