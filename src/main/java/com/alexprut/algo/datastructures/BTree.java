@@ -66,6 +66,30 @@ public class BTree<T extends Comparable> {
 	/**
 	 * Time complexity: O(th) = O(tlog_t(n))
 	 */
+	protected Pair<Node<T>, Integer> getPredecessor(Node<T> x) {
+		if (x.isLeaf) {
+			return new Pair<>(x, x.key.size() - 1);
+		}
+
+		// TODO implement diskRead();
+		return getPredecessor(x.children.get(x.children.size() - 1));
+	}
+
+	/**
+	 * Time complexity: O(th) = O(tlog_t(n))
+	 */
+	protected Pair<Node<T>, Integer> getSuccessor(Node<T> x) {
+		if (x.isLeaf) {
+			return new Pair<>(x, 0);
+		}
+
+		// TODO implement diskRead();
+		return getSuccessor(x.children.get(0));
+	}
+
+	/**
+	 * Time complexity: O(th) = O(tlog_t(n))
+	 */
 	public boolean search(T k) {
 		return search(root, k) != null;
 	}

@@ -6,8 +6,7 @@ import org.junit.Test;
 
 public class BTreeTest {
 
-	@Test
-	public void shouldDelete() {
+	private BTree.Node<Character> createBTreeFixture () {
 		/*
 		Initial B-Tree
 
@@ -19,30 +18,38 @@ public class BTreeTest {
 
      */
 		BTree.Node<Character> nodeA = new Node<>();
+		nodeA.isLeaf = true;
 		nodeA.key.add('A');
 		nodeA.key.add('B');
 		BTree.Node<Character> nodeD = new Node<>();
+		nodeD.isLeaf = true;
 		nodeD.key.add('D');
 		nodeD.key.add('E');
 		nodeD.key.add('F');
 		BTree.Node<Character> nodeJ = new Node<>();
+		nodeJ.isLeaf = true;
 		nodeJ.key.add('J');
 		nodeJ.key.add('K');
 		nodeJ.key.add('L');
 		BTree.Node<Character> nodeN = new Node<>();
+		nodeN.isLeaf = true;
 		nodeN.key.add('N');
 		nodeN.key.add('O');
 		BTree.Node<Character> nodeQ = new Node<>();
-		nodeQ.key.add('O');
+		nodeQ.isLeaf = true;
+		nodeQ.key.add('Q');
 		nodeQ.key.add('R');
 		nodeQ.key.add('S');
 		BTree.Node<Character> nodeU = new Node<>();
+		nodeU.isLeaf = true;
 		nodeU.key.add('U');
 		nodeU.key.add('V');
 		BTree.Node<Character> nodeY = new Node<>();
+		nodeY.isLeaf = true;
 		nodeY.key.add('Y');
 		nodeY.key.add('Z');
 		BTree.Node<Character> nodeC = new Node<>();
+		nodeC.isLeaf = false;
 		nodeC.key.add('C');
 		nodeC.key.add('G');
 		nodeC.key.add('M');
@@ -51,16 +58,50 @@ public class BTreeTest {
 		nodeC.children.add(nodeJ);
 		nodeC.children.add(nodeN);
 		BTree.Node<Character> nodeT = new Node<>();
+		nodeT.isLeaf = false;
 		nodeT.key.add('T');
 		nodeT.key.add('X');
 		nodeT.children.add(nodeQ);
 		nodeT.children.add(nodeU);
 		nodeT.children.add(nodeY);
 		BTree.Node<Character> root = new Node<>();
+		root.isLeaf = false;
 		root.key.add('P');
 		root.children.add(nodeC);
 		root.children.add(nodeT);
 
+		return root;
+	}
+
+	@Test
+	public void shouldGetPredecessor() {
+		BTree.Node<Character> root = createBTreeFixture();
+		BTree<Character> test = new BTree<>(2);
+		Pair<Node<Character>, Integer> foundNode = test.search(root, 'P');
+		Pair<Node<Character>, Integer> foundPredecessorNode = test.getPredecessor(
+				foundNode.first().children.get(foundNode.second())
+		);
+
+
+		Assert.assertEquals(new Character('O'), foundPredecessorNode.first().key.get(foundPredecessorNode.second()));
+	}
+
+	@Test
+	public void shouldGetSuccessor() {
+		BTree.Node<Character> root = createBTreeFixture();
+		BTree<Character> test = new BTree<>(2);
+		Pair<Node<Character>, Integer> foundNode = test.search(root, 'P');
+		Pair<Node<Character>, Integer> foundSuccessorNode = test.getSuccessor(
+				foundNode.first().children.get(foundNode.second() + 1)
+		);
+
+
+		Assert.assertEquals(new Character('Q'), foundSuccessorNode.first().key.get(foundSuccessorNode.second()));
+	}
+
+	@Test
+	public void shouldDelete() {
+		BTree.Node<Character> root = createBTreeFixture();
 		BTree<Character> test = new BTree<>(2);
 
 		/*
@@ -73,7 +114,7 @@ public class BTreeTest {
     [A,B]   [D,E] [J,K,L] [N,O]   [Q,R,S] [U,V] [Y,Z]
 
      */
-		test.delete(root,'F');
+		test.delete(root, 'F');
 
 		/*
 		Case 2a
@@ -97,7 +138,7 @@ public class BTreeTest {
     [A,B]  [D,E,J,K]   [N,O]   [Q,R,S] [U,V] [Y,Z]
 
      */
-		test.delete(root,'F');
+		test.delete(root, 'F');
 
 		/*
 		Case 3b
@@ -107,7 +148,7 @@ public class BTreeTest {
     [A,B]  [E,J,K]  [N,O]   [Q,R,S] [U,V] [Y,Z]
 
      */
-		test.delete(root,'D');
+		test.delete(root, 'D');
 
 		/*
 		Case 3a
@@ -117,7 +158,7 @@ public class BTreeTest {
     [A,C]   [J,K]  [N,O]   [Q,R,S] [U,V] [Y,Z]
 
      */
-		test.delete(root,'B');
+		test.delete(root, 'B');
 	}
 
 	@Test
