@@ -9,22 +9,22 @@ public class RedBlackTreeTest {
   @Test
   public void shouldInsertAndSearch() {
     RedBlackTree tree = new RedBlackTree();
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 100; i++) {
       tree.insert(i);
-      Assert.assertEquals(true, tree.search(i));
+      Assert.assertTrue(tree.search(i));
     }
   }
 
   @Test
   public void shouldInsertAndDeleteAndSearch() {
     RedBlackTree tree = new RedBlackTree();
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 100; i++) {
       tree.insert(i);
     }
 
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 100; i++) {
       tree.delete(i);
-      Assert.assertEquals(false, tree.search(i));
+      Assert.assertFalse(tree.search(i));
     }
 
     Assert.assertEquals(0, tree.size());
@@ -58,12 +58,12 @@ public class RedBlackTreeTest {
     Assert.assertEquals(z, y.right());
     Assert.assertEquals(w, x.left());
     Assert.assertEquals(u, x.right());
-    Assert.assertEquals(null, z.left());
-    Assert.assertEquals(null, z.right());
-    Assert.assertEquals(null, u.left());
-    Assert.assertEquals(null, u.right());
-    Assert.assertEquals(null, w.left());
-    Assert.assertEquals(null, w.right());
+    Assert.assertNull(z.left());
+    Assert.assertNull(z.right());
+    Assert.assertNull(u.left());
+    Assert.assertNull(u.right());
+    Assert.assertNull(w.left());
+    Assert.assertNull(w.right());
   }
 
   @Test
@@ -94,12 +94,12 @@ public class RedBlackTreeTest {
     Assert.assertEquals(y, x.right());
     Assert.assertEquals(u, y.left());
     Assert.assertEquals(z, y.right());
-    Assert.assertEquals(null, w.left());
-    Assert.assertEquals(null, w.right());
-    Assert.assertEquals(null, u.left());
-    Assert.assertEquals(null, u.right());
-    Assert.assertEquals(null, z.left());
-    Assert.assertEquals(null, z.right());
+    Assert.assertNull(w.left());
+    Assert.assertNull(w.right());
+    Assert.assertNull(u.left());
+    Assert.assertNull(u.right());
+    Assert.assertNull(z.left());
+    Assert.assertNull(z.right());
   }
 
   @Test
@@ -186,16 +186,16 @@ public class RedBlackTreeTest {
     Assert.assertEquals(b, x.left());
     Assert.assertEquals(c, x.right());
     Assert.assertEquals(d, c.right());
-    Assert.assertEquals(null, z.left());
-    Assert.assertEquals(null, z.right());
-    Assert.assertEquals(null, a.left());
-    Assert.assertEquals(null, a.right());
-    Assert.assertEquals(null, b.left());
-    Assert.assertEquals(null, b.right());
-    Assert.assertEquals(null, d.left());
-    Assert.assertEquals(null, d.right());
-    Assert.assertEquals(null, u.right());
-    Assert.assertEquals(null, c.left());
+    Assert.assertNull(z.left());
+    Assert.assertNull(z.right());
+    Assert.assertNull(a.left());
+    Assert.assertNull(a.right());
+    Assert.assertNull(b.left());
+    Assert.assertNull(b.right());
+    Assert.assertNull(d.left());
+    Assert.assertNull(d.right());
+    Assert.assertNull(u.right());
+    Assert.assertNull(c.left());
 
     Assert.assertEquals(false, w.isRed());
     Assert.assertEquals(true, y.isRed());
