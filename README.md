@@ -67,6 +67,7 @@ Data Structures
 |[AVL Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/AVLTree.java)|```insert()``` - O(logn), ```search()``` - O(logn), ```delete()``` - O(logn), ```minimum()``` - O(logn), ```maximum()``` - O(logn), ```successor()``` - O(logn)|
 |[B-Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BTree.java)|```insert()``` - O(th), ```search()``` - O(th), ```delete()``` - O(th), ```successor()``` - O(th), ```predecessor()``` - O(th)|
 |Fibonacci Heap|-|
+|[Merkle Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MerkleTree.java)|```build()``` - O(n), ```verify()``` - O(logn), ```getProofPath()``` - O(logn)|
 
 License
 =======
