@@ -1,5 +1,7 @@
 package com.alexprut.algo.datastructures;
 
+import java.util.HashMap;
+
 /**
  * A Fibonacci Heap is a collection of rooted trees that are min-heap ordered. That is, each tree
  * obeys the min-heap property: the key of a node is greater than or equal to the key of its
@@ -70,10 +72,49 @@ public class FibonacciHeap<T extends Comparable> {
 	public Node<T> extractMin() {
 		Node<T> z = min;
 		if (z != null) {
+			if (z == z.rightSibling) {
+				min = null;
+			} else {
+				Node<T> leftChild = z.child.leftSibling;
+				Node<T> rightChild = z.child;
+				z.child.parent = null;
+				while (leftChild != rightChild) {
+					leftChild.parent = null;
+					if (leftChild.leftSibling != rightChild) {
+						leftChild = leftChild.leftSibling;
+					}
+				}
+
+				rightChild.rightSibling = z.rightSibling;
+				z.rightSibling.leftSibling = rightChild;
+				leftChild.leftSibling = z.leftSibling;
+				z.leftSibling.rightSibling = leftChild;
+
+				min = z.rightSibling;
+				consolidate();
+			}
+
+			size--;
+		}
+		return z;
+	}
+
+	/**
+	 * Reduce the number of trees in the Fibonacci heap. Consolidating the root list consists of
+	 * repeatedly executing the following steps until every root in the root list has a distinct
+	 * degree value.
+	 */
+	protected void consolidate() {
+		HashMap<Integer, Node<T>> map = new HashMap<>();
+		Node<T> start = min.rightSibling;
+		map.put(min.degree, min);
+		while (start != min) {
 
 		}
-		size--;
-		return z;
+	}
+
+	protected void link() {
+
 	}
 
 	/**
