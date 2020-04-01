@@ -69,6 +69,26 @@ Data Structures
 |[Fibonacci Heap](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/FibonacciHeap.java)|```insert()``` - O(1), ```minimum()``` - O(1), ```extractMin()``` - O(logn), ```union()``` - O(1), ```decreaseKey()``` - O(1), ```delete()``` - O(logn)|
 |[Merkle Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MerkleTree.java)|```build()``` - O(n), ```verify()``` - O(logn), ```getProofPath()``` - O(logn)|
 
+### Build
+```
+./gradlew clean build
+```
+
+### Test
+```
+./gradlew test
+```
+
+### Formatting style
+```
+./gradlew goJF
+```
+
+```
+./gradlew verGJF
+```
+
+
 License
 =======
 Licensed under [MIT](https://github.com/alexprut/Algo/blob/master/LICENSE).
