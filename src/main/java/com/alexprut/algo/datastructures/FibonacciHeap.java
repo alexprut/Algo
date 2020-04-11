@@ -64,19 +64,21 @@ public class FibonacciHeap<T extends Comparable> {
   public Node<T> extractMin() {
     Node<T> z = min;
     if (z != null) {
-      Node<T> leftChild = z.child.leftSibling;
-      Node<T> rightChild = z.child;
-      z.child.parent = null;
-      while (leftChild != rightChild) {
-        leftChild.parent = null;
-        leftChild = leftChild.leftSibling;
-      }
-      leftChild = leftChild.rightSibling;
+      if (z.child != null) {
+        Node<T> leftChild = z.child.leftSibling;
+        Node<T> rightChild = z.child;
+        z.child.parent = null;
+        while (leftChild != rightChild) {
+          leftChild.parent = null;
+          leftChild = leftChild.leftSibling;
+        }
+        leftChild = leftChild.rightSibling;
 
-      rightChild.rightSibling = z.rightSibling;
-      z.rightSibling.leftSibling = rightChild;
-      leftChild.leftSibling = z.leftSibling;
-      z.leftSibling.rightSibling = leftChild;
+        rightChild.rightSibling = z.rightSibling;
+        z.rightSibling.leftSibling = rightChild;
+        leftChild.leftSibling = z.leftSibling;
+        z.leftSibling.rightSibling = leftChild;
+      }
 
       if (z == z.rightSibling) {
         min = null;
@@ -187,10 +189,7 @@ public class FibonacciHeap<T extends Comparable> {
     return true;
   }
 
-  /**
-   * @param x
-   * @param y
-   */
+  /** */
   protected void cut(Node<T> x, Node<T> y) {
     // remove x from the child list of y
     if (x.rightSibling == x) {
