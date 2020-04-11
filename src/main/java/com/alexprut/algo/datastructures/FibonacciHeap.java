@@ -1,6 +1,6 @@
 package com.alexprut.algo.datastructures;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * A Fibonacci Heap is a collection of rooted trees that are min-heap ordered. That is, each tree
@@ -9,15 +9,13 @@ import java.util.HashMap;
 public class FibonacciHeap<T extends Comparable> {
 
   /** The minimum node */
-  Node<T> min;
+  protected Node<T> min;
 
   /** The number of nodes in the heap */
-  int size;
+  protected int size = 0;
 
   /** Creates and returns a new heap containing no elements. */
-  public FibonacciHeap() {
-    size = 0;
-  }
+  public FibonacciHeap() {}
 
   /**
    * Inserts element x, whose key has already been filled in, into heap.
@@ -26,7 +24,7 @@ public class FibonacciHeap<T extends Comparable> {
    *
    * @param x value
    */
-  public void insert(T x) {
+  public Node<T> insert(T x) {
     Node<T> node = new Node<>(x);
 
     if (min == null) {
@@ -46,6 +44,7 @@ public class FibonacciHeap<T extends Comparable> {
       }
     }
     size++;
+    return node;
   }
 
   /**
@@ -65,24 +64,23 @@ public class FibonacciHeap<T extends Comparable> {
   public Node<T> extractMin() {
     Node<T> z = min;
     if (z != null) {
+      Node<T> leftChild = z.child.leftSibling;
+      Node<T> rightChild = z.child;
+      z.child.parent = null;
+      while (leftChild != rightChild) {
+        leftChild.parent = null;
+        leftChild = leftChild.leftSibling;
+      }
+      leftChild = leftChild.rightSibling;
+
+      rightChild.rightSibling = z.rightSibling;
+      z.rightSibling.leftSibling = rightChild;
+      leftChild.leftSibling = z.leftSibling;
+      z.leftSibling.rightSibling = leftChild;
+
       if (z == z.rightSibling) {
         min = null;
       } else {
-        Node<T> leftChild = z.child.leftSibling;
-        Node<T> rightChild = z.child;
-        z.child.parent = null;
-        while (leftChild != rightChild) {
-          leftChild.parent = null;
-          if (leftChild.leftSibling != rightChild) {
-            leftChild = leftChild.leftSibling;
-          }
-        }
-
-        rightChild.rightSibling = z.rightSibling;
-        z.rightSibling.leftSibling = rightChild;
-        leftChild.leftSibling = z.leftSibling;
-        z.leftSibling.rightSibling = leftChild;
-
         min = z.rightSibling;
         consolidate();
       }
@@ -98,49 +96,142 @@ public class FibonacciHeap<T extends Comparable> {
    * degree value.
    */
   protected void consolidate() {
-    HashMap<Integer, Node<T>> map = new HashMap<>();
-    Node<T> start = min.rightSibling;
-    map.put(min.degree, min);
-    while (start != min) {}
-  }
-
-  protected void link() {}
-
-  /**
-   * Creates and returns a new heap that contains all the elements of heaps H1 and H2. Heaps H1 and
-   * H2 are “destroyed” by this operation.
-   *
-   * <p>Time complexity: O(1)
-   */
-  public void union(Node<T> a, Node<T> b) {
-    this.min = a;
-    // Concatenate the root list of H2 with the root list of H
-    if (a == null || (b != null && b.key.compareTo(a.key) < 0)) {
-      this.min = b;
+    Node<T>[] degrees = (Node<T>[]) new Object[getDegreeBound(this.size)];
+    ArrayList<Node<T>> rootList = new ArrayList<>();
+    Node<T> root = min;
+    Node<T> current = min.rightSibling;
+    rootList.add(root);
+    while (root != current) {
+      rootList.add(current);
+      current = current.rightSibling;
+    }
+    for (int i = 0; i < rootList.size(); i++) {
+      Node<T> x = rootList.get(i);
+      int d = x.degree;
+      while (degrees[d] != null) {
+        Node<T> y = degrees[d];
+        if (x.key.compareTo(y.key) > 0) {
+          Node<T> s = x;
+          x = y;
+          y = s;
+        }
+        link(y, x);
+        d++;
+      }
+      degrees[d] = x;
+    }
+    min = null;
+    for (int i = 0; i < degrees.length; i++) {
+      if (degrees[i] != null) {
+        if (min == null) {
+          min = degrees[i];
+        } else {
+          if (degrees[i].key.compareTo(min.key) < 0) {
+            min = degrees[i];
+          }
+        }
+      }
     }
   }
 
   /**
-   * Assigns to element x within heap H the new key value k, which we assume to be no greater than
-   * its current key value. TODO add reference to element as input
+   * Time complexity: O(1)
    *
-   * <p>Time complexity: O(1)
+   * @param n number of elements in the heap
+   * @return the upper bound
    */
-  public void decreaseKey() {}
+  protected int getDegreeBound(double n) {
+    // the base should be the golden ratio: 1.61803...
+    return (int) Math.floor(Math.log(n) / Math.log(1.6));
+  }
+
+  protected void link(Node<T> y, Node<T> x) {
+    // remove y from the root list
+    y.leftSibling.rightSibling = y.rightSibling;
+    y.rightSibling.leftSibling = y.leftSibling;
+
+    // make y a child of x
+    Node<T> child = x.child;
+    y.leftSibling = child;
+    y.rightSibling = child.rightSibling;
+    child.rightSibling = y;
+    y.rightSibling.leftSibling = y;
+
+    x.degree++;
+    y.mark = true;
+  }
 
   /**
-   * Deletes element x from heap TODO add reference to element as input
+   * Assigns to element x within heap H the new key value k, which we assume to be no greater than
+   * its current key value.
+   *
+   * <p>Time complexity: O(1)
+   *
+   * @param x node to decrease value
+   * @param k the new value
+   */
+  public boolean decreaseKey(Node<T> x, T k) {
+    if (x.key.compareTo(k) < 0) {
+      return false;
+    }
+    x.key = k;
+    Node<T> y = x.parent;
+    if (y != null && x.key.compareTo(y.key) < 0) {
+      cut(x, y);
+      cascadingCut(y);
+    }
+    if (x.key.compareTo(min.key) <= 0) {
+      min = x;
+    }
+
+    return true;
+  }
+
+  /**
+   * @param x
+   * @param y
+   */
+  protected void cut(Node<T> x, Node<T> y) {
+    // remove x from the child list of y
+    if (x.rightSibling == x) {
+      y.child = null;
+    } else {
+      x.rightSibling.leftSibling = x.leftSibling;
+      x.leftSibling.rightSibling = x.rightSibling;
+    }
+    y.degree--;
+
+    // add x to the root list
+    min.rightSibling.leftSibling = x;
+    x.rightSibling = min.rightSibling;
+    x.leftSibling = min;
+    min.rightSibling = x;
+
+    x.parent = null;
+    x.mark = false;
+  }
+
+  protected void cascadingCut(Node<T> y) {
+    Node<T> z = y.parent;
+    if (z != null) {
+      if (!y.mark) {
+        y.mark = true;
+      } else {
+        cut(y, z);
+        cascadingCut(z);
+      }
+    }
+  }
+
+  /**
+   * Deletes element x from heap
    *
    * <p>Time complexity: O(logn)
    */
-  public void delete(int x) {}
-
-  /**
-   * Search element x in heap
-   *
-   * <p>Time complexity: TODO
-   */
-  public void search(int x) {}
+  public void delete(Node<T> x) {
+    decreaseKey(x, min.key);
+    extractMin();
+  }
 
   protected static class Node<T> {
 
