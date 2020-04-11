@@ -18,6 +18,6 @@ public class FibonacciHeapTest {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     heap.insert(1);
     Assert.assertEquals(new Integer(1), heap.extractMin().key);
-    heap.insert(0);
+    Assert.assertEquals(0, heap.size);
   }
 }
