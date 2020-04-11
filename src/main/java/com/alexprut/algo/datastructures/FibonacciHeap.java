@@ -31,11 +31,10 @@ public class FibonacciHeap<T extends Comparable> {
       min = node;
     } else {
       if (min.leftSibling != null) {
-        Node<T> tmp = min.leftSibling;
-        node.rightSibling = min;
-        node.leftSibling = tmp;
-        min.leftSibling = node;
-        tmp.rightSibling = node;
+        node.leftSibling = min;
+        node.rightSibling = min.rightSibling;
+        min.rightSibling = node;
+        node.rightSibling.leftSibling = node;
       } else {
         min.leftSibling = node;
       }
@@ -74,11 +73,16 @@ public class FibonacciHeap<T extends Comparable> {
         }
         leftChild = leftChild.rightSibling;
 
+        // add child to the root list
         rightChild.rightSibling = z.rightSibling;
         z.rightSibling.leftSibling = rightChild;
         leftChild.leftSibling = z.leftSibling;
         z.leftSibling.rightSibling = leftChild;
       }
+
+      // remove z from the root list
+      z.rightSibling.leftSibling = z.leftSibling;
+      z.leftSibling.rightSibling = z.rightSibling;
 
       if (z == z.rightSibling) {
         min = null;
@@ -98,7 +102,10 @@ public class FibonacciHeap<T extends Comparable> {
    * degree value.
    */
   protected void consolidate() {
-    Node<T>[] degrees = (Node<T>[]) new Object[getDegreeBound(this.size)];
+    ArrayList<Node<T>> degrees = new ArrayList<>();
+    for (int i = 0; i <= getDegreeBound(this.size); i++) {
+      degrees.add(null);
+    }
     ArrayList<Node<T>> rootList = new ArrayList<>();
     Node<T> root = min;
     Node<T> current = min.rightSibling;
@@ -110,26 +117,27 @@ public class FibonacciHeap<T extends Comparable> {
     for (int i = 0; i < rootList.size(); i++) {
       Node<T> x = rootList.get(i);
       int d = x.degree;
-      while (degrees[d] != null) {
-        Node<T> y = degrees[d];
+      while (degrees.get(d) != null) {
+        Node<T> y = degrees.get(d);
         if (x.key.compareTo(y.key) > 0) {
           Node<T> s = x;
           x = y;
           y = s;
         }
         link(y, x);
+        degrees.set(d, null);
         d++;
       }
-      degrees[d] = x;
+      degrees.set(d, x);
     }
     min = null;
-    for (int i = 0; i < degrees.length; i++) {
-      if (degrees[i] != null) {
+    for (int i = 0; i < degrees.size(); i++) {
+      if (degrees.get(i) != null) {
         if (min == null) {
-          min = degrees[i];
+          min = degrees.get(i);
         } else {
-          if (degrees[i].key.compareTo(min.key) < 0) {
-            min = degrees[i];
+          if (degrees.get(i).key.compareTo(min.key) < 0) {
+            min = degrees.get(i);
           }
         }
       }
@@ -151,14 +159,20 @@ public class FibonacciHeap<T extends Comparable> {
     // remove y from the root list
     y.leftSibling.rightSibling = y.rightSibling;
     y.rightSibling.leftSibling = y.leftSibling;
+    y.leftSibling = y;
+    y.rightSibling = y;
 
     // make y a child of x
-    Node<T> child = x.child;
-    y.leftSibling = child;
-    y.rightSibling = child.rightSibling;
-    child.rightSibling = y;
-    y.rightSibling.leftSibling = y;
-
+    if (x.child == null) {
+      x.child = y;
+    } else {
+      Node<T> child = x.child;
+      y.leftSibling = child;
+      y.rightSibling = child.rightSibling;
+      child.rightSibling = y;
+      y.rightSibling.leftSibling = y;
+    }
+    y.parent = x;
     x.degree++;
     y.mark = true;
   }
@@ -178,7 +192,7 @@ public class FibonacciHeap<T extends Comparable> {
     }
     x.key = k;
     Node<T> y = x.parent;
-    if (y != null && x.key.compareTo(y.key) < 0) {
+    if (y != null && x.key.compareTo(y.key) <= 0) {
       cut(x, y);
       cascadingCut(y);
     }
