@@ -74,10 +74,11 @@ public class FibonacciHeap<T extends Comparable> {
         leftChild = leftChild.rightSibling;
 
         // add child to the root list
-        rightChild.rightSibling = z.rightSibling;
-        z.rightSibling.leftSibling = rightChild;
-        leftChild.leftSibling = z.leftSibling;
-        z.leftSibling.rightSibling = leftChild;
+        Node<T> tmp = z.rightSibling;
+        z.rightSibling = leftChild;
+        leftChild.leftSibling = z;
+        tmp.leftSibling = rightChild;
+        rightChild.rightSibling = tmp;
       }
 
       // remove z from the root list
