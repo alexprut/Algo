@@ -8,7 +8,7 @@ public class RedBlackTreeTest {
 
   @Test
   public void shouldInsertAndSearch() {
-    RedBlackTree tree = new RedBlackTree();
+    RedBlackTree<Integer> tree = new RedBlackTree<>();
     for (int i = 0; i < 100; i++) {
       tree.insert(i);
       Assert.assertTrue(tree.search(i));
@@ -17,7 +17,7 @@ public class RedBlackTreeTest {
 
   @Test
   public void shouldInsertAndDeleteAndSearch() {
-    RedBlackTree tree = new RedBlackTree();
+    RedBlackTree<Integer> tree = new RedBlackTree<>();
     for (int i = 0; i < 100; i++) {
       tree.insert(i);
     }
@@ -39,12 +39,12 @@ public class RedBlackTreeTest {
           / \                     / \
          u   z                   w   u
     */
-    RedBlackTree tree = new RedBlackTree();
-    Node x = new Node(1);
-    Node y = new Node(2);
-    Node z = new Node(3);
-    Node w = new Node(4);
-    Node u = new Node(5);
+    RedBlackTree<Integer> tree = new RedBlackTree<>();
+    Node<Integer> x = new Node<>(1);
+    Node<Integer> y = new Node<>(2);
+    Node<Integer> z = new Node<>(3);
+    Node<Integer> w = new Node<>(4);
+    Node<Integer> u = new Node<>(5);
     tree.root = x;
 
     x.setLeft(w);
@@ -75,12 +75,12 @@ public class RedBlackTreeTest {
           / \                      / \
          u   z                    w   u
     */
-    RedBlackTree tree = new RedBlackTree();
-    Node x = new Node(1);
-    Node y = new Node(2);
-    Node z = new Node(3);
-    Node w = new Node(4);
-    Node u = new Node(5);
+    RedBlackTree<Integer> tree = new RedBlackTree<>();
+    Node<Integer> x = new Node<>(1);
+    Node<Integer> y = new Node<>(2);
+    Node<Integer> z = new Node<>(3);
+    Node<Integer> w = new Node<>(4);
+    Node<Integer> u = new Node<>(5);
     tree.root = y;
 
     y.setLeft(x);
@@ -155,16 +155,16 @@ public class RedBlackTreeTest {
                          4,R                    15,R
     */
 
-    RedBlackTree tree = new RedBlackTree();
-    Node x = new Node(11);
-    Node y = new Node(2, true);
-    Node z = new Node(1);
-    Node w = new Node(7);
-    Node u = new Node(5, true);
-    Node a = new Node(4, true);
-    Node b = new Node(8, true);
-    Node c = new Node(14);
-    Node d = new Node(15, true);
+    RedBlackTree<Integer> tree = new RedBlackTree<>();
+    Node<Integer> x = new Node<>(11);
+    Node<Integer> y = new Node<>(2, true);
+    Node<Integer> z = new Node<>(1);
+    Node<Integer> w = new Node<>(7);
+    Node<Integer> u = new Node<>(5, true);
+    Node<Integer> a = new Node<>(4, true);
+    Node<Integer> b = new Node<>(8, true);
+    Node<Integer> c = new Node<>(14);
+    Node<Integer> d = new Node<>(15, true);
     tree.root = x;
 
     x.setLeft(y);

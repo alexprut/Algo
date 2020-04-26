@@ -6,22 +6,22 @@ package com.alexprut.algo.datastructures;
  * red, then both its children are black 5) For each node, all simple paths from the node to
  * descendant leaves contain the same number of black nodes
  */
-public class RedBlackTree {
+public class RedBlackTree<T extends Comparable> {
 
-  protected Node root;
+  protected Node<T> root;
   private int size;
 
   RedBlackTree() {}
 
   /** Time complexity: O(logn) */
-  public void insert(int value) {
-    Node x = new Node(value, true);
-    Node p = null;
-    Node tmp = this.root;
+  public void insert(T value) {
+    Node<T> x = new Node<>(value, true);
+    Node<T> p = null;
+    Node<T> tmp = this.root;
 
     while (tmp != null) {
       p = tmp;
-      if (x.value() < tmp.value) {
+      if (x.value().compareTo(tmp.value) < 0) {
         tmp = tmp.left;
       } else {
         tmp = tmp.right;
@@ -30,7 +30,7 @@ public class RedBlackTree {
     x.parent = p;
     if (p == null) {
       root = x;
-    } else if (x.value() < p.value()) {
+    } else if (x.value().compareTo(p.value()) < 0) {
       p.setLeft(x);
     } else {
       p.setRight(x);
@@ -40,7 +40,7 @@ public class RedBlackTree {
   }
 
   /** Time complexity: O(logn) */
-  protected void insertFixup(Node x) {
+  protected void insertFixup(Node<T> x) {
     while (x.parent != null && x.parent.isRed()) {
       if (x.parent == x.parent.parent.left) {
         Node y = x.parent.parent.right;
@@ -61,7 +61,7 @@ public class RedBlackTree {
           rightRotation(x.parent.parent);
         }
       } else {
-        Node y = x.parent.parent.left;
+        Node<T> y = x.parent.parent.left;
         if (y != null && y.isRed()) {
           // case 1
           x.parent.setBlackColor();
@@ -84,34 +84,34 @@ public class RedBlackTree {
   }
 
   /** Time complexity: O(logn) */
-  public boolean search(int value) {
+  public boolean search(T value) {
     return search(root, value) != null;
   }
 
   /** Time complexity: O(logn) */
-  public Node search(Node root, int value) {
+  public Node<T> search(Node<T> root, T value) {
     Node tmp = root;
     while (tmp != null) {
-      if (tmp.value == value) {
+      if (tmp.value.compareTo(value) == 0) {
         return tmp;
       }
-      tmp = (value < tmp.value) ? tmp.left : tmp.right;
+      tmp = (value.compareTo(tmp.value) < 0) ? tmp.left : tmp.right;
     }
 
     return null;
   }
 
   /** Time complexity: O(logn) */
-  public void delete(int value) {
+  public void delete(T value) {
     delete(search(root, value));
     size--;
   }
 
   /** Time complexity: O(logn) */
-  public void delete(Node z) {
-    Node x;
-    Node y = z;
-    Boolean isOriginalColorRed = y.color;
+  public void delete(Node<T> z) {
+    Node<T> x;
+    Node<T> y = z;
+    boolean isOriginalColorRed = y.color;
     if (z.left == null) {
       x = z.right;
       transplant(z, z.right);
@@ -139,10 +139,10 @@ public class RedBlackTree {
     }
   }
 
-  protected void deleteFixup(Node x) {
+  protected void deleteFixup(Node<T> x) {
     while (x != root && !x.isRed()) {
       if (x == x.parent.left) {
-        Node w = x.parent.right;
+        Node<T> w = x.parent.right;
         if (w.isRed()) {
           // Case 1
           w.setBlackColor();
@@ -169,7 +169,7 @@ public class RedBlackTree {
           x = root;
         }
       } else {
-        Node w = x.parent.left;
+        Node<T> w = x.parent.left;
         if (w.isRed()) {
           // Case 1
           w.setBlackColor();
@@ -205,7 +205,7 @@ public class RedBlackTree {
    *
    * <p>Time complexity: O(1)
    */
-  protected void transplant(Node u, Node v) {
+  protected void transplant(Node<T> u, Node<T> v) {
     if (u.parent == null) {
       root = v;
     } else if (u == u.parent.left) {
@@ -219,17 +219,17 @@ public class RedBlackTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  public Node minimum() {
+  public Node<T> minimum() {
     return minimum(root);
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  public Node maximum() {
+  public Node<T> maximum() {
     return maximum(root);
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  private Node minimum(Node node) {
+  private Node<T> minimum(Node<T> node) {
     if (node == null || node.left == null) {
       return node;
     }
@@ -237,7 +237,7 @@ public class RedBlackTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  private Node maximum(Node node) {
+  private Node<T> maximum(Node<T> node) {
     if (node == null || node.right == null) {
       return node;
     }
@@ -245,11 +245,11 @@ public class RedBlackTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  private Node successor(Node node) {
+  private Node<T> successor(Node<T> node) {
     if (node.right != null) {
       return minimum(node.right);
     }
-    Node y = node.parent;
+    Node<T> y = node.parent;
     while (y != null && node == y.right) {
       node = y;
       y = y.parent;
@@ -263,8 +263,8 @@ public class RedBlackTree {
   }
 
   /** Time complexity: Θ(1) */
-  protected void leftRotation(Node x) {
-    Node y = x.right;
+  protected void leftRotation(Node<T> x) {
+    Node<T> y = x.right;
     x.right = y.left;
     if (y.left != null) {
       y.left.parent = x;
@@ -282,8 +282,8 @@ public class RedBlackTree {
   }
 
   /** Time complexity: Θ(1) */
-  protected void rightRotation(Node x) {
-    Node y = x.left;
+  protected void rightRotation(Node<T> x) {
+    Node<T> y = x.left;
     x.left = y.right;
     if (y.right != null) {
       y.right.parent = x;
@@ -302,36 +302,36 @@ public class RedBlackTree {
 
   // TODO implement functions: predecessor
 
-  protected static class Node {
+  protected static class Node<T extends Comparable> {
 
-    private int value;
+    private T value;
     private boolean color; // when true then color is Red, otherwise Black
-    private Node parent;
-    private Node left;
-    private Node right;
+    private Node<T> parent;
+    private Node<T> left;
+    private Node<T> right;
 
-    Node(int value) {
+    Node(T value) {
       this.value = value;
     }
 
-    Node(int value, boolean isRed) {
+    Node(T value, boolean isRed) {
       this.value = value;
       this.color = isRed;
     }
 
-    public int value() {
+    public T value() {
       return this.value;
     }
 
-    public Node left() {
+    public Node<T> left() {
       return this.left;
     }
 
-    public Node right() {
+    public Node<T> right() {
       return this.right;
     }
 
-    public Node parent() {
+    public Node<T> parent() {
       return this.parent;
     }
 
@@ -339,17 +339,17 @@ public class RedBlackTree {
       return this.color;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(Node<T> left) {
       this.left = left;
       left.parent = this;
     }
 
-    public void setRight(Node right) {
+    public void setRight(Node<T> right) {
       this.right = right;
       right.parent = this;
     }
 
-    public void setParent(Node parent) {
+    public void setParent(Node<T> parent) {
       this.parent = parent;
     }
 
@@ -361,8 +361,8 @@ public class RedBlackTree {
       this.color = false;
     }
 
-    public boolean equals(Node b) {
-      return this.value == b.value();
+    public boolean equals(Node<T> b) {
+      return this.value.compareTo(b.value()) == 0;
     }
   }
 }
