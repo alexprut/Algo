@@ -8,7 +8,7 @@ public class AVLTreeTest {
 
   @Test
   public void shouldInsertAndSearch() {
-    AVLTree tree = new AVLTree();
+    AVLTree<Integer> tree = new AVLTree<>();
     for (int i = 0; i < 100; i++) {
       tree.insert(i);
       Assert.assertTrue(tree.search(i));
@@ -17,7 +17,7 @@ public class AVLTreeTest {
 
   @Test
   public void shouldInsertAndDeleteAndSearch() {
-    AVLTree tree = new AVLTree();
+    AVLTree<Integer> tree = new AVLTree<>();
     for (int i = 0; i < 100; i++) {
       tree.insert(i);
     }
@@ -39,12 +39,12 @@ public class AVLTreeTest {
           / \                     / \
          u   z                   w   u
     */
-    AVLTree tree = new AVLTree();
-    Node x = new Node(1);
-    Node y = new Node(2);
-    Node z = new Node(3);
-    Node w = new Node(4);
-    Node u = new Node(5);
+    AVLTree<Integer> tree = new AVLTree<>();
+    Node<Integer> x = new Node<>(1);
+    Node<Integer> y = new Node<>(2);
+    Node<Integer> z = new Node<>(3);
+    Node<Integer> w = new Node<>(4);
+    Node<Integer> u = new Node<>(5);
     tree.root = x;
 
     x.setLeft(w);
@@ -75,12 +75,12 @@ public class AVLTreeTest {
           / \                      / \
          u   z                    w   u
     */
-    AVLTree tree = new AVLTree();
-    Node x = new Node(1);
-    Node y = new Node(2);
-    Node z = new Node(3);
-    Node w = new Node(4);
-    Node u = new Node(5);
+    AVLTree<Integer> tree = new AVLTree<>();
+    Node<Integer> x = new Node<>(1);
+    Node<Integer> y = new Node<>(2);
+    Node<Integer> z = new Node<>(3);
+    Node<Integer> w = new Node<>(4);
+    Node<Integer> u = new Node<>(5);
     tree.root = y;
 
     y.setLeft(x);
