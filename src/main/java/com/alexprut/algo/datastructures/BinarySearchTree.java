@@ -2,9 +2,9 @@ package com.alexprut.algo.datastructures;
 
 import java.util.ArrayList;
 
-public class BinarySearchTree {
+public class BinarySearchTree<T extends Comparable<T>> {
 
-  private BinaryNode root;
+  private BinaryNode<T> root;
   private int size;
 
   public BinarySearchTree() {
@@ -12,8 +12,8 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public void insert(int value) {
-    BinaryNode node = new BinaryNode(value);
+  public void insert(T value) {
+    BinaryNode node = new BinaryNode<T>(value);
 
     if (root == null) {
       root = node;
@@ -24,18 +24,18 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public BinaryNode search(int value) {
+  public BinaryNode<T> search(T value) {
     return search(root, value);
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public void delete(BinaryNode node) {
+  public void delete(BinaryNode<T> node) {
     if (node.left == null) {
       transplant(node, node.right);
     } else if (node.right == null) {
       transplant(node, node.left);
     } else {
-      BinaryNode y = minimum(node.right);
+      BinaryNode<T> y = minimum(node.right);
       if (y.parent() != node) {
         transplant(y, y.right);
         y.right = node.right;
@@ -67,7 +67,7 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  protected BinaryNode successor(BinaryNode x) {
+  protected BinaryNode<T> successor(BinaryNode<T> x) {
     if (x.right != null) {
       return minimum(x);
     }
@@ -82,16 +82,16 @@ public class BinarySearchTree {
   // TODO predecessor
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public ArrayList<Integer> preOrderVisit() {
+  public ArrayList<T> preOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
     }
-    ArrayList<Integer> result = new ArrayList<>();
-    Stack<BinaryNode> stack = new Stack<>();
+    ArrayList<T> result = new ArrayList<>();
+    Stack<BinaryNode<T>> stack = new Stack<>();
     stack.push(root);
     while (!stack.empty()) {
       try {
-        BinaryNode current = stack.pop();
+        BinaryNode<T> current = stack.pop();
         result.add(current.value);
         if (current.right != null) {
           stack.push(current.right);
@@ -107,13 +107,13 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public ArrayList<Integer> inOrderVisit() {
+  public ArrayList<T> inOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
     }
-    BinaryNode node = root;
-    ArrayList<Integer> result = new ArrayList<>();
-    Stack<BinaryNode> stack = new Stack<>();
+    BinaryNode<T> node = root;
+    ArrayList<T> result = new ArrayList<>();
+    Stack<BinaryNode<T>> stack = new Stack<>();
     while (!stack.empty() || node != null) {
       try {
         if (node != null) {
@@ -132,12 +132,12 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public ArrayList<Integer> postOrderVisit() {
+  public ArrayList<T> postOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
     }
-    ArrayList<Integer> result = new ArrayList<>();
-    Stack<BinaryNode> stack = new Stack<>();
+    ArrayList<T> result = new ArrayList<>();
+    Stack<BinaryNode<T>> stack = new Stack<>();
     BinaryNode node = root;
     BinaryNode lastVisited = null;
     while (!stack.empty() || node != null) {
@@ -146,7 +146,7 @@ public class BinarySearchTree {
           stack.push(node);
           node = node.left;
         } else {
-          BinaryNode tmp = stack.peek();
+          BinaryNode<T> tmp = stack.peek();
           if (tmp.right != null && lastVisited != tmp.right) {
             node = tmp.right;
           } else {
@@ -162,18 +162,18 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive */
-  private BinaryNode search(BinaryNode node, int value) {
-    if (node == null || node.value == value) {
+  private BinaryNode<T> search(BinaryNode<T> node, T value) {
+    if (node == null || node.value.compareTo(value) == 0) {
       return node;
     }
-    if (node.value < value) {
+    if (node.value.compareTo(value) < 0) {
       return search(node.right, value);
     }
     return search(node.left, value);
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public boolean contains(int value) {
+  public boolean contains(T value) {
     return search(root, value) != null;
   }
 
@@ -183,12 +183,12 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  private void insert(BinaryNode node) {
-    BinaryNode y = null;
-    BinaryNode x = root;
+  private void insert(BinaryNode<T> node) {
+    BinaryNode<T> y = null;
+    BinaryNode<T> x = root;
     while (x != null) {
       y = x;
-      if (node.value() < x.value()) {
+      if (node.value().compareTo(x.value()) < 0) {
         x = x.left();
       } else {
         x = x.right();
@@ -197,7 +197,7 @@ public class BinarySearchTree {
     node.setParent(y);
     if (y == null) {
       root = node;
-    } else if (node.value() < y.value()) {
+    } else if (node.value().compareTo(y.value()) < 0) {
       y.left = node;
     } else {
       y.right = node;
@@ -205,17 +205,17 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public BinaryNode minimum() {
+  public BinaryNode<T> minimum() {
     return minimum(root);
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
-  public BinaryNode maximum() {
+  public BinaryNode<T> maximum() {
     return maximum(root);
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive */
-  private BinaryNode minimum(BinaryNode node) {
+  private BinaryNode<T> minimum(BinaryNode<T> node) {
     if (node == null || node.left == null) {
       return node;
     }
@@ -223,53 +223,53 @@ public class BinarySearchTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive */
-  private BinaryNode maximum(BinaryNode node) {
+  private BinaryNode<T> maximum(BinaryNode<T> node) {
     if (node == null || node.right == null) {
       return node;
     }
     return maximum(node.right);
   }
 
-  public static class BinaryNode {
+  public static class BinaryNode<T> {
 
-    private int value;
-    private BinaryNode parent;
-    private BinaryNode left;
-    private BinaryNode right;
+    private T value;
+    private BinaryNode<T> parent;
+    private BinaryNode<T> left;
+    private BinaryNode<T> right;
 
-    BinaryNode(int value) {
+    BinaryNode(T value) {
       this.value = value;
     }
 
-    public int value() {
+    public T value() {
       return this.value;
     }
 
-    public BinaryNode parent() {
+    public BinaryNode<T> parent() {
       return this.parent;
     }
 
-    public BinaryNode left() {
+    public BinaryNode<T> left() {
       return this.left;
     }
 
-    public BinaryNode right() {
+    public BinaryNode<T> right() {
       return this.right;
     }
 
-    public void setParent(BinaryNode parent) {
+    public void setParent(BinaryNode<T> parent) {
       this.parent = parent;
     }
 
-    public void setLeft(BinaryNode left) {
+    public void setLeft(BinaryNode<T> left) {
       this.left = left;
     }
 
-    public void setRight(BinaryNode right) {
+    public void setRight(BinaryNode<T> right) {
       this.right = right;
     }
 
-    public boolean equals(BinaryNode b) {
+    public boolean equals(BinaryNode<T> b) {
       return this.value == b.value();
     }
   }
