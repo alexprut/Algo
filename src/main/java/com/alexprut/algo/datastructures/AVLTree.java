@@ -3,15 +3,15 @@ package com.alexprut.algo.datastructures;
 import static java.lang.Math.max;
 
 /** In an AVL tree, the heights of the two child subtrees of any node differ by at most one */
-public class AVLTree {
+public class AVLTree<T extends Comparable> {
 
-  protected Node root;
+  protected Node<T> root;
   private int size;
 
   AVLTree() {}
 
   /** Time complexity: O(logn) */
-  public void insert(int value) {
+  public void insert(T value) {
     Node tmp = insert(root, value);
     if (this.root == null) {
       this.root = tmp;
@@ -20,12 +20,12 @@ public class AVLTree {
   }
 
   /** Time complexity: O(logn) */
-  protected Node insert(Node node, int value) {
+  protected Node<T> insert(Node<T> node, T value) {
     if (node == null) {
-      return new Node(value);
+      return new Node<T>(value);
     }
 
-    if (value <= node.value) {
+    if (value.compareTo(node.value) <= 0) {
       node.left = insert(node.left, value);
     } else {
       node.right = insert(node.right, value);
@@ -35,23 +35,23 @@ public class AVLTree {
     int balance = getBalance(node);
 
     // Case: Left Left
-    if (balance > 1 && value < node.left.value) {
+    if (balance > 1 && value.compareTo(node.left.value) < 0) {
       return rightRotation(node);
     }
 
     // Case: Right Right
-    if (balance < -1 && value > node.right.value) {
+    if (balance < -1 && value.compareTo(node.right.value) > 0) {
       return leftRotation(node);
     }
 
     // Case: Left Right
-    if (balance > 1 && value > node.left.value) {
+    if (balance > 1 && value.compareTo(node.left.value) > 0) {
       node.left = leftRotation(node.left);
       return rightRotation(node);
     }
 
     // Case: Right Left
-    if (balance < -1 && value < node.right.value) {
+    if (balance < -1 && value.compareTo(node.right.value) < 0) {
       node.right = rightRotation(node.right);
       return leftRotation(node);
     }
@@ -60,37 +60,37 @@ public class AVLTree {
   }
 
   /** Time complexity: O(logn) */
-  public boolean search(int value) {
+  public boolean search(T value) {
     return search(root, value) != null;
   }
 
   /** Time complexity: O(logn) */
-  public Node search(Node root, int value) {
-    Node tmp = root;
+  public Node<T> search(Node<T> root, T value) {
+    Node<T> tmp = root;
     while (tmp != null) {
-      if (tmp.value == value) {
+      if (tmp.value.compareTo(value) == 0) {
         return tmp;
       }
-      tmp = (value < tmp.value) ? tmp.left : tmp.right;
+      tmp = (value.compareTo(tmp.value) < 0) ? tmp.left : tmp.right;
     }
 
     return null;
   }
 
   /** Time complexity: O(logn) */
-  public void delete(int value) {
+  public void delete(T value) {
     this.root = delete(this.root, value);
     size--;
   }
 
-  protected Node delete(Node node, int value) {
+  protected Node<T> delete(Node<T> node, T value) {
     if (node == null) {
       return null;
     }
 
-    if (value < node.value) {
+    if (value.compareTo(node.value) < 0) {
       node.left = delete(node.left, value);
-    } else if (value > node.value) {
+    } else if (value.compareTo(node.value) > 0) {
       node.right = delete(node.right, value);
     } else {
       if (node.left == null || node.right == null) {
@@ -102,7 +102,7 @@ public class AVLTree {
           node = temp;
         }
       } else {
-        Node temp = minimum(node.right);
+        Node<T> temp = minimum(node.right);
         node.value = temp.value;
         node.right = delete(node.right, temp.value);
       }
@@ -141,17 +141,17 @@ public class AVLTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  public Node minimum() {
+  public Node<T> minimum() {
     return minimum(root);
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  public Node maximum() {
+  public Node<T> maximum() {
     return maximum(root);
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  private Node minimum(Node node) {
+  private Node<T> minimum(Node<T> node) {
     if (node == null || node.left == null) {
       return node;
     }
@@ -159,7 +159,7 @@ public class AVLTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  private Node maximum(Node node) {
+  private Node<T> maximum(Node<T> node) {
     if (node == null || node.right == null) {
       return node;
     }
@@ -167,7 +167,7 @@ public class AVLTree {
   }
 
   /** Time complexity: O(logn) if the tree is balanced */
-  private Node successor(Node node) {
+  private Node<T> successor(Node<T> node) {
     if (node.right != null) {
       return minimum(node.right);
     }
@@ -185,7 +185,7 @@ public class AVLTree {
   }
 
   /** Time complexity: Θ(1) */
-  protected Node leftRotation(Node x) {
+  protected Node<T> leftRotation(Node<T> x) {
     Node y = x.right;
     x.right = y.left;
     if (y.left != null) {
@@ -209,8 +209,8 @@ public class AVLTree {
   }
 
   /** Time complexity: Θ(1) */
-  protected Node rightRotation(Node x) {
-    Node y = x.left;
+  protected Node<T> rightRotation(Node<T> x) {
+    Node<T> y = x.left;
     x.left = y.right;
     if (y.right != null) {
       y.right.parent = x;
@@ -232,7 +232,7 @@ public class AVLTree {
     return y;
   }
 
-  protected int getBalance(Node n) {
+  protected int getBalance(Node<T> n) {
     if (n == null) {
       return 0;
     }
@@ -240,7 +240,7 @@ public class AVLTree {
     return height(n.left()) - height(n.right());
   }
 
-  private int height(Node n) {
+  private int height(Node<T> n) {
     if (n == null) {
       return 0;
     }
@@ -248,20 +248,20 @@ public class AVLTree {
     return n.height;
   }
 
-  protected static class Node {
+  protected static class Node<T> {
 
-    private int value;
+    private T value;
     private int height;
-    private Node parent;
-    private Node left;
-    private Node right;
+    private Node<T> parent;
+    private Node<T> left;
+    private Node<T> right;
 
-    Node(int value) {
+    Node(T value) {
       this.value = value;
       this.height = 1;
     }
 
-    public int value() {
+    public T value() {
       return this.value;
     }
 
@@ -269,29 +269,29 @@ public class AVLTree {
       return this.height;
     }
 
-    public Node left() {
+    public Node<T> left() {
       return this.left;
     }
 
-    public Node right() {
+    public Node<T> right() {
       return this.right;
     }
 
-    public Node parent() {
+    public Node<T> parent() {
       return this.parent;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(Node<T> left) {
       this.left = left;
       left.parent = this;
     }
 
-    public void setRight(Node right) {
+    public void setRight(Node<T> right) {
       this.right = right;
       right.parent = this;
     }
 
-    public void setParent(Node parent) {
+    public void setParent(Node<T> parent) {
       this.parent = parent;
     }
   }
