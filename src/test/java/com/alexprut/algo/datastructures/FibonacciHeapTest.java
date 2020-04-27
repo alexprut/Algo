@@ -65,6 +65,7 @@ public class FibonacciHeapTest {
   public void shouldDoMultipleRandomOperations() {
     ArrayList<Node<Integer>> nodes = new ArrayList<>();
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
+
     for (int i = 0; i < 100; i++) {
       nodes.add(heap.insert((int) (i * Math.random())));
     }

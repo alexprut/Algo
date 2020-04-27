@@ -210,8 +210,11 @@ public class FibonacciHeap<T extends Comparable> {
     if (x.rightSibling == x) {
       y.child = null;
     } else {
-      x.rightSibling.leftSibling = x.leftSibling;
-      x.leftSibling.rightSibling = x.rightSibling;
+      Node<T> rightSibling = x.rightSibling;
+      Node<T> leftSibling = x.leftSibling;
+      rightSibling.leftSibling = leftSibling;
+      leftSibling.rightSibling = rightSibling;
+      y.child = rightSibling;
     }
     y.degree--;
 
