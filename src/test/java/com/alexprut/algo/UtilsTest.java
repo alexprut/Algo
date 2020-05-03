@@ -51,4 +51,18 @@ public class UtilsTest {
     Assert.assertFalse(Utils.isPalindrome("as"));
     Assert.assertFalse(Utils.isPalindrome("asas"));
   }
+
+  @Test
+  public void shouldFindLongestIncreasingSubsequence() {
+    Assert.assertArrayEquals(
+        new int[] {3, 7, 40, 80},
+        Utils.longestIncreasingSubsequence(new int[] {50, 3, 10, 7, 40, 80}));
+    Assert.assertArrayEquals(
+        new int[] {1, 2}, Utils.longestIncreasingSubsequence(new int[] {1, 2, 1}));
+    Assert.assertArrayEquals(
+        new int[] {3}, Utils.longestIncreasingSubsequence(new int[] {3, 2, 1}));
+    Assert.assertArrayEquals(
+        new int[] {1, 2, 3}, Utils.longestIncreasingSubsequence(new int[] {1, 2, 3}));
+    Assert.assertArrayEquals(new int[] {}, Utils.longestIncreasingSubsequence(new int[] {}));
+  }
 }

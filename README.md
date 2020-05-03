@@ -41,11 +41,12 @@ Algorithms
 |[Maximum SubArray](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/MaximumSubArray.java)|Θ(n)|Θ(n)|Θ(n)|Θ(1)|
 |Knuth-Morris-Pratt|-|-|-|-|
 |Rabin-Karp|-|-|-|-|
-|[Greatest common divisor (gcd)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/math/Math.java#L13)|-|-|-|-|
+|[Greatest common divisor (GCD)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/math/Math.java#L13)|-|-|-|-|
 |[Binary Search](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/BinarySearch.java)|O(nlogn)|O(nlogn)|O(1)|Θ(1)|
 |[Breadth First Search (BFS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/BreadthFirstSearch.java#L43)|O(\|E\|+\|V\|)|O(\|E\|+\|V\|)|-|-|
 |[Depth First Search (DFS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/DepthFirstSearch.java#L10)|O(\|E\|+\|V\|)|O(\|E\|+\|V\|)|-|-|
 |[Topological Sort (DFS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/DepthFirstSearch.java#L91)|O(\|E\|+\|V\|)|O(\|E\|+\|V\|)|-|-|
+|[Longest Increasing Subsequence (LIS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/Utils.java#L98)|Θ(n^2)|-|-|Θ(n)|
 
 Data Structures
 ===============
