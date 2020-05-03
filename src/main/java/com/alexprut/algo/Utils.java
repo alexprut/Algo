@@ -74,4 +74,45 @@ public class Utils {
 
     return true;
   }
+
+  /**
+   * The longest increasing subsequence problem is to find a subsequence of a given sequence in
+   * which the subsequence's elements are in sorted order, lowest to highest, and in which the
+   * subsequence is as long as possible. This subsequence is not necessarily contiguous, or unique.
+   *
+   * <p>Time complexity: O(n^2)
+   *
+   * <p>Space complexity: O(n)
+   *
+   * <p>TODO implement a O(nlogn) algorithm
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Longest_increasing_subsequence">https://en.wikipedia.org/wiki/Longest_increasing_subsequence</a>
+   */
+  public static int[] longestIncreasingSubsequence(int[] arr) {
+    int[] prev = new int[arr.length];
+    int[] dp = new int[arr.length];
+    int maxLength = 0;
+    int indexMaxEnd = -1;
+    for (int i = 0; i < arr.length; i++) {
+      dp[i] = 1;
+      prev[i] = -1;
+      for (int j = i; j >= 0; j--) {
+        if (dp[j] + 1 > dp[i] && arr[j] < arr[i]) {
+          dp[i] = dp[j] + 1;
+          prev[i] = j;
+        }
+        if (dp[i] > maxLength) {
+          maxLength = dp[i];
+          indexMaxEnd = i;
+        }
+      }
+    }
+    int[] lis = new int[maxLength];
+    for (int i = maxLength - 1; i >= 0; i--) {
+      lis[i] = arr[indexMaxEnd];
+      indexMaxEnd = prev[indexMaxEnd];
+    }
+    return lis;
+  }
 }
