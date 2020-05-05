@@ -1,5 +1,6 @@
 package com.alexprut.algo;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
 import org.junit.Assert;
@@ -64,5 +65,13 @@ public class UtilsTest {
     Assert.assertArrayEquals(
         new int[] {1, 2, 3}, Utils.longestIncreasingSubsequence(new int[] {1, 2, 3}));
     Assert.assertArrayEquals(new int[] {}, Utils.longestIncreasingSubsequence(new int[] {}));
+  }
+
+  @Test
+  public void shouldFindLongestCommonSubsequence() {
+    assertEquals(0, Utils.longestCommonSubsequence("", ""));
+    assertEquals(0, Utils.longestCommonSubsequence("xyz", "abcad"));
+    assertEquals(1, Utils.longestCommonSubsequence("aaa", "abcd"));
+    assertEquals(2, Utils.longestCommonSubsequence("aaa", "abcad"));
   }
 }

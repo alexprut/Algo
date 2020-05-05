@@ -47,6 +47,7 @@ Algorithms
 |[Depth First Search (DFS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/DepthFirstSearch.java#L10)|O(\|E\|+\|V\|)|O(\|E\|+\|V\|)|-|-|
 |[Topological Sort (DFS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/DepthFirstSearch.java#L91)|O(\|E\|+\|V\|)|O(\|E\|+\|V\|)|-|-|
 |[Longest Increasing Subsequence (LIS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/Utils.java#L98)|Θ(n^2)|-|-|Θ(n)|
+|[Longest Common Subsequence (LCS)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/Utils.java#L128)|Θ(n^2)|-|-|Θ(n^2)|
 
 Data Structures
 ===============
