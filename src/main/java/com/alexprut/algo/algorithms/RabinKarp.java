@@ -16,6 +16,9 @@ public class RabinKarp {
    * @return the index of the first occurrence of the match, -1 if there is no occurrence
    */
   public static int rabinKarp(String text, String pattern, int d, int q) {
+    if (pattern.length() == 0) {
+      return 0;
+    }
     int n = text.length();
     int m = pattern.length();
     // Value of the high-order digit position of an m-digit window
