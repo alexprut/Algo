@@ -1,6 +1,5 @@
-package com.alexprut.algo.algorithms.sorting;
+package com.alexprut.algo.algorithms;
 
-import com.alexprut.algo.algorithms.RabinKarp;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,6 +7,7 @@ public class RabinKarpTest {
 
   @Test
   public void shouldFindMatch() {
+    Assert.assertEquals(0, RabinKarp.rabinKarp("2359023141526739921", "", 10, 13));
     Assert.assertEquals(12, RabinKarp.rabinKarp("2359023141526739921", "67399", 10, 13));
     Assert.assertEquals(12, RabinKarp.rabinKarp("2359023141526739921", "67399", 10, 15));
     Assert.assertEquals(0, RabinKarp.rabinKarp("2359023141526739921", "235", 10, 15));

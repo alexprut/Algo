@@ -38,7 +38,7 @@ Algorithms
 |[Bellman–Ford](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/BellmanFord.java)|Θ(\|E\|\|V\|)|-|-|Θ(V)|
 |[Dijkstra](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/Dijkstra.java)|O(\|E\| + \|V\|log\|V\|)|-|-|-|
 |[Maximum SubArray](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/MaximumSubArray.java)|Θ(n)|Θ(n)|Θ(n)|Θ(1)|
-|Knuth-Morris-Pratt|-|-|-|-|
+|[Knuth-Morris-Pratt](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/KnuthMorrisPratt.java)|Θ(n + m)|Θ(n)|Θ(n)|Θ(n)|
 |[Rabin-Karp](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/RabinKarp.java)|Θ((n - m + 1)m)|Θ(n)|Θ(n)|-|
 |[Greatest common divisor (GCD)](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/math/Math.java#L13)|-|-|-|-|
 |[Binary Search](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/search/BinarySearch.java)|O(nlogn)|O(nlogn)|O(1)|Θ(1)|
