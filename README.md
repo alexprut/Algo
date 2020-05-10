@@ -30,9 +30,8 @@ Algorithms
 |[MergeSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/MergeSort.java)|Θ(nlogn)|Θ(nlogn)|Θ(nlogn)|-|
 |[HeapSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MaxHeap.java#L82)|Θ(nlogn)|-|-|-|
 |[QuickSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/QuickSort.java)|Θ(n^2)|Θ(nlogn)|Θ(nlogn)|-|
-|[CountingSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/CountingSort.java)|Θ(k + n)|Θ(k + n)|-|-|
-|RadixSort|Θ(d(k + n))|Θ(d(k + n))|-|-|
-|BucketSort|Θ(n^2)|Θ(n)|-|-|
+|[CountingSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/CountingSort.java)|Θ(k + n)|Θ(k + n)|Θ(n)|Θ(n)|
+|[RadixSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/RadixSort.java)|Θ(d(k + n))|Θ(d(k + n))|Θ(n)|-|
 |[Floyd-Warshall](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/FloydWarshall.java)|Θ(V^3)|Θ(V^3)|Θ(V^3)|Θ(V^2)|
 |[Kruskal](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/mst/Kruskal.java)|O(\|E\|log\|V\|)|-|-|-|
 |[Prim](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/mst/Prim.java)|O(\|E\|log\|V\|)|-|-|-|
