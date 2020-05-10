@@ -74,4 +74,19 @@ public class UtilsTest {
     assertEquals(1, Utils.longestCommonSubsequence("aaa", "abcd"));
     assertEquals(2, Utils.longestCommonSubsequence("aaa", "abcad"));
   }
+
+  @Test
+  public void shoouldGetDigitAtIndex() {
+    int number = 32981;
+    Assert.assertEquals(1, Utils.getDigitAtIndex(number, 1));
+    Assert.assertEquals(8, Utils.getDigitAtIndex(number, 2));
+    Assert.assertEquals(9, Utils.getDigitAtIndex(number, 3));
+    Assert.assertEquals(2, Utils.getDigitAtIndex(number, 4));
+    Assert.assertEquals(3, Utils.getDigitAtIndex(number, 5));
+    Assert.assertEquals(0, Utils.getDigitAtIndex(number, 6));
+    Assert.assertEquals(0, Utils.getDigitAtIndex(number, 7));
+
+    Assert.assertEquals(9, Utils.getDigitAtIndex(9, 1));
+    Assert.assertEquals(0, Utils.getDigitAtIndex(9, 2));
+  }
 }

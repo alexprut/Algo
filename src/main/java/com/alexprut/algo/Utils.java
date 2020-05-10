@@ -140,4 +140,16 @@ public class Utils {
     }
     return dp[dp.length - 1][dp[0].length - 1];
   }
+
+  /**
+   * Given a number and an index, return the digit at the specified index.
+   *
+   * <p>Example: if number is 918, the digit at index 1 is `8`, the digit at index 2 is `1`, the
+   * digit at index 3 is `9`
+   *
+   * @return the digit at index
+   */
+  public static int getDigitAtIndex(int number, int digitIndex) {
+    return number / (int) Math.pow(10, digitIndex - 1) % 10;
+  }
 }
