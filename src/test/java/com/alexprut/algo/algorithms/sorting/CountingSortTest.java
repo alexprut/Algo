@@ -33,4 +33,23 @@ public class CountingSortTest {
     Assert.assertArrayEquals(new int[] {}, CountingSort.countingSort(new int[] {}));
     Assert.assertArrayEquals(new int[] {1}, CountingSort.countingSort(new int[] {1}));
   }
+
+  @Test
+  public void shouldSortOnDigitIndex() {
+    Assert.assertArrayEquals(
+        new int[] {221, 123, 134, 387, 37, 7, 468, 68, 769},
+        CountingSort.countingSort(new int[] {387, 468, 134, 123, 68, 221, 769, 37, 7}, 1));
+    Assert.assertArrayEquals(
+        new int[] {221, 123, 134, 387, 37, 7, 468, 68, 769},
+        CountingSort.countingSort(new int[] {221, 123, 134, 387, 37, 7, 468, 68, 769}, 1));
+    Assert.assertArrayEquals(
+        new int[] {7, 221, 123, 134, 37, 468, 68, 769, 387},
+        CountingSort.countingSort(new int[] {221, 123, 134, 387, 37, 7, 468, 68, 769}, 2));
+    Assert.assertArrayEquals(
+        new int[] {7, 37, 68, 123, 134, 221, 387, 468, 769},
+        CountingSort.countingSort(new int[] {7, 221, 123, 134, 37, 468, 68, 769, 387}, 3));
+    Assert.assertArrayEquals(
+        new int[] {7, 37, 68, 123, 134, 221, 387, 468, 769},
+        CountingSort.countingSort(new int[] {7, 37, 68, 123, 134, 221, 387, 468, 769}, 4));
+  }
 }
