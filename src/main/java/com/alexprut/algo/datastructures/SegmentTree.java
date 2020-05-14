@@ -5,10 +5,10 @@ package com.alexprut.algo.datastructures;
  */
 abstract class SegmentTree {
 
-  private int elements[];
-  private int tree[];
+  private int[] elements;
+  private int[] tree;
 
-  public SegmentTree(int arr[]) {
+  public SegmentTree(int[] arr) {
     elements = arr;
     int x = (int) (Math.ceil(Math.log(elements.length) / Math.log(2)));
     tree = new int[2 * (int) Math.pow(2, x) - 1];
@@ -114,7 +114,7 @@ abstract class SegmentTree {
 
   public static class MinSegmentTree extends SegmentTree {
 
-    public MinSegmentTree(int arr[]) {
+    public MinSegmentTree(int[] arr) {
       super(arr);
     }
 

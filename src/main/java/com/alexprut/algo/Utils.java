@@ -3,9 +3,15 @@ package com.alexprut.algo;
 public class Utils {
 
   /**
-   * Time complexity: O(1)
+   * Swaps the first element with the second.
+   *
+   * <p>Time complexity: O(1)
    *
    * <p>Space complexity: O(n) total and O(1) auxiliary
+   *
+   * @param arr array of elements
+   * @param i first element
+   * @param j second element
    */
   public static void swap(int[] arr, int i, int j) {
     int tmp = arr[i];
@@ -14,9 +20,15 @@ public class Utils {
   }
 
   /**
-   * Time complexity: O(n)
+   * Reverse the elements order.
+   *
+   * <p>Time complexity: O(n)
    *
    * <p>Space complexity: O(n) total and O(1) auxiliary
+   *
+   * @param arr the elements to reverse
+   * @param start the starting point to start the reversion
+   * @param end the ending point to start the reversion
    */
   public static void reverse(int[] arr, int start, int end) {
     for (int i = start; i < (start + end) / 2; i++) {
@@ -25,9 +37,15 @@ public class Utils {
   }
 
   /**
-   * Time complexity: O(n)
+   * Finds and returns the maximum element.
+   *
+   * <p>Time complexity: O(n)
    *
    * <p>Space complexity: O(n) total and O(1) auxiliary
+   *
+   * @param arr the array of elements
+   * @return the maximum element
+   * @throws Exception if the array is empty
    */
   public static int max(int[] arr) throws Exception {
     if (arr.length == 0) {
@@ -43,9 +61,15 @@ public class Utils {
   }
 
   /**
-   * Time complexity: O(n)
+   * Finds and returns the minimum element.
+   *
+   * <p>Time complexity: O(n)
    *
    * <p>Space complexity: O(n) total and O(1) auxiliary
+   *
+   * @param arr the array of elements
+   * @return the minimum element
+   * @throws Exception if the array is empty
    */
   public static int min(int[] arr) throws Exception {
     if (arr.length == 0) {
@@ -61,9 +85,14 @@ public class Utils {
   }
 
   /**
-   * Time complexity: O(n)
+   * Checks if a string is a palindrome.
+   *
+   * <p>Time complexity: O(n)
    *
    * <p>Space complexity: O(n) total and O(1) auxiliary
+   *
+   * @param s the string to check
+   * @return
    */
   public static boolean isPalindrome(String s) {
     for (int i = 0; i < s.length() / 2; i++) {
@@ -84,10 +113,14 @@ public class Utils {
    *
    * <p>Space complexity: O(n)
    *
+   * <p>Example: given [50, 3, 10, 7, 40, 80] the longest increasing subsequence is [3, 7, 40, 80].
+   *
    * <p>TODO implement a O(nlogn) algorithm
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Longest_increasing_subsequence">https://en.wikipedia.org/wiki/Longest_increasing_subsequence</a>
+   * @param arr sequence of elements
+   * @return the longest increasing subsequence
    */
   public static int[] longestIncreasingSubsequence(int[] arr) {
     int[] prev = new int[arr.length];
@@ -118,7 +151,10 @@ public class Utils {
 
   /**
    * Computes the length of the longest common subsequence. LCS is the problem of finding the
-   * longest subsequence common to two sequences.
+   * longest subsequence common to two sequences. The sequence does not need to be contiguous.
+   *
+   * <p>Example: given "aaa" and "abcad" the length of the longest common subsequence is 2, i.e.
+   * "aa" and "aa".
    *
    * <p>Time complexity: O(n^2)
    *
@@ -145,9 +181,13 @@ public class Utils {
    * Given a number and an index, return the digit at the specified index.
    *
    * <p>Example: if number is 918, the digit at index 1 is `8`, the digit at index 2 is `1`, the
-   * digit at index 3 is `9`
+   * digit at index 3 is `9`.
    *
-   * @return the digit at index
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the digit at the specified index
    */
   public static int getDigitAtIndex(int number, int digitIndex) {
     return number / (int) Math.pow(10, digitIndex - 1) % 10;

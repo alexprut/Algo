@@ -37,7 +37,7 @@ public class KnuthMorrisPratt {
   }
 
   /**
-   * Utility function for the Knuth Morris Pratt algorithm. Computes the prefix function-
+   * Utility function for the Knuth Morris Pratt algorithm. Computes the prefix function.
    *
    * <p>Time complexity: Θ(m)
    *
