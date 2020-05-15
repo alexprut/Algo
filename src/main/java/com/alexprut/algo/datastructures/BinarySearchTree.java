@@ -2,6 +2,11 @@ package com.alexprut.algo.datastructures;
 
 import java.util.ArrayList;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Binary_search_tree">https://en.wikipedia.org/wiki/Binary_search_tree</a>
+ * @param <T>
+ */
 public class BinarySearchTree<T extends Comparable<T>> {
 
   private BinaryNode<T> root;
@@ -11,7 +16,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
     size = 0;
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @param value
+   */
   public void insert(T value) {
     BinaryNode node = new BinaryNode<T>(value);
 
@@ -23,12 +32,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
     size++;
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @param value
+   * @return
+   */
   public BinaryNode<T> search(T value) {
     return search(root, value);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @param node
+   */
   public void delete(BinaryNode<T> node) {
     if (node.left == null) {
       transplant(node, node.right);
@@ -52,6 +70,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
    * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
    *
    * <p>Time complexity: O(1)
+   *
+   * @param u
+   * @param v
    */
   private void transplant(BinaryNode u, BinaryNode v) {
     if (u.parent == null) {
@@ -66,7 +87,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @param x
+   * @return
+   */
   protected BinaryNode<T> successor(BinaryNode<T> x) {
     if (x.right != null) {
       return minimum(x);
@@ -81,7 +107,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
   // TODO predecessor
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @return
+   */
   public ArrayList<T> preOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
@@ -106,7 +136,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return result;
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @return
+   */
   public ArrayList<T> inOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
@@ -131,7 +165,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return result;
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @return
+   */
   public ArrayList<T> postOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
