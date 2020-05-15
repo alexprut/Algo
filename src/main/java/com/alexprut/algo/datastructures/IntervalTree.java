@@ -6,6 +6,9 @@ package com.alexprut.algo.datastructures;
  *
  * <p>The Interval Tree data structure is implemented by using a Red-Black Tree The intervals are
  * closed TODO extend the Red-Black Tree data structure
+ *
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Interval_tree">https://en.wikipedia.org/wiki/Interval_tree</a>
  */
 public class IntervalTree {
 
