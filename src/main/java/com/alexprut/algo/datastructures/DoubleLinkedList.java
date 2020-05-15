@@ -1,5 +1,10 @@
 package com.alexprut.algo.datastructures;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Doubly_linked_list">https://en.wikipedia.org/wiki/Doubly_linked_list</a>
+ * @param <T>
+ */
 public class DoubleLinkedList<T> {
 
   private Node<T> head;
