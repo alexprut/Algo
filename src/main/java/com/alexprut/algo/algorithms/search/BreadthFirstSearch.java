@@ -3,6 +3,10 @@ package com.alexprut.algo.algorithms.search;
 import com.alexprut.algo.datastructures.Queue;
 import java.util.ArrayList;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Breadth-first_search">https://en.wikipedia.org/wiki/Breadth-first_search</a>
+ */
 public class BreadthFirstSearch {
 
   /**
