@@ -3,6 +3,10 @@ package com.alexprut.algo.algorithms.search;
 import com.alexprut.algo.datastructures.Stack;
 import java.util.ArrayList;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Depth-first_search">https://en.wikipedia.org/wiki/Depth-first_search</a>
+ */
 public class DepthFirstSearch {
 
   // TODO stronglyConnectedComponents
