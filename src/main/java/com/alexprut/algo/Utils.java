@@ -28,7 +28,7 @@ public class Utils {
    *
    * @param arr the elements to reverse
    * @param start the starting point to start the reversion
-   * @param end the ending point to start the reversion
+   * @param end the ending point to end the reversion
    */
   public static void reverse(int[] arr, int start, int end) {
     for (int i = start; i < (start + end) / 2; i++) {
