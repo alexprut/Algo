@@ -2,7 +2,11 @@ package com.alexprut.algo.datastructures;
 
 import static java.lang.Math.max;
 
-/** In an AVL tree, the heights of the two child subtrees of any node differ by at most one */
+/**
+ * In an AVL tree, the heights of the two child subtrees of any node differ by at most one.
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/AVL_tree">https://en.wikipedia.org/wiki/AVL_tree</a>
+ */
 public class AVLTree<T extends Comparable> {
 
   protected Node<T> root;
