@@ -1,6 +1,11 @@
 package com.alexprut.algo.datastructures;
 
-/** FIFO */
+/**
+ * FIFO
+ *
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)">https://en.wikipedia.org/wiki/Queue_(abstract_data_type)</a>
+ */
 public class Queue<T> {
 
   private DoubleLinkedList<T> list;
