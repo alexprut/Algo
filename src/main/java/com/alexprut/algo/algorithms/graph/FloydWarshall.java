@@ -3,11 +3,16 @@ package com.alexprut.algo.algorithms.graph;
 public class FloydWarshall {
 
   /**
-   * Find the shortest path between any pair of nodes
+   * Find the shortest path between any pair of nodes.
    *
    * <p>Time complexity: Θ(V^3)
    *
    * <p>Space complexity: Θ(V^2)
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm">https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm</a>
+   * @param adj
+   * @return
    */
   public static int[][] floydWarshall(int[][] adj) {
     int n = adj.length;
