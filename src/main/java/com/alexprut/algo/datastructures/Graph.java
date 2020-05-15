@@ -5,7 +5,12 @@ import java.util.ArrayList;
 
 // TODO clone method
 
-/** Conventions: the nodes are labeled from 0 to n (exclusive) */
+/**
+ * Conventions: the nodes are labeled from 0 to n (exclusive).
+ *
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">https://en.wikipedia.org/wiki/Graph_(abstract_data_type)</a>
+ */
 public class Graph {
 
   private boolean isDirected = false;
