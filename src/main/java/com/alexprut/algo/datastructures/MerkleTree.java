@@ -5,6 +5,10 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Merkle_tree">https://en.wikipedia.org/wiki/Merkle_tree</a>
+ */
 public class MerkleTree {
   private String[] hashNodes;
 
