@@ -4,7 +4,10 @@ package com.alexprut.algo.datastructures;
  * A red-black tree is a binary tree that satisfies the following red-black properties: 1) Every
  * node is either red or black 2) The root is black 3) Every leaf (NULL) is black 4) If a node is
  * red, then both its children are black 5) For each node, all simple paths from the node to
- * descendant leaves contain the same number of black nodes
+ * descendant leaves contain the same number of black nodes.
+ *
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Red-black_tree">https://en.wikipedia.org/wiki/Red-black_tree</a>
  */
 public class RedBlackTree<T extends Comparable> {
 
@@ -13,7 +16,11 @@ public class RedBlackTree<T extends Comparable> {
 
   RedBlackTree() {}
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param value
+   */
   public void insert(T value) {
     Node<T> x = new Node<>(value, true);
     Node<T> p = null;
@@ -39,7 +46,11 @@ public class RedBlackTree<T extends Comparable> {
     size++;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param x
+   */
   protected void insertFixup(Node<T> x) {
     while (x.parent != null && x.parent.isRed()) {
       if (x.parent == x.parent.parent.left) {
@@ -83,12 +94,23 @@ public class RedBlackTree<T extends Comparable> {
     root.setBlackColor();
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param value
+   * @return
+   */
   public boolean search(T value) {
     return search(root, value) != null;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param root
+   * @param value
+   * @return
+   */
   public Node<T> search(Node<T> root, T value) {
     Node tmp = root;
     while (tmp != null) {
@@ -281,7 +303,11 @@ public class RedBlackTree<T extends Comparable> {
     x.parent = y;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param x
+   */
   protected void rightRotation(Node<T> x) {
     Node<T> y = x.left;
     x.left = y.right;
