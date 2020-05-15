@@ -1,5 +1,10 @@
 package com.alexprut.algo.datastructures;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Linked_list">https://en.wikipedia.org/wiki/Linked_list</a>
+ * @param <T>
+ */
 public class LinkedList<T> {
 
   private Node<T> head;
