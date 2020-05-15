@@ -5,10 +5,15 @@ public class KnuthMorrisPratt {
   /**
    * Linear time string matching algorithm by Knuth, Morris and Pratt.
    *
+   * <p>Example: given the text "market" and the pattern "ark" the returning value will be `1`, i.e
+   * the index where the first match occurs ("m ark et").
+   *
    * <p>Time complexity: Θ(n)
    *
    * <p>Space complexity: Θ(n) total with Θ(1) auxiliary
    *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm</a>
    * @param text the text to search in
    * @param pattern the pattern to search within the text
    * @return the index of the first occurrence of the match, -1 if there is no occurrence
