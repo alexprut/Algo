@@ -13,6 +13,13 @@ public class Dijkstra {
    * <p>Time complexity: O(|E| + |V|log|V|)
    *
    * <p>Space complexity: TODO
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a>
+   * @param adj
+   * @param n
+   * @param start
+   * @return
    */
   public static int[] dijkstra(ArrayList<ArrayList<Pair<Integer, Integer>>> adj, int n, int start) {
     class CostNodePair extends Pair<Integer, Integer> implements Comparable<CostNodePair> {
