@@ -6,9 +6,15 @@ import java.util.ArrayList;
 public class Math {
 
   /**
-   * Greatest common divisor, Euclide algorithms
+   * Greatest common divisor, Euclide algorithms.
    *
    * <p>Time complexity: O(b) given gcd(a, b)
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Greatest_common_divisor">https://en.wikipedia.org/wiki/Greatest_common_divisor</a>
+   * @param a
+   * @param b
+   * @return
    */
   public static int gcd(int a, int b) {
     return (b == 0) ? a : gcd(b, a % b);
@@ -26,6 +32,10 @@ public class Math {
     return true;
   }
 
+  /**
+   * @param n
+   * @return
+   */
   public static BigInteger factorial(int n) {
     if (n < 2) {
       return BigInteger.ONE;
@@ -39,7 +49,13 @@ public class Math {
     return current;
   }
 
-  // TODO search a more efficient algorithm
+  /**
+   * // TODO search a more efficient algorithm
+   *
+   * @param elements
+   * @param <T>
+   * @return
+   */
   public static <T> ArrayList<ArrayList<T>> permute(ArrayList<T> elements) {
     if (elements.size() == 0) {
       return new ArrayList<>();
@@ -67,5 +83,4 @@ public class Math {
   }
 
   // TODO binomial coefficient
-  // TODO factorial
 }
