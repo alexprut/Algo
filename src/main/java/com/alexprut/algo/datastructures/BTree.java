@@ -2,6 +2,10 @@ package com.alexprut.algo.datastructures;
 
 import java.util.ArrayList;
 
+/**
+ * @see <a href="https://en.wikipedia.org/wiki/B-tree">https://en.wikipedia.org/wiki/B-tree</a>
+ * @param <T>
+ */
 public class BTree<T extends Comparable> {
 
   protected Node<T> root = null;
