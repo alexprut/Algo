@@ -10,6 +10,8 @@ public class RabinKarp {
    *
    * <p>Space complexity: Θ(n) total with Θ(1) auxiliary
    *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm">https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm</a>
    * @param text the text to search in
    * @param pattern the pattern to search within the text
    * @param d the size of the alphabet
