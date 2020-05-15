@@ -2,6 +2,10 @@ package com.alexprut.algo.datastructures;
 
 import com.alexprut.algo.Utils;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Min-max_heap">https://en.wikipedia.org/wiki/Min-max_heap</a>
+ */
 public class MinHeap extends BinaryHeap {
 
   public MinHeap() {}
