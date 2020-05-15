@@ -1,5 +1,9 @@
 package com.alexprut.algo.datastructures;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Min-max_heap">https://en.wikipedia.org/wiki/Min-max_heap</a>
+ */
 public class MaxHeap extends BinaryHeap {
 
   public MaxHeap() {}
