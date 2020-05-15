@@ -1,15 +1,20 @@
 package com.alexprut.algo.algorithms;
 
-/** J.Kadane algorithm (i.e. https://en.wikipedia.org/wiki/Maximum_subarray_problem) */
+/** J.Kadane algorithm */
 public class MaximumSubarray {
 
   /**
    * Finds the contiguous sub-array within a one-dimensional array, a[1...n], of numbers which has
-   * the largest sum
+   * the largest sum.
    *
    * <p>Time complexity: Θ(n)
    *
    * <p>Space complexity: Θ(n) total with Θ(1) auxiliary
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Maximum_subarray_problem">https://en.wikipedia.org/wiki/Maximum_subarray_problem</a>
+   * @param elements
+   * @return
    */
   public static int maximumSubarray(int[] elements) {
     if (elements.length == 0) {
