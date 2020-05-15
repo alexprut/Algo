@@ -5,6 +5,9 @@ package com.alexprut.algo.datastructures;
  * operations: "push", which adds an element to the collection, and "pop", which removes the most
  * recently added element that was not yet removed. The order in which elements come off a stack
  * gives rise to its alternative name, LIFO (last in, first out).
+ *
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">https://en.wikipedia.org/wiki/Stack_(abstract_data_type)</a>
  */
 public class Stack<T> {
 
@@ -56,22 +59,55 @@ public class Stack<T> {
     return list.size();
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Check if the stack is empty.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return true if the stack is empty
+   */
   public boolean empty() {
     return list.empty();
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Removes and returns the peek element in the stack.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the peek element
+   * @throws Exception if the stack is empty
+   */
   public T pop() throws Exception {
     return list.removeFront();
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Add a new element on top of the stack.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param value
+   */
   public void insert(T value) {
     push(value);
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Removes the peek element in the stack without returning the element.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @throws Exception if the stack is empty
+   */
   public void remove() throws Exception {
     pop();
   }
