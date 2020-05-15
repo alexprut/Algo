@@ -2,6 +2,11 @@ package com.alexprut.algo.datastructures;
 
 import java.util.HashMap;
 
+/**
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure">https://en.wikipedia.org/wiki/Disjoint-set_data_structure</a>
+ * @param <T>
+ */
 public class DisjointSet<T> {
 
   private HashMap<T, Element<T>> sets = new HashMap<>();
