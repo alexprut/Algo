@@ -6,11 +6,19 @@ import java.util.ArrayList;
 public class BellmanFord {
 
   /**
-   * Finds the shortest path between a source and all other nodes in the graph
+   * Finds the shortest path between a source and all other nodes in the graph.
    *
    * <p>Time complexity: Θ(|V||E|)
    *
    * <p>Space complexity: Θ(|V| + |E|) total
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</a>
+   * @param edges
+   * @param n
+   * @param start
+   * @return
+   * @throws Exception
    */
   public static int[] bellmanFord(ArrayList<Edge> edges, int n, int start) throws Exception {
     int[] distance = new int[n];
