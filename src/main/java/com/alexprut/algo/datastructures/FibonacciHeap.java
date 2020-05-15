@@ -5,6 +5,9 @@ import java.util.ArrayList;
 /**
  * A Fibonacci Heap is a collection of rooted trees that are min-heap ordered. That is, each tree
  * obeys the min-heap property: the key of a node is greater than or equal to the key of its parent.
+ *
+ * @see <a
+ *     href="https://en.wikipedia.org/wiki/Fibonacci_heap">https://en.wikipedia.org/wiki/Fibonacci_heap</a>
  */
 public class FibonacciHeap<T extends Comparable> {
 
