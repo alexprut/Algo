@@ -72,7 +72,12 @@ public class Trie {
       this.isWord = isWord;
     }
 
-    /** Time complexity: O(|s|) */
+    /**
+     * Time complexity: O(|s|)
+     *
+     * @param prefix
+     * @param suffix
+     */
     protected void insert(String prefix, String suffix) {
       if (!suffix.isEmpty()) {
         size++;
@@ -88,7 +93,12 @@ public class Trie {
       }
     }
 
-    /** Time complexity: O(|s|) */
+    /**
+     * Time complexity: O(|s|)
+     *
+     * @param word
+     * @return
+     */
     protected Node contains(String word) {
       if (!word.isEmpty()) {
         Character c = word.charAt(0);
