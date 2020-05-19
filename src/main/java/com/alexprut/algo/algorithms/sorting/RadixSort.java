@@ -3,7 +3,7 @@ package com.alexprut.algo.algorithms.sorting;
 public class RadixSort {
 
   /**
-   * Given an array of n integers, sort the elements in ascending order . The sorting in stable.
+   * Given an array of n integers, sort the elements in ascending order. The sorting in stable.
    *
    * <p>Time complexity: Θ(d(k + n)), best case complexity Θ(n)
    *

@@ -131,21 +131,38 @@ abstract class SegmentTree {
     return tree[current];
   }
 
-  /** Time complexity: O(1) */
+  /**
+   * Time complexity: O(1)
+   *
+   * @param i
+   * @return
+   */
   protected int left(int i) {
     return i * 2 + 1;
   }
 
-  /** Time complexity: O(1) */
+  /**
+   * Time complexity: O(1)
+   *
+   * @param i
+   * @return
+   */
   protected int right(int i) {
     return i * 2 + 2;
   }
 
-  /** Time complexity: O(1) */
+  /**
+   * Time complexity: O(1)
+   *
+   * @param start
+   * @param end
+   * @return
+   */
   protected int middle(int start, int end) {
     return (start + end) / 2;
   }
 
+  /** TODO example */
   public static class SumSegmentTree extends SegmentTree {
 
     public SumSegmentTree(int arr[]) {
@@ -161,6 +178,7 @@ abstract class SegmentTree {
     }
   }
 
+  /** TODO example */
   public static class MinSegmentTree extends SegmentTree {
 
     public MinSegmentTree(int[] arr) {
@@ -176,6 +194,7 @@ abstract class SegmentTree {
     }
   }
 
+  /** TODO example */
   public static class MaxSegmentTree extends SegmentTree {
 
     public MaxSegmentTree(int arr[]) {

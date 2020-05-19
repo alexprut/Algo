@@ -11,6 +11,14 @@ public class DepthFirstSearch {
 
   // TODO stronglyConnectedComponents
 
+  /**
+   * TODO
+   *
+   * @param adj
+   * @param start
+   * @return
+   * @throws Exception
+   */
   public int countForest(ArrayList<ArrayList<Integer>> adj, int start) throws Exception {
     boolean[] visited = new boolean[adj.size()];
     int counter = 0;
@@ -23,6 +31,14 @@ public class DepthFirstSearch {
     return counter;
   }
 
+  /**
+   * TODO
+   *
+   * @param adj
+   * @param start
+   * @param visited
+   * @throws Exception
+   */
   private void dfsCountForest(ArrayList<ArrayList<Integer>> adj, int start, boolean[] visited)
       throws Exception {
     Stack<Integer> stack = new Stack<>();
@@ -40,6 +56,14 @@ public class DepthFirstSearch {
     }
   }
 
+  /**
+   * TODO
+   *
+   * @param adj
+   * @param start
+   * @return
+   * @throws Exception
+   */
   public boolean hasCycle(ArrayList<ArrayList<Integer>> adj, int start) throws Exception {
     boolean[] visited = new boolean[adj.size()];
     for (boolean node : visited) {
@@ -53,6 +77,15 @@ public class DepthFirstSearch {
     return false;
   }
 
+  /**
+   * TODO
+   *
+   * @param adj
+   * @param start
+   * @param visited
+   * @return
+   * @throws Exception
+   */
   private boolean dfsHasCycle(ArrayList<ArrayList<Integer>> adj, int start, boolean visited[])
       throws Exception {
     Stack<Integer> stack = new Stack<>();
@@ -73,10 +106,24 @@ public class DepthFirstSearch {
     return false;
   }
 
+  /**
+   * TODO
+   *
+   * @param adj
+   * @return
+   * @throws Exception
+   */
   public boolean isDAG(ArrayList<ArrayList<Integer>> adj) throws Exception {
     return !hasCycle(adj, 0);
   }
 
+  /**
+   * TODO
+   *
+   * @param adj
+   * @return
+   * @throws Exception
+   */
   public ArrayList<Integer> topologicalSort(ArrayList<ArrayList<Integer>> adj) throws Exception {
     if (!isDAG(adj)) {
       throw new Exception("Graph is not a DAG");
@@ -92,6 +139,15 @@ public class DepthFirstSearch {
     return topologicalSort;
   }
 
+  /**
+   * TODO
+   *
+   * @param adj
+   * @param node
+   * @param visited
+   * @param topologicalSort
+   * @throws Exception
+   */
   private void dfsTopologicalSort(
       ArrayList<ArrayList<Integer>> adj,
       int node,

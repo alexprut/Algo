@@ -14,7 +14,11 @@ public class AVLTree<T extends Comparable> {
 
   AVLTree() {}
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param value
+   */
   public void insert(T value) {
     Node tmp = insert(root, value);
     if (this.root == null) {
@@ -23,7 +27,13 @@ public class AVLTree<T extends Comparable> {
     size++;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param node
+   * @param value
+   * @return
+   */
   protected Node<T> insert(Node<T> node, T value) {
     if (node == null) {
       return new Node<T>(value);
@@ -63,12 +73,23 @@ public class AVLTree<T extends Comparable> {
     return node;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param value
+   * @return
+   */
   public boolean search(T value) {
     return search(root, value) != null;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param root
+   * @param value
+   * @return
+   */
   public Node<T> search(Node<T> root, T value) {
     Node<T> tmp = root;
     while (tmp != null) {
@@ -81,12 +102,23 @@ public class AVLTree<T extends Comparable> {
     return null;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param value
+   */
   public void delete(T value) {
     this.root = delete(this.root, value);
     size--;
   }
 
+  /**
+   * TODO
+   *
+   * @param node
+   * @param value
+   * @return
+   */
   protected Node<T> delete(Node<T> node, T value) {
     if (node == null) {
       return null;
@@ -144,17 +176,30 @@ public class AVLTree<T extends Comparable> {
     return node;
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @return
+   */
   public Node<T> minimum() {
     return minimum(root);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @return
+   */
   public Node<T> maximum() {
     return maximum(root);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @param node
+   * @return
+   */
   private Node<T> minimum(Node<T> node) {
     if (node == null || node.left == null) {
       return node;
@@ -162,7 +207,12 @@ public class AVLTree<T extends Comparable> {
     return minimum(node.left);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @param node
+   * @return
+   */
   private Node<T> maximum(Node<T> node) {
     if (node == null || node.right == null) {
       return node;
@@ -170,7 +220,12 @@ public class AVLTree<T extends Comparable> {
     return maximum(node.right);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @param node
+   * @return
+   */
   private Node<T> successor(Node<T> node) {
     if (node.right != null) {
       return minimum(node.right);
@@ -183,12 +238,21 @@ public class AVLTree<T extends Comparable> {
     return y;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @return
+   */
   public int size() {
     return this.size;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param x
+   * @return
+   */
   protected Node<T> leftRotation(Node<T> x) {
     Node y = x.right;
     x.right = y.left;
@@ -212,7 +276,12 @@ public class AVLTree<T extends Comparable> {
     return y;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param x
+   * @return
+   */
   protected Node<T> rightRotation(Node<T> x) {
     Node<T> y = x.left;
     x.left = y.right;
@@ -236,6 +305,12 @@ public class AVLTree<T extends Comparable> {
     return y;
   }
 
+  /**
+   * TODO
+   *
+   * @param n
+   * @return
+   */
   protected int getBalance(Node<T> n) {
     if (n == null) {
       return 0;
@@ -244,6 +319,12 @@ public class AVLTree<T extends Comparable> {
     return height(n.left()) - height(n.right());
   }
 
+  /**
+   * TODO
+   *
+   * @param n
+   * @return
+   */
   private int height(Node<T> n) {
     if (n == null) {
       return 0;

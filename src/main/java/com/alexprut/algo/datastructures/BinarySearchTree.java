@@ -199,7 +199,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return result;
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive */
+  /**
+   * TODO interactive
+   *
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @param node
+   * @param value
+   * @return
+   */
   private BinaryNode<T> search(BinaryNode<T> node, T value) {
     if (node == null || node.value.compareTo(value) == 0) {
       return node;
@@ -210,17 +218,30 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return search(node.left, value);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @param value
+   * @return
+   */
   public boolean contains(T value) {
     return search(root, value) != null;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @return
+   */
   public int size() {
     return this.size;
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @param node
+   */
   private void insert(BinaryNode<T> node) {
     BinaryNode<T> y = null;
     BinaryNode<T> x = root;
@@ -242,17 +263,30 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @return
+   */
   public BinaryNode<T> minimum() {
     return minimum(root);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * @return
+   */
   public BinaryNode<T> maximum() {
     return maximum(root);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive
+   *
+   * @param node
+   * @return
+   */
   private BinaryNode<T> minimum(BinaryNode<T> node) {
     if (node == null || node.left == null) {
       return node;
@@ -260,7 +294,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return minimum(node.left);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive */
+  /**
+   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive
+   *
+   * @param node
+   * @return
+   */
   private BinaryNode<T> maximum(BinaryNode<T> node) {
     if (node == null || node.right == null) {
       return node;

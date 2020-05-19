@@ -13,27 +13,51 @@ public abstract class BinaryHeap {
 
   BinaryHeap() {}
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param i
+   * @return
+   */
   public static int parent(int i) {
     return (i + 1) / 2 - 1;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param i
+   * @return
+   */
   public static int left(int i) {
     return 2 * i + 1;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param i
+   * @return
+   */
   public static int right(int i) {
     return 2 * i + 2;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @return
+   */
   public int root() {
     return elements[0];
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @return
+   * @throws Exception
+   */
   public int extract() throws Exception {
     if (size < 1) {
       throw new Exception("Heap underflow");
@@ -46,7 +70,11 @@ public abstract class BinaryHeap {
     return extracted;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param i
+   */
   public abstract void heapify(int i);
 
   /** Time complexity: O(n) */
@@ -56,14 +84,27 @@ public abstract class BinaryHeap {
     }
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param e
+   */
   public abstract void insert(int e);
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @return
+   */
   public int size() {
     return size;
   }
 
+  /**
+   * TODO
+   *
+   * @return
+   */
   public int[] elements() {
     int[] tmp = new int[size];
     for (int i = 0; i < size; i++) {
