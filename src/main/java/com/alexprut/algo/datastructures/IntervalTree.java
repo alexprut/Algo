@@ -17,7 +17,12 @@ public class IntervalTree {
 
   IntervalTree() {}
 
-  /** Time complexity: O(logn) TODO check that the low is less than the high */
+  /**
+   * Time complexity: O(logn) TODO check that the low is less than the high
+   *
+   * @param low
+   * @param high
+   */
   public void insert(int low, int high) {
     IntervalNode x = new IntervalNode(low, high, true);
     IntervalNode p = null;
@@ -44,7 +49,11 @@ public class IntervalTree {
     size++;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param x
+   */
   protected void insertFixup(IntervalNode x) {
     while (x.parent != null && x.parent.isRed()) {
       if (x.parent == x.parent.parent.left) {

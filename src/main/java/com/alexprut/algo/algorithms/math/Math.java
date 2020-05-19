@@ -33,6 +33,8 @@ public class Math {
   }
 
   /**
+   * TODO
+   *
    * @param n
    * @return
    */
@@ -50,7 +52,7 @@ public class Math {
   }
 
   /**
-   * // TODO search a more efficient algorithm
+   * TODO search a more efficient algorithm
    *
    * @param elements
    * @param <T>

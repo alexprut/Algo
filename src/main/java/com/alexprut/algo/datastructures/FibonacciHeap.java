@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class FibonacciHeap<T extends Comparable> {
 
-  /** The minimum node */
+  /** The minimum node. */
   protected Node<T> min;
 
-  /** The number of nodes in the heap */
+  /** The number of nodes in the heap. */
   protected int size = 0;
 
   /** Creates and returns a new heap containing no elements. */
@@ -104,6 +104,8 @@ public class FibonacciHeap<T extends Comparable> {
    * Reduce the number of trees in the Fibonacci heap. Consolidating the root list consists of
    * repeatedly executing the following steps until every root in the root list has a distinct
    * degree value.
+   *
+   * <p>TODO
    */
   protected void consolidate() {
     ArrayList<Node<T>> degrees = new ArrayList<>();
@@ -207,7 +209,12 @@ public class FibonacciHeap<T extends Comparable> {
     return true;
   }
 
-  /** */
+  /**
+   * TODO
+   *
+   * @param x
+   * @param y
+   */
   protected void cut(Node<T> x, Node<T> y) {
     // remove x from the child list of y
     if (x.rightSibling == x) {
@@ -231,6 +238,11 @@ public class FibonacciHeap<T extends Comparable> {
     x.mark = false;
   }
 
+  /**
+   * TODO
+   *
+   * @param y
+   */
   protected void cascadingCut(Node<T> y) {
     Node<T> z = y.parent;
     if (z != null) {
@@ -247,6 +259,8 @@ public class FibonacciHeap<T extends Comparable> {
    * Deletes element x from heap
    *
    * <p>Time complexity: O(logn)
+   *
+   * @param x
    */
   public void delete(Node<T> x) {
     decreaseKey(x, min.key);

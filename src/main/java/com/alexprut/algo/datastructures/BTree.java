@@ -27,11 +27,20 @@ public class BTree<T extends Comparable> {
     // TODO implement method or abstract method
   }
 
+  /**
+   * TODO
+   *
+   * @param x
+   */
   protected void diskWrite(Node x) {
     // TODO implement method or abstract method
   }
 
-  /** Time complexity: O(1) */
+  /**
+   * Time complexity: O(1)
+   *
+   * @return
+   */
   protected Node<T> allocateNode() {
     return new Node<>();
   }
@@ -44,7 +53,13 @@ public class BTree<T extends Comparable> {
     root = x;
   }
 
-  /** Time complexity: O(th) = O(tlog_t(n)) */
+  /**
+   * Time complexity: O(th) = O(tlog_t(n))
+   *
+   * @param x
+   * @param k
+   * @return
+   */
   protected Pair<Node<T>, Integer> search(Node<T> x, T k) {
     int i = 0;
     while (i < x.key.size() && k.compareTo(x.key.get(i)) > 0) {
@@ -61,7 +76,12 @@ public class BTree<T extends Comparable> {
     return search(x.children.get(i), k);
   }
 
-  /** Time complexity: O(th) = O(tlog_t(n)) */
+  /**
+   * Time complexity: O(th) = O(tlog_t(n))
+   *
+   * @param x
+   * @return
+   */
   protected Pair<Node<T>, Integer> getPredecessor(Node<T> x) {
     if (x.isLeaf) {
       return new Pair<>(x, x.key.size() - 1);
@@ -71,7 +91,12 @@ public class BTree<T extends Comparable> {
     return getPredecessor(x.children.get(x.children.size() - 1));
   }
 
-  /** Time complexity: O(th) = O(tlog_t(n)) */
+  /**
+   * Time complexity: O(th) = O(tlog_t(n))
+   *
+   * @param x
+   * @return
+   */
   protected Pair<Node<T>, Integer> getSuccessor(Node<T> x) {
     if (x.isLeaf) {
       return new Pair<>(x, 0);
@@ -81,12 +106,23 @@ public class BTree<T extends Comparable> {
     return getSuccessor(x.children.get(0));
   }
 
-  /** Time complexity: O(th) = O(tlog_t(n)) */
+  /**
+   * Time complexity: O(th) = O(tlog_t(n))
+   *
+   * @param k
+   * @return
+   */
   public boolean search(T k) {
     return search(root, k) != null;
   }
 
-  /** Time complexity: O(th) = O(tlog_t(n)) */
+  /**
+   * Time complexity: O(th) = O(tlog_t(n))
+   *
+   * @param node
+   * @param k
+   * @return
+   */
   protected boolean delete(Node<T> node, T k) {
     boolean isInRoot = false;
     int index = 0;
@@ -235,12 +271,21 @@ public class BTree<T extends Comparable> {
     return delete(child, k);
   }
 
-  /** Time complexity: O(th) = O(tlog_t(n)) */
+  /**
+   * Time complexity: O(th) = O(tlog_t(n))
+   *
+   * @param k
+   * @return
+   */
   public boolean delete(T k) {
     return delete(root, k);
   }
 
-  /** O(h) disk access and O(th) = O(tlog_tn) time complexity */
+  /**
+   * O(h) disk access and O(th) = O(tlog_tn) time complexity
+   *
+   * @param k
+   */
   public void insert(T k) {
     Node<T> tmp = root;
     if (root.key.size() == 2 * t - 1) {
@@ -255,6 +300,10 @@ public class BTree<T extends Comparable> {
     }
   }
 
+  /**
+   * @param parent
+   * @param index
+   */
   protected void splitChild(Node<T> parent, int index) {
     Node<T> newNodeToRight = allocateNode();
     Node<T> toSplitNode = parent.children.get(index);
@@ -291,6 +340,10 @@ public class BTree<T extends Comparable> {
     diskWrite(parent);
   }
 
+  /**
+   * @param x
+   * @param k
+   */
   public void insertNonFull(Node<T> x, T k) {
     int i = x.key.size() - 1;
     if (x.isLeaf) {

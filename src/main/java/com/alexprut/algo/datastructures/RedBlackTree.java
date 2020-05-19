@@ -123,13 +123,21 @@ public class RedBlackTree<T extends Comparable> {
     return null;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param value
+   */
   public void delete(T value) {
     delete(search(root, value));
     size--;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param z
+   */
   public void delete(Node<T> z) {
     Node<T> x;
     Node<T> y = z;
@@ -161,6 +169,11 @@ public class RedBlackTree<T extends Comparable> {
     }
   }
 
+  /**
+   * TODO
+   *
+   * @param x
+   */
   protected void deleteFixup(Node<T> x) {
     while (x != root && !x.isRed()) {
       if (x == x.parent.left) {
@@ -226,6 +239,9 @@ public class RedBlackTree<T extends Comparable> {
    * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
    *
    * <p>Time complexity: O(1)
+   *
+   * @param u
+   * @param v
    */
   protected void transplant(Node<T> u, Node<T> v) {
     if (u.parent == null) {
@@ -240,17 +256,30 @@ public class RedBlackTree<T extends Comparable> {
     }
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @return
+   */
   public Node<T> minimum() {
     return minimum(root);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @return
+   */
   public Node<T> maximum() {
     return maximum(root);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @param node
+   * @return
+   */
   private Node<T> minimum(Node<T> node) {
     if (node == null || node.left == null) {
       return node;
@@ -258,7 +287,12 @@ public class RedBlackTree<T extends Comparable> {
     return minimum(node.left);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @param node
+   * @return
+   */
   private Node<T> maximum(Node<T> node) {
     if (node == null || node.right == null) {
       return node;
@@ -266,7 +300,12 @@ public class RedBlackTree<T extends Comparable> {
     return maximum(node.right);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Time complexity: O(logn) if the tree is balanced
+   *
+   * @param node
+   * @return
+   */
   private Node<T> successor(Node<T> node) {
     if (node.right != null) {
       return minimum(node.right);
@@ -279,12 +318,20 @@ public class RedBlackTree<T extends Comparable> {
     return y;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @return
+   */
   public int size() {
     return this.size;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param x
+   */
   protected void leftRotation(Node<T> x) {
     Node<T> y = x.right;
     x.right = y.left;

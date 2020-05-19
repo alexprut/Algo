@@ -5,9 +5,14 @@ import com.alexprut.algo.Utils;
 public class BubbleSort {
 
   /**
-   * Time complexity: O(n^2) in the worst case, O(n) in the best case, when the array is sorted
+   * TODO
+   *
+   * <p>Time complexity: O(n^2) in the worst case, O(n) in the best case, when the array is sorted
    *
    * <p>Space complexity: O(n) total with O(1) auxiliary
+   *
+   * @param arr
+   * @return
    */
   public static int[] bubbleSort(int[] arr) {
     boolean swapped = true;

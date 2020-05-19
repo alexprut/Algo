@@ -7,6 +7,14 @@ import com.alexprut.algo.Utils;
  */
 public class QuickSort {
 
+  /**
+   * TODO
+   *
+   * @param arr
+   * @param start
+   * @param end
+   * @return
+   */
   public static int[] quickSort(int[] arr, int start, int end) {
     if (start < end) {
       int pivot = partition(arr, start, end);
@@ -17,6 +25,14 @@ public class QuickSort {
     return arr;
   }
 
+  /**
+   * TODO
+   *
+   * @param arr
+   * @param start
+   * @param end
+   * @return
+   */
   private static int partition(int[] arr, int start, int end) {
     int x = arr[end];
     int i = start - 1;

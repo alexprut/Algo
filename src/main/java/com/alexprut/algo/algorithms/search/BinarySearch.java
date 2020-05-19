@@ -7,7 +7,9 @@ package com.alexprut.algo.algorithms.search;
 public class BinarySearch {
 
   /**
-   * Time complexity: O(logn)
+   * TODO
+   *
+   * <p>Time complexity: O(logn)
    *
    * @param a
    * @param v
@@ -34,7 +36,9 @@ public class BinarySearch {
   }
 
   /**
-   * Time complexity: O(logn)
+   * TODO
+   *
+   * <p>Time complexity: O(logn)
    *
    * @param a
    * @param v
@@ -61,7 +65,9 @@ public class BinarySearch {
   }
 
   /**
-   * Time complexity: O(logn)
+   * TODO
+   *
+   * <p>Time complexity: O(logn)
    *
    * @param a
    * @param v

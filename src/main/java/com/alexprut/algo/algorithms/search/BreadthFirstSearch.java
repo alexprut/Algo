@@ -10,9 +10,16 @@ import java.util.ArrayList;
 public class BreadthFirstSearch {
 
   /**
-   * Time complexity: O(V + E)
+   * TODO
+   *
+   * <p>Time complexity: O(V + E)
    *
    * <p>Space complexity: O(V)
+   *
+   * @param adj
+   * @param start
+   * @return
+   * @throws Exception
    */
   public int[] shortestPath(ArrayList<ArrayList<Integer>> adj, int start) throws Exception {
     int[] shortestPaths = new int[adj.size()];
@@ -40,9 +47,16 @@ public class BreadthFirstSearch {
   }
 
   /**
-   * Time complexity: O(V + E)
+   * TODO
+   *
+   * <p>Time complexity: O(V + E)
    *
    * <p>Space complexity: O(V)
+   *
+   * @param adj
+   * @param start
+   * @return
+   * @throws Exception
    */
   public int[] predecessorSubgraph(ArrayList<ArrayList<Integer>> adj, int start) throws Exception {
     int[] parent = new int[adj.size()];

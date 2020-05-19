@@ -12,17 +12,32 @@ public class MaxHeap extends BinaryHeap {
     super(elements);
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @return
+   */
   public int max() {
     return root();
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @return
+   * @throws Exception
+   */
   public int extractMax() throws Exception {
     return extract();
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param i
+   * @param value
+   * @throws Exception
+   */
   public void increaseKey(int i, int value) throws Exception {
     if (elements[i] >= value) {
       throw new Exception("The new key is smaller than the current key");
@@ -37,7 +52,11 @@ public class MaxHeap extends BinaryHeap {
     }
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param e
+   */
   public void insert(int e) {
     size++;
     if (elements.length < size) {
@@ -56,7 +75,11 @@ public class MaxHeap extends BinaryHeap {
     }
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Time complexity: O(logn)
+   *
+   * @param i
+   */
   public void heapify(int i) {
     int left = left(i);
     int right = right(i);

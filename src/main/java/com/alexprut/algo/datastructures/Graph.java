@@ -28,6 +28,7 @@ public class Graph {
     this.isDirected = isDirected;
   }
 
+  /** TODO */
   private void buildAdjacencyMatrix() {
     adjMatrix = new int[n][n];
 
@@ -45,6 +46,7 @@ public class Graph {
     }
   }
 
+  /** TODO */
   private void buildAdjacencyList() {
     adjList = new ArrayList<>();
 
@@ -57,6 +59,11 @@ public class Graph {
     }
   }
 
+  /**
+   * TODO
+   *
+   * @return
+   */
   public int[][] getAdjacencyMatrix() {
     if (adjMatrix == null) {
       buildAdjacencyMatrix();
@@ -65,6 +72,11 @@ public class Graph {
     return adjMatrix;
   }
 
+  /**
+   * TODO
+   *
+   * @return
+   */
   public ArrayList<ArrayList<Pair<Integer, Integer>>> getAdjacencyList() {
     if (adjList == null) {
       buildAdjacencyList();
@@ -77,17 +89,33 @@ public class Graph {
     return edges;
   }
 
-  /** Calculates the minimum spanning tree */
+  /**
+   * Calculates the minimum spanning tree.
+   *
+   * <p>TODO
+   *
+   * @return
+   */
   public ArrayList<Edge> mst() {
     return Kruskal.kruskal(edges, n);
   }
 
+  /**
+   * TODO
+   *
+   * @param edges
+   */
   public void addEdge(ArrayList<Edge> edges) {
     for (Edge edge : edges) {
       addEdge(edge);
     }
   }
 
+  /**
+   * TODO
+   *
+   * @param edge
+   */
   public void addEdge(Edge edge) {
     edges.add(edge);
 

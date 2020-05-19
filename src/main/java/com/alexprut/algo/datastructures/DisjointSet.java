@@ -11,11 +11,23 @@ public class DisjointSet<T> {
 
   private HashMap<T, Element<T>> sets = new HashMap<>();
 
+  /**
+   * TODO
+   *
+   * @param value
+   * @return
+   */
   public Element<T> makeSet(T value) {
     sets.put(value, new Element<>(value));
     return sets.get(value);
   }
 
+  /**
+   * TODO
+   *
+   * @param a
+   * @param b
+   */
   public void union(Element<T> a, Element<T> b) {
     Element<T> parentA = findSet(a);
     Element<T> parentB = findSet(b);
@@ -34,6 +46,12 @@ public class DisjointSet<T> {
     }
   }
 
+  /**
+   * TODO
+   *
+   * @param s
+   * @return
+   */
   public Element<T> findSet(Element<T> s) {
     if (s.parent().getValue() == s.getValue()) {
       return s;
@@ -43,10 +61,22 @@ public class DisjointSet<T> {
     return s.parent();
   }
 
+  /**
+   * TODO
+   *
+   * @param value
+   * @return
+   */
   public Element<T> findSet(T value) {
     return findSet(getElement(value));
   }
 
+  /**
+   * TODO
+   *
+   * @param value
+   * @return
+   */
   public Element<T> getElement(T value) {
     return sets.get(value);
   }

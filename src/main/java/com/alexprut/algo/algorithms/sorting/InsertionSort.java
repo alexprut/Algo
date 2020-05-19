@@ -5,12 +5,17 @@ import com.alexprut.algo.Utils;
 public class InsertionSort {
 
   /**
-   * Time complexity: O(n^2) in the worst case, when the array is sorted in reverse order O(n) best
-   * case, when the array is already sorted
+   * TODO
+   *
+   * <p>Time complexity: O(n^2) in the worst case, when the array is sorted in reverse order O(n)
+   * best case, when the array is already sorted
    *
    * <p>Space complexity; O(n) total with O(1) auxiliary In-place algorithm, it rearranges the
    * numbers within the given array, with at most a constant number of them stored outside the array
    * at any time
+   *
+   * @param arr
+   * @return
    */
   public static int[] insertionSort(int[] arr) {
     for (int i = 1; i < arr.length; i++) {

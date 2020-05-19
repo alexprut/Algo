@@ -23,7 +23,11 @@ public class MerkleTree {
     build(0);
   }
 
-  /** Time complexity: Θ(n) */
+  /**
+   * Time complexity: Θ(n)
+   *
+   * @param i
+   */
   protected void build(int i) {
     if (hashNodes[i] == null) {
       build(left(i));
@@ -32,27 +36,51 @@ public class MerkleTree {
     }
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param i
+   * @return
+   */
   protected static int parent(int i) {
     return (i + 1) / 2 - 1;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param i
+   * @return
+   */
   protected static int left(int i) {
     return 2 * i + 1;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @param i
+   * @return
+   */
   protected static int right(int i) {
     return 2 * i + 2;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Time complexity: Θ(1)
+   *
+   * @return
+   */
   public String root() {
     return hashNodes[0];
   }
 
-  /** Time complexity: Θ(logn) */
+  /**
+   * Time complexity: Θ(logn)
+   *
+   * @param elementIndex
+   * @return
+   */
   public ArrayList<String> getProofPath(int elementIndex) {
     ArrayList<String> proofPath = new ArrayList<>();
     int elements = (hashNodes.length + 1) / 2;
@@ -70,7 +98,14 @@ public class MerkleTree {
     return proofPath;
   }
 
-  /** Time complexity: Θ(logn) */
+  /**
+   * Time complexity: Θ(logn)
+   *
+   * @param element
+   * @param rootHash
+   * @param proofPath
+   * @return
+   */
   public static boolean verify(String element, String rootHash, final ArrayList<String> proofPath) {
     String tmpHash = hash(element);
     for (String s : proofPath) {
@@ -79,6 +114,12 @@ public class MerkleTree {
     return tmpHash.equals(rootHash);
   }
 
+  /**
+   * TODO
+   *
+   * @param content
+   * @return
+   */
   public static String hash(String content) {
     try {
       MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -89,6 +130,12 @@ public class MerkleTree {
     }
   }
 
+  /**
+   * TODO
+   *
+   * @param hash
+   * @return
+   */
   private static String toHexString(final byte[] hash) {
     BigInteger number = new BigInteger(1, hash);
     StringBuilder hexString = new StringBuilder(number.toString(16));

@@ -12,6 +12,9 @@ public class CountingSort {
    * <p>Time complexity: Θ(n)
    *
    * <p>Space complexity: Θ(n)
+   *
+   * @param arr
+   * @return
    */
   public static int[] countingSort(int[] arr) {
     int[] result = new int[arr.length];
@@ -43,6 +46,10 @@ public class CountingSort {
    * <p>Time complexity: Θ(n)
    *
    * <p>Space complexity: Θ(n)
+   *
+   * @param arr
+   * @param digitIndex
+   * @return
    */
   public static int[] countingSort(int[] arr, int digitIndex) {
     int[] result = new int[arr.length];
