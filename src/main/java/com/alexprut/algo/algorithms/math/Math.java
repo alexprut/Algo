@@ -88,7 +88,8 @@ public class Math {
   }
 
   /**
-   * Given a collection of elements that might contain duplicates, return all possible unique permutations.
+   * Given a collection of elements that might contain duplicates, return all possible unique
+   * permutations.
    *
    * @param elem the elements to permute
    * @param <T> type of the elements
@@ -106,8 +107,12 @@ public class Math {
     return res;
   }
 
-  private static <T> void permuteUnique(final ArrayList<T> c, final ArrayList<T> n, List<List<T>> res) {
-    if (n.size() == 0) { res.add(c); return; }
+  private static <T> void permuteUnique(
+      final ArrayList<T> c, final ArrayList<T> n, List<List<T>> res) {
+    if (n.size() == 0) {
+      res.add(c);
+      return;
+    }
     for (int i = 0; i < n.size(); i++) {
       if (i == 0 || !n.get(i - 1).equals(n.get(i))) {
         ArrayList<T> ctmp = (ArrayList<T>) c.clone();

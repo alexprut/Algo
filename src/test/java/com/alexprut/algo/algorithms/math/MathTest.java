@@ -2,6 +2,8 @@ package com.alexprut.algo.algorithms.math;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -99,5 +101,16 @@ public class MathTest {
     Assert.assertArrayEquals(
         (new ArrayList<ArrayList<Character>>()).toArray(),
         Math.permute(new ArrayList<>()).toArray());
+  }
+
+  @Test
+  public void permuteUniqueTest() {
+    List<List<Integer>> expected = new ArrayList<>();
+    expected.add(Arrays.asList(1, 1, 2));
+    expected.add(Arrays.asList(1, 2, 1));
+    expected.add(Arrays.asList(2, 1, 1));
+    Assert.assertEquals(expected, Math.permuteUnique(new Integer[] {1, 1, 2}));
+
+    Assert.assertEquals(new ArrayList<>(), Math.permuteUnique(new Integer[] {}));
   }
 }
