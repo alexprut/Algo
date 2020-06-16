@@ -11,7 +11,7 @@ package com.alexprut.algo.datastructures;
  */
 public class Stack<T> {
 
-  private LinkedList<T> list;
+  private final LinkedList<T> list;
 
   public Stack() {
     list = new LinkedList<>();
@@ -93,7 +93,7 @@ public class Stack<T> {
    *
    * <p>Space complexity: Θ(1)
    *
-   * @param value
+   * @param value the new value to insert
    */
   public void insert(T value) {
     push(value);
