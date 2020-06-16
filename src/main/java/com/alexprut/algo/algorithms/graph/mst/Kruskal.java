@@ -9,7 +9,7 @@ import java.util.Collections;
 public class Kruskal {
 
   /**
-   * Finds the minimum spanning tree (MST) of an undirected graph
+   * Finds the minimum spanning tree (MST) of an undirected graph.
    *
    * <p>Time complexity: O(|E|log|V|)
    *

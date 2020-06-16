@@ -1,6 +1,14 @@
 package com.alexprut.algo.datastructures;
 
 /**
+ * LinkedList is a data structure in which objects are linked in a linear order. The order in a
+ * linked list is determined by a pointer in each object. You may use a linked list for storing the
+ * linear order of elements. As illustrated in the example below, we may
+ *
+ * <p>Example:
+ *
+ * <p>[Alice] -> [Bob] -> [Mike] -> null
+ *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Linked_list">https://en.wikipedia.org/wiki/Linked_list</a>
  * @param <T>
@@ -13,29 +21,41 @@ public class LinkedList<T> {
   public LinkedList() {}
 
   /**
-   * Time complexity: Θ(1)
+   * Insert a new element at the front of the LinkedList.
    *
-   * @param value
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param value the element to insert
    */
   public void insertFront(T value) {
-    head = new Node<T>(value, head);
+    head = new Node<>(value, head);
     size++;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Check if the the list is empty.
    *
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return true if the list is empty
    */
   public boolean empty() {
     return size == 0;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Removes the element in front of the LinkedList.
    *
-   * @return
-   * @throws Exception
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the element in front of the LinkedList
+   * @throws Exception if the list is empty
    */
   public T removeFront() throws Exception {
     if (empty()) {
@@ -45,23 +65,38 @@ public class LinkedList<T> {
 
     Node<T> node = head;
     head = node.next;
-    return node.value;
+    return node.getValue();
   }
 
-  // TODO implement the remove method
-  // TODO clone method
-
+  /**
+   * Returns the element in head of the LinkedList.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the head element of the list
+   */
   public Node<T> head() {
     return head;
   }
 
+  /**
+   * Returns the size of the LinkedList.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return list size
+   */
   public int size() {
     return size;
   }
 
   public static class Node<T> {
 
-    private T value;
+    private final T value;
     private Node<T> next;
 
     public Node(T value, Node<T> next) {
@@ -70,27 +105,39 @@ public class LinkedList<T> {
     }
 
     /**
-     * Time complexity: Θ(1)
+     * Change the pointer to the next element.
      *
-     * @param next
+     * <p>Time complexity: Θ(1)
+     *
+     * <p>Space complexity: Θ(1)
+     *
+     * @param next pointer to the next element
      */
-    public void setNext(Node<T> next) {
+    protected void setNext(Node<T> next) {
       this.next = next;
     }
 
     /**
-     * Time complexity: Θ(1)
+     * Returns the next element in the LinkedList from the current element.
      *
-     * @return
+     * <p>Time complexity: Θ(1)
+     *
+     * <p>Space complexity: Θ(1)
+     *
+     * @return the next element
      */
     public Node<T> getNext() {
       return this.next;
     }
 
     /**
-     * Time complexity: Θ(1)
+     * Get the value of the current element.
      *
-     * @return
+     * <p>Time complexity: Θ(1)
+     *
+     * <p>Space complexity: Θ(1)
+     *
+     * @return value of the element
      */
     public T getValue() {
       return this.value;

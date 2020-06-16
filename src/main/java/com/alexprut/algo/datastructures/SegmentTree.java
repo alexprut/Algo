@@ -8,8 +8,8 @@ package com.alexprut.algo.datastructures;
  */
 abstract class SegmentTree {
 
-  private int[] elements;
-  private int[] tree;
+  private final int[] elements;
+  private final int[] tree;
 
   public SegmentTree(int[] arr) {
     elements = arr;
@@ -165,7 +165,7 @@ abstract class SegmentTree {
   /** TODO example */
   public static class SumSegmentTree extends SegmentTree {
 
-    public SumSegmentTree(int arr[]) {
+    public SumSegmentTree(int[] arr) {
       super(arr);
     }
 
@@ -197,7 +197,7 @@ abstract class SegmentTree {
   /** TODO example */
   public static class MaxSegmentTree extends SegmentTree {
 
-    public MaxSegmentTree(int arr[]) {
+    public MaxSegmentTree(int[] arr) {
       super(arr);
     }
 

@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class Trie {
 
-  private Node root = new Node("", true);
+  private final Node root = new Node("", true);
 
   public Trie() {}
 
@@ -96,8 +96,8 @@ public class Trie {
     /**
      * Time complexity: O(|s|)
      *
-     * @param word
-     * @return
+     * @param word the word to search
+     * @return the node containing the word
      */
     protected Node contains(String word) {
       if (!word.isEmpty()) {
