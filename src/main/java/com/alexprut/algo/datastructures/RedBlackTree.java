@@ -377,7 +377,7 @@ public class RedBlackTree<T extends Comparable> {
 
   protected static class Node<T extends Comparable> {
 
-    private T value;
+    private final T value;
     private boolean color; // when true then color is Red, otherwise Black
     private Node<T> parent;
     private Node<T> left;

@@ -94,7 +94,7 @@ public class LinkedList<T> {
     return size;
   }
 
-  public static class Node<T> {
+  protected static class Node<T> {
 
     private final T value;
     private Node<T> next;

@@ -16,7 +16,7 @@ public class LinkedListTest {
     Assert.assertEquals(5, (int) linkedList.head().getValue());
     Assert.assertEquals(1, linkedList.size());
     try {
-      Assert.assertEquals(5, (int) linkedList.removeFront().getValue());
+      Assert.assertEquals(5, (int) linkedList.removeFront());
     } catch (Exception e) {
       fail("Should not thrown an exception");
     }

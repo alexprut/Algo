@@ -307,7 +307,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return maximum(node.right);
   }
 
-  public static class BinaryNode<T> {
+  protected static class BinaryNode<T> {
 
     private T value;
     private BinaryNode<T> parent;

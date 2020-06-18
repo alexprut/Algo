@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *     href="https://en.wikipedia.org/wiki/Merkle_tree">https://en.wikipedia.org/wiki/Merkle_tree</a>
  */
 public class MerkleTree {
-  private String[] hashNodes;
+  private final String[] hashNodes;
 
   public MerkleTree(final ArrayList<String> elements) {
     if (elements.size() % 2 != 0) {
