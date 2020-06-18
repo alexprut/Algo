@@ -10,7 +10,7 @@ package com.alexprut.algo.datastructures;
  */
 public class Queue<T> {
 
-  private DoubleLinkedList<T> list;
+  private final DoubleLinkedList<T> list;
 
   public Queue() {
     list = new DoubleLinkedList<>();
