@@ -6,13 +6,23 @@ import java.util.HashMap;
  * A Trie, or prefix tree, is an ordered tree data structure. Used for storing a set of strings and
  * searching efficiently the presence of an element within the set.
  *
- * <p>TODO add an example
+ * <p>Example: ["walk", "was", "word", "worm"]
+ *
+ * <pre>
+ *        w
+ *       / \
+ *      o   a
+ *     /   / \
+ *    r   s   l
+ *   / \       \
+ *  d   m       k
+ * </pre>
  *
  * @see <a href="https://en.wikipedia.org/wiki/Trie">https://en.wikipedia.org/wiki/Trie</a>
  */
 public class Trie {
 
-  private final Node root = new Node("", true);
+  private final Node root = new Node();
 
   public Trie() {}
 
@@ -21,95 +31,159 @@ public class Trie {
    *
    * <p>Time complexity: O(|s|)
    *
-   * @param word the element to insert
+   * <p>Space complexity: O(|s|)
+   *
+   * @param elem the element to insert
    */
-  public void insert(String word) {
-    root.insert("", word);
+  public void insert(String elem) {
+    if (!elem.isEmpty()) {
+      Node tmp = root;
+      for (int i = 0; i < elem.length(); i++) {
+        tmp.size++;
+        if (!tmp.children.containsKey(elem.charAt(i))) {
+          tmp.children.put(elem.charAt(i), new Node());
+        }
+        tmp = tmp.children.get(elem.charAt(i));
+      }
+      tmp.size++;
+      tmp.isEndOfWord = true;
+    }
   }
 
   /**
-   * Check if a prefix is within the trie.
+   * Check if a prefix present is within the trie.
    *
    * <p>Time complexity: O(|s|)
    *
-   * @param word the element to search
+   * <p>Space complexity: O(1)
+   *
+   * @param prefix contained in a element to search
    * @return true if the element is contained
    */
-  public boolean contains(String word) {
-    return root.contains(word) != null;
+  public boolean searchPrefix(String prefix) {
+    return contains(prefix) != null;
   }
 
   /**
-   * Check if an element is withing the trie.
+   * Check if an element is within the trie.
    *
    * <p>Time complexity: O(|s|)
    *
-   * @param word the element to search
+   * <p>Space complexity: O(1)
+   *
+   * @param elem the element to search
    * @return true if the element is contained
    */
-  public boolean containsWord(String word) {
-    Node node = root.contains(word);
-    return node != null && node.isWord;
+  public boolean search(String elem) {
+    Node node = contains(elem);
+    return node != null && node.isEndOfWord;
   }
 
-  // TODO implement: boolean remove(String word)
-  // TODO implement: int countPrefix(String word)
-  // TODO implement: int countWord(String word)
+  /**
+   * Returns the number of unique elements containing that prefix.
+   *
+   * <p>Time complexity: O(|s|)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param prefix contained in a element to search
+   * @return the number of unique elements containing that prefix
+   */
+  public int sizePrefix(String prefix) {
+    Node node = contains(prefix);
+    return node != null ? node.size : 0;
+  }
 
-  protected class Node {
+  /**
+   * Return the number of unique elements contained within the trie.
+   *
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return number of unique elements
+   */
+  public int size() {
+    return root.size;
+  }
 
-    String prefix;
-    boolean isWord = false;
-    int size = 0;
-    HashMap<Character, Node> children = new HashMap<>();
-
-    protected Node(String prefix) {
-      this.prefix = prefix;
-    }
-
-    protected Node(String prefix, boolean isWord) {
-      this.prefix = prefix;
-      this.isWord = isWord;
-    }
-
-    /**
-     * Time complexity: O(|s|)
-     *
-     * @param prefix
-     * @param suffix
-     */
-    protected void insert(String prefix, String suffix) {
-      if (!suffix.isEmpty()) {
-        size++;
-        Character c = suffix.charAt(0);
-        String newPrefix = prefix + c;
-        String newSuffix = suffix.substring(1);
-        if (children.containsKey(c)) {
-          children.get(c).insert(newPrefix, newSuffix);
+  /**
+   * Remove an element if contained within the trie.
+   *
+   * <p>Time complexity: O(|s|)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param elem the element to find and remove
+   * @return true if the element was removed
+   */
+  public boolean remove(String elem) {
+    if (!elem.isEmpty() && search(elem)) {
+      Node tmp = root;
+      for (int i = 0; i < elem.length(); i++) {
+        tmp.size--;
+        if (tmp.children.get(elem.charAt(i)).size > 1) {
+          tmp = tmp.children.get(elem.charAt(i));
         } else {
-          children.put(c, new Node(newPrefix, newSuffix.isEmpty()));
-          children.get(c).insert(newPrefix, newSuffix);
+          tmp.children.remove(elem.charAt(i));
+          break;
         }
       }
+      tmp.size--;
+      return true;
     }
 
-    /**
-     * Time complexity: O(|s|)
-     *
-     * @param word the word to search
-     * @return the node containing the word
-     */
-    protected Node contains(String word) {
-      if (!word.isEmpty()) {
-        Character c = word.charAt(0);
-        if (!children.containsKey(c)) {
+    return false;
+  }
+
+  /**
+   * Remove all the elements that contain the prefix within the trie.
+   *
+   * <p>Time complexity: O(|s|)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param prefix the element prefix to find and remove
+   * @return true if all the elements containing that prefix were removed
+   */
+  public boolean removePrefix(String prefix) {
+    if (!prefix.isEmpty() && searchPrefix(prefix)) {
+      root.size -= root.children.get(prefix.charAt(0)).size;
+      root.children.remove(prefix.charAt(0));
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * Search for a element withing the trie if present.
+   *
+   * <p>Time complexity: O(|s|)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param elem the element to search
+   * @return if present, the node containing the last character of the element
+   */
+  protected Node contains(String elem) {
+    if (!elem.isEmpty()) {
+      Node tmp = root;
+      for (int i = 0; i < elem.length(); i++) {
+        if (!tmp.children.containsKey(elem.charAt(i))) {
           return null;
         }
-
-        return children.get(c).contains(word.substring(1));
+        tmp = tmp.children.get(elem.charAt(i));
       }
-
-      return this;
+      return tmp;
     }
+
+    return null;
+  }
+
+  protected static class Node {
+    boolean isEndOfWord = false;
+    int size = 0;
+    final HashMap<Character, Node> children = new HashMap<>();
   }
 }
