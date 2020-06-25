@@ -1,10 +1,30 @@
 package com.alexprut.algo.datastructures;
 
 /**
- * A red-black tree is a binary tree that satisfies the following red-black properties: 1) Every
- * node is either red or black 2) The root is black 3) Every leaf (NULL) is black 4) If a node is
- * red, then both its children are black 5) For each node, all simple paths from the node to
- * descendant leaves contain the same number of black nodes.
+ * A Red-Black Tree is a balanced binary search tree. It satisfies the following red-black properties:
+ * <ol>
+ * <li>Every node is either red or black.</li>
+ * <li>The root is black.</li>
+ * <li>Every leaf (NULL) is black.</li>
+ * <li>If a node is red, then both its children are black.</li>
+ * <li>For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.</li>
+ * </ol>
+ *
+ * <p> Example:
+ * <pre>
+ * B = Black
+ * R = Red
+ *
+ *         11,B
+ *        /    \
+ *     2,R      14,B
+ *    /   \         \
+ * 1,B     7,B       15,R
+ *        /   \
+ *     5,R     8,R
+ *    /
+ * 4,R
+ * </pre>
  *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Red-black_tree">https://en.wikipedia.org/wiki/Red-black_tree</a>
@@ -17,9 +37,26 @@ public class RedBlackTree<T extends Comparable> {
   RedBlackTree() {}
 
   /**
-   * Time complexity: O(logn)
+   * Get the root node.
    *
-   * @param value
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the root node
+   */
+  public Node<T> root() {
+    return this.root;
+  }
+
+  /**
+   * Insert a new element.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the new element value
    */
   public void insert(T value) {
     Node<T> x = new Node<>(value, true);
@@ -47,14 +84,19 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Utility method for {@link #insert(Comparable)}. Fixes the red black properties if a violation
+   * occurs.
    *
-   * @param x
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the node to apply the fix
    */
   protected void insertFixup(Node<T> x) {
     while (x.parent != null && x.parent.isRed()) {
       if (x.parent == x.parent.parent.left) {
-        Node y = x.parent.parent.right;
+        Node<T> y = x.parent.parent.right;
         if (y != null && y.isRed()) {
           // case 1
           x.parent.setBlackColor();
@@ -95,24 +137,32 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Search if an element is within the tree.
    *
-   * @param value
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the element value to search
+   * @return true if element is within the tree
    */
   public boolean search(T value) {
     return search(root, value) != null;
   }
 
   /**
-   * Time complexity: O(logn)
+   * Given a root node, search if an element is within the rooted tree.
    *
-   * @param root
-   * @param value
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param root the root node where to start the search
+   * @param value the element value to search
+   * @return the node containing the element value, otherwise null
    */
   public Node<T> search(Node<T> root, T value) {
-    Node tmp = root;
+    Node<T> tmp = root;
     while (tmp != null) {
       if (tmp.value.compareTo(value) == 0) {
         return tmp;
@@ -124,9 +174,13 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Delete the specified element from the tree if exists.
    *
-   * @param value
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the element value
    */
   public void delete(T value) {
     delete(search(root, value));
@@ -134,11 +188,15 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Utility method for {@link #delete(Comparable)}.
    *
-   * @param z
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param z the node to delete
    */
-  public void delete(Node<T> z) {
+  protected void delete(Node<T> z) {
     Node<T> x;
     Node<T> y = z;
     boolean isOriginalColorRed = y.color;
@@ -170,9 +228,14 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * TODO
+   * Utility method for {@link #delete(Comparable)}. Fixes the red black property if it is violated
+   * after the deletion of an element.
    *
-   * @param x
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the node where the fix need to be applied
    */
   protected void deleteFixup(Node<T> x) {
     while (x != root && !x.isRed()) {
@@ -236,12 +299,14 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
+   * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`.
    *
    * <p>Time complexity: O(1)
    *
-   * @param u
-   * @param v
+   * <p>Space complexity: O(1)
+   *
+   * @param u to be replaced
+   * @param v the one that replaces
    */
   protected void transplant(Node<T> u, Node<T> v) {
     if (u.parent == null) {
@@ -257,30 +322,42 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the minimum element.
    *
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(logn)
+   *
+   * @return the minimum element
    */
   public Node<T> minimum() {
     return minimum(root);
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the maximum element.
    *
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(logn)
+   *
+   * @return the maximum element
    */
   public Node<T> maximum() {
     return maximum(root);
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the minimum element node.
    *
-   * @param node
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the minimum in the rooted node
+   * @return the minimum node
    */
-  private Node<T> minimum(Node<T> node) {
+  public Node<T> minimum(Node<T> node) {
     if (node == null || node.left == null) {
       return node;
     }
@@ -288,12 +365,16 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the maximum element node.
    *
-   * @param node
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the maximum in the rooted node
+   * @return the maximum node
    */
-  private Node<T> maximum(Node<T> node) {
+  public Node<T> maximum(Node<T> node) {
     if (node == null || node.right == null) {
       return node;
     }
@@ -301,12 +382,16 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the successor of element node.
    *
-   * @param node
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the current node
+   * @return the successor node
    */
-  private Node<T> successor(Node<T> node) {
+  public Node<T> successor(Node<T> node) {
     if (node.right != null) {
       return minimum(node.right);
     }
@@ -319,18 +404,35 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Get the number of elements contained within the tree.
    *
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the size of the tree
    */
   public int size() {
     return this.size;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Utility method. Use the specified element as a pivot and left rotate.
    *
-   * @param x
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * <p>Example:
+   * <pre>
+   *   x                           y
+   *  / \     leftRotate(x)       / \
+   * w   y    ------------>      x   z
+   *    / \                     / \
+   *   u   z                   w   u
+   * </pre>
+   *
+   * @param x the pivot element
    */
   protected void leftRotation(Node<T> x) {
     Node<T> y = x.right;
@@ -351,9 +453,22 @@ public class RedBlackTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Utility method. Use the specified element as a pivot and right rotate.
    *
-   * @param x
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * <p> Example:
+   * <pre>
+   *   x                            y
+   *  / \     rightRotate(y)       / \
+   * w   y    <-------------      x   z
+   *    / \                      / \
+   *   u   z                    w   u
+   * </pre>
+   *
+   * @param x the pivot element
    */
   protected void rightRotation(Node<T> x) {
     Node<T> y = x.left;
@@ -383,11 +498,11 @@ public class RedBlackTree<T extends Comparable> {
     private Node<T> left;
     private Node<T> right;
 
-    Node(T value) {
+    protected Node(T value) {
       this.value = value;
     }
 
-    Node(T value, boolean isRed) {
+    protected Node(T value, boolean isRed) {
       this.value = value;
       this.color = isRed;
     }
@@ -412,25 +527,25 @@ public class RedBlackTree<T extends Comparable> {
       return this.color;
     }
 
-    public void setLeft(Node<T> left) {
+    protected void setLeft(Node<T> left) {
       this.left = left;
       left.parent = this;
     }
 
-    public void setRight(Node<T> right) {
+    protected void setRight(Node<T> right) {
       this.right = right;
       right.parent = this;
     }
 
-    public void setParent(Node<T> parent) {
+    protected void setParent(Node<T> parent) {
       this.parent = parent;
     }
 
-    public void setRedColor() {
+    protected void setRedColor() {
       this.color = true;
     }
 
-    public void setBlackColor() {
+    protected void setBlackColor() {
       this.color = false;
     }
 
