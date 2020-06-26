@@ -6,6 +6,14 @@ package com.alexprut.algo.datastructures;
  * recently added element that was not yet removed. The order in which elements come off a stack
  * gives rise to its alternative name, LIFO (last in, first out).
  *
+ * <p>Example:
+ *
+ * <pre>
+ * |24| -> push(42) -> |42| -> pop() -> |24|
+ * |——|                |24|             |——|
+ *                     |——|
+ * </pre>
+ *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">https://en.wikipedia.org/wiki/Stack_(abstract_data_type)</a>
  */

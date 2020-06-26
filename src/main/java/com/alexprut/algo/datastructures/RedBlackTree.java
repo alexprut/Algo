@@ -1,16 +1,20 @@
 package com.alexprut.algo.datastructures;
 
 /**
- * A Red-Black Tree is a balanced binary search tree. It satisfies the following red-black properties:
+ * A Red-Black Tree is a balanced binary search tree. It satisfies the following red-black
+ * properties:
+ *
  * <ol>
- * <li>Every node is either red or black.</li>
- * <li>The root is black.</li>
- * <li>Every leaf (NULL) is black.</li>
- * <li>If a node is red, then both its children are black.</li>
- * <li>For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.</li>
+ *   <li>Every node is either red or black.
+ *   <li>The root is black.
+ *   <li>Every leaf (NULL) is black.
+ *   <li>If a node is red, then both its children are black.
+ *   <li>For each node, all simple paths from the node to descendant leaves contain the same number
+ *       of black nodes.
  * </ol>
  *
- * <p> Example:
+ * <p>Example:
+ *
  * <pre>
  * B = Black
  * R = Red
@@ -424,6 +428,7 @@ public class RedBlackTree<T extends Comparable> {
    * <p>Space complexity: Θ(1)
    *
    * <p>Example:
+   *
    * <pre>
    *   x                           y
    *  / \     leftRotate(x)       / \
@@ -459,7 +464,8 @@ public class RedBlackTree<T extends Comparable> {
    *
    * <p>Space complexity: Θ(1)
    *
-   * <p> Example:
+   * <p>Example:
+   *
    * <pre>
    *   x                            y
    *  / \     rightRotate(y)       / \
