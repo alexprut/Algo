@@ -1,7 +1,7 @@
 package com.alexprut.algo.datastructures;
 
 /**
- * Utility data structure for gluing pairs of other data structures.
+ * Utility data structure for creating tuples of other data structures.
  *
  * @param <F> type of first element
  * @param <S> type of second element
@@ -17,7 +17,7 @@ public class Pair<F, S> {
   }
 
   /**
-   * Get the first element
+   * Get the first element.
    *
    * @return first element
    */
@@ -26,7 +26,7 @@ public class Pair<F, S> {
   }
 
   /**
-   * Get the second element
+   * Get the second element.
    *
    * @return second element
    */
