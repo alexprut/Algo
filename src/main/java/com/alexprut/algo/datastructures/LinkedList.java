@@ -3,11 +3,13 @@ package com.alexprut.algo.datastructures;
 /**
  * LinkedList is a data structure in which objects are linked in a linear order. The order in a
  * linked list is determined by a pointer in each object. You may use a linked list for storing the
- * linear order of elements. As illustrated in the example below, we may
+ * linear order of elements.
  *
  * <p>Example:
  *
- * <p>[Alice] -> [Bob] -> [Mike] -> null
+ * <pre>
+ * [Alice] -> [Bob] -> [Mike] -> null
+ * </pre>
  *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Linked_list">https://en.wikipedia.org/wiki/Linked_list</a>

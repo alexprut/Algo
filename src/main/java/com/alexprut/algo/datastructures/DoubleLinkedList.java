@@ -1,6 +1,16 @@
 package com.alexprut.algo.datastructures;
 
 /**
+ * A DoubleLinkedList is a data structure in which objects are linked in a linear order. The order
+ * in a linked list is determined by a pointer in each object. A DoubleLinkedList is a {@link
+ * LinkedList} where each node has an additional pointer to the previous element.
+ *
+ * <p>Example:
+ *
+ * <pre>
+ * [Alice] <-> [Bob] <-> [Mike] <-> null
+ * </pre>
+ *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Doubly_linked_list">https://en.wikipedia.org/wiki/Doubly_linked_list</a>
  * @param <T>
@@ -14,9 +24,13 @@ public class DoubleLinkedList<T> {
   public DoubleLinkedList() {}
 
   /**
-   * Time complexity: Θ(1)
+   * Insert a new element at the front of the DoubleLinkedList.
    *
-   * @param value
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param value the element to insert
    */
   public void insertFront(T value) {
     Node<T> node = new Node<>(value, head, null);
@@ -33,38 +47,49 @@ public class DoubleLinkedList<T> {
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Insert a new element at the end of the DoubleLinkedList.
    *
-   * @param value
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param value the element to insert
    */
   public void insertBack(T value) {
     Node<T> node = new Node<>(value, null, tail);
     if (head == null) {
       head = node;
-      tail = node;
     } else {
       node.prev = tail;
       tail.next = node;
-      tail = node;
     }
+    tail = node;
 
     size++;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Check if the the list is empty.
    *
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return true if the list is empty
    */
   public boolean empty() {
     return size == 0;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Removes the element in front of the DoubleLinkedList.
    *
-   * @return
-   * @throws Exception
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the element in front of the DoubleLinkedList
+   * @throws Exception if the list is empty
    */
   public T removeFront() throws Exception {
     if (empty()) {
@@ -86,10 +111,14 @@ public class DoubleLinkedList<T> {
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Removes the element at the end of the DoubleLinkedList.
    *
-   * @return
-   * @throws Exception
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the element at the end of the DoubleLinkedList
+   * @throws Exception if the list is empty
    */
   public T removeBack() throws Exception {
     if (empty()) {
@@ -110,16 +139,43 @@ public class DoubleLinkedList<T> {
     return node.value;
   }
 
-  // TODO implement the remove method
+  // TODO implement the remove node method
 
+  /**
+   * Returns the element in head of the LinkedList.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the head element of the list
+   */
   public Node<T> head() {
     return head;
   }
 
+  /**
+   * Returns the element at the tail of the DoubleLinkedList.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the tail element of the list
+   */
   public Node<T> tail() {
     return tail;
   }
 
+  /**
+   * Returns the size of the DoubleLinkedList.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return list size
+   */
   public int size() {
     return size;
   }
@@ -136,11 +192,11 @@ public class DoubleLinkedList<T> {
       this.next = prev;
     }
 
-    public void setNext(Node<T> next) {
+    protected void setNext(Node<T> next) {
       this.next = next;
     }
 
-    public void setPrev(Node<T> prev) {
+    protected void setPrev(Node<T> prev) {
       this.prev = prev;
     }
 
@@ -154,6 +210,10 @@ public class DoubleLinkedList<T> {
 
     public T getValue() {
       return this.value;
+    }
+
+    protected T setValue(T value) {
+      return this.value = value;
     }
   }
 }
