@@ -6,6 +6,23 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 
 /**
+ * Merkle tree is a tree in which every leaf node is labelled with the cryptographic hash of a data
+ * block, and every non-leaf node is labelled with the cryptographic hash of the labels of its child
+ * nodes. Hash trees allow efficient and secure verification of the contents of large data
+ * structures. Hash trees are a generalization of hash lists and hash chains.
+ *
+ * <p>Example:
+ *
+ * <pre>
+ *                ffb4
+ *          /             \
+ *        1f05           44ae
+ *      /     \       /        \
+ *    b96c   53b7   26ea      2448
+ *     |      |      |         |
+ * "Merkle" "Tree" "Data" "Structure"
+ * </pre>
+ *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Merkle_tree">https://en.wikipedia.org/wiki/Merkle_tree</a>
  */
@@ -24,9 +41,13 @@ public class MerkleTree {
   }
 
   /**
-   * Time complexity: Θ(n)
+   * Builds the hash tree.
    *
-   * @param i
+   * <p>Time complexity: Θ(n)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param i the index to apply the build
    */
   protected void build(int i) {
     if (hashNodes[i] == null) {
@@ -37,49 +58,69 @@ public class MerkleTree {
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Get the parent index.
    *
-   * @param i
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param i the current index
+   * @return the parent index
    */
   protected static int parent(int i) {
     return (i + 1) / 2 - 1;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Given the parent index calculates the index of the left child.
    *
-   * @param i
-   * @return
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param i parent index
+   * @return index of the left child
    */
   protected static int left(int i) {
     return 2 * i + 1;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Given the parent index calculates the index of the right child.
    *
-   * @param i
-   * @return
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param i parent index
+   * @return index of the right child
    */
   protected static int right(int i) {
     return 2 * i + 2;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Get the root element.
    *
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the root element
    */
   public String root() {
     return hashNodes[0];
   }
 
   /**
-   * Time complexity: Θ(logn)
+   * Create and get the proof path for an element.
    *
-   * @param elementIndex
-   * @return
+   * <p>Time complexity: Θ(logn)
+   *
+   * <p>Space complexity: Θ(logn)
+   *
+   * @param elementIndex element to build the proof
+   * @return the proof path for the element
    */
   public ArrayList<String> getProofPath(int elementIndex) {
     ArrayList<String> proofPath = new ArrayList<>();
@@ -99,12 +140,16 @@ public class MerkleTree {
   }
 
   /**
-   * Time complexity: Θ(logn)
+   * Verifies if an element belongs to the tree.
    *
-   * @param element
-   * @param rootHash
-   * @param proofPath
-   * @return
+   * <p>Time complexity: Θ(logn)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param element the element value
+   * @param rootHash root hash
+   * @param proofPath the proof path
+   * @return true if the element belongs to the tree
    */
   public static boolean verify(String element, String rootHash, final ArrayList<String> proofPath) {
     String tmpHash = hash(element);
@@ -115,10 +160,10 @@ public class MerkleTree {
   }
 
   /**
-   * TODO
+   * Computes the SHA-256 hash of an element.
    *
-   * @param content
-   * @return
+   * @param content the element value
+   * @return the SHA-256 hash
    */
   public static String hash(String content) {
     try {
@@ -131,10 +176,10 @@ public class MerkleTree {
   }
 
   /**
-   * TODO
+   * Utility function use in {@link #hash(String)}
    *
-   * @param hash
-   * @return
+   * @param hash the byte array
+   * @return the string hash
    */
   private static String toHexString(final byte[] hash) {
     BigInteger number = new BigInteger(1, hash);
