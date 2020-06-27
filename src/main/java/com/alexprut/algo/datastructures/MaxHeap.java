@@ -1,6 +1,25 @@
 package com.alexprut.algo.datastructures;
 
 /**
+ * The binary max heap data structure is an array object that we can view as a nearly complete
+ * binary tree. Each node of the tree corresponds to an element of the array. The data structure
+ * provides constant time retrieval and logarithmic time removal of the maximum elements in it. The
+ * max heap property: each parent node if greater than it's child nodes.
+ *
+ * <p>Example:
+ *
+ * <pre>
+ * Array visualization:
+ * [7,5,6,2,1,6]
+ *
+ * Tree visualization:
+ *       7
+ *    /    \
+ *   5      6
+ *  / \    /
+ * 2   1  4
+ * </pre>
+ *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Min-max_heap">https://en.wikipedia.org/wiki/Min-max_heap</a>
  */
@@ -13,30 +32,42 @@ public class MaxHeap extends BinaryHeap {
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Get the maximum element.
    *
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the maximum element
    */
   public int max() {
     return root();
   }
 
   /**
-   * Time complexity: O(logn)
+   * Get and remove the maximum element.
    *
-   * @return
-   * @throws Exception
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the maximum element
+   * @throws Exception if the heap is empty
    */
   public int extractMax() throws Exception {
     return extract();
   }
 
   /**
-   * Time complexity: O(logn)
+   * Increases the key value of an element.
    *
-   * @param i
-   * @param value
-   * @throws Exception
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(logn)
+   *
+   * @param i the element index in the array
+   * @param value the new value
+   * @throws Exception if the element value is smaller
    */
   public void increaseKey(int i, int value) throws Exception {
     if (elements[i] >= value) {
@@ -53,17 +84,19 @@ public class MaxHeap extends BinaryHeap {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Insert a new element in the heap.
    *
-   * @param e
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param e the new element
    */
   public void insert(int e) {
     size++;
     if (elements.length < size) {
       int[] tmp = new int[elements.length * 2];
-      for (int i = 0; i < elements.length; i++) {
-        tmp[i] = elements[i];
-      }
+      System.arraycopy(elements, 0, tmp, 0, elements.length);
       elements = tmp;
     }
     int k = size - 1;
@@ -76,11 +109,15 @@ public class MaxHeap extends BinaryHeap {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Fixes and maintains the heap property.
    *
-   * @param i
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param i the index to apply the fix
    */
-  public void heapify(int i) {
+  protected void heapify(int i) {
     int left = left(i);
     int right = right(i);
     int largest = i;
