@@ -1,29 +1,70 @@
 package com.alexprut.algo.datastructures;
 
 /**
- * Stores intervals as well, but optimized for "which of these intervals overlap with a given
- * interval" queries. It can also be used for point queries - similar to segment tree.
+ * An interval tree is a tree data structure to hold intervals. It allows one to efficiently find
+ * all intervals that overlap with any given interval or point. A closed interval is an ordered pair
+ * of real numbers [t1;t2], with t1 <= t2. This implementation uses closed intervals. It can also be
+ * used for point queries - similar to {@link SegmentTree}. The Interval Tree data structure is
+ * implemented by using a {@link RedBlackTree}.
  *
- * <p>The Interval Tree data structure is implemented by using a Red-Black Tree The intervals are
- * closed TODO extend the Red-Black Tree data structure
+ * <p>Example:
+ *
+ * <pre>
+ * B = Black
+ * R = Red
+ * a = interval start
+ * b = interval end
+ * m = max
+ * c = R or B
+ *
+ * [a,b],m,c
+ *
+ *                     [16,21],30,B
+ *             /                         \
+ *       [8,9],23,R                    [25,30],30,R
+ *      /         \                   /            \
+ *    [5,8],10,B  [15,23],23,B    [17,19],20,B    [26,26],26,B
+ *   /         \                            \
+ * [0,3],3,R  [6,10],10,R               [19,20],20,R
+ * </pre>
  *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Interval_tree">https://en.wikipedia.org/wiki/Interval_tree</a>
  */
 public class IntervalTree {
 
-  protected IntervalNode root;
+  private IntervalNode root;
   private int size;
 
   IntervalTree() {}
 
   /**
-   * Time complexity: O(logn) TODO check that the low is less than the high
+   * Get the root node.
    *
-   * @param low
-   * @param high
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the root node
+   */
+  public IntervalNode root() {
+    return this.root;
+  }
+
+  /**
+   * Insert a new interval.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param low start of the interval
+   * @param high end of the interval
    */
   public void insert(int low, int high) {
+    if (low > high) {
+      return;
+    }
     IntervalNode x = new IntervalNode(low, high, true);
     IntervalNode p = null;
     IntervalNode tmp = this.root;
@@ -50,9 +91,14 @@ public class IntervalTree {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Utility method for {@link #insert(int, int)}}. Fixes the red black properties if a violation
+   * occurs.
    *
-   * @param x
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the node to apply the fix
    */
   protected void insertFixup(IntervalNode x) {
     while (x.parent != null && x.parent.isRed()) {
@@ -97,12 +143,32 @@ public class IntervalTree {
     root.setBlackColor();
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Search if an interval is within the tree.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param low the start of the interval
+   * @param high the end of the interval
+   * @return true if the interval is within the tree
+   */
   public boolean search(int low, int high) {
     return search(root, new IntervalNode(low, high)) != null;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Given a root node, search if an interval is within the rooted tree.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param root the root node where to start the search
+   * @param x the interval to search
+   * @return the node containing the interval, otherwise null
+   */
   public IntervalNode search(IntervalNode root, IntervalNode x) {
     IntervalNode tmp = root;
     while (tmp != null) {
@@ -115,12 +181,32 @@ public class IntervalTree {
     return null;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Search if an interval is within the tree.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param low the start of the interval
+   * @param high the end of the interval
+   * @return true node that is within the interval
+   */
   public IntervalNode find(int low, int high) {
     return find(root, new IntervalNode(low, high));
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Search if an interval is within the tree.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param root the root node where to start the search
+   * @param x x the interval to search
+   * @return the node containing the interval, otherwise null
+   */
   public IntervalNode find(IntervalNode root, IntervalNode x) {
     IntervalNode tmp = root;
     while (tmp != null && !doOverlap(tmp, x)) {
@@ -134,24 +220,60 @@ public class IntervalTree {
     return tmp;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Check if two intervals overlap.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * <p>Example:
+   *
+   * <pre>
+   * a: |——|   |—————————|    |——————|      |——————|          |———————|
+   * b: |——|    |————|      |—————————|       |—————|   |——————|
+   * </pre>
+   *
+   * @param a first interval
+   * @param b second interval
+   * @return true if intervals overlap
+   */
   public static boolean doOverlap(IntervalNode a, IntervalNode b) {
     return a.low <= b.high && b.low <= a.high;
   }
 
   // TODO implement findAll function
 
-  /** Time complexity: O(logn) */
+  /**
+   * Delete the specified interval from the tree if exists.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * @param low start of the interval
+   * @param high end of the interval
+   */
   public void delete(int low, int high) {
     delete(search(root, new IntervalNode(low, high)));
     size--;
   }
 
-  /** Time complexity: O(logn) */
+  /**
+   * Utility method for {@link #delete(int, int)}.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param z the node to delete
+   */
   public void delete(IntervalNode z) {
     IntervalNode x;
     IntervalNode y = z;
-    Boolean isOriginalColorRed = y.color;
+    boolean isOriginalColorRed = y.color;
     if (z.left == null) {
       x = z.right;
       transplant(z, z.right);
@@ -180,6 +302,16 @@ public class IntervalTree {
     }
   }
 
+  /**
+   * Utility method for {@link #delete(IntervalNode)}}. Fixes the red black property if it is
+   * violated after the deletion of an interval.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the node where the fix need to be applied
+   */
   protected void deleteFixup(IntervalNode x) {
     while (x != root && !x.isRed()) {
       if (x == x.parent.left) {
@@ -242,9 +374,14 @@ public class IntervalTree {
   }
 
   /**
-   * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
+   * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`.
    *
-   * <p>Time complexity: Θ(1)
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param u to be replaced
+   * @param v the one that replaces
    */
   protected void transplant(IntervalNode u, IntervalNode v) {
     if (u.parent == null) {
@@ -259,17 +396,42 @@ public class IntervalTree {
     }
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Get the minimum interval.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the minimum interval
+   */
   public IntervalNode minimum() {
     return minimum(root);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Get the maximum element.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the maximum element
+   */
   public IntervalNode maximum() {
     return maximum(root);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Get the minimum element node.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the minimum in the rooted node
+   * @return the minimum node
+   */
   private IntervalNode minimum(IntervalNode node) {
     if (node == null || node.left == null) {
       return node;
@@ -277,7 +439,16 @@ public class IntervalTree {
     return minimum(node.left);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Get the maximum element node.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the maximum in the rooted node
+   * @return the maximum node
+   */
   private IntervalNode maximum(IntervalNode node) {
     if (node == null || node.right == null) {
       return node;
@@ -285,7 +456,16 @@ public class IntervalTree {
     return maximum(node.right);
   }
 
-  /** Time complexity: O(logn) if the tree is balanced */
+  /**
+   * Get the successor of element node.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the current node
+   * @return the successor node
+   */
   private IntervalNode successor(IntervalNode node) {
     if (node.right != null) {
       return minimum(node.right);
@@ -298,11 +478,20 @@ public class IntervalTree {
     return y;
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Get the number of elements contained within the tree.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the size of the tree
+   */
   public int size() {
     return this.size;
   }
 
+  /** @param x */
   protected void maxCalculate(IntervalNode x) {
     x.max = x.high;
     if (x != null && x.left != null) {
@@ -313,6 +502,7 @@ public class IntervalTree {
     }
   }
 
+  /** @param x */
   protected void maxFixup(IntervalNode x) {
     if (x != null) {
       maxCalculate(x);
@@ -320,7 +510,25 @@ public class IntervalTree {
     }
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Utility method. Use the specified element as a pivot and left rotate.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * <p>Example:
+   *
+   * <pre>
+   *   x                           y
+   *  / \     leftRotate(x)       / \
+   * w   y    ------------>      x   z
+   *    / \                     / \
+   *   u   z                   w   u
+   * </pre>
+   *
+   * @param x the pivot element
+   */
   protected void leftRotation(IntervalNode x) {
     IntervalNode y = x.right;
     x.right = y.left;
@@ -341,7 +549,25 @@ public class IntervalTree {
     maxCalculate(x.parent);
   }
 
-  /** Time complexity: Θ(1) */
+  /**
+   * Utility method. Use the specified element as a pivot and right rotate.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * <p>Example:
+   *
+   * <pre>
+   *   x                            y
+   *  / \     rightRotate(y)       / \
+   * w   y    <-------------      x   z
+   *    / \                      / \
+   *   u   z                    w   u
+   * </pre>
+   *
+   * @param x the pivot element
+   */
   protected void rightRotation(IntervalNode x) {
     IntervalNode y = x.left;
     x.left = y.right;
@@ -363,6 +589,8 @@ public class IntervalTree {
   }
 
   // TODO implement functions: predecessor
+
+  // TODO reuse / extend the Red-Black Tree data structure
 
   protected static class IntervalNode {
 
@@ -403,7 +631,7 @@ public class IntervalTree {
       return max;
     }
 
-    public int setMax(int max) {
+    protected int setMax(int max) {
       return this.max = max;
     }
 
@@ -415,25 +643,25 @@ public class IntervalTree {
       return this.color;
     }
 
-    public void setLeft(IntervalNode left) {
+    protected void setLeft(IntervalNode left) {
       this.left = left;
       left.parent = this;
     }
 
-    public void setRight(IntervalNode right) {
+    protected void setRight(IntervalNode right) {
       this.right = right;
       right.parent = this;
     }
 
-    public void setParent(IntervalNode parent) {
+    protected void setParent(IntervalNode parent) {
       this.parent = parent;
     }
 
-    public void setRedColor() {
+    protected void setRedColor() {
       this.color = true;
     }
 
-    public void setBlackColor() {
+    protected void setBlackColor() {
       this.color = false;
     }
 

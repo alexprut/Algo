@@ -2,6 +2,7 @@ package com.alexprut.algo.algorithms.graph.mst;
 
 import com.alexprut.algo.datastructures.Pair;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class Prim {
@@ -35,9 +36,7 @@ public class Prim {
     int[] parent = new int[n];
     parent[start] = -1;
     int[] key = new int[n];
-    for (int i = 0; i < key.length; i++) {
-      key[i] = Integer.MAX_VALUE;
-    }
+    Arrays.fill(key, Integer.MAX_VALUE);
     key[start] = 0;
     boolean[] visited = new boolean[n];
     // TODO use MinHeap or FibonacciHeap

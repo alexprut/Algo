@@ -330,7 +330,7 @@ public class RedBlackTree<T extends Comparable> {
    *
    * <p>Time complexity: O(logn)
    *
-   * <p>Space complexity: O(logn)
+   * <p>Space complexity: O(1)
    *
    * @return the minimum element
    */
@@ -343,7 +343,7 @@ public class RedBlackTree<T extends Comparable> {
    *
    * <p>Time complexity: O(logn)
    *
-   * <p>Space complexity: O(logn)
+   * <p>Space complexity: O(1)
    *
    * @return the maximum element
    */
