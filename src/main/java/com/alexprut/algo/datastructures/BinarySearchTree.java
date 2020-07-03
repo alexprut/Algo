@@ -3,6 +3,22 @@ package com.alexprut.algo.datastructures;
 import java.util.ArrayList;
 
 /**
+ * A binary search tree (BST), is a rooted binary tree whose internal nodes each store a key greater
+ * than all the keys in the node's left subtree and less than those in its right subtree. Binary
+ * search trees allow binary search for fast lookup, addition and removal of elements.
+ *
+ * <p>Example:
+ *
+ * <pre>
+ *       5
+ *    /    \
+ *   2      6
+ *  / \
+ * 1   3
+ *      \
+ *       4
+ * </pre>
+ *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Binary_search_tree">https://en.wikipedia.org/wiki/Binary_search_tree</a>
  * @param <T>
@@ -10,19 +26,21 @@ import java.util.ArrayList;
 public class BinarySearchTree<T extends Comparable<T>> {
 
   private BinaryNode<T> root;
-  private int size;
+  private int size = 0;
 
-  public BinarySearchTree() {
-    size = 0;
-  }
+  public BinarySearchTree() {}
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Insert a new element.
    *
-   * @param value
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the new element value
    */
   public void insert(T value) {
-    BinaryNode node = new BinaryNode<T>(value);
+    BinaryNode<T> node = new BinaryNode<T>(value);
 
     if (root == null) {
       root = node;
@@ -33,19 +51,27 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Search and get an element if it is within the tree.
    *
-   * @param value
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the element value to search
+   * @return the node containing the element value, otherwise null
    */
   public BinaryNode<T> search(T value) {
     return search(root, value);
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Delete the specified element from the tree if exists.
    *
-   * @param node
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the node to delete
    */
   public void delete(BinaryNode<T> node) {
     if (node.left == null) {
@@ -67,14 +93,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`
+   * Replaces the subtree rooted at node `u` with the subtree rooted at node `v`.
    *
    * <p>Time complexity: O(1)
    *
-   * @param u
-   * @param v
+   * <p>Space complexity: O(1)
+   *
+   * @param u to be replaced
+   * @param v the one that replaces
    */
-  private void transplant(BinaryNode u, BinaryNode v) {
+  private void transplant(BinaryNode<T> u, BinaryNode<T> v) {
     if (u.parent == null) {
       root = v;
     } else if (u == u.parent.left) {
@@ -88,16 +116,20 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Get the successor of element node.
    *
-   * @param x
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the current node
+   * @return the successor node
    */
   protected BinaryNode<T> successor(BinaryNode<T> x) {
     if (x.right != null) {
       return minimum(x);
     }
-    BinaryNode y = x.parent;
+    BinaryNode<T> y = x.parent;
     while (y != null && x == y.right) {
       x = y;
       y = y.parent;
@@ -108,9 +140,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
   // TODO predecessor
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Pre-Order visit of the BST.
    *
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(n)
+   *
+   * @return the list of elements
    */
   public ArrayList<T> preOrderVisit() {
     if (root == null) {
@@ -137,9 +173,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * In-Order visit of the BST.
    *
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(n)
+   *
+   * @return the list of elements
    */
   public ArrayList<T> inOrderVisit() {
     if (root == null) {
@@ -166,9 +206,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Post-Order visit of the BST.
    *
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(n)
+   *
+   * @return the list of elements
    */
   public ArrayList<T> postOrderVisit() {
     if (root == null) {
@@ -176,8 +220,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
     ArrayList<T> result = new ArrayList<>();
     Stack<BinaryNode<T>> stack = new Stack<>();
-    BinaryNode node = root;
-    BinaryNode lastVisited = null;
+    BinaryNode<T> node = root;
+    BinaryNode<T> lastVisited = null;
     while (!stack.empty() || node != null) {
       try {
         if (node != null) {
@@ -200,13 +244,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * TODO interactive
+   * Search and get an element if it is within the tree.
    *
    * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
    *
-   * @param node
-   * @param value
-   * @return
+   * <p>Space complexity: O(1)
+   *
+   * @param node the root node where to start the search
+   * @param value the element value to search
+   * @return the node containing the element value, otherwise null
    */
   private BinaryNode<T> search(BinaryNode<T> node, T value) {
     if (node == null || node.value.compareTo(value) == 0) {
@@ -219,28 +265,40 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Search if an element is within the tree.
    *
-   * @param value
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the element value to search
+   * @return true if the element is within the tree
    */
   public boolean contains(T value) {
     return search(root, value) != null;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Get the number of elements contained within the tree.
    *
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the size of the tree
    */
   public int size() {
     return this.size;
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Given the root, insert the new node.
    *
-   * @param node
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the root where to insert
    */
   private void insert(BinaryNode<T> node) {
     BinaryNode<T> y = null;
@@ -264,28 +322,40 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Get the minimum element.
    *
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the minimum element
    */
   public BinaryNode<T> minimum() {
     return minimum(root);
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   * Get the maximum element.
    *
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the maximum element
    */
   public BinaryNode<T> maximum() {
     return maximum(root);
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive
+   * Get the minimum element.
    *
-   * @param node
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the minimum in the rooted node
+   * @return the minimum element
    */
   private BinaryNode<T> minimum(BinaryNode<T> node) {
     if (node == null || node.left == null) {
@@ -295,10 +365,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced, O(n) in the worst case TODO interactive
+   * Get the maximum element.
    *
-   * @param node
-   * @return
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the maximum in the rooted node
+   * @return the maximum element
    */
   private BinaryNode<T> maximum(BinaryNode<T> node) {
     if (node == null || node.right == null) {
@@ -318,6 +392,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
       this.value = value;
     }
 
+    protected void setValue(T value) {
+      this.value = value;
+    }
+
     public T value() {
       return this.value;
     }
@@ -334,15 +412,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
       return this.right;
     }
 
-    public void setParent(BinaryNode<T> parent) {
+    protected void setParent(BinaryNode<T> parent) {
       this.parent = parent;
     }
 
-    public void setLeft(BinaryNode<T> left) {
+    protected void setLeft(BinaryNode<T> left) {
       this.left = left;
     }
 
-    public void setRight(BinaryNode<T> right) {
+    protected void setRight(BinaryNode<T> right) {
       this.right = right;
     }
 
