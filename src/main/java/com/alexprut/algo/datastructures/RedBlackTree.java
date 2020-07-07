@@ -33,7 +33,7 @@ package com.alexprut.algo.datastructures;
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Red-black_tree">https://en.wikipedia.org/wiki/Red-black_tree</a>
  */
-public class RedBlackTree<T extends Comparable> {
+public class RedBlackTree<T extends Comparable<T>> {
 
   protected Node<T> root;
   private int size;
@@ -432,7 +432,7 @@ public class RedBlackTree<T extends Comparable> {
    * <pre>
    *   x                           y
    *  / \     leftRotate(x)       / \
-   * w   y    ------------>      x   z
+   * w   y    ------------→      x   z
    *    / \                     / \
    *   u   z                   w   u
    * </pre>
@@ -469,7 +469,7 @@ public class RedBlackTree<T extends Comparable> {
    * <pre>
    *   x                            y
    *  / \     rightRotate(y)       / \
-   * w   y    <-------------      x   z
+   * w   y    ←-------------      x   z
    *    / \                      / \
    *   u   z                    w   u
    * </pre>
@@ -496,7 +496,7 @@ public class RedBlackTree<T extends Comparable> {
 
   // TODO implement functions: predecessor
 
-  protected static class Node<T extends Comparable> {
+  protected static class Node<T extends Comparable<T>> {
 
     private final T value;
     private boolean color; // when true then color is Red, otherwise Black

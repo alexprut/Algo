@@ -9,9 +9,9 @@ package com.alexprut.algo.datastructures;
  * <p>Example:
  *
  * <pre>
- * |24| -> push(42) -> |42| -> pop() -> |24|
- * |——|                |24|             |——|
- *                     |——|
+ * |24| → push(42) → |42| → pop() → |24|
+ * |——|              |24|           |——|
+ *                   |——|
  * </pre>
  *
  * @see <a

@@ -8,7 +8,7 @@ package com.alexprut.algo.datastructures;
  * <p>Example:
  *
  * <pre>
- * [Alice] -> [Bob] -> [Mike] -> null
+ * [Alice] → [Bob] → [Mike] → null
  * </pre>
  *
  * @see <a

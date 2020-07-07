@@ -2,6 +2,7 @@ package com.alexprut.algo.algorithms.graph;
 
 import com.alexprut.algo.datastructures.Pair;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class Dijkstra {
@@ -34,9 +35,7 @@ public class Dijkstra {
     }
 
     int[] distance = new int[n];
-    for (int i = 0; i < distance.length; i++) {
-      distance[i] = Integer.MAX_VALUE;
-    }
+    Arrays.fill(distance, Integer.MAX_VALUE);
     distance[start] = 0;
     boolean[] visited = new boolean[n];
     // TODO use MinHeap or FibonacciHeap

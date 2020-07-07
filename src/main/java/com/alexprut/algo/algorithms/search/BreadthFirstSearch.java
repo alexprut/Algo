@@ -2,6 +2,7 @@ package com.alexprut.algo.algorithms.search;
 
 import com.alexprut.algo.datastructures.Queue;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @see <a
@@ -24,9 +25,7 @@ public class BreadthFirstSearch {
   public int[] shortestPath(ArrayList<ArrayList<Integer>> adj, int start) throws Exception {
     int[] shortestPaths = new int[adj.size()];
     boolean[] isVisited = new boolean[adj.size()];
-    for (int i = 0; i < shortestPaths.length; i++) {
-      shortestPaths[i] = Integer.MAX_VALUE;
-    }
+    Arrays.fill(shortestPaths, Integer.MAX_VALUE);
     Queue<Integer> queue = new Queue<>();
     queue.enqueue(start);
     isVisited[start] = true;
@@ -61,9 +60,7 @@ public class BreadthFirstSearch {
   public int[] predecessorSubgraph(ArrayList<ArrayList<Integer>> adj, int start) throws Exception {
     int[] parent = new int[adj.size()];
     boolean[] isVisited = new boolean[adj.size()];
-    for (int i = 0; i < parent.length; i++) {
-      parent[i] = Integer.MAX_VALUE;
-    }
+    Arrays.fill(parent, Integer.MAX_VALUE);
     Queue<Integer> queue = new Queue<>();
     queue.enqueue(start);
     isVisited[start] = true;

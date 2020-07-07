@@ -3,9 +3,9 @@ package com.alexprut.algo.datastructures;
 /**
  * An interval tree is a tree data structure to hold intervals. It allows one to efficiently find
  * all intervals that overlap with any given interval or point. A closed interval is an ordered pair
- * of real numbers [t1;t2], with t1 <= t2. This implementation uses closed intervals. It can also be
- * used for point queries - similar to {@link SegmentTree}. The Interval Tree data structure is
- * implemented by using a {@link RedBlackTree}.
+ * of real numbers [t1;t2], with t1 less or equal t2. This implementation uses closed intervals. It
+ * can also be used for point queries - similar to {@link SegmentTree}. The Interval Tree data
+ * structure is implemented by using a {@link RedBlackTree}.
  *
  * <p>Example:
  *
@@ -491,7 +491,15 @@ public class IntervalTree {
     return this.size;
   }
 
-  /** @param x */
+  /**
+   * Computes the max value of a node.
+   *
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the node to compute the max
+   */
   protected void maxCalculate(IntervalNode x) {
     x.max = x.high;
     if (x != null && x.left != null) {
@@ -502,7 +510,15 @@ public class IntervalTree {
     }
   }
 
-  /** @param x */
+  /**
+   * Utility method. Fixes the max value given a node.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the node to compute the max
+   */
   protected void maxFixup(IntervalNode x) {
     if (x != null) {
       maxCalculate(x);
@@ -522,7 +538,7 @@ public class IntervalTree {
    * <pre>
    *   x                           y
    *  / \     leftRotate(x)       / \
-   * w   y    ------------>      x   z
+   * w   y    ------------→      x   z
    *    / \                     / \
    *   u   z                   w   u
    * </pre>
@@ -561,7 +577,7 @@ public class IntervalTree {
    * <pre>
    *   x                            y
    *  / \     rightRotate(y)       / \
-   * w   y    <-------------      x   z
+   * w   y    ←-------------      x   z
    *    / \                      / \
    *   u   z                    w   u
    * </pre>
