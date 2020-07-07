@@ -9,9 +9,9 @@ package com.alexprut.algo.datastructures;
  * <p>Example:
  *
  * <pre>
- * ————                   ————————                 ————
- *  24  -> enqueue(42) ->  42, 24   -> dequeue() -> 42
- * ————                   ————————                 ————
+ * ————                 ————————               ————
+ *  24  → enqueue(42) →  42, 24   → dequeue() → 42
+ * ————                 ————————               ————
  * </pre>
  *
  * @see <a

@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Fibonacci_heap">https://en.wikipedia.org/wiki/Fibonacci_heap</a>
  */
-public class FibonacciHeap<T extends Comparable> {
+public class FibonacciHeap<T extends Comparable<T>> {
 
   /** The minimum node. */
   protected Node<T> min;

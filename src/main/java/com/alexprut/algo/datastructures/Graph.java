@@ -3,8 +3,6 @@ package com.alexprut.algo.datastructures;
 import com.alexprut.algo.algorithms.graph.mst.Kruskal;
 import java.util.ArrayList;
 
-// TODO clone method
-
 /**
  * Conventions: the nodes are labeled from 0 to n (exclusive).
  *
@@ -14,7 +12,7 @@ import java.util.ArrayList;
 public class Graph {
 
   private boolean isDirected = false;
-  private ArrayList<Edge> edges = new ArrayList<>();
+  private final ArrayList<Edge> edges = new ArrayList<>();
   private int[][] adjMatrix;
   private ArrayList<ArrayList<Pair<Integer, Integer>>> adjList;
   private int n;
@@ -124,13 +122,18 @@ public class Graph {
     }
   }
 
+  /**
+   * @param x
+   * @param y
+   * @param w
+   */
   public void addEdge(int x, int y, int w) {
     addEdge(new Edge(new Node(x), new Node(y), w));
   }
 
   public static class Node {
 
-    int value;
+    private int value;
 
     public Node(int value) {
       this.value = value;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @see <a href="https://en.wikipedia.org/wiki/B-tree">https://en.wikipedia.org/wiki/B-tree</a>
  * @param <T>
  */
-public class BTree<T extends Comparable> {
+public class BTree<T extends Comparable<T>> {
 
   protected Node<T> root = null;
   protected int t;
@@ -23,7 +23,7 @@ public class BTree<T extends Comparable> {
    * sume that if x is already in main memory, then DISK-READ.x/ requires no disk accesses; it is a
    * “no-op.”
    */
-  protected void diskRead(Node x) {
+  protected void diskRead(Node<T> x) {
     // TODO implement method or abstract method
   }
 
@@ -32,7 +32,7 @@ public class BTree<T extends Comparable> {
    *
    * @param x
    */
-  protected void diskWrite(Node x) {
+  protected void diskWrite(Node<T> x) {
     // TODO implement method or abstract method
   }
 
