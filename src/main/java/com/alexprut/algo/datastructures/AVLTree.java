@@ -3,11 +3,31 @@ package com.alexprut.algo.datastructures;
 import static java.lang.Math.max;
 
 /**
- * In an AVL tree, the heights of the two child subtrees of any node differ by at most one.
+ * An AVL Tree is a balanced binary search tree (alike {@link RedBlackTree}). The data structure is
+ * height balanced, it satisfies the following property:
+ *
+ * <ol>
+ *   <li>for each node x, the heights of the left and right subtrees of x differ by at most 1.
+ * </ol>
+ *
+ * <p>Example:
+ *
+ * <pre>
+ * x,h
+ *
+ * x = the element
+ * h = the heights difference between the left and right subtrees
+ *
+ *    30,1
+ *   /   \
+ * 5,0  35,0
+ *      /   \
+ *   32,0   40,0
+ * </pre>
  *
  * @see <a href="https://en.wikipedia.org/wiki/AVL_tree">https://en.wikipedia.org/wiki/AVL_tree</a>
  */
-public class AVLTree<T extends Comparable> {
+public class AVLTree<T extends Comparable<T>> {
 
   protected Node<T> root;
   private int size;
@@ -15,12 +35,29 @@ public class AVLTree<T extends Comparable> {
   AVLTree() {}
 
   /**
-   * Time complexity: O(logn)
+   * Get the root node.
    *
-   * @param value
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the root node
+   */
+  public Node<T> root() {
+    return this.root;
+  }
+
+  /**
+   * Insert a new element.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the new element value
    */
   public void insert(T value) {
-    Node tmp = insert(root, value);
+    Node<T> tmp = insert(root, value);
     if (this.root == null) {
       this.root = tmp;
     }
@@ -28,11 +65,15 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Insert a new element.
    *
-   * @param node
-   * @param value
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the root node where to insert
+   * @param value the new element value
+   * @return the new inserted node
    */
   protected Node<T> insert(Node<T> node, T value) {
     if (node == null) {
@@ -74,21 +115,29 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Search if an element is within the tree.
    *
-   * @param value
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the element value to search
+   * @return true if element is within the tree
    */
   public boolean search(T value) {
     return search(root, value) != null;
   }
 
   /**
-   * Time complexity: O(logn)
+   * Given a root node, search if an element is within the rooted tree.
    *
-   * @param root
-   * @param value
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param root the root node where to start the search
+   * @param value the element value to search
+   * @return the node containing the element value, otherwise null
    */
   public Node<T> search(Node<T> root, T value) {
     Node<T> tmp = root;
@@ -103,9 +152,13 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn)
+   * Delete the specified element from the tree if exists.
    *
-   * @param value
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param value the element value
    */
   public void delete(T value) {
     this.root = delete(this.root, value);
@@ -113,11 +166,15 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * TODO
+   * Utility method for {@link #delete(Comparable)}.
    *
-   * @param node
-   * @param value
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the root node where to start the deletion
+   * @param value the element value
+   * @return the new root
    */
   protected Node<T> delete(Node<T> node, T value) {
     if (node == null) {
@@ -130,13 +187,7 @@ public class AVLTree<T extends Comparable> {
       node.right = delete(node.right, value);
     } else {
       if (node.left == null || node.right == null) {
-        Node temp = (node.left == null) ? node.right : node.left;
-
-        if (temp == null) {
-          node = null;
-        } else {
-          node = temp;
-        }
+        node = (node.left == null) ? node.right : node.left;
       } else {
         Node<T> temp = minimum(node.right);
         node.value = temp.value;
@@ -177,28 +228,40 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the minimum element.
    *
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the minimum element
    */
   public Node<T> minimum() {
     return minimum(root);
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the maximum element.
    *
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the maximum element
    */
   public Node<T> maximum() {
     return maximum(root);
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the minimum element node.
    *
-   * @param node
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the minimum in the rooted node
+   * @return the minimum node
    */
   private Node<T> minimum(Node<T> node) {
     if (node == null || node.left == null) {
@@ -208,10 +271,14 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the maximum element node.
    *
-   * @param node
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the maximum in the rooted node
+   * @return the maximum node
    */
   private Node<T> maximum(Node<T> node) {
     if (node == null || node.right == null) {
@@ -221,16 +288,20 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: O(logn) if the tree is balanced
+   * Get the successor of element node.
    *
-   * @param node
-   * @return
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the current node
+   * @return the successor node
    */
   private Node<T> successor(Node<T> node) {
     if (node.right != null) {
       return minimum(node.right);
     }
-    Node y = node.parent;
+    Node<T> y = node.parent;
     while (y != null && node == y.right) {
       node = y;
       y = y.parent;
@@ -239,22 +310,40 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Get the number of elements contained within the tree.
    *
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the size of the tree
    */
   public int size() {
     return this.size;
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Utility method. Use the specified element as a pivot and left rotate.
    *
-   * @param x
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * <p>Example:
+   *
+   * <pre>
+   *   x                           y
+   *  / \     leftRotate(x)       / \
+   * w   y    ------------→      x   z
+   *    / \                     / \
+   *   u   z                   w   u
+   * </pre>
+   *
+   * @param x the pivot element
+   * @return the rotated rooted element
    */
   protected Node<T> leftRotation(Node<T> x) {
-    Node y = x.right;
+    Node<T> y = x.right;
     x.right = y.left;
     if (y.left != null) {
       y.left.parent = x;
@@ -277,10 +366,24 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * Time complexity: Θ(1)
+   * Utility method. Use the specified element as a pivot and right rotate.
    *
-   * @param x
-   * @return
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * <p>Example:
+   *
+   * <pre>
+   *   x                            y
+   *  / \     rightRotate(y)       / \
+   * w   y    ←-------------      x   z
+   *    / \                      / \
+   *   u   z                    w   u
+   * </pre>
+   *
+   * @param x the pivot element
+   * @return the rotated rooted element
    */
   protected Node<T> rightRotation(Node<T> x) {
     Node<T> y = x.left;
@@ -306,10 +409,14 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * TODO
+   * Utility method. Calculate the balance between the left and right subtrees.
    *
-   * @param n
-   * @return
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param n the root node
+   * @return the balance
    */
   protected int getBalance(Node<T> n) {
     if (n == null) {
@@ -320,10 +427,14 @@ public class AVLTree<T extends Comparable> {
   }
 
   /**
-   * TODO
+   * Get the height of a node.
    *
-   * @param n
-   * @return
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param n the node
+   * @return the height
    */
   private int height(Node<T> n) {
     if (n == null) {
@@ -341,7 +452,7 @@ public class AVLTree<T extends Comparable> {
     private Node<T> left;
     private Node<T> right;
 
-    Node(T value) {
+    protected Node(T value) {
       this.value = value;
       this.height = 1;
     }
@@ -366,17 +477,17 @@ public class AVLTree<T extends Comparable> {
       return this.parent;
     }
 
-    public void setLeft(Node<T> left) {
+    protected void setLeft(Node<T> left) {
       this.left = left;
       left.parent = this;
     }
 
-    public void setRight(Node<T> right) {
+    protected void setRight(Node<T> right) {
       this.right = right;
       right.parent = this;
     }
 
-    public void setParent(Node<T> parent) {
+    protected void setParent(Node<T> parent) {
       this.parent = parent;
     }
   }
