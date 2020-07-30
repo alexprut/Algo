@@ -5,6 +5,19 @@ import java.util.ArrayList;
 /**
  * A Fibonacci Heap is a collection of rooted trees that are min-heap ordered. That is, each tree
  * obeys the min-heap property: the key of a node is greater than or equal to the key of its parent.
+ * Several Fibonacci Heap operations run in constant amortized time.
+ *
+ * <p>Example:
+ *
+ * <pre>
+ *                 min
+ *                  ↓
+ * 23 ———— 7 ————   3    ———— 17 ——— 24
+ *               /  |  \      |     /  \
+ *             18  52  38    30    26  46
+ *             |       |           |
+ *            39      41          35
+ * </pre>
  *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Fibonacci_heap">https://en.wikipedia.org/wiki/Fibonacci_heap</a>
@@ -21,9 +34,11 @@ public class FibonacciHeap<T extends Comparable<T>> {
   public FibonacciHeap() {}
 
   /**
-   * Inserts element x, whose key has already been filled in, into heap.
+   * Inserts element x, whose key has already been filled in.
    *
    * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
    *
    * @param x value
    */
@@ -53,6 +68,10 @@ public class FibonacciHeap<T extends Comparable<T>> {
    * Returns the element in heap whose key is minimum.
    *
    * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the minimum element
    */
   public T minimum() {
     return min.key;
@@ -62,6 +81,10 @@ public class FibonacciHeap<T extends Comparable<T>> {
    * Deletes the element from heap whose key is minimum.
    *
    * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the minimum element
    */
   public Node<T> extractMin() {
     Node<T> z = min;
@@ -101,11 +124,14 @@ public class FibonacciHeap<T extends Comparable<T>> {
   }
 
   /**
+   * Helper method used in {@link #extractMin()}.
    * Reduce the number of trees in the Fibonacci heap. Consolidating the root list consists of
    * repeatedly executing the following steps until every root in the root list has a distinct
    * degree value.
    *
-   * <p>TODO
+   * <p>Time complexity: O(d(n)) where d is {@link #getDegreeBound(double)}
+   *
+   * <p>Space complexity: O(1)
    */
   protected void consolidate() {
     ArrayList<Node<T>> degrees = new ArrayList<>();
@@ -120,8 +146,7 @@ public class FibonacciHeap<T extends Comparable<T>> {
       rootList.add(current);
       current = current.rightSibling;
     }
-    for (int i = 0; i < rootList.size(); i++) {
-      Node<T> x = rootList.get(i);
+    for (Node<T> x : rootList) {
       int d = x.degree;
       while (degrees.get(d) != null) {
         Node<T> y = degrees.get(d);
@@ -137,13 +162,13 @@ public class FibonacciHeap<T extends Comparable<T>> {
       degrees.set(d, x);
     }
     min = null;
-    for (int i = 0; i < degrees.size(); i++) {
-      if (degrees.get(i) != null) {
+    for (Node<T> degree : degrees) {
+      if (degree != null) {
         if (min == null) {
-          min = degrees.get(i);
+          min = degree;
         } else {
-          if (degrees.get(i).key.compareTo(min.key) < 0) {
-            min = degrees.get(i);
+          if (degree.key.compareTo(min.key) < 0) {
+            min = degree;
           }
         }
       }
@@ -151,24 +176,38 @@ public class FibonacciHeap<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(1)
+   * The upper bound on the maximum degree.
+   *
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
    *
    * @param n number of elements in the heap
    * @return the upper bound
    */
   protected int getDegreeBound(double n) {
-    // the base should be the golden ratio: 1.61803...
+    // The base should be the golden ratio: 1.61803...
     return (int) Math.floor(Math.log(n) / Math.log(1.6));
   }
 
+  /**
+   * Helper method used in {@link #consolidate()}. Links two nodes.
+   *
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param y the first node
+   * @param x the second node
+   */
   protected void link(Node<T> y, Node<T> x) {
-    // remove y from the root list
+    // Remove y from the root list
     y.leftSibling.rightSibling = y.rightSibling;
     y.rightSibling.leftSibling = y.leftSibling;
     y.leftSibling = y;
     y.rightSibling = y;
 
-    // make y a child of x
+    // Make y a child of x
     if (x.child == null) {
       x.child = y;
     } else {
@@ -184,13 +223,16 @@ public class FibonacciHeap<T extends Comparable<T>> {
   }
 
   /**
-   * Assigns to element x within heap H the new key value k, which we assume to be no greater than
+   * Assigns to element x within heap the new key value, which we assume to be no greater than
    * its current key value.
    *
    * <p>Time complexity: O(1)
    *
+   * <p>Space complexity: O(1)
+   *
    * @param x node to decrease value
    * @param k the new value
+   * @return true if the key was decreased
    */
   public boolean decreaseKey(Node<T> x, T k) {
     if (x.key.compareTo(k) < 0) {
@@ -210,13 +252,17 @@ public class FibonacciHeap<T extends Comparable<T>> {
   }
 
   /**
-   * TODO
+   * Helper method. “Cuts” the link between x and its parent y, making x a root.
    *
-   * @param x
-   * @param y
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the first node
+   * @param y the second node
    */
   protected void cut(Node<T> x, Node<T> y) {
-    // remove x from the child list of y
+    // Remove x from the child list of y
     if (x.rightSibling == x) {
       y.child = null;
     } else {
@@ -228,7 +274,7 @@ public class FibonacciHeap<T extends Comparable<T>> {
     }
     y.degree--;
 
-    // add x to the root list
+    // Add x to the root list
     min.rightSibling.leftSibling = x;
     x.rightSibling = min.rightSibling;
     x.leftSibling = min;
@@ -239,9 +285,13 @@ public class FibonacciHeap<T extends Comparable<T>> {
   }
 
   /**
-   * TODO
+   * Method recurse its way up the tree until it finds either a root or an unmarked node.
    *
-   * @param y
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param y the node to start the cut
    */
   protected void cascadingCut(Node<T> y) {
     Node<T> z = y.parent;
@@ -256,11 +306,13 @@ public class FibonacciHeap<T extends Comparable<T>> {
   }
 
   /**
-   * Deletes element x from heap
+   * Deletes element x from heap.
    *
    * <p>Time complexity: O(logn)
    *
-   * @param x
+   * <p>Space complexity: O(1)
+   *
+   * @param x the node to delete
    */
   public void delete(Node<T> x) {
     decreaseKey(x, min.key);
@@ -271,18 +323,16 @@ public class FibonacciHeap<T extends Comparable<T>> {
 
     protected T key;
 
-    /** The number of children in the child list of node x in x:degree */
+    /** The number of children in the child list of node x */
     protected int degree = 0;
 
     /**
-     * indicates whether node x has lost a child since the last time x was made the child of another
-     * node
+     * Indicates whether node x has lost a child since the last time x was made the child of another node
      */
     protected boolean mark = false;
 
     protected Node<T> parent;
 
-    /** If node y is an only child, then y:left D y:right D y */
     protected Node<T> leftSibling = this;
 
     protected Node<T> rightSibling = this;
@@ -291,6 +341,14 @@ public class FibonacciHeap<T extends Comparable<T>> {
 
     Node(T value) {
       key = value;
+    }
+
+    public T getKey() {
+      return this.key;
+    }
+
+    public Node<T> getParent() {
+      return this.parent;
     }
   }
 }
