@@ -325,10 +325,6 @@ public class AVLTree<T extends Comparable<T>> {
   /**
    * Utility method. Use the specified element as a pivot and left rotate.
    *
-   * <p>Time complexity: Θ(1)
-   *
-   * <p>Space complexity: Θ(1)
-   *
    * <p>Example:
    *
    * <pre>
@@ -338,6 +334,10 @@ public class AVLTree<T extends Comparable<T>> {
    *    / \                     / \
    *   u   z                   w   u
    * </pre>
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
    *
    * @param x the pivot element
    * @return the rotated rooted element
@@ -368,10 +368,6 @@ public class AVLTree<T extends Comparable<T>> {
   /**
    * Utility method. Use the specified element as a pivot and right rotate.
    *
-   * <p>Time complexity: Θ(1)
-   *
-   * <p>Space complexity: Θ(1)
-   *
    * <p>Example:
    *
    * <pre>
@@ -381,6 +377,10 @@ public class AVLTree<T extends Comparable<T>> {
    *    / \                      / \
    *   u   z                    w   u
    * </pre>
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
    *
    * @param x the pivot element
    * @return the rotated rooted element
