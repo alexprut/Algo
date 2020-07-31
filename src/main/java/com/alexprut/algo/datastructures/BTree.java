@@ -3,12 +3,59 @@ package com.alexprut.algo.datastructures;
 import java.util.ArrayList;
 
 /**
+ * A B-tree is a self-balancing tree data structure that maintains sorted data and allows searches,
+ * sequential access, insertions, and deletions in logarithmic time. The B-tree generalizes the
+ * binary search tree, allowing for nodes with more than two children. B-trees are designed to work
+ * well on disks or other direct-access secondary storage devices. B-trees are similar to {@link
+ * RedBlackTree}, but they are better at minimizing disk I/O operations.
+ *
+ * <p>A B-tree T is a rooted tree (whose root is T.root) having the following properties:
+ *
+ * <ol>
+ *   <li>Every node x has the following attributes:
+ *       <ol>
+ *         <li>x.n, the number of keys currently stored in node x
+ *         <li>the x.n keys themselves, x.key1,x.key2,...,x.keyn, stored in increasing order, so
+ *             that x.key1 <= x:key2 <= ... <= x.keyn
+ *         <li>x.leaf, a boolean value that is TRUE if x is a leaf and FALSE if x is an internal
+ *             node
+ *       </ol>
+ *   <li>Each internal node x also contains x.n + 1 pointers x.c0,x.c1,...,x.cn to its children.
+ *       Leaf nodes have no children, and so their 'c' attributes are undefined
+ *   <li>The keys x.keyi separate the ranges of keys stored in each subtree: if ki is any key stored
+ *       in the subtree with root x.ci, then: k1 <= x.key1 <= k2 <= x.key2 <= ... <= x.keyn
+ *   <li>All leaves have the same depth, which is the tree’s height h
+ *   <li>Nodes have lower and upper bounds on the number of keys they can contain. We express these
+ *       bounds in terms of a fixed integer t => 2 called the minimum degree of the B-tree:
+ *       <ol>
+ *         <li>Every node other than the root must have at least t - 1 keys. Every internal node
+ *             other than the root thus has at least t children. If the tree is nonempty, the root
+ *             must have at least one key
+ *         <li>Every node may contain at most 2t - 1 keys. Therefore, an internal node may have at
+ *             most 2t children. We say that a node is full if it contains exactly 2t - 1 keys
+ *       </ol>
+ * </ol>
+ *
+ * <p>Example:
+ *
+ * <pre>
+ *                -------- [P] --------
+ *               /                     \
+ *       ---[C,G,M]-----             --[T,X]----
+ *      /     |  \      \           /    |      \
+ * [A,B] [D,E,F] [J,K,L] [N,O]   [Q,R,S] [U,V] [Y,Z]
+ * </pre>
+ *
  * @see <a href="https://en.wikipedia.org/wiki/B-tree">https://en.wikipedia.org/wiki/B-tree</a>
  * @param <T>
  */
 public class BTree<T extends Comparable<T>> {
 
   protected Node<T> root = null;
+  /**
+   * The minimum degree of the B-tree. By definition of a B-Tree: the minimum allowed degree is =>
+   * 2.
+   */
   protected int t;
 
   public BTree(int t) {
@@ -18,34 +65,48 @@ public class BTree<T extends Comparable<T>> {
   }
 
   /**
-   * If the object referred to by x resides on disk, however, then we must perform the operation
-   * DISK-READ.x/ to read object x into main memory before we can refer to its attributes. (We as-
-   * sume that if x is already in main memory, then DISK-READ.x/ requires no disk accesses; it is a
-   * “no-op.”
+   * If the object is currently in the computer’s main memory, then we can refer to the attributes
+   * of the object as usual (for example x.key). If the object referred to by x resides on disk,
+   * however, then we must perform the operation diskRead(x) to read object x into main memory
+   * before we can refer to its attributes.
+   *
+   * @param x the node to read
    */
   protected void diskRead(Node<T> x) {
-    // TODO implement method or abstract method
+    // FIXME implement method or abstract method
   }
 
   /**
-   * TODO
+   * Similar to {@link #diskRead(Node)}, used to save any changes that have been made to the
+   * attributes of object x.
    *
-   * @param x
+   * @param x the node to write
    */
   protected void diskWrite(Node<T> x) {
-    // TODO implement method or abstract method
+    // FIXME implement method or abstract method
   }
 
   /**
-   * Time complexity: O(1)
+   * Allocates one disk page to be used.
    *
-   * @return
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the new allocated node
    */
   protected Node<T> allocateNode() {
+    // TODO implement method or abstract method
     return new Node<>();
   }
 
-  /** Time complexity: O(1) */
+  /**
+   * Create the newly tree.
+   *
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   */
   protected void create() {
     Node<T> x = allocateNode();
     x.isLeaf = true;
@@ -54,11 +115,15 @@ public class BTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(th) = O(tlog_t(n))
+   * Searches if a key is within the tree and return the node containing that key if present.
    *
-   * @param x
-   * @param k
-   * @return
+   * <p>Time complexity: O(th) = O(tlog_t(n))
+   *
+   * <p>Space complexity: O(h) = O(log_t(n))
+   *
+   * @param x the node to start the search
+   * @param k the key to search
+   * @return the ordered pair (y,i) consisting of a node y and an index i such that y.keyi = k
    */
   protected Pair<Node<T>, Integer> search(Node<T> x, T k) {
     int i = 0;
@@ -71,57 +136,74 @@ public class BTree<T extends Comparable<T>> {
     if (x.isLeaf) {
       return null;
     }
-    // TODO implement
-    // diskRead(x.children.get(i);
+    // TODO implement diskRead(x.children.get(i);
     return search(x.children.get(i), k);
   }
 
   /**
-   * Time complexity: O(th) = O(tlog_t(n))
+   * Helper method used in {@link #delete(Node, Comparable)} Finds and returns the predecessor of a
+   * node.
    *
-   * @param x
-   * @return
+   * <p>Time complexity: O(th) = O(tlog_t(n))
+   *
+   * <p>Space complexity: O(h)
+   *
+   * @param x the node
+   * @return the predecessor node
    */
   protected Pair<Node<T>, Integer> getPredecessor(Node<T> x) {
     if (x.isLeaf) {
       return new Pair<>(x, x.key.size() - 1);
     }
 
-    // TODO implement diskRead();
+    diskRead(x);
     return getPredecessor(x.children.get(x.children.size() - 1));
   }
 
   /**
-   * Time complexity: O(th) = O(tlog_t(n))
+   * Helper method used in {@link #delete(Node, Comparable)} Finds and returns the successor of a
+   * node.
    *
-   * @param x
-   * @return
+   * <p>Time complexity: O(th) = O(tlog_t(n))
+   *
+   * <p>Space complexity: O(h)
+   *
+   * @param x the node
+   * @return the successor node
    */
   protected Pair<Node<T>, Integer> getSuccessor(Node<T> x) {
     if (x.isLeaf) {
       return new Pair<>(x, 0);
     }
 
-    // TODO implement diskRead();
+    diskRead(x);
     return getSuccessor(x.children.get(0));
   }
 
   /**
-   * Time complexity: O(th) = O(tlog_t(n))
+   * Searches if a key is within the tree and return the node containing that key if present.
    *
-   * @param k
-   * @return
+   * <p>Time complexity: O(th) = O(tlog_t(n))
+   *
+   * <p>Space complexity: O(h) = O(log_t(n))
+   *
+   * @param k the key to search
+   * @return true is the key is within the tree
    */
   public boolean search(T k) {
     return search(root, k) != null;
   }
 
   /**
-   * Time complexity: O(th) = O(tlog_t(n))
+   * Delete a key from the root node.
    *
-   * @param node
-   * @param k
-   * @return
+   * <p>Time complexity: O(th) = O(tlog_t(n))
+   *
+   * <p>Space complexity: O(h)
+   *
+   * @param node the root node
+   * @param k the key to delete
+   * @return true if the key was deleted
    */
   protected boolean delete(Node<T> node, T k) {
     boolean isInRoot = false;
@@ -272,19 +354,27 @@ public class BTree<T extends Comparable<T>> {
   }
 
   /**
-   * Time complexity: O(th) = O(tlog_t(n))
+   * Delete a key from the tree.
    *
-   * @param k
-   * @return
+   * <p>Time complexity: O(th) = O(tlog_t(n))
+   *
+   * <p>Space complexity: O(h)
+   *
+   * @param k the key to delete
+   * @return true if the key was deleted
    */
   public boolean delete(T k) {
     return delete(root, k);
   }
 
   /**
-   * O(h) disk access and O(th) = O(tlog_tn) time complexity
+   * Insert a new key value.
    *
-   * @param k
+   * <p>Time Complexity: O(th) = O(tlog_tn)
+   *
+   * <p>Space Complexity: O(h)
+   *
+   * @param k the new key value to insert
    */
   public void insert(T k) {
     Node<T> tmp = root;
@@ -301,8 +391,12 @@ public class BTree<T extends Comparable<T>> {
   }
 
   /**
-   * @param parent
-   * @param index
+   * Helper method used for {@link #insert(Comparable)}. Since we cannot insert a key into a leaf
+   * node that is full, we introduce an operation that splits a full node y (having 2t-1 keys)
+   * around its median key.
+   *
+   * @param parent the parent node
+   * @param index the index to do the split
    */
   protected void splitChild(Node<T> parent, int index) {
     Node<T> newNodeToRight = allocateNode();
@@ -341,8 +435,11 @@ public class BTree<T extends Comparable<T>> {
   }
 
   /**
-   * @param x
-   * @param k
+   * Helper method used in {@link #insert(Comparable).} Insert key k into the tree rooted at the non
+   * full root node.
+   *
+   * @param x the node where to insert
+   * @param k the key to insert
    */
   public void insertNonFull(Node<T> x, T k) {
     int i = x.key.size() - 1;
