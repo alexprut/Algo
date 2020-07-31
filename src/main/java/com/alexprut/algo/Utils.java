@@ -85,14 +85,17 @@ public class Utils {
   }
 
   /**
-   * Checks if a string is a palindrome.
+   * Checks if a string is a palindrome. A palindrome is a word which reads the same backward as
+   * forward.
+   *
+   * <p>Example: the words "madam" and "kayak" are palindromes.
    *
    * <p>Time complexity: O(n)
    *
    * <p>Space complexity: O(n) total and O(1) auxiliary
    *
    * @param s the string to check
-   * @return
+   * @return true if the word is a palindrome
    */
   public static boolean isPalindrome(String s) {
     for (int i = 0; i < s.length() / 2; i++) {
@@ -109,13 +112,11 @@ public class Utils {
    * which the subsequence's elements are in sorted order, lowest to highest, and in which the
    * subsequence is as long as possible. This subsequence is not necessarily contiguous, or unique.
    *
-   * <p>Time complexity: O(n^2)
-   *
-   * <p>Space complexity: O(n)
-   *
    * <p>Example: given [50, 3, 10, 7, 40, 80] the longest increasing subsequence is [3, 7, 40, 80].
    *
-   * <p>TODO implement a O(nlogn) algorithm
+   * <p>Time complexity: O(n^2) TODO implement a O(nlogn) algorithm
+   *
+   * <p>Space complexity: O(n)
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Longest_increasing_subsequence">https://en.wikipedia.org/wiki/Longest_increasing_subsequence</a>

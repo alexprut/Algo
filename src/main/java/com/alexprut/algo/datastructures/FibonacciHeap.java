@@ -124,10 +124,9 @@ public class FibonacciHeap<T extends Comparable<T>> {
   }
 
   /**
-   * Helper method used in {@link #extractMin()}.
-   * Reduce the number of trees in the Fibonacci heap. Consolidating the root list consists of
-   * repeatedly executing the following steps until every root in the root list has a distinct
-   * degree value.
+   * Helper method used in {@link #extractMin()}. Reduce the number of trees in the Fibonacci heap.
+   * Consolidating the root list consists of repeatedly executing the following steps until every
+   * root in the root list has a distinct degree value.
    *
    * <p>Time complexity: O(d(n)) where d is {@link #getDegreeBound(double)}
    *
@@ -223,8 +222,8 @@ public class FibonacciHeap<T extends Comparable<T>> {
   }
 
   /**
-   * Assigns to element x within heap the new key value, which we assume to be no greater than
-   * its current key value.
+   * Assigns to element x within heap the new key value, which we assume to be no greater than its
+   * current key value.
    *
    * <p>Time complexity: O(1)
    *
@@ -327,7 +326,8 @@ public class FibonacciHeap<T extends Comparable<T>> {
     protected int degree = 0;
 
     /**
-     * Indicates whether node x has lost a child since the last time x was made the child of another node
+     * Indicates whether node x has lost a child since the last time x was made the child of another
+     * node
      */
     protected boolean mark = false;
 
