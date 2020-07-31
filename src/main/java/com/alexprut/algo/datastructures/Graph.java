@@ -4,17 +4,36 @@ import com.alexprut.algo.algorithms.graph.mst.Kruskal;
 import java.util.ArrayList;
 
 /**
- * Conventions: the nodes are labeled from 0 to n (exclusive).
+ * A graph data structure consists of a finite (and possibly mutable) set of vertices (also called
+ * nodes), together with a set of unordered pairs of these vertices for an undirected graph or a set
+ * of ordered pairs for a directed graph. These pairs are known as edges (also called links).
+ *
+ * <p>Conventions: the nodes are labeled from 0 to n (exclusive).
+ *
+ * <p>Example:
+ *
+ * <pre>
+ *   1 — 2 — 32 -43
+ *       |
+ *       3 — 12
+ *     /  \
+ *   65    6
+ * </pre>
  *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">https://en.wikipedia.org/wiki/Graph_(abstract_data_type)</a>
  */
 public class Graph {
 
+  /** True if the graph is directed, otherwise if it is undirected. */
   private boolean isDirected = false;
+  /** The graph edges (or links). */
   private final ArrayList<Edge> edges = new ArrayList<>();
+  /** The adjacency-matrix representation of the graph. */
   private int[][] adjMatrix;
+  /** The adjacency-list representation of the graph. */
   private ArrayList<ArrayList<Pair<Integer, Integer>>> adjList;
+  /** The number of nodes in the graph. */
   private int n;
 
   public Graph(int n) {
@@ -26,7 +45,13 @@ public class Graph {
     this.isDirected = isDirected;
   }
 
-  /** TODO */
+  /**
+   * Builds the adjacency-matrix representation of the graph.
+   *
+   * <p>Time complexity: O(|V|^2)
+   *
+   * <p>Space complexity: O(|V|^2)
+   */
   private void buildAdjacencyMatrix() {
     adjMatrix = new int[n][n];
 
@@ -44,7 +69,13 @@ public class Graph {
     }
   }
 
-  /** TODO */
+  /**
+   * Builds the adjacency-list representation of the graph.
+   *
+   * <p>Time complexity: O(|V|+|E|)
+   *
+   * <p>Space complexity: O(|V|+|E|)
+   */
   private void buildAdjacencyList() {
     adjList = new ArrayList<>();
 
@@ -58,9 +89,13 @@ public class Graph {
   }
 
   /**
-   * TODO
+   * Get the adjacency-matrix.
    *
-   * @return
+   * <p>Time complexity: O(1), otherwise O(|V|^2) if the matrix needs to be computed
+   *
+   * <p>Space complexity: O(1), otherwise O(|V|^2) if the matrix needs to be computed
+   *
+   * @return the adjacency-matrix
    */
   public int[][] getAdjacencyMatrix() {
     if (adjMatrix == null) {
@@ -71,9 +106,13 @@ public class Graph {
   }
 
   /**
-   * TODO
+   * Get the adjacency-list.
    *
-   * @return
+   * <p>Time complexity: O(1), otherwise O(|V|+|E|) if the matrix needs to be computed
+   *
+   * <p>Space complexity: O(1), otherwise O(|V|+|E|) if the matrix needs to be computed
+   *
+   * @return the adjacency-list
    */
   public ArrayList<ArrayList<Pair<Integer, Integer>>> getAdjacencyList() {
     if (adjList == null) {
@@ -83,25 +122,40 @@ public class Graph {
     return adjList;
   }
 
+  /**
+   * Get all the edges.
+   *
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @return the list of the edges
+   */
   public ArrayList<Edge> getEdges() {
     return edges;
   }
 
   /**
-   * Calculates the minimum spanning tree.
+   * Calculates the minimum spanning tree. Uses {@link Kruskal}.
    *
-   * <p>TODO
+   * <p>Time complexity: O(|E|log|V|)
    *
-   * @return
+   * <p>Space complexity: O(n)
+   *
+   * @return the minimum spanning tree
    */
   public ArrayList<Edge> mst() {
     return Kruskal.kruskal(edges, n);
   }
 
   /**
-   * TODO
+   * Add all the edges to the graph.
    *
-   * @param edges
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param edges the edges to add
    */
   public void addEdge(ArrayList<Edge> edges) {
     for (Edge edge : edges) {
@@ -110,9 +164,13 @@ public class Graph {
   }
 
   /**
-   * TODO
+   * Add a new edge to the graph.
    *
-   * @param edge
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param edge the new edge
    */
   public void addEdge(Edge edge) {
     edges.add(edge);
@@ -123,9 +181,15 @@ public class Graph {
   }
 
   /**
-   * @param x
-   * @param y
-   * @param w
+   * Add a new edge to the graph.
+   *
+   * <p>Time complexity: O(1)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the starting node
+   * @param y the ending node
+   * @param w the weight
    */
   public void addEdge(int x, int y, int w) {
     addEdge(new Edge(new Node(x), new Node(y), w));
