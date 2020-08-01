@@ -19,6 +19,7 @@ public class BinarySearchTest {
   @Test
   public void shouldFindIndexFirstLowest() {
     int[] a = new int[] {1, 2, 3, 5, 6, 7};
+    Assert.assertEquals(1, BinarySearch.binarySearchFirstLowest(a, 2));
     Assert.assertEquals(-1, BinarySearch.binarySearchFirstLowest(a, 0));
     Assert.assertEquals(2, BinarySearch.binarySearchFirstLowest(a, 4));
     Assert.assertEquals(5, BinarySearch.binarySearchFirstLowest(a, 8));
@@ -27,6 +28,7 @@ public class BinarySearchTest {
   @Test
   public void shouldFindIndexFirstHighest() {
     int[] a = new int[] {1, 2, 3, 5, 6, 7};
+    Assert.assertEquals(1, BinarySearch.binarySearchFirstHighest(a, 2));
     Assert.assertEquals(0, BinarySearch.binarySearchFirstHighest(a, 0));
     Assert.assertEquals(3, BinarySearch.binarySearchFirstHighest(a, 4));
     Assert.assertEquals(6, BinarySearch.binarySearchFirstHighest(a, 8));
