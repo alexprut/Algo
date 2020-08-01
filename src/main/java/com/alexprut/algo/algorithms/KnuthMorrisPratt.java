@@ -42,14 +42,15 @@ public class KnuthMorrisPratt {
   }
 
   /**
-   * Utility function for the Knuth Morris Pratt algorithm. Computes the prefix function.
+   * Utility function for the Knuth Morris Pratt algorithm {@link #knuthMorrisPratt(String,
+   * String)}. Computes the prefix function.
    *
    * <p>Time complexity: Θ(m)
    *
    * <p>Space complexity: Θ(m) total with Θ(1) auxiliary
    *
-   * @param pattern
-   * @return
+   * @param pattern the pattern for the the prefix function
+   * @return the prefix function
    */
   protected static int[] computePrefixFunction(String pattern) {
     int m = pattern.length();
