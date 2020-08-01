@@ -7,7 +7,7 @@ public class QuickSortTest {
 
   @Test
   public void shouldSort() {
-    int[] toSort = new int[] {5, 2, 1, 9, 0, 33, 3, 3, 0};
+    int[] toSort = new int[] {5, 2, 1, 9, 0, 33, 3, 0, 3};
     int[] expected = new int[] {0, 0, 1, 2, 3, 3, 5, 9, 33};
 
     QuickSort.quickSort(toSort, 0, toSort.length - 1);
