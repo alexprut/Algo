@@ -5,16 +5,20 @@ import com.alexprut.algo.Utils;
 public class CountingSort {
 
   /**
-   * Given an array of n integers, sort the elements in ascending order. The sorting in stable.
-   * Assumes that each of the n input elements is an integer in the range 0 to k, for some integer
-   * k.
+   * Counting sort is stable and linear time sorting algorithm. It assumes that each of the n input
+   * elements is an integer in the range 0 to k, for some integer k.
+   *
+   * <p>Example: given the elements [5, 2, 1, 9, 3, 3, 0] the sorted elements would be [0, 1, 2, 3,
+   * 3, 5, 9]
    *
    * <p>Time complexity: Θ(n)
    *
    * <p>Space complexity: Θ(n)
    *
-   * @param arr
-   * @return
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Counting_sort">https://en.wikipedia.org/wiki/Counting_sort</a>
+   * @param arr the elements to sort
+   * @return the sorted elements
    */
   public static int[] countingSort(int[] arr) {
     int[] result = new int[arr.length];
@@ -40,16 +44,24 @@ public class CountingSort {
   }
 
   /**
-   * Given an array of n integers, sort the elements in ascending order based on the specified digit
-   * index. The sorting in stable.
+   * Similar to {@link #countingSort(int[])}. Given an array of n integers, sort the elements in
+   * ascending order based on the specified digit index. The sorting in stable.
+   *
+   * <p>Example: given the elements [387, 468, 134, 123, 68, 221, 769, 37, 7] the sorted elements at
+   * index 1 would be [221, 123, 134, 387, 37, 7, 468, 68, 769]
+   *
+   * <pre>
+   * [221, 123, 134, 387, 37, 7, 468, 68, 769]
+   *    ↑    ↑    ↑    ↑   ↑  ↑    ↑   ↑    ↑
+   * </pre>
    *
    * <p>Time complexity: Θ(n)
    *
    * <p>Space complexity: Θ(n)
    *
-   * @param arr
-   * @param digitIndex
-   * @return
+   * @param arr the elements to sort
+   * @param digitIndex the digit index to sort the elements with
+   * @return the sorted elements
    */
   public static int[] countingSort(int[] arr, int digitIndex) {
     int[] result = new int[arr.length];
