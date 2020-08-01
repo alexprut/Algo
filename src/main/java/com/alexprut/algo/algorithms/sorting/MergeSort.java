@@ -3,15 +3,20 @@ package com.alexprut.algo.algorithms.sorting;
 public class MergeSort {
 
   /**
-   * It is a divide-and-conquer algorithms
+   * Merge sort is a sorting divide-and-conquer algorithms that is not in place.
    *
-   * <p>Time complexity: Θ(nlogn) in the worst and best case
+   * <p>Example: given the elements [5, 2, 1, 9, 3, 3, 0] the sorted elements would be [0, 1, 2, 3,
+   * 3, 5, 9]
    *
-   * <p>Space complexity; O(n) total with O(n) auxiliary the algorithms is not in place
+   * <p>Time complexity: Θ(nlogn)
    *
-   * @param arr
-   * @param p
-   * @param r
+   * <p>Space complexity; O(n) total with O(n) auxiliary
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Merge_sort">https://en.wikipedia.org/wiki/Merge_sort</a>
+   * @param arr the elements to sort
+   * @param p the starting index of the sort
+   * @param r the ending index of the sort
    */
   public static void mergeSort(int[] arr, int p, int r) {
     if (p < r) {
@@ -23,18 +28,20 @@ public class MergeSort {
   }
 
   /**
-   * TODO
+   * Helper method used in {@link #mergeSort(int[], int, int)}. Merges two lists of elements in
+   * order.
    *
    * <p>Time complexity: Θ(n)
    *
    * <p>Space complexity: O(n) total with O(n) auxiliary space
    *
-   * @param arr
-   * @param p
-   * @param q
-   * @param r
+   * @param arr the elements to sort
+   * @param p the start index
+   * @param q the middle index
+   * @param r the end index
    */
   private static void merge(int[] arr, int p, int q, int r) {
+    // p <= q < r
     int[] left = new int[q - p + 2];
     int[] right = new int[r - q + 1];
 
