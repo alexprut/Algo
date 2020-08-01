@@ -5,17 +5,24 @@ import com.alexprut.algo.Utils;
 public class InsertionSort {
 
   /**
-   * TODO
+   * Insertion Sort is a sorting algorithm that is in-place. Insertion sort works the way many
+   * people sort a hand of playing cards. We start with an empty left hand and the cards face down
+   * on the table. We then remove one card at a time from the table and insert it into the correct
+   * position in the left hand. To find the correct position for a card, we compare it with each of
+   * the cards already in the hand, from right to left.
    *
-   * <p>Time complexity: O(n^2) in the worst case, when the array is sorted in reverse order O(n)
-   * best case, when the array is already sorted
+   * <p>Example: given the elements [5, 2, 1, 9, 3, 3, 0] the sorted elements would be [0, 1, 2, 3,
+   * 3, 5, 9]
    *
-   * <p>Space complexity; O(n) total with O(1) auxiliary In-place algorithm, it rearranges the
-   * numbers within the given array, with at most a constant number of them stored outside the array
-   * at any time
+   * <p>Time complexity: O(n^2) in the worst case when the array is sorted in reverse order, O(n)
+   * best case when the array is already sorted
    *
-   * @param arr
-   * @return
+   * <p>Space complexity: O(n) total with O(1) auxiliary
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Insertion_sort">https://en.wikipedia.org/wiki/Insertion_sort</a>
+   * @param arr the elements to sort
+   * @return the sorted elements
    */
   public static int[] insertionSort(int[] arr) {
     for (int i = 1; i < arr.length; i++) {
