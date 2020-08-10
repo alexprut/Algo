@@ -11,18 +11,37 @@ public class Math {
   /**
    * Greatest common divisor, Euclide algorithms.
    *
+   * <p>Example: the greatest common divisor between 10 and 6 is 2.
+   *
    * <p>Time complexity: O(b) given gcd(a, b)
+   *
+   * <p>Space complexity: O(1)
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Greatest_common_divisor">https://en.wikipedia.org/wiki/Greatest_common_divisor</a>
-   * @param a
-   * @param b
-   * @return
+   * @param a the first number
+   * @param b the second number
+   * @return the greatest common divisor
    */
   public static int gcd(int a, int b) {
     return (b == 0) ? a : gcd(b, a % b);
   }
 
+  /**
+   * Checks if a number is prime. A prime number is a natural number greater than 1 that is not a
+   * product of two smaller natural numbers.
+   *
+   * <p>Example: numbers 2,3,5,7,11... are prime numbers, 4,6,8,9... are not prime numbers.
+   *
+   * <p>Time complexity: O(nloglogn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes</a>
+   * @param n the number to check
+   * @return true if the number is a prime
+   */
   public static boolean isPrime(int n) {
     if (n < 2) {
       return false;
@@ -36,10 +55,18 @@ public class Math {
   }
 
   /**
-   * TODO
+   * Computes the factorial of a positive integer n (also known as n!).
    *
-   * @param n
-   * @return
+   * <p>Example: the factorial of 4 is 4*3*2*1=24.
+   *
+   * <p>Time complexity: O(n)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Factorial">https://en.wikipedia.org/wiki/Factorial</a>
+   * @param n the positive integer
+   * @return the factorial number
    */
   public static BigInteger factorial(int n) {
     if (n < 2) {
@@ -55,11 +82,18 @@ public class Math {
   }
 
   /**
-   * TODO search a more efficient algorithm
+   * Given a collection of elements return all possible permutations.
    *
-   * @param elements
-   * @param <T>
-   * @return
+   * <p>Example: given the elements {3,1,2} the list of permutations are: [(1,2,3), (1,3,2),
+   * (2,1,3), (2,3,1), (3,1,2), (3,2,1)].
+   *
+   * <p>TODO time and space complexity
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Permutation">https://en.wikipedia.org/wiki/Permutation</a>
+   * @param elements the list of elements
+   * @param <T> the type of the elements
+   * @return the list of all permutations
    */
   public static <T> ArrayList<ArrayList<T>> permute(ArrayList<T> elements) {
     if (elements.size() == 0) {
@@ -91,6 +125,11 @@ public class Math {
    * Given a collection of elements that might contain duplicates, return all possible unique
    * permutations.
    *
+   * <p>Example: given the elements {1,1,2} the list of permutations are: [(1,1,2), (1,2,1),
+   * (2,1,1)].
+   *
+   * <p>TODO time and space complexity
+   *
    * @param elem the elements to permute
    * @param <T> type of the elements
    * @return all possible unique permutations
@@ -107,7 +146,15 @@ public class Math {
     return res;
   }
 
-  private static <T> void permuteUnique(
+  /**
+   * Helper method used in {@link #permuteUnique(Object[])}
+   *
+   * @param c accumulator list
+   * @param n remaining elements
+   * @param res the list of permutations
+   * @param <T> the type of the elements
+   */
+  protected static <T> void permuteUnique(
       final ArrayList<T> c, final ArrayList<T> n, List<List<T>> res) {
     if (n.size() == 0) {
       res.add(c);
