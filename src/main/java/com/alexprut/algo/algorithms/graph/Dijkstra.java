@@ -9,18 +9,40 @@ public class Dijkstra {
 
   /**
    * Dijkstra’s algorithm solves the single-source shortest-paths problem on a weighted, directed
-   * graph for the case in which all edge weights are nonnegative
+   * graph for the case in which all edge weights are non-negative.
    *
-   * <p>Time complexity: O(|E| + |V|log|V|)
+   * <p>Example:
    *
-   * <p>Space complexity: TODO
+   * <pre>
+   *          3
+   *  node0 ----- node1
+   *    |           |
+   *  2 |           | 6
+   *    |           |
+   *  node3 ----- node2
+   *          1
+   *
+   * The shortest path is: [-1,3,3,2]
+   *
+   *          3
+   *  node0 ----- node1
+   *    |
+   *  2 |
+   *    |
+   *  node3 ----- node2
+   *          1
+   * </pre>
+   *
+   * <p>Time complexity: O(|E|+|V|log|V|)
+   *
+   * <p>Space complexity: O(|E|+|V|)
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a>
-   * @param adj
-   * @param n
-   * @param start
-   * @return
+   * @param adj the adjacency-matrix representation of the graph
+   * @param n the number of nodes
+   * @param start the root
+   * @return the shortest path between the root and all nodes
    */
   public static int[] dijkstra(ArrayList<ArrayList<Pair<Integer, Integer>>> adj, int n, int start) {
     class CostNodePair extends Pair<Integer, Integer> implements Comparable<CostNodePair> {
@@ -41,8 +63,7 @@ public class Dijkstra {
     // TODO use MinHeap or FibonacciHeap
     PriorityQueue<CostNodePair> minHeap = new PriorityQueue<>();
     minHeap.add(new CostNodePair(0, start));
-    int counter = 0;
-    while (!minHeap.isEmpty() && counter < n) {
+    while (!minHeap.isEmpty()) {
       CostNodePair node = minHeap.poll();
       int x = node.second();
       if (!visited[x]) {
