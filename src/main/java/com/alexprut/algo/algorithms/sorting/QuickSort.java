@@ -48,7 +48,7 @@ public class QuickSort {
    *              ^
    *            pivot
    *
-   * [2, 1, 0, 0 <= 3 => 33, 3, 9, 5]
+   * [2, 1, 0, 0 &lt;= 3 =&gt; 33, 3, 9, 5]
    * </pre>
    *
    * <p>Time complexity: O(n)

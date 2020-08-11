@@ -41,6 +41,7 @@ public class FibonacciHeap<T extends Comparable<T>> {
    * <p>Space complexity: O(1)
    *
    * @param x value
+   * @return the newly inserted node
    */
   public Node<T> insert(T x) {
     Node<T> node = new Node<>(x);

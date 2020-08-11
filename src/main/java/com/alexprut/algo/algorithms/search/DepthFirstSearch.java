@@ -59,6 +59,7 @@ public class DepthFirstSearch {
    *
    * @param adj the adjacency-matrix representation of the graph
    * @param start the root
+   * @param visited flags if or not a node was visited
    */
   protected static void dfsCountForest(
       ArrayList<ArrayList<Integer>> adj, int start, boolean[] visited) {
@@ -128,6 +129,7 @@ public class DepthFirstSearch {
    * @param start the root
    * @param visited flags if or not a node was visited
    * @param epoch of the dfs run
+   * @return true if the graph has a cycle
    */
   protected static boolean dfsHasCycle(
       ArrayList<ArrayList<Integer>> adj, int start, boolean[] visited, int[] epoch) {
@@ -216,6 +218,10 @@ public class DepthFirstSearch {
 
   /**
    * Performs a DFS visit on a graph. Helper method used in {@link #topologicalSort(ArrayList)}.
+   *
+   * <p>Time complexity: O(V+E)
+   *
+   * <p>Space complexity: O(V)
    *
    * @param adj the adjacency-matrix representation of the graph
    * @param node the node to visit
