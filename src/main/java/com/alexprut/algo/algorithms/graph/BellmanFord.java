@@ -6,19 +6,42 @@ import java.util.ArrayList;
 public class BellmanFord {
 
   /**
-   * Finds the shortest path between a source and all other nodes in the graph.
+   * Finds the shortest path between a source and all other nodes in the graph. The graph can be
+   * directed or undirected, he weight of the edges may be negative. In case of a negative cycle
+   * there is no solution.
+   *
+   * <p>Example:
+   *
+   * <pre>
+   *          3
+   *  node0 ----- node1
+   *    |           |
+   *  2 |           | -1
+   *    |           |
+   *  node3 ----- node2
+   *          1
+   *
+   * The shortest path is: [-1,2,3,2]
+   *
+   *  node0       node1
+   *    |           |
+   *  2 |           | -1
+   *    |           |
+   *  node3 ----- node2
+   *          1
+   * </pre>
    *
    * <p>Time complexity: Θ(|V||E|)
    *
-   * <p>Space complexity: Θ(|V| + |E|) total
+   * <p>Space complexity: Θ(|V|+|E|)
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</a>
-   * @param edges
-   * @param n
-   * @param start
-   * @return
-   * @throws Exception
+   * @param edges the list of edges
+   * @param n the number of nodes
+   * @param start the root
+   * @return the shortest path between the root and all nodes
+   * @throws Exception if there is a negative cycle
    */
   public static int[] bellmanFord(ArrayList<Edge> edges, int n, int start) throws Exception {
     int[] distance = new int[n];
