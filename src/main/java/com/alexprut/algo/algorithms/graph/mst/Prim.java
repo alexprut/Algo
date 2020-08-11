@@ -8,18 +8,40 @@ import java.util.PriorityQueue;
 public class Prim {
 
   /**
-   * Finds the minimum spanning tree (MST) of an undirected graph.
+   * Finds the minimum spanning tree (MST) of a weighted undirected graph.
+   *
+   * <p>Example:
+   *
+   * <pre>
+   *          3
+   *  node0 ----- node1
+   *    |           |
+   *  2 |           | 6
+   *    |           |
+   *  node3 ----- node2
+   *          1
+   *
+   * The Minimum Spanning Tree is:
+   *
+   *          3
+   *  node0 ----- node1
+   *    |
+   *  2 |
+   *    |
+   *  node3 ----- node2
+   *          1
+   * </pre>
    *
    * <p>Time complexity: O(|E|log|V|)
    *
-   * <p>Space complexity: TODO
+   * <p>Space complexity: O(|V|)
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">https://en.wikipedia.org/wiki/Prim%27s_algorithm</a>
-   * @param adj
-   * @param n
-   * @param start
-   * @return
+   * @param adj the adjacency-matrix representation of the graph
+   * @param n the number of nodes
+   * @param start the root
+   * @return the minimum spanning tree
    */
   public static int[] prim(ArrayList<ArrayList<Pair<Integer, Integer>>> adj, int n, int start) {
     class CostNodePair extends Pair<Integer, Integer> implements Comparable<CostNodePair> {
