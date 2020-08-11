@@ -76,7 +76,6 @@ public class DepthFirstSearchTest {
     adj.get(0).add(2);
     adj.get(1).add(0);
 
-    boolean s = DepthFirstSearch.hasCycle(adj);
     Assert.assertFalse(DepthFirstSearch.hasCycle(adj));
   }
 

@@ -15,6 +15,7 @@ public class RabinKarp {
    * @param text the text to search in
    * @param pattern the pattern to search within the text
    * @param d the size of the alphabet
+   * @param q the modulo
    * @return the index of the first occurrence of the match, -1 if there is no occurrence
    */
   public static int rabinKarp(String text, String pattern, int d, int q) {

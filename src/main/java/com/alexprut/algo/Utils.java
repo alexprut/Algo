@@ -163,6 +163,9 @@ public class Utils {
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem">https://en.wikipedia.org/wiki/Longest_common_subsequence_problem</a>
+   * @param a the first word
+   * @param b the second work
+   * @return the longest common subsequence
    */
   public static int longestCommonSubsequence(String a, String b) {
     int[][] dp = new int[a.length() + 1][b.length() + 1];
@@ -188,6 +191,8 @@ public class Utils {
    *
    * <p>Space complexity: O(1)
    *
+   * @param number the number
+   * @param digitIndex the index
    * @return the digit at the specified index
    */
   public static int getDigitAtIndex(int number, int digitIndex) {

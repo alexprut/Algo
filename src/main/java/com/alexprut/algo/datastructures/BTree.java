@@ -16,17 +16,18 @@ import java.util.ArrayList;
  *       <ol>
  *         <li>x.n, the number of keys currently stored in node x
  *         <li>the x.n keys themselves, x.key1,x.key2,...,x.keyn, stored in increasing order, so
- *             that x.key1 <= x:key2 <= ... <= x.keyn
+ *             that x.key1 &lt;= x:key2 &lt;= ... &lt;= x.keyn
  *         <li>x.leaf, a boolean value that is TRUE if x is a leaf and FALSE if x is an internal
  *             node
  *       </ol>
  *   <li>Each internal node x also contains x.n + 1 pointers x.c0,x.c1,...,x.cn to its children.
  *       Leaf nodes have no children, and so their 'c' attributes are undefined
  *   <li>The keys x.keyi separate the ranges of keys stored in each subtree: if ki is any key stored
- *       in the subtree with root x.ci, then: k1 <= x.key1 <= k2 <= x.key2 <= ... <= x.keyn
+ *       in the subtree with root x.ci, then: k1 &lt;= x.key1 &lt;= k2 &lt;= x.key2 &lt;= ... &lt;=
+ *       x.keyn
  *   <li>All leaves have the same depth, which is the tree’s height h
  *   <li>Nodes have lower and upper bounds on the number of keys they can contain. We express these
- *       bounds in terms of a fixed integer t => 2 called the minimum degree of the B-tree:
+ *       bounds in terms of a fixed integer t =&gt; 2 called the minimum degree of the B-tree:
  *       <ol>
  *         <li>Every node other than the root must have at least t - 1 keys. Every internal node
  *             other than the root thus has at least t children. If the tree is nonempty, the root
@@ -53,8 +54,8 @@ public class BTree<T extends Comparable<T>> {
 
   protected Node<T> root = null;
   /**
-   * The minimum degree of the B-tree. By definition of a B-Tree: the minimum allowed degree is =>
-   * 2.
+   * The minimum degree of the B-tree. By definition of a B-Tree: the minimum allowed degree is
+   * =&gt; 2.
    */
   protected int t;
 
@@ -435,7 +436,7 @@ public class BTree<T extends Comparable<T>> {
   }
 
   /**
-   * Helper method used in {@link #insert(Comparable).} Insert key k into the tree rooted at the non
+   * Helper method used in {@link #insert(Comparable)}. Insert key k into the tree rooted at the non
    * full root node.
    *
    * @param x the node where to insert
