@@ -3,10 +3,10 @@ package com.alexprut.algo.algorithms.sorting;
 public class RadixSort {
 
   /**
-   * Given an array of n integers, sort the elements in ascending order. The algorithm uses {@link
-   * CountingSort}, the sorting is stable. Radix sort solves the problem of sorting
-   * counterintuitively, by sorting on the least significant digit first. The process continues
-   * until the elements have been sorted on all 'd' digits.
+   * Given an array of n integers, sort the elements in ascending order and in . The algorithm uses
+   * {@link CountingSort}, the sorting is stable and runs in linear time. Radix sort solves the
+   * problem of sorting counterintuitively, by sorting on the least significant digit first. The
+   * process continues until the elements have been sorted on all 'd' digits.
    *
    * <p>Example: given the elements [5, 2, 1, 9, 3, 3, 0] the sorted elements would be [0, 1, 2, 3,
    * 3, 5, 9]
