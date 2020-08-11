@@ -9,17 +9,39 @@ import java.util.Collections;
 public class Kruskal {
 
   /**
-   * Finds the minimum spanning tree (MST) of an undirected graph.
+   * Finds the minimum spanning tree (MST) of a weighted undirected graph.
+   *
+   * <p>Example:
+   *
+   * <pre>
+   *          3
+   *  node0 ----- node1
+   *    |           |
+   *  2 |           | 6
+   *    |           |
+   *  node3 ----- node2
+   *          1
+   *
+   * The Minimum Spanning Tree is:
+   *
+   *          3
+   *  node0 ----- node1
+   *    |
+   *  2 |
+   *    |
+   *  node3 ----- node2
+   *          1
+   * </pre>
    *
    * <p>Time complexity: O(|E|log|V|)
    *
-   * <p>Space complexity: TODO
+   * <p>Space complexity: O(|V|+|E|)
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm">https://en.wikipedia.org/wiki/Kruskal%27s_algorithm</a>
-   * @param edges
-   * @param n
-   * @return
+   * @param edges the list of edges
+   * @param n the number of nodes
+   * @return the minimum spanning tree
    */
   public static ArrayList<Graph.Edge> kruskal(ArrayList<Graph.Edge> edges, int n) {
     ArrayList<Graph.Edge> mst = new ArrayList<>();
