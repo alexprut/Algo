@@ -10,7 +10,7 @@ plugins {
 
 group = "com.alexprut"
 archivesBaseName = "algo"
-version = "v0.2.0"
+version = "v0.3.0"
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
