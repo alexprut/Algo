@@ -10,7 +10,7 @@ package com.alexprut.algo.datastructures;
  *
  * <pre>
  * Array visualization:
- * [7,5,6,2,1,6]
+ * [7,5,6,2,1,4]
  *
  * Tree visualization:
  *       7
@@ -95,7 +95,7 @@ public class MaxHeap extends BinaryHeap {
   public void insert(int e) {
     size++;
     if (elements.length < size) {
-      int[] tmp = new int[elements.length * 2];
+      int[] tmp = new int[elements.length * 2 + 1];
       System.arraycopy(elements, 0, tmp, 0, elements.length);
       elements = tmp;
     }
