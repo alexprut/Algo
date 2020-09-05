@@ -321,14 +321,32 @@ public class MinMaxHeap {
     }
   }
 
-  public void pushUpMin(int i) {
+  /**
+   * Utility method used in {@link #insert(int)}.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param i index
+   */
+  protected void pushUpMin(int i) {
     if (parent(parent(i)) >= 0 && elements[i] < elements[parent(parent(i))]) {
       Utils.swap(elements, i, parent(parent(i)));
       pushUpMin(parent(parent(i)));
     }
   }
 
-  public void pushUpMax(int i) {
+  /**
+   * Utility method used in {@link #insert(int)}.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param i index
+   */
+  protected void pushUpMax(int i) {
     if (parent(parent(i)) >= 0 && elements[i] > elements[parent(parent(i))]) {
       Utils.swap(elements, i, parent(parent(i)));
       pushUpMax(parent(parent(i)));
