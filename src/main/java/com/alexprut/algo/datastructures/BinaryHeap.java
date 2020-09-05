@@ -24,7 +24,7 @@ package com.alexprut.algo.datastructures;
  */
 public abstract class BinaryHeap {
 
-  protected int[] elements;
+  protected int[] elements = new int[0];
   protected int size = 0;
 
   public BinaryHeap(int[] elements) {
