@@ -54,6 +54,7 @@ Data Structures
 |--------------|-------|
 |[Max Heap](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MaxHeap.java)|```max()``` - Θ(1), ```extractMax()``` - O(nlogn), ```increaseKey()``` - O(logn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
 |[Min Heap](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MinHeap.java)|```min()``` - Θ(1), ```extractMin()``` - O(nlogn), ```insert()``` - O(logn), ```heapify()``` - O(logn), ```heapsort()``` - O(nlogn)|
+|[MinMax Heap](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MinMaxHeap.java)|```min()``` - Θ(1), ```max()``` - Θ(1), ```extractMin()``` - O(nlogn), ```extractMax()``` - O(nlogn), ```insert()``` - O(logn), ```heapify()``` - O(logn)|
 |[Disjoint Set](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/DisjointSet.java)|```makeSet()``` - Θ(1), ```findSet()``` - Θ(1), ```union()``` - Θ(1)|
 |[Trie](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Trie.java)|```insert()``` - O(\|s\|), ```search()``` - O(\|s\|), ```searchPrefix()``` - O(\|s\|), ```remove()``` - O(\|s\|), ```size()``` - O(1)|
 |[Stack](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/Stack.java)|```push()``` - Θ(1), ```pop()``` - Θ(1), ```empty()``` - Θ(1), ```size()``` - Θ(1), ```peek()``` - Θ(1)|
