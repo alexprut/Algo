@@ -63,7 +63,7 @@ public class BreadthFirstSearch {
 
       return shortestPaths;
     } catch (Exception e) {
-      return null;
+      return new int[0];
     }
   }
 

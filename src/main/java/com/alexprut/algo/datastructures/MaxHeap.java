@@ -1,5 +1,7 @@
 package com.alexprut.algo.datastructures;
 
+import com.alexprut.algo.Utils;
+
 /**
  * The binary max heap data structure is an array object that we can view as a nearly complete
  * binary tree. Each node of the tree corresponds to an element of the array. The data structure
@@ -135,6 +137,23 @@ public class MaxHeap extends BinaryHeap {
       elements[largest] = elements[i];
       elements[i] = tmp;
       heapify(largest);
+    }
+  }
+
+  /**
+   * Sorts an array in place.
+   *
+   * <p>Time complexity: O(nlogn)
+   *
+   * <p>Space complexity: O(1), algorithms is in-place
+   *
+   * @see <a
+   *     href="https://en.wikipedia.org/wiki/Heapsort">https://en.wikipedia.org/wiki/Heapsort</a>
+   */
+  public void heapsort() {
+    super.heapsort();
+    for (int i = 0; i < size / 2; i++) {
+      Utils.swap(elements, i, size - 1 - i);
     }
   }
 }
