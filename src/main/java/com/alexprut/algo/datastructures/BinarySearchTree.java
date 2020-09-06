@@ -1,6 +1,7 @@
 package com.alexprut.algo.datastructures;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A binary search tree (BST), is a rooted binary tree whose internal nodes each store a key greater
@@ -148,11 +149,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
    *
    * @return the list of elements
    */
-  public ArrayList<T> preOrderVisit() {
+  public List<T> preOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
     }
-    ArrayList<T> result = new ArrayList<>();
+    List<T> result = new ArrayList<>();
     Stack<BinaryNode<T>> stack = new Stack<>();
     stack.push(root);
     while (!stack.empty()) {
@@ -181,12 +182,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
    *
    * @return the list of elements
    */
-  public ArrayList<T> inOrderVisit() {
+  public List<T> inOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
     }
     BinaryNode<T> node = root;
-    ArrayList<T> result = new ArrayList<>();
+    List<T> result = new ArrayList<>();
     Stack<BinaryNode<T>> stack = new Stack<>();
     while (!stack.empty() || node != null) {
       try {
@@ -214,11 +215,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
    *
    * @return the list of elements
    */
-  public ArrayList<T> postOrderVisit() {
+  public List<T> postOrderVisit() {
     if (root == null) {
       return new ArrayList<>();
     }
-    ArrayList<T> result = new ArrayList<>();
+    List<T> result = new ArrayList<>();
     Stack<BinaryNode<T>> stack = new Stack<>();
     BinaryNode<T> node = root;
     BinaryNode<T> lastVisited = null;

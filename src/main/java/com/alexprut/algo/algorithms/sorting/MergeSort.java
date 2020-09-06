@@ -2,6 +2,8 @@ package com.alexprut.algo.algorithms.sorting;
 
 public class MergeSort {
 
+  private MergeSort() {}
+
   /**
    * Merge sort is a sorting divide-and-conquer algorithms that is not in place.
    *

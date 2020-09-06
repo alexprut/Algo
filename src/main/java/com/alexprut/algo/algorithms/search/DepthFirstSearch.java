@@ -2,6 +2,7 @@ package com.alexprut.algo.algorithms.search;
 
 import com.alexprut.algo.datastructures.Stack;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data
@@ -12,6 +13,8 @@ import java.util.ArrayList;
  *     href="https://en.wikipedia.org/wiki/Depth-first_search">https://en.wikipedia.org/wiki/Depth-first_search</a>
  */
 public class DepthFirstSearch {
+
+  private DepthFirstSearch() {}
 
   /**
    * Counts the number of isolated sub-graphs.
@@ -35,7 +38,7 @@ public class DepthFirstSearch {
    * @param adj the adjacency-matrix representation of the graph
    * @return the number of isolated sub-graphs
    */
-  public static int countForest(ArrayList<ArrayList<Integer>> adj) {
+  public static int countForest(List<List<Integer>> adj) {
     boolean[] visited = new boolean[adj.size()];
     int counter = 0;
     for (int i = 0; i < visited.length; i++) {
@@ -51,7 +54,7 @@ public class DepthFirstSearch {
   }
 
   /**
-   * Performs a DFS visit on a graph. Helper method used in {@link #countForest(ArrayList)}.
+   * Performs a DFS visit on a graph. Helper method used in {@link #countForest(List)}.
    *
    * <p>Time complexity: O(V+E)
    *
@@ -61,8 +64,7 @@ public class DepthFirstSearch {
    * @param start the root
    * @param visited flags if or not a node was visited
    */
-  protected static void dfsCountForest(
-      ArrayList<ArrayList<Integer>> adj, int start, boolean[] visited) {
+  protected static void dfsCountForest(List<List<Integer>> adj, int start, boolean[] visited) {
     Stack<Integer> stack = new Stack<>();
     stack.push(start);
     visited[start] = true;
@@ -101,7 +103,7 @@ public class DepthFirstSearch {
    * @param adj the adjacency-matrix representation of the graph
    * @return true if the graph has a cycle
    */
-  public static boolean hasCycle(ArrayList<ArrayList<Integer>> adj) {
+  public static boolean hasCycle(List<List<Integer>> adj) {
     boolean[] visited = new boolean[adj.size()];
     int[] epoch = new int[adj.size()];
     for (int i = 0; i < visited.length; i++) {
@@ -119,7 +121,7 @@ public class DepthFirstSearch {
   }
 
   /**
-   * Performs a DFS visit on a graph. Helper method used in {@link #hasCycle(ArrayList)}.
+   * Performs a DFS visit on a graph. Helper method used in {@link #hasCycle(List)}.
    *
    * <p>Time complexity: O(V+E)
    *
@@ -132,7 +134,7 @@ public class DepthFirstSearch {
    * @return true if the graph has a cycle
    */
   protected static boolean dfsHasCycle(
-      ArrayList<ArrayList<Integer>> adj, int start, boolean[] visited, int[] epoch) {
+      List<List<Integer>> adj, int start, boolean[] visited, int[] epoch) {
     Stack<Integer> stack = new Stack<>();
     stack.push(start);
     while (!stack.empty()) {
@@ -156,7 +158,7 @@ public class DepthFirstSearch {
   }
 
   /**
-   * Checks if a graph is a direct acyclic graph. Uses {@link #hasCycle(ArrayList)}.
+   * Checks if a graph is a direct acyclic graph. Uses {@link #hasCycle(List)}.
    *
    * <p>Example:
    *
@@ -173,7 +175,7 @@ public class DepthFirstSearch {
    * @param adj the adjacency-matrix representation of the graph
    * @return true if the graph is a DAG
    */
-  public static boolean isDAG(ArrayList<ArrayList<Integer>> adj) {
+  public static boolean isDAG(List<List<Integer>> adj) {
     return !hasCycle(adj);
   }
 
@@ -200,8 +202,7 @@ public class DepthFirstSearch {
    * @return the list of nodes sorted in topological order
    * @throws Exception if the graph is not a DAG
    */
-  public static ArrayList<Integer> topologicalSort(ArrayList<ArrayList<Integer>> adj)
-      throws Exception {
+  public static List<Integer> topologicalSort(List<List<Integer>> adj) throws Exception {
     if (!isDAG(adj)) {
       throw new Exception("Graph is not a DAG");
     }
@@ -217,7 +218,7 @@ public class DepthFirstSearch {
   }
 
   /**
-   * Performs a DFS visit on a graph. Helper method used in {@link #topologicalSort(ArrayList)}.
+   * Performs a DFS visit on a graph. Helper method used in {@link #topologicalSort(List)}.
    *
    * <p>Time complexity: O(V+E)
    *
@@ -229,10 +230,7 @@ public class DepthFirstSearch {
    * @param topologicalSort the list of nodes sorted in topological order
    */
   protected static void dfsTopologicalSort(
-      ArrayList<ArrayList<Integer>> adj,
-      int node,
-      boolean[] visited,
-      ArrayList<Integer> topologicalSort) {
+      List<List<Integer>> adj, int node, boolean[] visited, List<Integer> topologicalSort) {
     for (int i = 0; i < adj.get(node).size(); i++) {
       int y = adj.get(node).get(i);
       if (!visited[y]) {

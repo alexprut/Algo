@@ -1,9 +1,11 @@
 package com.alexprut.algo.algorithms.graph;
 
 import com.alexprut.algo.datastructures.Graph.Edge;
-import java.util.ArrayList;
+import java.util.List;
 
 public class BellmanFord {
+
+  private BellmanFord() {}
 
   /**
    * Finds the shortest path between a source and all other nodes in the graph. The graph can be
@@ -43,7 +45,7 @@ public class BellmanFord {
    * @return the shortest path between the root and all nodes
    * @throws Exception if there is a negative cycle
    */
-  public static int[] bellmanFord(ArrayList<Edge> edges, int n, int start) throws Exception {
+  public static int[] bellmanFord(List<Edge> edges, int n, int start) throws Exception {
     int[] distance = new int[n];
     int[] parent = new int[n];
     for (int i = 0; i < n; i++) {

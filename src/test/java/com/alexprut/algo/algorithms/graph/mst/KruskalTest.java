@@ -4,6 +4,7 @@ import com.alexprut.algo.datastructures.Graph.Edge;
 import com.alexprut.algo.datastructures.Graph.Node;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class KruskalTest {
 
   @Test
   public void shouldFindMst() {
-    ArrayList<Edge> edges = new ArrayList<>();
+    List<Edge> edges = new ArrayList<>();
     edges.add(new Edge(new Node(0), new Node(1), 4));
     edges.add(new Edge(new Node(0), new Node(7), 8));
     edges.add(new Edge(new Node(1), new Node(7), 11));
@@ -27,7 +28,7 @@ public class KruskalTest {
     edges.add(new Edge(new Node(3), new Node(4), 9));
     edges.add(new Edge(new Node(5), new Node(4), 10));
 
-    ArrayList<Edge> mst = Kruskal.kruskal(edges, 9);
+    List<Edge> mst = Kruskal.kruskal(edges, 9);
 
     ArrayList<Edge> expectedMst = new ArrayList<>();
     expectedMst.add(new Edge(new Node(0), new Node(1), 4));

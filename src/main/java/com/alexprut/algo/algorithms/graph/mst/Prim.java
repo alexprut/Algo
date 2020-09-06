@@ -1,11 +1,13 @@
 package com.alexprut.algo.algorithms.graph.mst;
 
 import com.alexprut.algo.datastructures.Pair;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class Prim {
+
+  private Prim() {}
 
   /**
    * Finds the minimum spanning tree (MST) of a weighted undirected graph.
@@ -43,7 +45,7 @@ public class Prim {
    * @param start the root
    * @return the minimum spanning tree
    */
-  public static int[] prim(ArrayList<ArrayList<Pair<Integer, Integer>>> adj, int n, int start) {
+  public static int[] prim(List<List<Pair<Integer, Integer>>> adj, int n, int start) {
     class CostNodePair extends Pair<Integer, Integer> implements Comparable<CostNodePair> {
 
       CostNodePair(int cost, int node) {

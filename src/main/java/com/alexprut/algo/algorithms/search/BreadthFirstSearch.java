@@ -1,8 +1,8 @@
 package com.alexprut.algo.algorithms.search;
 
 import com.alexprut.algo.datastructures.Queue;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data
@@ -13,6 +13,8 @@ import java.util.Arrays;
  *     href="https://en.wikipedia.org/wiki/Breadth-first_search">https://en.wikipedia.org/wiki/Breadth-first_search</a>
  */
 public class BreadthFirstSearch {
+
+  private BreadthFirstSearch() {}
 
   /**
    * Given an unweighted directed or undirected graph, finds the shortest path between the root and
@@ -38,7 +40,7 @@ public class BreadthFirstSearch {
    * @param start the root
    * @return the shortest path between the root and all other nodes
    */
-  public static int[] shortestPath(ArrayList<ArrayList<Integer>> adj, int start) {
+  public static int[] shortestPath(List<List<Integer>> adj, int start) {
     try {
       int[] shortestPaths = new int[adj.size()];
       boolean[] isVisited = new boolean[adj.size()];
@@ -94,7 +96,7 @@ public class BreadthFirstSearch {
    * @param start the root
    * @return return the predecessor sub-graph
    */
-  public static int[] predecessorSubgraph(ArrayList<ArrayList<Integer>> adj, int start) {
+  public static int[] predecessorSubgraph(List<List<Integer>> adj, int start) {
     try {
       int[] parent = new int[adj.size()];
       boolean[] isVisited = new boolean[adj.size()];
@@ -116,7 +118,7 @@ public class BreadthFirstSearch {
 
       return parent;
     } catch (Exception e) {
-      return null;
+      return new int[0];
     }
   }
 }

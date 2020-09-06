@@ -5,8 +5,11 @@ import com.alexprut.algo.datastructures.Graph;
 import com.alexprut.algo.datastructures.Graph.Edge;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Kruskal {
+
+  private Kruskal() {}
 
   /**
    * Finds the minimum spanning tree (MST) of a weighted undirected graph.
@@ -43,7 +46,7 @@ public class Kruskal {
    * @param n the number of nodes
    * @return the minimum spanning tree
    */
-  public static ArrayList<Graph.Edge> kruskal(ArrayList<Graph.Edge> edges, int n) {
+  public static List<Edge> kruskal(List<Graph.Edge> edges, int n) {
     ArrayList<Graph.Edge> mst = new ArrayList<>();
     DisjointSet<Integer> sets = new DisjointSet<>();
 

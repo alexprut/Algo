@@ -2,6 +2,8 @@ package com.alexprut.algo.algorithms.graph;
 
 public class FloydWarshall {
 
+  private FloydWarshall() {}
+
   /**
    * Find the shortest path between any pair of nodes. Find shortest paths in a weighted graph with
    * positive or negative edge weights (but with no negative cycles).

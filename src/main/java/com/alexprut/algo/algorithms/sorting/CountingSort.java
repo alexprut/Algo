@@ -4,6 +4,8 @@ import com.alexprut.algo.Utils;
 
 public class CountingSort {
 
+  private CountingSort() {}
+
   /**
    * Counting sort is stable and linear time sorting algorithm. It assumes that each of the n input
    * elements is an integer in the range 0 to k, for some integer k.

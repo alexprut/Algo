@@ -2,6 +2,7 @@ package com.alexprut.algo.algorithms.graph.search;
 
 import com.alexprut.algo.algorithms.search.DepthFirstSearch;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ public class DepthFirstSearchTest {
           /   \
       node4   node6
     */
-    ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    List<List<Integer>> adj = new ArrayList<>();
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
@@ -47,7 +48,7 @@ public class DepthFirstSearchTest {
         ↑    ↓
         node2
     */
-    ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    List<List<Integer>> adj = new ArrayList<>();
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
@@ -67,7 +68,7 @@ public class DepthFirstSearchTest {
                ↓
              node2
     */
-    ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    List<List<Integer>> adj = new ArrayList<>();
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
@@ -84,7 +85,7 @@ public class DepthFirstSearchTest {
     /*
      node1 ←→ node0
     */
-    ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    List<List<Integer>> adj = new ArrayList<>();
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
     adj.get(0).add(1);
@@ -100,7 +101,7 @@ public class DepthFirstSearchTest {
         ↓
       node2
     */
-    ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    List<List<Integer>> adj = new ArrayList<>();
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
@@ -108,7 +109,7 @@ public class DepthFirstSearchTest {
     adj.get(0).add(2);
     adj.get(1).add(3);
 
-    ArrayList<Integer> expected = new ArrayList<>();
+    List<Integer> expected = new ArrayList<>();
     expected.add(0);
     expected.add(1);
     expected.add(3);
@@ -127,7 +128,7 @@ public class DepthFirstSearchTest {
         ↓
       node2
     */
-    ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    List<List<Integer>> adj = new ArrayList<>();
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
@@ -142,7 +143,7 @@ public class DepthFirstSearchTest {
           ↑   ↓
           node2
     */
-    ArrayList<ArrayList<Integer>> adj2 = new ArrayList<>();
+    List<List<Integer>> adj2 = new ArrayList<>();
     adj2.add(new ArrayList<>());
     adj2.add(new ArrayList<>());
     adj2.add(new ArrayList<>());

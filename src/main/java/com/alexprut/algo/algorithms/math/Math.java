@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Math {
 
+  private Math() {}
+
   /**
    * Greatest common divisor, Euclide algorithms.
    *
@@ -95,24 +97,24 @@ public class Math {
    * @param <T> the type of the elements
    * @return the list of all permutations
    */
-  public static <T> ArrayList<ArrayList<T>> permute(ArrayList<T> elements) {
-    if (elements.size() == 0) {
+  public static <T> List<List<T>> permute(List<T> elements) {
+    if (elements.isEmpty()) {
       return new ArrayList<>();
     }
 
     if (elements.size() == 1) {
-      ArrayList<ArrayList<T>> tmp = new ArrayList<>();
+      List<List<T>> tmp = new ArrayList<>();
       tmp.add(elements);
       return tmp;
     }
 
-    ArrayList<ArrayList<T>> perm = new ArrayList<>();
+    List<List<T>> perm = new ArrayList<>();
     for (int i = 0; i < elements.size(); i++) {
       T current = elements.get(i);
-      ArrayList<T> remaining = new ArrayList<>(elements);
+      List<T> remaining = new ArrayList<>(elements);
       remaining.remove(i);
-      ArrayList<ArrayList<T>> recursive = permute(remaining);
-      for (ArrayList<T> elem : recursive) {
+      List<List<T>> recursive = permute(remaining);
+      for (List<T> elem : recursive) {
         elem.add(0, current);
       }
       perm.addAll(recursive);
@@ -156,7 +158,7 @@ public class Math {
    */
   protected static <T> void permuteUnique(
       final ArrayList<T> c, final ArrayList<T> n, List<List<T>> res) {
-    if (n.size() == 0) {
+    if (n.isEmpty()) {
       res.add(c);
       return;
     }

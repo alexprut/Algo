@@ -44,7 +44,7 @@ public class MathTest {
 
   @Test
   public void permuteTest() {
-    ArrayList<ArrayList<Integer>> expected = new ArrayList<>();
+    List<List<Integer>> expected = new ArrayList<>();
     expected.add(
         new ArrayList<Integer>() {
           {
@@ -93,7 +93,7 @@ public class MathTest {
             add(1);
           }
         });
-    ArrayList<Integer> elements = new ArrayList<>();
+    List<Integer> elements = new ArrayList<>();
     elements.add(1);
     elements.add(2);
     elements.add(3);
