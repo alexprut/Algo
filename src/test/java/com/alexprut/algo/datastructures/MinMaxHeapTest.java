@@ -19,6 +19,7 @@ public class MinMaxHeapTest {
     int[] elements = new int[] {8, 71, 41, 31, 10, 11, 16, 46, 51, 31, 21, 13};
     MinMaxHeap heap = new MinMaxHeap(elements);
 
+    Assert.assertArrayEquals(elements, heap.elements());
     Assert.assertEquals(elements.length, heap.size());
     Assert.assertEquals(8, heap.min());
     Assert.assertEquals(71, heap.max());
