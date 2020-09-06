@@ -13,6 +13,10 @@ public class AVLTreeTest {
       tree.insert(i);
       Assert.assertTrue(tree.search(i));
     }
+
+    Assert.assertNotNull(tree.root());
+    Assert.assertNull(tree.root().parent());
+    Assert.assertEquals(new Integer(99), tree.maximum().value());
   }
 
   @Test
