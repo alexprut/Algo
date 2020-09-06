@@ -178,6 +178,10 @@ public class RedBlackTreeTest {
 
     tree.insertFixup(a);
 
+    Assert.assertNotNull(tree.root());
+    Assert.assertNull(tree.root().parent());
+    Assert.assertEquals(new Integer(15), tree.maximum().value());
+    Assert.assertEquals(new Integer(1), tree.minimum().value());
     Assert.assertEquals(y, w.left());
     Assert.assertEquals(x, w.right());
     Assert.assertEquals(z, y.left());
