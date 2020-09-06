@@ -14,7 +14,7 @@
 [![Build Status](https://travis-ci.org/alexprut/Algo.svg?branch=master)](https://travis-ci.org/alexprut/Algo)
 [![Coverage Status](https://coveralls.io/repos/github/alexprut/Algo/badge.svg?branch=master)](https://coveralls.io/github/alexprut/Algo?branch=master)
 [![GitHub release](https://img.shields.io/github/release/alexprut/Algo.svg)](https://github.com/alexprut/Algo/releases)
-[![Maven Central](https://img.shields.io/maven-central/v/com.alexprut/algo.svg)](https://search.maven.org/artifact/com.alexprut.algo/algo)
+[![Maven Central](https://img.shields.io/maven-central/v/com.alexprut/algo.svg)](https://search.maven.org/artifact/com.alexprut/algo)
 
 
 </div>
