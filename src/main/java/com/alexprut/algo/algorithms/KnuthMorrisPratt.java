@@ -2,6 +2,8 @@ package com.alexprut.algo.algorithms;
 
 public class KnuthMorrisPratt {
 
+  private KnuthMorrisPratt() {}
+
   /**
    * Linear time string matching algorithm by Knuth, Morris and Pratt.
    *

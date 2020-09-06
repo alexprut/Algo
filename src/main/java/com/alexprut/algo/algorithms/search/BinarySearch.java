@@ -2,6 +2,8 @@ package com.alexprut.algo.algorithms.search;
 
 public class BinarySearch {
 
+  private BinarySearch() {}
+
   /**
    * Binary Search is a search algorithm that finds the position of a target value within a sorted
    * array.

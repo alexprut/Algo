@@ -2,6 +2,8 @@ package com.alexprut.algo.algorithms;
 
 public class RabinKarp {
 
+  private RabinKarp() {}
+
   /**
    * A string matching algorithm proposed by Rabin and Karp. The algorithm makes use of elementary
    * number-theoretic notions such as the equivalence of two numbers modulo a third number.

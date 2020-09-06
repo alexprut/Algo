@@ -77,7 +77,7 @@ public class AVLTree<T extends Comparable<T>> {
    */
   protected Node<T> insert(Node<T> node, T value) {
     if (node == null) {
-      return new Node<T>(value);
+      return new Node<>(value);
     }
 
     if (value.compareTo(node.value) <= 0) {

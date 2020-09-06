@@ -2,6 +2,7 @@ package com.alexprut.algo.datastructures;
 
 import com.alexprut.algo.datastructures.FibonacciHeap.Node;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -42,13 +43,13 @@ public class FibonacciHeapTest {
 
   @Test
   public void shouldDoMultipleOperations() {
-    ArrayList<Node<Integer>> nodes = new ArrayList<>();
+    List<Node<Integer>> nodes = new ArrayList<>();
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     for (int i = 0; i < 6; i++) {
       nodes.add(heap.insert(i));
     }
-    for (int i = 0; i < nodes.size(); i++) {
-      heap.decreaseKey(nodes.get(i), nodes.get(i).key - 1);
+    for (Node<Integer> node : nodes) {
+      heap.decreaseKey(node, node.key - 1);
     }
     Assert.assertEquals(new Integer(-1), heap.minimum());
 
@@ -63,7 +64,7 @@ public class FibonacciHeapTest {
 
   @Test
   public void shouldDoMultipleRandomOperations() {
-    ArrayList<Node<Integer>> nodes = new ArrayList<>();
+    List<Node<Integer>> nodes = new ArrayList<>();
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
 
     for (int i = 0; i < 100; i++) {

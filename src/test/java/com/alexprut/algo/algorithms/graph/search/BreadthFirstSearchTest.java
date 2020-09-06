@@ -2,6 +2,7 @@ package com.alexprut.algo.algorithms.graph.search;
 
 import com.alexprut.algo.algorithms.search.BreadthFirstSearch;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ public class BreadthFirstSearchTest {
         /   \
      node4   node6
     */
-    ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    List<List<Integer>> adj = new ArrayList<>();
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
@@ -51,7 +52,7 @@ public class BreadthFirstSearchTest {
          /   \   /
      node4 - node6
     */
-    ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+    List<List<Integer>> adj = new ArrayList<>();
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());
     adj.add(new ArrayList<>());

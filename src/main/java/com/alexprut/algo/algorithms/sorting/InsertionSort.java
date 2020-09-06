@@ -4,6 +4,8 @@ import com.alexprut.algo.Utils;
 
 public class InsertionSort {
 
+  private InsertionSort() {}
+
   /**
    * Insertion Sort is a sorting algorithm that is in-place. Insertion sort works the way many
    * people sort a hand of playing cards. We start with an empty left hand and the cards face down

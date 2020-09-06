@@ -3,6 +3,8 @@ package com.alexprut.algo.algorithms;
 /** J.Kadane algorithm */
 public class MaximumSubarray {
 
+  private MaximumSubarray() {}
+
   /**
    * Finds the contiguous sub-array within a one-dimensional array, a[1...n], of numbers which has
    * the largest sum.

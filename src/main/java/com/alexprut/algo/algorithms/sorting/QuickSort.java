@@ -4,6 +4,8 @@ import com.alexprut.algo.Utils;
 
 public class QuickSort {
 
+  private QuickSort() {}
+
   /**
    * Quick sort is a it's a sorting and divide-and-conquer algorithm. Quicksort is often the best
    * practical choice for sorting because it is remarkably efficient on the average.

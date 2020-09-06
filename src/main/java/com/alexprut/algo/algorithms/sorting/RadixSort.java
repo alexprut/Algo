@@ -2,6 +2,8 @@ package com.alexprut.algo.algorithms.sorting;
 
 public class RadixSort {
 
+  private RadixSort() {}
+
   /**
    * Given an array of n integers, sort the elements in ascending order and in . The algorithm uses
    * {@link CountingSort}, the sorting is stable and runs in linear time. Radix sort solves the

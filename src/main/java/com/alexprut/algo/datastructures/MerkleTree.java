@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Merkle tree is a tree in which every leaf node is labelled with the cryptographic hash of a data
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 public class MerkleTree {
   private final String[] hashNodes;
 
-  public MerkleTree(final ArrayList<String> elements) {
+  public MerkleTree(final List<String> elements) {
     if (elements.size() % 2 != 0) {
       elements.add(elements.get(elements.size() - 1));
     }
@@ -122,8 +123,8 @@ public class MerkleTree {
    * @param elementIndex element to build the proof
    * @return the proof path for the element
    */
-  public ArrayList<String> getProofPath(int elementIndex) {
-    ArrayList<String> proofPath = new ArrayList<>();
+  public List<String> getProofPath(int elementIndex) {
+    List<String> proofPath = new ArrayList<>();
     int elements = (hashNodes.length + 1) / 2;
     int tmpNodeIndex = hashNodes.length - elements + elementIndex;
     int tmpParentIndex = parent(tmpNodeIndex);
@@ -151,7 +152,7 @@ public class MerkleTree {
    * @param proofPath the proof path
    * @return true if the element belongs to the tree
    */
-  public static boolean verify(String element, String rootHash, final ArrayList<String> proofPath) {
+  public static boolean verify(String element, String rootHash, final List<String> proofPath) {
     String tmpHash = hash(element);
     for (String s : proofPath) {
       tmpHash = hash(tmpHash + s);

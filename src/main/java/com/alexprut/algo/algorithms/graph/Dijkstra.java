@@ -1,11 +1,13 @@
 package com.alexprut.algo.algorithms.graph;
 
 import com.alexprut.algo.datastructures.Pair;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class Dijkstra {
+
+  private Dijkstra() {}
 
   /**
    * Dijkstra’s algorithm solves the single-source shortest-paths problem on a weighted, directed
@@ -44,7 +46,7 @@ public class Dijkstra {
    * @param start the root
    * @return the shortest path between the root and all nodes
    */
-  public static int[] dijkstra(ArrayList<ArrayList<Pair<Integer, Integer>>> adj, int n, int start) {
+  public static int[] dijkstra(List<List<Pair<Integer, Integer>>> adj, int n, int start) {
     class CostNodePair extends Pair<Integer, Integer> implements Comparable<CostNodePair> {
 
       CostNodePair(int cost, int node) {

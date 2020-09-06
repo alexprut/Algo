@@ -2,6 +2,7 @@ package com.alexprut.algo.datastructures;
 
 import com.alexprut.algo.algorithms.graph.mst.Kruskal;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A graph data structure consists of a finite (and possibly mutable) set of vertices (also called
@@ -28,11 +29,11 @@ public class Graph {
   /** True if the graph is directed, otherwise if it is undirected. */
   private boolean isDirected = false;
   /** The graph edges (or links). */
-  private final ArrayList<Edge> edges = new ArrayList<>();
+  private final List<Edge> edges = new ArrayList<>();
   /** The adjacency-matrix representation of the graph. */
   private int[][] adjMatrix;
   /** The adjacency-list representation of the graph. */
-  private ArrayList<ArrayList<Pair<Integer, Integer>>> adjList;
+  private List<List<Pair<Integer, Integer>>> adjList;
   /** The number of nodes in the graph. */
   private int n;
 
@@ -114,7 +115,7 @@ public class Graph {
    *
    * @return the adjacency-list
    */
-  public ArrayList<ArrayList<Pair<Integer, Integer>>> getAdjacencyList() {
+  public List<List<Pair<Integer, Integer>>> getAdjacencyList() {
     if (adjList == null) {
       buildAdjacencyList();
     }
@@ -131,7 +132,7 @@ public class Graph {
    *
    * @return the list of the edges
    */
-  public ArrayList<Edge> getEdges() {
+  public List<Edge> getEdges() {
     return edges;
   }
 
@@ -144,7 +145,7 @@ public class Graph {
    *
    * @return the minimum spanning tree
    */
-  public ArrayList<Edge> mst() {
+  public List<Edge> mst() {
     return Kruskal.kruskal(edges, n);
   }
 
@@ -157,7 +158,7 @@ public class Graph {
    *
    * @param edges the edges to add
    */
-  public void addEdge(ArrayList<Edge> edges) {
+  public void addEdge(List<Edge> edges) {
     for (Edge edge : edges) {
       addEdge(edge);
     }
@@ -214,9 +215,9 @@ public class Graph {
 
   public static class Edge implements Comparable<Edge> {
 
-    public Node x;
-    public Node y;
-    public int w;
+    public final Node x;
+    public final Node y;
+    public final int w;
 
     public Edge(Node x, Node y, int w) {
       this.x = x;

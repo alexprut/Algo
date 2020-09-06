@@ -2,6 +2,8 @@ package com.alexprut.algo;
 
 public class Utils {
 
+  private Utils() {}
+
   /**
    * Swaps the first element with the second.
    *
