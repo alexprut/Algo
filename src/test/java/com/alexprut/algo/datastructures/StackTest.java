@@ -14,6 +14,13 @@ public class StackTest {
     stack.push(5);
     Assert.assertEquals(1, stack.size());
 
+    stack.insert(4);
+    try {
+      stack.remove();
+    } catch (Exception e) {
+
+    }
+
     stack.push(4);
     int value;
     try {
