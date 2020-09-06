@@ -35,6 +35,29 @@ public class MinHeapTest {
   }
 
   @Test
+  public void shouldInsertExtractGetMinDecreaseKey() {
+    int[] expected = new int[] {0, 0, 33};
+
+    MinHeap heap = new MinHeap();
+    heap.insert(33);
+    heap.insert(0);
+    heap.insert(0);
+    heap.heapsort();
+
+    Assert.assertArrayEquals(expected, heap.elements());
+    Assert.assertEquals(0, heap.min());
+    Assert.assertEquals(3, heap.size());
+
+    try {
+      Assert.assertEquals(0, heap.extractMin());
+    } catch (Exception e) {
+    }
+
+    Assert.assertEquals(2, heap.size());
+    Assert.assertEquals(0, heap.min());
+  }
+
+  @Test
   public void shouldHandleEdgeCases() {
     BinaryHeap heap = new MinHeap(new int[] {});
     heap.heapsort();
