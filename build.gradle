@@ -27,6 +27,11 @@ jacocoTestReport {
     }
 }
 
+coveralls {
+    saveAsFile = true
+    sendToCoveralls = false
+}
+
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
