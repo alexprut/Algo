@@ -21,6 +21,7 @@ public class IntervalTreeTest {
     tree.insert(26, 26);
     tree.delete(8, 9);
 
+    Assert.assertNotNull(tree.root());
     Assert.assertTrue(tree.search(0, 3));
     Assert.assertTrue(tree.search(5, 8));
     Assert.assertTrue(tree.search(6, 10));
