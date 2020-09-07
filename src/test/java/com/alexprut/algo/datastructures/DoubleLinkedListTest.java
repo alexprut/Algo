@@ -32,4 +32,31 @@ public class DoubleLinkedListTest {
       fail("Should not thrown an exception");
     }
   }
+
+  @Test
+  public void shouldGetNextPrevAndHead() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<>();
+    list.insertFront(1);
+    list.insertBack(2);
+    list.insertBack(3);
+    list.insertBack(4);
+    list.insertBack(5);
+
+    try {
+      Assert.assertEquals(5, (int) list.removeBack());
+    } catch (Exception e) {
+      fail("Should not thrown an exception");
+    }
+
+    try {
+      Assert.assertEquals(1, (int) list.removeFront());
+    } catch (Exception e) {
+      fail("Should not thrown an exception");
+    }
+
+    Assert.assertEquals(3, list.size());
+    Assert.assertEquals(2, (int) list.head().getValue());
+    Assert.assertEquals(3, (int) list.head().getNext().getValue());
+    Assert.assertNull(list.head().getPrev());
+  }
 }
