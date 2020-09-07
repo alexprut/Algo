@@ -128,7 +128,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
    */
   protected BinaryNode<T> successor(BinaryNode<T> x) {
     if (x.right != null) {
-      return minimum(x);
+      return minimum(x.right);
     }
     BinaryNode<T> y = x.parent;
     while (y != null && x == y.right) {
