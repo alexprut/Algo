@@ -182,7 +182,7 @@ public class IntervalTree {
   }
 
   /**
-   * Search if an interval is within the tree.
+   * Search if the interval overlaps with an interval contained within the tree.
    *
    * <p>Time complexity: O(logn)
    *
@@ -190,21 +190,21 @@ public class IntervalTree {
    *
    * @param low the start of the interval
    * @param high the end of the interval
-   * @return true node that is within the interval
+   * @return the node that is within the interval
    */
   public IntervalNode find(int low, int high) {
     return find(root, new IntervalNode(low, high));
   }
 
   /**
-   * Search if an interval is within the tree.
+   * Search if the interval overlaps with an interval contained within the tree.
    *
    * <p>Time complexity: O(logn)
    *
    * <p>Space complexity: O(1)
    *
    * @param root the root node where to start the search
-   * @param x x the interval to search
+   * @param x the interval to search
    * @return the node containing the interval, otherwise null
    */
   public IntervalNode find(IntervalNode root, IntervalNode x) {
@@ -284,12 +284,14 @@ public class IntervalTree {
       y = minimum(z.right);
       isOriginalColorRed = y.color;
       x = y.right;
-      if (y.parent == z) {
+      if (x != null && y.parent == z) {
         x.parent = y;
       } else {
         transplant(y, y.right);
         y.right = z.right;
-        y.right.parent = y;
+        if (y.right != null) {
+          y.right.parent = y;
+        }
       }
       transplant(z, y);
       y.left = z.left;
@@ -397,7 +399,7 @@ public class IntervalTree {
   }
 
   /**
-   * Get the minimum interval.
+   * Get the interval with the minimum lower bound.
    *
    * <p>Time complexity: O(logn)
    *
@@ -410,7 +412,7 @@ public class IntervalTree {
   }
 
   /**
-   * Get the maximum element.
+   * Get the interval with the maximum lower bound.
    *
    * <p>Time complexity: O(logn)
    *
@@ -466,7 +468,7 @@ public class IntervalTree {
    * @param node the current node
    * @return the successor node
    */
-  private IntervalNode successor(IntervalNode node) {
+  public IntervalNode successor(IntervalNode node) {
     if (node.right != null) {
       return minimum(node.right);
     }
