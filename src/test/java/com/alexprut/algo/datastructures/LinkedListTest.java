@@ -23,4 +23,14 @@ public class LinkedListTest {
     Assert.assertEquals(0, linkedList.size());
     Assert.assertNull(linkedList.head());
   }
+
+  @Test
+  public void shouldGetNext() {
+    LinkedList<Integer> list = new LinkedList<>();
+    list.insertFront(1);
+    list.insertFront(2);
+
+    Assert.assertEquals(new Integer(2), list.head().getValue());
+    Assert.assertEquals(new Integer(1), list.head().getNext().getValue());
+  }
 }
