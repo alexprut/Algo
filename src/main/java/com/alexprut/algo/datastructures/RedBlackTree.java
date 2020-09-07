@@ -214,12 +214,14 @@ public class RedBlackTree<T extends Comparable<T>> {
       y = minimum(z.right);
       isOriginalColorRed = y.color;
       x = y.right;
-      if (y.parent == z) {
+      if (x != null && y.parent == z) {
         x.parent = y;
       } else {
         transplant(y, y.right);
         y.right = z.right;
-        y.right.parent = y;
+        if (y.right != null) {
+          y.right.parent = y;
+        }
       }
       transplant(z, y);
       y.left = z.left;
