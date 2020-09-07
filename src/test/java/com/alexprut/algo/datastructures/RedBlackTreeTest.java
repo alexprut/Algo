@@ -211,4 +211,38 @@ public class RedBlackTreeTest {
     Assert.assertEquals(false, c.isRed());
     Assert.assertEquals(true, d.isRed());
   }
+
+  @Test
+  public void shouldFindSuccessorAndDelete() {
+    RedBlackTree<Integer> tree = new RedBlackTree<>();
+    tree.insert(5);
+    tree.insert(6);
+    tree.insert(7);
+    tree.insert(8);
+    tree.insert(9);
+    tree.insert(1);
+    tree.insert(2);
+    tree.insert(3);
+    tree.insert(4);
+    tree.insert(0);
+
+    Assert.assertEquals(1, (int) tree.successor(tree.minimum()).value());
+    Assert.assertEquals(3, (int) tree.successor(tree.search(tree.root, 2)).value());
+    Assert.assertEquals(6, (int) tree.successor(tree.search(tree.root, 5)).value());
+    Assert.assertEquals(8, (int) tree.successor(tree.search(tree.root, 7)).value());
+    Assert.assertNull(null, tree.successor(tree.maximum()));
+
+    tree.delete(4);
+    tree.delete(6);
+    tree.delete(1);
+    tree.delete(2);
+    tree.delete(3);
+    tree.delete(5);
+    tree.delete(7);
+    tree.delete(8);
+    tree.delete(9);
+    tree.delete(0);
+
+    Assert.assertEquals(0, tree.size());
+  }
 }
