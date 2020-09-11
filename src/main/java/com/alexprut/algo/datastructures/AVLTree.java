@@ -82,8 +82,10 @@ public class AVLTree<T extends Comparable<T>> {
 
     if (value.compareTo(node.value) <= 0) {
       node.left = insert(node.left, value);
+      node.left.parent = node;
     } else {
       node.right = insert(node.right, value);
+      node.right.parent = node;
     }
 
     node.height = Math.max(height(node.left), height(node.right)) + 1;
@@ -297,7 +299,7 @@ public class AVLTree<T extends Comparable<T>> {
    * @param node the current node
    * @return the successor node
    */
-  private Node<T> successor(Node<T> node) {
+  public Node<T> successor(Node<T> node) {
     if (node.right != null) {
       return minimum(node.right);
     }
@@ -359,8 +361,8 @@ public class AVLTree<T extends Comparable<T>> {
     y.left = x;
     x.parent = y;
 
-    y.height = max(height(y.left), height(y.right)) + 1;
     x.height = max(height(x.left), height(x.right)) + 1;
+    y.height = max(height(y.left), height(y.right)) + 1;
 
     return y;
   }
@@ -402,8 +404,8 @@ public class AVLTree<T extends Comparable<T>> {
     y.right = x;
     x.parent = y;
 
-    y.height = max(height(y.left), height(y.right)) + 1;
     x.height = max(height(x.left), height(x.right)) + 1;
+    y.height = max(height(y.left), height(y.right)) + 1;
 
     return y;
   }
