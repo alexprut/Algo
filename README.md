@@ -76,12 +76,12 @@ Data Structures
 ### Add to your build
 To add a dependency using Gradle, use the following:
 ```
-implementation 'com.alexprut:algo:v0.3.0'
+implementation 'com.alexprut:algo:v0.4.0'
 ```
 
 To add a dependency using Gradle Kotlin DSL:
 ```
-implementation("com.alexprut:algo:v0.3.0")
+implementation("com.alexprut:algo:v0.4.0")
 ```
 
 To add a dependency using Maven:
@@ -89,7 +89,7 @@ To add a dependency using Maven:
 <dependency>
   <groupId>com.alexprut</groupId>
   <artifactId>algo</artifactId>
-  <version>v0.3.0</version>
+  <version>v0.4.0</version>
 </dependency>
 ```
 
