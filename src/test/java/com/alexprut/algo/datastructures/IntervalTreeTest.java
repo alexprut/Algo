@@ -67,6 +67,10 @@ public class IntervalTreeTest {
     tree.insert(6, 10);
     tree.insert(19, 20);
 
+    Assert.assertEquals(1, tree.findAll(0, 2).size());
+    Assert.assertEquals(0, tree.findAll(0, 2).get(0).value());
+    Assert.assertEquals(4, tree.findAll(16, 21).size());
+    Assert.assertEquals(4, tree.findAll(17, 19).size());
     Assert.assertEquals(0, tree.minimum().value());
     Assert.assertEquals(26, tree.maximum().value());
     Assert.assertNotNull(tree.find(4, 9));
