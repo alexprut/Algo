@@ -1,5 +1,8 @@
 package com.alexprut.algo.datastructures;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * An interval tree is a tree data structure to hold intervals. It allows one to efficiently find
  * all intervals that overlap with any given interval or point. A closed interval is an ordered pair
@@ -144,7 +147,8 @@ public class IntervalTree {
   }
 
   /**
-   * Search if an interval is within the tree.
+   * Given a root node, search if an interval matches another interval that is within the rooted
+   * tree.
    *
    * <p>Time complexity: O(logn)
    *
@@ -159,7 +163,8 @@ public class IntervalTree {
   }
 
   /**
-   * Given a root node, search if an interval is within the rooted tree.
+   * Given a root node, search if an interval matches another interval that is within the rooted
+   * tree.
    *
    * <p>Time complexity: O(logn)
    *
@@ -221,6 +226,48 @@ public class IntervalTree {
   }
 
   /**
+   * Search all the intervals that overlaps with an interval contained within the tree.
+   *
+   * <p>Time complexity: O(n)
+   *
+   * <p>Space complexity: O(n)
+   *
+   * @param low the start of the interval
+   * @param high the end of the interval
+   * @return the node that is within the interval
+   */
+  public List<IntervalNode> findAll(int low, int high) {
+    return findAll(root, new IntervalNode(low, high));
+  }
+
+  /**
+   * Search all the intervals that overlaps with an interval contained within the tree.
+   *
+   * <p>Time complexity: O(n)
+   *
+   * <p>Space complexity: O(n)
+   *
+   * @param root the root node where to start the search
+   * @param x the interval to search
+   * @return the node containing the interval, otherwise null
+   */
+  public List<IntervalNode> findAll(IntervalNode root, IntervalNode x) {
+    List<IntervalNode> intervals = new ArrayList<>();
+    if (root == null) {
+      return intervals;
+    }
+    if (doOverlap(root, x)) {
+      intervals.add(root);
+    }
+    if (x.value() <= root.max()) {
+      intervals.addAll(findAll(root.left, x));
+      intervals.addAll(findAll(root.right, x));
+    }
+
+    return intervals;
+  }
+
+  /**
    * Check if two intervals overlap.
    *
    * <p>Time complexity: Θ(1)
@@ -241,8 +288,6 @@ public class IntervalTree {
   public static boolean doOverlap(IntervalNode a, IntervalNode b) {
     return a.low <= b.high && b.low <= a.high;
   }
-
-  // TODO implement findAll function
 
   /**
    * Delete the specified interval from the tree if exists.
