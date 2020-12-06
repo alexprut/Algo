@@ -177,7 +177,7 @@ public class MerkleTree {
   }
 
   /**
-   * Utility function use in {@link #hash(String)}
+   * Utility function used in {@link #hash(String)}
    *
    * @param hash the byte array
    * @return the string hash
