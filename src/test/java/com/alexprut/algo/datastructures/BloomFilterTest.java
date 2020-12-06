@@ -28,7 +28,7 @@ public class BloomFilterTest {
   }
 
   @Test
-  public void shouldInsertAndSearchAndFail() {
+  public void shouldValidateFailingPercentageRate() {
     BloomFilter<Integer> filter = new BloomFilter<>(10000, 0.01);
     for (int i = 0; i < 10000; i++) {
       filter.insert(i);

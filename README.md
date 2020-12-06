@@ -70,6 +70,7 @@ Data Structures
 |[B-Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BTree.java)|```insert()``` - O(th), ```search()``` - O(th), ```delete()``` - O(th), ```successor()``` - O(th), ```predecessor()``` - O(th)|
 |[Fibonacci Heap](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/FibonacciHeap.java)|```insert()``` - O(1), ```minimum()``` - O(1), ```extractMin()``` - O(logn), ```decreaseKey()``` - O(1), ```delete()``` - O(logn)|
 |[Merkle Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MerkleTree.java)|```build()``` - O(n), ```verify()``` - O(logn), ```getProofPath()``` - O(logn)|
+|[Bloom Filter](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BloomFilter.java)|```search()``` - O(k), ```insert()``` - O(k)|
 
 ---
 
