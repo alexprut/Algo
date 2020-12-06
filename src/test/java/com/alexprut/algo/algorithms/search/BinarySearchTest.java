@@ -8,12 +8,12 @@ public class BinarySearchTest {
   @Test
   public void shouldFindIndex() {
     int[] a = new int[] {1, 2, 3, 4, 5, 6};
-    Assert.assertEquals(BinarySearch.binarySearch(a, 1), 0);
-    Assert.assertEquals(BinarySearch.binarySearch(a, 2), 1);
-    Assert.assertEquals(BinarySearch.binarySearch(a, 4), 3);
-    Assert.assertEquals(BinarySearch.binarySearch(a, -1), -1);
-    Assert.assertEquals(BinarySearch.binarySearch(a, 7), -1);
-    Assert.assertEquals(BinarySearch.binarySearch(new int[] {}, 7), -1);
+    Assert.assertEquals(0, BinarySearch.binarySearch(a, 1));
+    Assert.assertEquals(1, BinarySearch.binarySearch(a, 2));
+    Assert.assertEquals(3, BinarySearch.binarySearch(a, 4));
+    Assert.assertEquals(-1, BinarySearch.binarySearch(a, -1));
+    Assert.assertEquals(-1, BinarySearch.binarySearch(a, 7));
+    Assert.assertEquals(-1, BinarySearch.binarySearch(new int[] {}, 7));
   }
 
   @Test
