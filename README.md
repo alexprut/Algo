@@ -34,7 +34,7 @@ Algorithms
 |[RadixSort](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/sorting/RadixSort.java)|Θ(d(k + n))|Θ(d(k + n))|Θ(n)|-|
 |[Floyd-Warshall](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/FloydWarshall.java)|Θ(V^3)|Θ(V^3)|Θ(V^3)|Θ(V^2)|
 |[Kruskal](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/mst/Kruskal.java)|O(\|E\|log\|V\|)|-|-|-|
-|[Prim](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/mst/Prim.java)|O(\|E\|log\|V\|)|-|-|-|
+|[Prim](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/mst/Prim.java)|O(\|E\| + \|V\|log\|V\||-|-|-|
 |[Bellman–Ford](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/BellmanFord.java)|Θ(\|E\|\|V\|)|-|-|Θ(V)|
 |[Dijkstra](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/graph/Dijkstra.java)|O(\|E\| + \|V\|log\|V\|)|-|-|-|
 |[Maximum SubArray](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/algorithms/MaximumSubArray.java)|Θ(n)|Θ(n)|Θ(n)|Θ(1)|
