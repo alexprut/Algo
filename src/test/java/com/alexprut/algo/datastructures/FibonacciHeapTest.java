@@ -21,7 +21,7 @@ public class FibonacciHeapTest {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     heap.insert(1);
     Assert.assertEquals(new Integer(1), heap.extractMin().key);
-    Assert.assertEquals(0, heap.size);
+    Assert.assertEquals(0, heap.size());
   }
 
   @Test
