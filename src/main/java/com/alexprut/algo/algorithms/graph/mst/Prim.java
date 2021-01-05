@@ -35,7 +35,7 @@ public class Prim {
    *          1
    * </pre>
    *
-   * <p>Time complexity: O(|E|log|V|)
+   * <p>Time complexity: O(|E|+|V|log|V|)
    *
    * <p>Space complexity: O(|V|)
    *
