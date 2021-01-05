@@ -1,9 +1,10 @@
 package com.alexprut.algo.algorithms.graph.mst;
 
+import com.alexprut.algo.datastructures.FibonacciHeap;
 import com.alexprut.algo.datastructures.Pair;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.PriorityQueue;
 
 public class Prim {
 
@@ -46,44 +47,30 @@ public class Prim {
    * @return the minimum spanning tree
    */
   public static int[] prim(List<List<Pair<Integer, Integer>>> adj, int n, int start) {
-    class CostNodePair extends Pair<Integer, Integer> implements Comparable<CostNodePair> {
-
-      CostNodePair(int cost, int node) {
-        super(cost, node);
-      }
-
-      public int compareTo(CostNodePair b) {
-        return (this.first() < b.first()) ? -1 : 1;
-      }
-    }
-
     int[] parent = new int[n];
     parent[start] = -1;
-    int[] key = new int[n];
-    Arrays.fill(key, Integer.MAX_VALUE);
-    key[start] = 0;
-    boolean[] visited = new boolean[n];
-    // TODO use MinHeap or FibonacciHeap
-    PriorityQueue<CostNodePair> minHeap = new PriorityQueue<>();
-    minHeap.add(new CostNodePair(0, start));
-    int counter = 0;
-    while (!minHeap.isEmpty() && counter < n) {
-      CostNodePair node = minHeap.poll();
-      int x = node.second();
-      counter++;
-      if (!visited[x]) {
-        visited[x] = true;
+    ArrayList<FibonacciHeap.Node<Integer>> indexToNode = new ArrayList<>();
+    HashMap<FibonacciHeap.Node<Integer>, Integer> nodeToIndex = new HashMap<>();
+    FibonacciHeap<Integer> heap = new FibonacciHeap<>();
+    for (int i = 0; i < n; i++) {
+      FibonacciHeap.Node<Integer> node = heap.insert(Integer.MAX_VALUE);
+      indexToNode.add(node);
+      nodeToIndex.put(node, i);
+    }
+    heap.decreaseKey(indexToNode.get(start), 0);
+    while (heap.size() > 0) {
+      FibonacciHeap.Node<Integer> node = heap.extractMin();
+      int x = nodeToIndex.get(node);
+      nodeToIndex.remove(node);
+      indexToNode.set(x, null);
+      for (int i = 0; i < adj.get(x).size(); i++) {
+        int y = adj.get(x).get(i).first();
+        int w = adj.get(x).get(i).second();
 
-        for (int i = 0; i < adj.get(x).size(); i++) {
-          int y = adj.get(x).get(i).first();
-          int w = adj.get(x).get(i).second();
-
-          if (!visited[y]) {
-            if (w < key[y]) {
-              key[y] = w;
-              parent[y] = x;
-            }
-            minHeap.add(new CostNodePair(key[y], y));
+        if (indexToNode.get(y) != null) {
+          if (w < indexToNode.get(y).getKey()) {
+            heap.decreaseKey(indexToNode.get(y), w);
+            parent[y] = x;
           }
         }
       }
