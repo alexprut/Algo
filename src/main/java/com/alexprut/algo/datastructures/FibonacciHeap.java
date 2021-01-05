@@ -319,7 +319,22 @@ public class FibonacciHeap<T extends Comparable<T>> {
     extractMin();
   }
 
-  protected static class Node<T> {
+  /**
+   * Get the size of the heap.
+   *
+   * <p>Time complexity: Θ(1)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @return the size of the heap
+   */
+  public int size() {
+    return size;
+  }
+
+  public static class Node<T> {
+
+    protected Node() {}
 
     protected T key;
 
