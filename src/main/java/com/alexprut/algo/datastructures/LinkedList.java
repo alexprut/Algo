@@ -37,7 +37,7 @@ public class LinkedList<T> {
   }
 
   /**
-   * Check if the the list is empty.
+   * Check if the list is empty.
    *
    * <p>Time complexity: Θ(1)
    *
