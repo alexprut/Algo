@@ -119,22 +119,22 @@ public class SkipList<T extends Comparable<T>> {
       currentLevel = randomLevel;
     }
 
-    Node<T> n = new Node<>(element, randomLevel);
+    Node<T> newNode = new Node<>(element, randomLevel);
 
-    for (int i = 0; i <= randomLevel; i++) {
-      n.next[i] = update[i].next[i];
-      update[i].next[i] = n;
+    for (int i = 0; i <= randomLevel && i <= maxLevel; i++) {
+      newNode.next[i] = update[i].next[i];
+      update[i].next[i] = newNode;
     }
   }
 
   /**
-   * Delete an element from.
+   * Delete an element.
    *
    * <p>Time complexity: O(logn) with high probability, O(n) in the worst case
    *
    * <p>Space complexity: Θ(1)
    *
-   * @param element to be searched
+   * @param element to be deleted
    * @return true if the element was deleted
    */
   public boolean delete(T element) {
@@ -142,7 +142,7 @@ public class SkipList<T extends Comparable<T>> {
     Node<T>[] update = new Node[maxLevel + 1];
 
     for (int i = currentLevel; i >= 0; i--) {
-      while (current.next[i] != null && current.next[i].value.compareTo(element) < 1) {
+      while (current.next[i] != null && current.next[i].value.compareTo(element) < 0) {
         current = current.next[i];
       }
       update[i] = current;
@@ -150,13 +150,13 @@ public class SkipList<T extends Comparable<T>> {
 
     current = current.next[0];
 
-    boolean isFound = current != null && current.value == element;
+    boolean isFound = current != null && current.value.equals(element);
     if (isFound) {
       size--;
     }
 
-    if (current != null && current.value.compareTo(element) == 0) {
-      for (int i = 0; i < currentLevel; i++) {
+    if (current != null && current.value.equals(element)) {
+      for (int i = 0; i <= currentLevel && i <= maxLevel; i++) {
         if (update[i].next[i] != current) break;
         update[i].next[i] = current.next[i];
       }
@@ -179,7 +179,7 @@ public class SkipList<T extends Comparable<T>> {
    * @param element to be searched
    * @return true if the element is present
    */
-  boolean search(T element) {
+  public boolean search(T element) {
     Node<T> current = header;
 
     for (int i = currentLevel; i >= 0; i--) {
@@ -187,13 +187,10 @@ public class SkipList<T extends Comparable<T>> {
         current = current.next[i];
       }
     }
+
     current = current.next[0];
 
-    if (current != null && current.value.compareTo(element) == 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return current != null && current.value.equals(element);
   }
 
   protected static class Node<T extends Comparable<T>> {
