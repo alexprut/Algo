@@ -12,6 +12,10 @@ group = "com.alexprut"
 archivesBaseName = "algo"
 version = "v0.4.0"
 
+googleJavaFormat {
+    toolVersion = "1.1"
+}
+
 dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.13'
 }
@@ -22,8 +26,8 @@ repositories {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled true
+        xml.required = true
+        csv.required = true
     }
 }
 
@@ -32,13 +36,13 @@ coveralls {
     sendToCoveralls = false
 }
 
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
+tasks.register('javadocJar', Jar) {
+    archiveClassifier.set('javadoc')
     from javadoc
 }
 
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
+tasks.register('sourcesJar', Jar) {
+    archiveClassifier.set('sources')
     from sourceSets.main.allSource
 }
 

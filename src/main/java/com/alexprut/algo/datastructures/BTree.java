@@ -20,6 +20,7 @@ import java.util.ArrayList;
  *         <li>x.leaf, a boolean value that is TRUE if x is a leaf and FALSE if x is an internal
  *             node
  *       </ol>
+ *
  *   <li>Each internal node x also contains x.n + 1 pointers x.c0,x.c1,...,x.cn to its children.
  *       Leaf nodes have no children, and so their 'c' attributes are undefined
  *   <li>The keys x.keyi separate the ranges of keys stored in each subtree: if ki is any key stored
@@ -35,6 +36,7 @@ import java.util.ArrayList;
  *         <li>Every node may contain at most 2t - 1 keys. Therefore, an internal node may have at
  *             most 2t children. We say that a node is full if it contains exactly 2t - 1 keys
  *       </ol>
+ *
  * </ol>
  *
  * <p>Example:
