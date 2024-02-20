@@ -4,7 +4,6 @@ plugins {
     id 'java'
     id "jacoco"
     id 'java-library'
-    id 'com.github.kt3k.coveralls' version '2.8.4'
     id 'com.github.sherter.google-java-format' version '0.9'
 }
 
@@ -25,16 +24,17 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
 jacocoTestReport {
     reports {
         xml.required = true
         csv.required = true
     }
-}
-
-coveralls {
-    saveAsFile = true
-    sendToCoveralls = false
+    dependsOn test
 }
 
 tasks.register('javadocJar', Jar) {
