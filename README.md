@@ -11,8 +11,9 @@
 
 [![Code Style](https://img.shields.io/badge/code%20style-google-green.svg?style=flat-square)](https://google.github.io/styleguide/javaguide.html)
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/alexprut/Algo/blob/master/LICENSE)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/9LkGDWtdCTgeRmFp7vCGbx/KNggkRFZ66if96VPfsiieJ/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/9LkGDWtdCTgeRmFp7vCGbx/KNggkRFZ66if96VPfsiieJ/tree/main)
 [![Build Status](https://travis-ci.org/alexprut/Algo.svg?branch=master)](https://travis-ci.org/alexprut/Algo)
-[![Coverage Status](https://coveralls.io/repos/github/alexprut/Algo/badge.svg?branch=master)](https://coveralls.io/github/alexprut/Algo?branch=master)
+[![codecov](https://codecov.io/gh/alexprut/Algo/graph/badge.svg?token=AWLFJPRG39)](https://codecov.io/gh/alexprut/Algo)
 [![GitHub release](https://img.shields.io/github/release/alexprut/Algo.svg)](https://github.com/alexprut/Algo/releases)
 [![Maven Central](https://img.shields.io/maven-central/v/com.alexprut/algo.svg)](https://search.maven.org/artifact/com.alexprut/algo)
 
@@ -97,7 +98,7 @@ To add a dependency using Maven:
 ```
 
 #### Requirements
-- Gradle 5
+- Gradle 8
 - Java 11
 
 ### Build
