@@ -82,7 +82,8 @@ public class BTreeTest {
         test.getPredecessor(foundNode.first().children.get(foundNode.second()));
 
     Assert.assertEquals(
-        new Character('O'), foundPredecessorNode.first().key.get(foundPredecessorNode.second()));
+        Character.valueOf('O'),
+        foundPredecessorNode.first().key.get(foundPredecessorNode.second()));
   }
 
   @Test
@@ -94,7 +95,7 @@ public class BTreeTest {
         test.getSuccessor(foundNode.first().children.get(foundNode.second() + 1));
 
     Assert.assertEquals(
-        new Character('Q'), foundSuccessorNode.first().key.get(foundSuccessorNode.second()));
+        Character.valueOf('Q'), foundSuccessorNode.first().key.get(foundSuccessorNode.second()));
   }
 
   @Test
@@ -245,12 +246,12 @@ public class BTreeTest {
 
     Assert.assertEquals(4, root.children.size());
     Assert.assertEquals(3, root.key.size());
-    Assert.assertEquals(new Character('A'), root.key.get(0));
-    Assert.assertEquals(new Character('C'), root.key.get(1));
-    Assert.assertEquals(new Character('F'), root.key.get(2));
-    Assert.assertEquals(new Character('B'), root.children.get(1).key.get(0));
+    Assert.assertEquals(Character.valueOf('A'), root.key.get(0));
+    Assert.assertEquals(Character.valueOf('C'), root.key.get(1));
+    Assert.assertEquals(Character.valueOf('F'), root.key.get(2));
+    Assert.assertEquals(Character.valueOf('B'), root.children.get(1).key.get(0));
     Assert.assertEquals(1, root.children.get(1).key.size());
-    Assert.assertEquals(new Character('D'), root.children.get(2).key.get(0));
+    Assert.assertEquals(Character.valueOf('D'), root.children.get(2).key.get(0));
     Assert.assertEquals(1, root.children.get(2).key.size());
   }
 }

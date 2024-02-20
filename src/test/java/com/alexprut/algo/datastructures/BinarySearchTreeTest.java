@@ -15,20 +15,20 @@ public class BinarySearchTreeTest {
     Assert.assertEquals(1, bst.size());
     Assert.assertTrue(bst.contains(1));
     Assert.assertFalse(bst.contains(2));
-    Assert.assertEquals(new Integer(1), bst.search(1).value());
+    Assert.assertEquals(Integer.valueOf(1), bst.search(1).value());
 
     bst.insert(1);
     Assert.assertEquals(2, bst.size());
     Assert.assertTrue(bst.contains(1));
-    Assert.assertEquals(new Integer(1), bst.search(1).value());
+    Assert.assertEquals(Integer.valueOf(1), bst.search(1).value());
 
     bst.insert(2);
     Assert.assertEquals(3, bst.size());
     Assert.assertTrue(bst.contains(2));
-    Assert.assertEquals(new Integer(2), bst.search(2).value());
+    Assert.assertEquals(Integer.valueOf(2), bst.search(2).value());
 
-    Assert.assertEquals(new Integer(2), bst.maximum().value());
-    Assert.assertEquals(new Integer(1), bst.minimum().value());
+    Assert.assertEquals(Integer.valueOf(2), bst.maximum().value());
+    Assert.assertEquals(Integer.valueOf(1), bst.minimum().value());
   }
 
   @Test
@@ -39,7 +39,7 @@ public class BinarySearchTreeTest {
     }
 
     for (int i = 0; i < 1000; i++) {
-      Assert.assertEquals(new Integer(i), bst.search(i).value());
+      Assert.assertEquals(Integer.valueOf(i), bst.search(i).value());
     }
 
     for (int i = 0; i < 1000; i++) {
@@ -159,7 +159,7 @@ public class BinarySearchTreeTest {
     Assert.assertEquals(5, (int) bst.successor(bst.search(4)).value());
     Assert.assertEquals(2, (int) bst.successor(bst.search(1)).value());
     Assert.assertEquals(7, (int) bst.successor(bst.search(6)).value());
-    Assert.assertEquals(null, bst.successor(bst.search(7)));
+    Assert.assertNull(bst.successor(bst.search(7)));
 
     bst.delete(bst.search(6));
     bst.delete(bst.search(3));

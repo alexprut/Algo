@@ -21,7 +21,7 @@ public class RabinKarp {
    * @return the index of the first occurrence of the match, -1 if there is no occurrence
    */
   public static int rabinKarp(String text, String pattern, int d, int q) {
-    if (pattern.length() == 0) {
+    if (pattern.isEmpty()) {
       return 0;
     }
     int n = text.length();
