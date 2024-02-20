@@ -3,8 +3,8 @@ package com.alexprut.algo.algorithms.graph.search;
 import com.alexprut.algo.algorithms.search.BreadthFirstSearch;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class BreadthFirstSearchTest {
 
@@ -40,7 +40,7 @@ public class BreadthFirstSearchTest {
 
     int[] expectedShortestPath = new int[] {0, 1, 2, 3, 4, 4, 4};
     int[] shortestPath = BreadthFirstSearch.shortestPath(adj, 0);
-    Assert.assertArrayEquals(expectedShortestPath, shortestPath);
+    Assertions.assertArrayEquals(expectedShortestPath, shortestPath);
   }
 
   @Test
@@ -79,6 +79,6 @@ public class BreadthFirstSearchTest {
 
     int[] expectedShortestPath = new int[] {Integer.MAX_VALUE, 0, 1, 2, 3, 3, 3};
     int[] shortestPath = BreadthFirstSearch.predecessorSubgraph(adj, 0);
-    Assert.assertArrayEquals(expectedShortestPath, shortestPath);
+    Assertions.assertArrayEquals(expectedShortestPath, shortestPath);
   }
 }

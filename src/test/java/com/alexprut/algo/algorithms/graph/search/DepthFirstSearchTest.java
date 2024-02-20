@@ -3,8 +3,8 @@ package com.alexprut.algo.algorithms.graph.search;
 import com.alexprut.algo.algorithms.search.DepthFirstSearch;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class DepthFirstSearchTest {
 
@@ -38,7 +38,7 @@ public class DepthFirstSearchTest {
     adj.get(5).add(1);
     adj.get(6).add(3);
 
-    Assert.assertEquals(2, DepthFirstSearch.countForest(adj));
+    Assertions.assertEquals(2, DepthFirstSearch.countForest(adj));
   }
 
   @Test
@@ -58,7 +58,7 @@ public class DepthFirstSearchTest {
     adj.get(1).add(0);
     adj.get(2).add(1);
 
-    Assert.assertTrue(DepthFirstSearch.hasCycle(adj));
+    Assertions.assertTrue(DepthFirstSearch.hasCycle(adj));
   }
 
   @Test
@@ -77,7 +77,7 @@ public class DepthFirstSearchTest {
     adj.get(0).add(2);
     adj.get(1).add(0);
 
-    Assert.assertFalse(DepthFirstSearch.hasCycle(adj));
+    Assertions.assertFalse(DepthFirstSearch.hasCycle(adj));
   }
 
   @Test
@@ -91,7 +91,7 @@ public class DepthFirstSearchTest {
     adj.get(0).add(1);
     adj.get(1).add(0);
 
-    Assert.assertTrue(DepthFirstSearch.hasCycle(adj));
+    Assertions.assertTrue(DepthFirstSearch.hasCycle(adj));
   }
 
   @Test
@@ -116,7 +116,7 @@ public class DepthFirstSearchTest {
     expected.add(2);
 
     try {
-      Assert.assertEquals(expected, DepthFirstSearch.topologicalSort(adj));
+      Assertions.assertEquals(expected, DepthFirstSearch.topologicalSort(adj));
     } catch (Exception e) {
     }
   }
@@ -136,7 +136,7 @@ public class DepthFirstSearchTest {
     adj.get(0).add(2);
     adj.get(1).add(3);
 
-    Assert.assertFalse(DepthFirstSearch.hasCycle(adj));
+    Assertions.assertFalse(DepthFirstSearch.hasCycle(adj));
 
     /*
       node0 → node1 → node3
@@ -153,6 +153,6 @@ public class DepthFirstSearchTest {
     adj2.get(1).add(2);
     adj2.get(2).add(0);
 
-    Assert.assertTrue(DepthFirstSearch.hasCycle(adj2));
+    Assertions.assertTrue(DepthFirstSearch.hasCycle(adj2));
   }
 }

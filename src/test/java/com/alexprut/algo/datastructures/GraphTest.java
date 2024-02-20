@@ -1,7 +1,7 @@
 package com.alexprut.algo.datastructures;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class GraphTest {
 
@@ -23,7 +23,7 @@ public class GraphTest {
     expected[0][2] = 1;
     expected[2][0] = 1;
 
-    Assert.assertArrayEquals(expected, graph.getAdjacencyMatrix());
+    Assertions.assertArrayEquals(expected, graph.getAdjacencyMatrix());
   }
 
   @Test
@@ -42,6 +42,6 @@ public class GraphTest {
     expected[0][1] = 1;
     expected[0][2] = 1;
 
-    Assert.assertArrayEquals(expected, graph.getAdjacencyMatrix());
+    Assertions.assertArrayEquals(expected, graph.getAdjacencyMatrix());
   }
 }

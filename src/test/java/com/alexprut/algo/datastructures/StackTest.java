@@ -1,18 +1,18 @@
 package com.alexprut.algo.datastructures;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class StackTest {
 
   @Test
   public void shouldSupportBasicOperations() {
     Stack<Integer> stack = new Stack<>();
-    Assert.assertEquals(0, stack.size());
-    Assert.assertTrue(stack.empty());
+    Assertions.assertEquals(0, stack.size());
+    Assertions.assertTrue(stack.empty());
 
     stack.push(5);
-    Assert.assertEquals(1, stack.size());
+    Assertions.assertEquals(1, stack.size());
 
     stack.insert(4);
     try {
@@ -28,7 +28,7 @@ public class StackTest {
     } catch (Exception e) {
       value = -1;
     }
-    Assert.assertEquals(4, value);
-    Assert.assertEquals(1, stack.size());
+    Assertions.assertEquals(4, value);
+    Assertions.assertEquals(1, stack.size());
   }
 }

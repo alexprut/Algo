@@ -1,8 +1,8 @@
 package com.alexprut.algo.datastructures;
 
 import com.alexprut.algo.datastructures.BTree.Node;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class BTreeTest {
 
@@ -81,7 +81,7 @@ public class BTreeTest {
     Pair<Node<Character>, Integer> foundPredecessorNode =
         test.getPredecessor(foundNode.first().children.get(foundNode.second()));
 
-    Assert.assertEquals(
+    Assertions.assertEquals(
         Character.valueOf('O'),
         foundPredecessorNode.first().key.get(foundPredecessorNode.second()));
   }
@@ -94,7 +94,7 @@ public class BTreeTest {
     Pair<Node<Character>, Integer> foundSuccessorNode =
         test.getSuccessor(foundNode.first().children.get(foundNode.second() + 1));
 
-    Assert.assertEquals(
+    Assertions.assertEquals(
         Character.valueOf('Q'), foundSuccessorNode.first().key.get(foundSuccessorNode.second()));
   }
 
@@ -199,10 +199,10 @@ public class BTreeTest {
       tree.insert(i);
     }
     for (int i = 0; i < 10; i++) {
-      Assert.assertTrue(tree.search(i));
+      Assertions.assertTrue(tree.search(i));
     }
     for (int i = 10; i < 100; i++) {
-      Assert.assertFalse(tree.search(i));
+      Assertions.assertFalse(tree.search(i));
     }
   }
 
@@ -215,9 +215,9 @@ public class BTreeTest {
     for (int i = 0; i < 10; i++) {
       tree.insert(1);
     }
-    Assert.assertTrue(tree.search(0));
-    Assert.assertTrue(tree.search(1));
-    Assert.assertFalse(tree.search(2));
+    Assertions.assertTrue(tree.search(0));
+    Assertions.assertTrue(tree.search(1));
+    Assertions.assertFalse(tree.search(2));
   }
 
   @Test
@@ -244,14 +244,14 @@ public class BTreeTest {
     BTree<Character> test = new BTree<>(2);
     test.splitChild(root, 1);
 
-    Assert.assertEquals(4, root.children.size());
-    Assert.assertEquals(3, root.key.size());
-    Assert.assertEquals(Character.valueOf('A'), root.key.get(0));
-    Assert.assertEquals(Character.valueOf('C'), root.key.get(1));
-    Assert.assertEquals(Character.valueOf('F'), root.key.get(2));
-    Assert.assertEquals(Character.valueOf('B'), root.children.get(1).key.get(0));
-    Assert.assertEquals(1, root.children.get(1).key.size());
-    Assert.assertEquals(Character.valueOf('D'), root.children.get(2).key.get(0));
-    Assert.assertEquals(1, root.children.get(2).key.size());
+    Assertions.assertEquals(4, root.children.size());
+    Assertions.assertEquals(3, root.key.size());
+    Assertions.assertEquals(Character.valueOf('A'), root.key.get(0));
+    Assertions.assertEquals(Character.valueOf('C'), root.key.get(1));
+    Assertions.assertEquals(Character.valueOf('F'), root.key.get(2));
+    Assertions.assertEquals(Character.valueOf('B'), root.children.get(1).key.get(0));
+    Assertions.assertEquals(1, root.children.get(1).key.size());
+    Assertions.assertEquals(Character.valueOf('D'), root.children.get(2).key.get(0));
+    Assertions.assertEquals(1, root.children.get(2).key.size());
   }
 }

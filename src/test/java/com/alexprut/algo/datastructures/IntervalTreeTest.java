@@ -1,8 +1,8 @@
 package com.alexprut.algo.datastructures;
 
 import com.alexprut.algo.datastructures.IntervalTree.IntervalNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class IntervalTreeTest {
 
@@ -21,27 +21,27 @@ public class IntervalTreeTest {
     tree.insert(26, 26);
     tree.delete(8, 9);
 
-    Assert.assertNotNull(tree.root());
-    Assert.assertTrue(tree.search(0, 3));
-    Assert.assertTrue(tree.search(5, 8));
-    Assert.assertTrue(tree.search(6, 10));
-    Assert.assertFalse(tree.search(8, 9));
-    Assert.assertTrue(tree.search(15, 23));
-    Assert.assertTrue(tree.search(16, 21));
-    Assert.assertTrue(tree.search(17, 19));
-    Assert.assertTrue(tree.search(19, 20));
-    Assert.assertTrue(tree.search(25, 30));
-    Assert.assertTrue(tree.search(26, 26));
+    Assertions.assertNotNull(tree.root());
+    Assertions.assertTrue(tree.search(0, 3));
+    Assertions.assertTrue(tree.search(5, 8));
+    Assertions.assertTrue(tree.search(6, 10));
+    Assertions.assertFalse(tree.search(8, 9));
+    Assertions.assertTrue(tree.search(15, 23));
+    Assertions.assertTrue(tree.search(16, 21));
+    Assertions.assertTrue(tree.search(17, 19));
+    Assertions.assertTrue(tree.search(19, 20));
+    Assertions.assertTrue(tree.search(25, 30));
+    Assertions.assertTrue(tree.search(26, 26));
   }
 
   @Test
   public void checkIfOverlap() {
-    Assert.assertTrue(IntervalTree.doOverlap(new IntervalNode(1, 3), new IntervalNode(0, 5)));
-    Assert.assertTrue(IntervalTree.doOverlap(new IntervalNode(0, 5), new IntervalNode(1, 3)));
-    Assert.assertTrue(IntervalTree.doOverlap(new IntervalNode(1, 3), new IntervalNode(0, 2)));
-    Assert.assertTrue(IntervalTree.doOverlap(new IntervalNode(0, 4), new IntervalNode(3, 5)));
-    Assert.assertFalse(IntervalTree.doOverlap(new IntervalNode(0, 3), new IntervalNode(4, 5)));
-    Assert.assertFalse(IntervalTree.doOverlap(new IntervalNode(4, 5), new IntervalNode(0, 3)));
+    Assertions.assertTrue(IntervalTree.doOverlap(new IntervalNode(1, 3), new IntervalNode(0, 5)));
+    Assertions.assertTrue(IntervalTree.doOverlap(new IntervalNode(0, 5), new IntervalNode(1, 3)));
+    Assertions.assertTrue(IntervalTree.doOverlap(new IntervalNode(1, 3), new IntervalNode(0, 2)));
+    Assertions.assertTrue(IntervalTree.doOverlap(new IntervalNode(0, 4), new IntervalNode(3, 5)));
+    Assertions.assertFalse(IntervalTree.doOverlap(new IntervalNode(0, 3), new IntervalNode(4, 5)));
+    Assertions.assertFalse(IntervalTree.doOverlap(new IntervalNode(4, 5), new IntervalNode(0, 3)));
   }
 
   @Test
@@ -67,20 +67,20 @@ public class IntervalTreeTest {
     tree.insert(6, 10);
     tree.insert(19, 20);
 
-    Assert.assertEquals(1, tree.findAll(0, 2).size());
-    Assert.assertEquals(0, tree.findAll(0, 2).get(0).value());
-    Assert.assertEquals(4, tree.findAll(16, 21).size());
-    Assert.assertEquals(4, tree.findAll(17, 19).size());
-    Assert.assertEquals(0, tree.minimum().value());
-    Assert.assertEquals(26, tree.maximum().value());
-    Assert.assertNotNull(tree.find(4, 9));
-    Assert.assertNotNull(tree.find(9, 9));
-    Assert.assertNotNull(tree.find(10, 14));
-    Assert.assertNull(tree.find(31, 32));
-    Assert.assertNull(tree.find(-2, -1));
-    Assert.assertEquals(
+    Assertions.assertEquals(1, tree.findAll(0, 2).size());
+    Assertions.assertEquals(0, tree.findAll(0, 2).get(0).value());
+    Assertions.assertEquals(4, tree.findAll(16, 21).size());
+    Assertions.assertEquals(4, tree.findAll(17, 19).size());
+    Assertions.assertEquals(0, tree.minimum().value());
+    Assertions.assertEquals(26, tree.maximum().value());
+    Assertions.assertNotNull(tree.find(4, 9));
+    Assertions.assertNotNull(tree.find(9, 9));
+    Assertions.assertNotNull(tree.find(10, 14));
+    Assertions.assertNull(tree.find(31, 32));
+    Assertions.assertNull(tree.find(-2, -1));
+    Assertions.assertEquals(
         17, tree.successor(tree.search(tree.root(), new IntervalNode(16, 21))).value());
-    Assert.assertEquals(
+    Assertions.assertEquals(
         25, tree.successor(tree.search(tree.root(), new IntervalNode(19, 20))).value());
 
     tree.delete(16, 21);
@@ -94,6 +94,6 @@ public class IntervalTreeTest {
     tree.delete(26, 26);
     tree.delete(6, 10);
 
-    Assert.assertEquals(0, tree.size());
+    Assertions.assertEquals(0, tree.size());
   }
 }

@@ -1,8 +1,8 @@
 package com.alexprut.algo.algorithms.graph.mst;
 
 import com.alexprut.algo.datastructures.Graph;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class PrimTest {
 
@@ -32,13 +32,13 @@ public class PrimTest {
             node2 ------- node3
                      1
      */
-    Assert.assertArrayEquals(new int[] {-1, 0, 0, 2}, Prim.prim(g.getAdjacencyList(), 4, 0));
-    Assert.assertArrayEquals(new int[] {2, 0, 3, -1}, Prim.prim(g.getAdjacencyList(), 4, 3));
+    Assertions.assertArrayEquals(new int[] {-1, 0, 0, 2}, Prim.prim(g.getAdjacencyList(), 4, 0));
+    Assertions.assertArrayEquals(new int[] {2, 0, 3, -1}, Prim.prim(g.getAdjacencyList(), 4, 3));
   }
 
   @Test
   public void singleNodeMst() {
     Graph g = new Graph(1);
-    Assert.assertArrayEquals(new int[] {-1}, Prim.prim(g.getAdjacencyList(), 1, 0));
+    Assertions.assertArrayEquals(new int[] {-1}, Prim.prim(g.getAdjacencyList(), 1, 0));
   }
 }

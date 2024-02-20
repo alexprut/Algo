@@ -1,8 +1,8 @@
 package com.alexprut.algo.datastructures;
 
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class QuadTreeTest {
 
@@ -32,10 +32,10 @@ public class QuadTreeTest {
 
     List<QuadTree.Point> result = quadTree.search(200, 200, 250, 250);
 
-    Assert.assertEquals(1, result.size());
-    Assert.assertEquals(10, quadTree.size());
-    Assert.assertEquals(10, quadTree.search(0, 0, 400, 400).size());
-    Assert.assertArrayEquals(
+    Assertions.assertEquals(1, result.size());
+    Assertions.assertEquals(10, quadTree.size());
+    Assertions.assertEquals(10, quadTree.search(0, 0, 400, 400).size());
+    Assertions.assertArrayEquals(
         new float[] {245, 238}, new float[] {result.get(0).first(), result.get(0).second()}, 0);
   }
 }

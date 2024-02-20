@@ -1,7 +1,7 @@
 package com.alexprut.algo.datastructures;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class MinHeapTest {
 
@@ -12,7 +12,7 @@ public class MinHeapTest {
 
     BinaryHeap heap = new MinHeap(toSort);
     heap.heapsort();
-    Assert.assertArrayEquals(expected, heap.elements());
+    Assertions.assertArrayEquals(expected, heap.elements());
   }
 
   @Test
@@ -22,7 +22,7 @@ public class MinHeapTest {
 
     BinaryHeap heap = new MinHeap(toSort);
     heap.heapsort();
-    Assert.assertArrayEquals(expected, heap.elements());
+    Assertions.assertArrayEquals(expected, heap.elements());
   }
 
   @Test
@@ -31,7 +31,7 @@ public class MinHeapTest {
 
     BinaryHeap heap = new MinHeap(expected);
     heap.heapsort();
-    Assert.assertArrayEquals(expected, heap.elements());
+    Assertions.assertArrayEquals(expected, heap.elements());
   }
 
   @Test
@@ -44,27 +44,27 @@ public class MinHeapTest {
     heap.insert(0);
     heap.heapsort();
 
-    Assert.assertArrayEquals(expected, heap.elements());
-    Assert.assertEquals(0, heap.min());
-    Assert.assertEquals(3, heap.size());
+    Assertions.assertArrayEquals(expected, heap.elements());
+    Assertions.assertEquals(0, heap.min());
+    Assertions.assertEquals(3, heap.size());
 
     try {
-      Assert.assertEquals(0, heap.extractMin());
+      Assertions.assertEquals(0, heap.extractMin());
     } catch (Exception e) {
     }
 
-    Assert.assertEquals(2, heap.size());
-    Assert.assertEquals(0, heap.min());
+    Assertions.assertEquals(2, heap.size());
+    Assertions.assertEquals(0, heap.min());
   }
 
   @Test
   public void shouldHandleEdgeCases() {
     BinaryHeap heap = new MinHeap(new int[] {});
     heap.heapsort();
-    Assert.assertArrayEquals(new int[] {}, heap.elements());
+    Assertions.assertArrayEquals(new int[] {}, heap.elements());
 
     heap = new MinHeap(new int[] {1});
     heap.heapsort();
-    Assert.assertArrayEquals(new int[] {1}, heap.elements());
+    Assertions.assertArrayEquals(new int[] {1}, heap.elements());
   }
 }

@@ -1,12 +1,10 @@
 package com.alexprut.algo.algorithms.graph;
 
-import static junit.framework.TestCase.fail;
-
 import com.alexprut.algo.datastructures.Graph;
 import com.alexprut.algo.datastructures.Graph.Edge;
 import com.alexprut.algo.datastructures.Graph.Node;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class BellmanFordTest {
 
@@ -17,9 +15,9 @@ public class BellmanFordTest {
     int[] expectedDistances = new int[] {0, Integer.MAX_VALUE, Integer.MAX_VALUE};
 
     try {
-      Assert.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 3, 0));
+      Assertions.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 3, 0));
     } catch (Exception e) {
-      fail("Should not thrown an exception");
+      Assertions.fail("Should not thrown an exception");
     }
   }
 
@@ -34,9 +32,9 @@ public class BellmanFordTest {
     int[] expectedDistances = new int[] {0, 4, 4, 5};
 
     try {
-      Assert.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 4, 0));
+      Assertions.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 4, 0));
     } catch (Exception e) {
-      fail("Should not thrown an exception");
+      Assertions.fail("Should not thrown an exception");
     }
   }
 
@@ -51,9 +49,9 @@ public class BellmanFordTest {
     int[] expectedDistances = new int[] {0, 4, 4, 3};
 
     try {
-      Assert.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 4, 0));
+      Assertions.assertArrayEquals(expectedDistances, BellmanFord.bellmanFord(g.getEdges(), 4, 0));
     } catch (Exception e) {
-      fail("Should not thrown an exception");
+      Assertions.fail("Should not thrown an exception");
     }
   }
 
@@ -66,9 +64,9 @@ public class BellmanFordTest {
 
     try {
       BellmanFord.bellmanFord(g.getEdges(), 4, 0);
-      fail("Expected an Exception to be thrown");
+      Assertions.fail("Expected an Exception to be thrown");
     } catch (Exception e) {
-      Assert.assertEquals("Graph contains a negative cycle", e.getMessage());
+      Assertions.assertEquals("Graph contains a negative cycle", e.getMessage());
     }
   }
 }
