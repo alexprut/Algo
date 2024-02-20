@@ -1,24 +1,24 @@
 package com.alexprut.algo.algorithms;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class KnuthMorrisPrattTest {
 
   @Test
   public void shouldSeachPattern() {
-    Assert.assertEquals(4, KnuthMorrisPratt.knuthMorrisPratt("bacbababaabcbab", "ababa"));
-    Assert.assertEquals(0, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "b"));
-    Assert.assertEquals(0, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "ba"));
-    Assert.assertEquals(-1, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "x"));
-    Assert.assertEquals(-1, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "xay"));
-    Assert.assertEquals(0, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "bacbab"));
-    Assert.assertEquals(0, KnuthMorrisPratt.knuthMorrisPratt("", ""));
+    Assertions.assertEquals(4, KnuthMorrisPratt.knuthMorrisPratt("bacbababaabcbab", "ababa"));
+    Assertions.assertEquals(0, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "b"));
+    Assertions.assertEquals(0, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "ba"));
+    Assertions.assertEquals(-1, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "x"));
+    Assertions.assertEquals(-1, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "xay"));
+    Assertions.assertEquals(0, KnuthMorrisPratt.knuthMorrisPratt("bacbab", "bacbab"));
+    Assertions.assertEquals(0, KnuthMorrisPratt.knuthMorrisPratt("", ""));
   }
 
   @Test
   public void shouldCreatePrefixFunction() {
-    Assert.assertArrayEquals(
+    Assertions.assertArrayEquals(
         new int[] {0, 0, 1, 2, 3, 0, 1}, KnuthMorrisPratt.computePrefixFunction("ababaca"));
   }
 }

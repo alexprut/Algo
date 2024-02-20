@@ -1,7 +1,7 @@
 package com.alexprut.algo.algorithms.sorting;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class MergeSortTest {
 
@@ -11,7 +11,7 @@ public class MergeSortTest {
     int[] expected = new int[] {0, 0, 1, 2, 3, 3, 5, 9, 33};
 
     MergeSort.mergeSort(toSort, 0, toSort.length - 1);
-    Assert.assertArrayEquals(expected, toSort);
+    Assertions.assertArrayEquals(expected, toSort);
   }
 
   @Test
@@ -20,7 +20,7 @@ public class MergeSortTest {
     int[] expected = new int[] {0, 0, 1, 2, 3, 3, 5, 9, 33};
 
     MergeSort.mergeSort(toSort, 0, toSort.length - 1);
-    Assert.assertArrayEquals(expected, toSort);
+    Assertions.assertArrayEquals(expected, toSort);
   }
 
   @Test
@@ -28,17 +28,17 @@ public class MergeSortTest {
     int[] expected = new int[] {0, 0, 1, 2, 3, 3, 5, 9, 33};
 
     MergeSort.mergeSort(expected, 0, expected.length - 1);
-    Assert.assertArrayEquals(expected, expected);
+    Assertions.assertArrayEquals(expected, expected);
   }
 
   @Test
   public void shouldHandleEdgeCases() {
     int[] toSort = new int[] {};
     MergeSort.mergeSort(toSort, 0, toSort.length - 1);
-    Assert.assertArrayEquals(new int[] {}, toSort);
+    Assertions.assertArrayEquals(new int[] {}, toSort);
 
     toSort = new int[] {1};
     MergeSort.mergeSort(toSort, 0, toSort.length - 1);
-    Assert.assertArrayEquals(new int[] {1}, toSort);
+    Assertions.assertArrayEquals(new int[] {1}, toSort);
   }
 }

@@ -5,8 +5,8 @@ import com.alexprut.algo.datastructures.Graph.Node;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class KruskalTest {
 
@@ -43,9 +43,9 @@ public class KruskalTest {
     Collections.sort(mst);
     Collections.sort(expectedMst);
 
-    Assert.assertEquals(mst.size(), expectedMst.size());
+    Assertions.assertEquals(mst.size(), expectedMst.size());
     for (int i = 0; i < mst.size(); i++) {
-      Assert.assertTrue(mst.get(i).equals(expectedMst.get(i)));
+      Assertions.assertTrue(mst.get(i).equals(expectedMst.get(i)));
     }
   }
 }

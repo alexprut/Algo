@@ -1,7 +1,7 @@
 package com.alexprut.algo.datastructures;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class BloomFilterTest {
 
@@ -14,17 +14,17 @@ public class BloomFilterTest {
     filter.insert("filter");
     filter.insert("bloom filter");
 
-    Assert.assertTrue(filter.search("bl"));
-    Assert.assertTrue(filter.search("bloom"));
-    Assert.assertTrue(filter.search("fil"));
-    Assert.assertTrue(filter.search("filter"));
-    Assert.assertTrue(filter.search("bloom filter"));
+    Assertions.assertTrue(filter.search("bl"));
+    Assertions.assertTrue(filter.search("bloom"));
+    Assertions.assertTrue(filter.search("fil"));
+    Assertions.assertTrue(filter.search("filter"));
+    Assertions.assertTrue(filter.search("bloom filter"));
 
-    Assert.assertFalse(filter.search("blo"));
-    Assert.assertFalse(filter.search("loom"));
-    Assert.assertFalse(filter.search("fi"));
-    Assert.assertFalse(filter.search("filte"));
-    Assert.assertFalse(filter.search("om filter"));
+    Assertions.assertFalse(filter.search("blo"));
+    Assertions.assertFalse(filter.search("loom"));
+    Assertions.assertFalse(filter.search("fi"));
+    Assertions.assertFalse(filter.search("filte"));
+    Assertions.assertFalse(filter.search("om filter"));
   }
 
   @Test
@@ -35,7 +35,7 @@ public class BloomFilterTest {
     }
 
     for (int i = 0; i < 10000; i++) {
-      Assert.assertTrue(filter.search(i));
+      Assertions.assertTrue(filter.search(i));
     }
 
     int c = 0;
@@ -43,6 +43,6 @@ public class BloomFilterTest {
       c += filter.search(i) ? 1 : 0;
     }
 
-    Assert.assertTrue(c / 10000 <= 0.01);
+    Assertions.assertTrue(c / 10000 <= 0.01);
   }
 }

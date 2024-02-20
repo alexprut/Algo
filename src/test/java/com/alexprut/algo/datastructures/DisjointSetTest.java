@@ -1,8 +1,8 @@
 package com.alexprut.algo.datastructures;
 
 import com.alexprut.algo.datastructures.DisjointSet.Element;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class DisjointSetTest {
 
@@ -12,8 +12,8 @@ public class DisjointSetTest {
     Element<Integer> a = sets.makeSet(1);
     Element<Integer> b = sets.makeSet(2);
     sets.union(a, b);
-    Assert.assertEquals(a.parent().getValue(), b.getValue());
-    Assert.assertEquals(b.parent().getValue(), b.getValue());
-    Assert.assertEquals(b.getRank(), 1);
+    Assertions.assertEquals(a.parent().getValue(), b.getValue());
+    Assertions.assertEquals(b.parent().getValue(), b.getValue());
+    Assertions.assertEquals(b.getRank(), 1);
   }
 }

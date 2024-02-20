@@ -1,7 +1,7 @@
 package com.alexprut.algo.datastructures;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class TrieTest {
 
@@ -29,7 +29,7 @@ public class TrieTest {
      *                 e*     m
      */
     Trie trie = new Trie();
-    Assert.assertEquals(0, trie.size());
+    Assertions.assertEquals(0, trie.size());
     trie.insert("data");
     trie.insert("date");
     trie.insert("structure");
@@ -37,23 +37,23 @@ public class TrieTest {
     trie.insert("algorithm");
     trie.insert("algo");
 
-    Assert.assertEquals(6, trie.size());
-    Assert.assertFalse(trie.search(""));
-    Assert.assertFalse(trie.searchPrefix(""));
-    Assert.assertTrue(trie.search("algo"));
-    Assert.assertTrue(trie.search("algorithm"));
-    Assert.assertTrue(trie.searchPrefix("algorithm"));
-    Assert.assertTrue(trie.searchPrefix("algorith"));
-    Assert.assertFalse(trie.searchPrefix("algorithms"));
-    Assert.assertTrue(trie.searchPrefix("structure"));
-    Assert.assertTrue(trie.searchPrefix("data"));
-    Assert.assertEquals(2, trie.sizePrefix("alg"));
-    Assert.assertEquals(2, trie.sizePrefix("algo"));
+    Assertions.assertEquals(6, trie.size());
+    Assertions.assertFalse(trie.search(""));
+    Assertions.assertFalse(trie.searchPrefix(""));
+    Assertions.assertTrue(trie.search("algo"));
+    Assertions.assertTrue(trie.search("algorithm"));
+    Assertions.assertTrue(trie.searchPrefix("algorithm"));
+    Assertions.assertTrue(trie.searchPrefix("algorith"));
+    Assertions.assertFalse(trie.searchPrefix("algorithms"));
+    Assertions.assertTrue(trie.searchPrefix("structure"));
+    Assertions.assertTrue(trie.searchPrefix("data"));
+    Assertions.assertEquals(2, trie.sizePrefix("alg"));
+    Assertions.assertEquals(2, trie.sizePrefix("algo"));
 
-    Assert.assertFalse(trie.remove(""));
-    Assert.assertFalse(trie.remove("alg"));
-    Assert.assertFalse(trie.remove("algos"));
-    Assert.assertEquals(6, trie.size());
+    Assertions.assertFalse(trie.remove(""));
+    Assertions.assertFalse(trie.remove("alg"));
+    Assertions.assertFalse(trie.remove("algos"));
+    Assertions.assertEquals(6, trie.size());
     /*
      *                 ""
      *               / | \
@@ -75,10 +75,10 @@ public class TrieTest {
      *                 |      |
      *                 e*     m
      */
-    Assert.assertTrue(trie.remove("algo"));
-    Assert.assertEquals(5, trie.size());
+    Assertions.assertTrue(trie.remove("algo"));
+    Assertions.assertEquals(5, trie.size());
 
-    Assert.assertFalse(trie.removePrefix(""));
+    Assertions.assertFalse(trie.removePrefix(""));
     /*
      *                 ""
      *                 | \
@@ -100,11 +100,11 @@ public class TrieTest {
      *                 |      |
      *                 e*     m
      */
-    Assert.assertTrue(trie.removePrefix("dat"));
-    Assert.assertEquals(3, trie.size());
+    Assertions.assertTrue(trie.removePrefix("dat"));
+    Assertions.assertEquals(3, trie.size());
 
-    Assert.assertTrue(trie.removePrefix("s"));
-    Assert.assertTrue(trie.removePrefix("a"));
-    Assert.assertEquals(0, trie.size());
+    Assertions.assertTrue(trie.removePrefix("s"));
+    Assertions.assertTrue(trie.removePrefix("a"));
+    Assertions.assertEquals(0, trie.size());
   }
 }

@@ -3,8 +3,8 @@ package com.alexprut.algo.datastructures;
 import com.alexprut.algo.datastructures.FibonacciHeap.Node;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class FibonacciHeapTest {
 
@@ -12,16 +12,16 @@ public class FibonacciHeapTest {
   public void shouldInsertAndGetMinimum() {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     heap.insert(1);
-    Assert.assertEquals(1, heap.size);
-    Assert.assertEquals(Integer.valueOf(1), heap.minimum());
+    Assertions.assertEquals(1, heap.size);
+    Assertions.assertEquals(Integer.valueOf(1), heap.minimum());
   }
 
   @Test
   public void shouldInsertAndExtractMinimum() {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     heap.insert(1);
-    Assert.assertEquals(Integer.valueOf(1), heap.extractMin().key);
-    Assert.assertEquals(0, heap.size());
+    Assertions.assertEquals(Integer.valueOf(1), heap.extractMin().key);
+    Assertions.assertEquals(0, heap.size());
   }
 
   @Test
@@ -29,7 +29,7 @@ public class FibonacciHeapTest {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     Node<Integer> x = heap.insert(2);
     heap.decreaseKey(x, 1);
-    Assert.assertEquals(Integer.valueOf(1), x.key);
+    Assertions.assertEquals(Integer.valueOf(1), x.key);
   }
 
   @Test
@@ -37,8 +37,8 @@ public class FibonacciHeapTest {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     Node<Integer> x = heap.insert(2);
     heap.delete(x);
-    Assert.assertEquals(0, heap.size);
-    Assert.assertNull(heap.min);
+    Assertions.assertEquals(0, heap.size);
+    Assertions.assertNull(heap.min);
   }
 
   @Test
@@ -51,15 +51,15 @@ public class FibonacciHeapTest {
     for (Node<Integer> node : nodes) {
       heap.decreaseKey(node, node.key - 1);
     }
-    Assert.assertEquals(Integer.valueOf(-1), heap.minimum());
+    Assertions.assertEquals(Integer.valueOf(-1), heap.minimum());
 
     heap.delete(nodes.get(0));
     heap.delete(nodes.get(1));
     heap.delete(nodes.get(4));
     heap.delete(nodes.get(5));
 
-    Assert.assertEquals(Integer.valueOf(1), heap.minimum());
-    Assert.assertEquals(2, heap.size);
+    Assertions.assertEquals(Integer.valueOf(1), heap.minimum());
+    Assertions.assertEquals(2, heap.size);
   }
 
   @Test

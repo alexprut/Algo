@@ -1,8 +1,8 @@
 package com.alexprut.algo.datastructures;
 
 import com.alexprut.algo.datastructures.AVLTree.Node;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class AVLTreeTest {
 
@@ -11,13 +11,13 @@ public class AVLTreeTest {
     AVLTree<Integer> tree = new AVLTree<>();
     for (int i = 0; i < 100; i++) {
       tree.insert(i);
-      Assert.assertTrue(tree.search(i));
+      Assertions.assertTrue(tree.search(i));
     }
 
-    Assert.assertNotNull(tree.root());
-    Assert.assertNull(tree.root().parent());
-    Assert.assertEquals(Integer.valueOf(0), tree.minimum().value());
-    Assert.assertEquals(Integer.valueOf(99), tree.maximum().value());
+    Assertions.assertNotNull(tree.root());
+    Assertions.assertNull(tree.root().parent());
+    Assertions.assertEquals(Integer.valueOf(0), tree.minimum().value());
+    Assertions.assertEquals(Integer.valueOf(99), tree.maximum().value());
   }
 
   @Test
@@ -29,10 +29,10 @@ public class AVLTreeTest {
 
     for (int i = 0; i < 100; i++) {
       tree.delete(i);
-      Assert.assertFalse(tree.search(i));
+      Assertions.assertFalse(tree.search(i));
     }
 
-    Assert.assertEquals(0, tree.size());
+    Assertions.assertEquals(0, tree.size());
   }
 
   @Test
@@ -58,17 +58,17 @@ public class AVLTreeTest {
     y.setLeft(u);
     tree.leftRotation(x);
 
-    Assert.assertEquals(y, tree.root);
-    Assert.assertEquals(x, y.left());
-    Assert.assertEquals(z, y.right());
-    Assert.assertEquals(w, x.left());
-    Assert.assertEquals(u, x.right());
-    Assert.assertNull(z.left());
-    Assert.assertNull(z.right());
-    Assert.assertNull(u.left());
-    Assert.assertNull(u.right());
-    Assert.assertNull(w.left());
-    Assert.assertNull(w.right());
+    Assertions.assertEquals(y, tree.root);
+    Assertions.assertEquals(x, y.left());
+    Assertions.assertEquals(z, y.right());
+    Assertions.assertEquals(w, x.left());
+    Assertions.assertEquals(u, x.right());
+    Assertions.assertNull(z.left());
+    Assertions.assertNull(z.right());
+    Assertions.assertNull(u.left());
+    Assertions.assertNull(u.right());
+    Assertions.assertNull(w.left());
+    Assertions.assertNull(w.right());
   }
 
   @Test
@@ -94,17 +94,17 @@ public class AVLTreeTest {
     x.setRight(u);
     tree.rightRotation(y);
 
-    Assert.assertEquals(x, tree.root);
-    Assert.assertEquals(w, x.left());
-    Assert.assertEquals(y, x.right());
-    Assert.assertEquals(u, y.left());
-    Assert.assertEquals(z, y.right());
-    Assert.assertNull(w.left());
-    Assert.assertNull(w.right());
-    Assert.assertNull(u.left());
-    Assert.assertNull(u.right());
-    Assert.assertNull(z.left());
-    Assert.assertNull(z.right());
+    Assertions.assertEquals(x, tree.root);
+    Assertions.assertEquals(w, x.left());
+    Assertions.assertEquals(y, x.right());
+    Assertions.assertEquals(u, y.left());
+    Assertions.assertEquals(z, y.right());
+    Assertions.assertNull(w.left());
+    Assertions.assertNull(w.right());
+    Assertions.assertNull(u.left());
+    Assertions.assertNull(u.right());
+    Assertions.assertNull(z.left());
+    Assertions.assertNull(z.right());
   }
 
   @Test
@@ -126,22 +126,22 @@ public class AVLTreeTest {
     tree.insert(13);
     tree.insert(27);
 
-    Assert.assertEquals(7, tree.size());
-    Assert.assertTrue(tree.search(71));
-    Assert.assertTrue(tree.search(34));
-    Assert.assertTrue(tree.search(8));
-    Assert.assertTrue(tree.search(41));
-    Assert.assertTrue(tree.search(68));
-    Assert.assertTrue(tree.search(13));
-    Assert.assertTrue(tree.search(27));
+    Assertions.assertEquals(7, tree.size());
+    Assertions.assertTrue(tree.search(71));
+    Assertions.assertTrue(tree.search(34));
+    Assertions.assertTrue(tree.search(8));
+    Assertions.assertTrue(tree.search(41));
+    Assertions.assertTrue(tree.search(68));
+    Assertions.assertTrue(tree.search(13));
+    Assertions.assertTrue(tree.search(27));
 
-    Assert.assertNull(tree.successor(tree.search(tree.root, 71)));
-    Assert.assertEquals(41, (int) tree.successor(tree.search(tree.root, 34)).value());
-    Assert.assertEquals(13, (int) tree.successor(tree.search(tree.root, 8)).value());
-    Assert.assertEquals(68, (int) tree.successor(tree.search(tree.root, 41)).value());
-    Assert.assertEquals(71, (int) tree.successor(tree.search(tree.root, 68)).value());
-    Assert.assertEquals(27, (int) tree.successor(tree.search(tree.root, 13)).value());
-    Assert.assertEquals(34, (int) tree.successor(tree.search(tree.root, 27)).value());
+    Assertions.assertNull(tree.successor(tree.search(tree.root, 71)));
+    Assertions.assertEquals(41, (int) tree.successor(tree.search(tree.root, 34)).value());
+    Assertions.assertEquals(13, (int) tree.successor(tree.search(tree.root, 8)).value());
+    Assertions.assertEquals(68, (int) tree.successor(tree.search(tree.root, 41)).value());
+    Assertions.assertEquals(71, (int) tree.successor(tree.search(tree.root, 68)).value());
+    Assertions.assertEquals(27, (int) tree.successor(tree.search(tree.root, 13)).value());
+    Assertions.assertEquals(34, (int) tree.successor(tree.search(tree.root, 27)).value());
 
     tree.delete(34);
     tree.delete(13);
@@ -151,6 +151,6 @@ public class AVLTreeTest {
     tree.delete(8);
     tree.delete(68);
 
-    Assert.assertEquals(0, tree.size());
+    Assertions.assertEquals(0, tree.size());
   }
 }
