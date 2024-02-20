@@ -24,7 +24,8 @@ jobs:
           name: Gradle Build
           command: ./gradlew build --no-daemon
 
-      - codecov/upload
+      - codecov/upload:
+          file: ./build/reports/jacoco/test.exec
 
       # Save Gradle cache
       - save_cache:
