@@ -1,8 +1,0 @@
-language: java
-
-jdk:
-- oraclejdk12
-
-after_success:
-- ./gradlew -Djdk.tls.client.protocols="TLSv1,TLSv1.1,TLSv1.2" jacocoTestReport coveralls
-- curl -F 'json_file=@build/coveralls/report.json' 'https://coveralls.io/api/v1/jobs'
