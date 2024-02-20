@@ -30,7 +30,7 @@ public class LinkedListTest {
     list.insertFront(1);
     list.insertFront(2);
 
-    Assert.assertEquals(new Integer(2), list.head().getValue());
-    Assert.assertEquals(new Integer(1), list.head().getNext().getValue());
+    Assert.assertEquals(Integer.valueOf(2), list.head().getValue());
+    Assert.assertEquals(Integer.valueOf(1), list.head().getNext().getValue());
   }
 }
