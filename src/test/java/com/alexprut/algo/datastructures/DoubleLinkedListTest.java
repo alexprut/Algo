@@ -10,7 +10,7 @@ public class DoubleLinkedListTest {
   @Test
   public void shouldInsertAndRemoveFront() {
     DoubleLinkedList<Integer> linkedList = new DoubleLinkedList<>();
-    Assert.assertEquals(null, linkedList.head());
+    Assert.assertNull(linkedList.head());
     Assert.assertEquals(0, linkedList.size());
     linkedList.insertFront(5);
     Assert.assertEquals(5, (int) linkedList.head().getValue());
@@ -21,7 +21,7 @@ public class DoubleLinkedListTest {
       fail("Should not thrown an exception");
     }
     Assert.assertEquals(0, linkedList.size());
-    Assert.assertEquals(null, linkedList.head());
+    Assert.assertNull(linkedList.head());
     linkedList.insertBack(1);
     linkedList.insertBack(2);
     Assert.assertEquals(2, linkedList.size());

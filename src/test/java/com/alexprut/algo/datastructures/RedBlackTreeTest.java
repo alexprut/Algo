@@ -180,8 +180,8 @@ public class RedBlackTreeTest {
 
     Assert.assertNotNull(tree.root());
     Assert.assertNull(tree.root().parent());
-    Assert.assertEquals(new Integer(15), tree.maximum().value());
-    Assert.assertEquals(new Integer(1), tree.minimum().value());
+    Assert.assertEquals(Integer.valueOf(15), tree.maximum().value());
+    Assert.assertEquals(Integer.valueOf(1), tree.minimum().value());
     Assert.assertEquals(y, w.left());
     Assert.assertEquals(x, w.right());
     Assert.assertEquals(z, y.left());
@@ -201,15 +201,15 @@ public class RedBlackTreeTest {
     Assert.assertNull(u.right());
     Assert.assertNull(c.left());
 
-    Assert.assertEquals(false, w.isRed());
-    Assert.assertEquals(true, y.isRed());
-    Assert.assertEquals(false, z.isRed());
-    Assert.assertEquals(false, u.isRed());
-    Assert.assertEquals(true, a.isRed());
-    Assert.assertEquals(true, x.isRed());
-    Assert.assertEquals(false, b.isRed());
-    Assert.assertEquals(false, c.isRed());
-    Assert.assertEquals(true, d.isRed());
+    Assert.assertFalse(w.isRed());
+    Assert.assertTrue(y.isRed());
+    Assert.assertFalse(z.isRed());
+    Assert.assertFalse(u.isRed());
+    Assert.assertTrue(a.isRed());
+    Assert.assertTrue(x.isRed());
+    Assert.assertFalse(b.isRed());
+    Assert.assertFalse(c.isRed());
+    Assert.assertTrue(d.isRed());
   }
 
   @Test

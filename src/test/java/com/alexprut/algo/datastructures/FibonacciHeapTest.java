@@ -13,14 +13,14 @@ public class FibonacciHeapTest {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     heap.insert(1);
     Assert.assertEquals(1, heap.size);
-    Assert.assertEquals(new Integer(1), heap.minimum());
+    Assert.assertEquals(Integer.valueOf(1), heap.minimum());
   }
 
   @Test
   public void shouldInsertAndExtractMinimum() {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     heap.insert(1);
-    Assert.assertEquals(new Integer(1), heap.extractMin().key);
+    Assert.assertEquals(Integer.valueOf(1), heap.extractMin().key);
     Assert.assertEquals(0, heap.size());
   }
 
@@ -29,7 +29,7 @@ public class FibonacciHeapTest {
     FibonacciHeap<Integer> heap = new FibonacciHeap<>();
     Node<Integer> x = heap.insert(2);
     heap.decreaseKey(x, 1);
-    Assert.assertEquals(new Integer(1), x.key);
+    Assert.assertEquals(Integer.valueOf(1), x.key);
   }
 
   @Test
@@ -38,7 +38,7 @@ public class FibonacciHeapTest {
     Node<Integer> x = heap.insert(2);
     heap.delete(x);
     Assert.assertEquals(0, heap.size);
-    Assert.assertEquals(null, heap.min);
+    Assert.assertNull(heap.min);
   }
 
   @Test
@@ -51,14 +51,14 @@ public class FibonacciHeapTest {
     for (Node<Integer> node : nodes) {
       heap.decreaseKey(node, node.key - 1);
     }
-    Assert.assertEquals(new Integer(-1), heap.minimum());
+    Assert.assertEquals(Integer.valueOf(-1), heap.minimum());
 
     heap.delete(nodes.get(0));
     heap.delete(nodes.get(1));
     heap.delete(nodes.get(4));
     heap.delete(nodes.get(5));
 
-    Assert.assertEquals(new Integer(1), heap.minimum());
+    Assert.assertEquals(Integer.valueOf(1), heap.minimum());
     Assert.assertEquals(2, heap.size);
   }
 

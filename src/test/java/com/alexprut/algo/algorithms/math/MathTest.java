@@ -46,7 +46,7 @@ public class MathTest {
   public void permuteTest() {
     List<List<Integer>> expected = new ArrayList<>();
     expected.add(
-        new ArrayList<Integer>() {
+        new ArrayList<>() {
           {
             add(1);
             add(2);
@@ -54,7 +54,7 @@ public class MathTest {
           }
         });
     expected.add(
-        new ArrayList<Integer>() {
+        new ArrayList<>() {
           {
             add(1);
             add(3);
@@ -62,7 +62,7 @@ public class MathTest {
           }
         });
     expected.add(
-        new ArrayList<Integer>() {
+        new ArrayList<>() {
           {
             add(2);
             add(1);
@@ -70,7 +70,7 @@ public class MathTest {
           }
         });
     expected.add(
-        new ArrayList<Integer>() {
+        new ArrayList<>() {
           {
             add(2);
             add(3);
@@ -78,7 +78,7 @@ public class MathTest {
           }
         });
     expected.add(
-        new ArrayList<Integer>() {
+        new ArrayList<>() {
           {
             add(3);
             add(1);
@@ -86,7 +86,7 @@ public class MathTest {
           }
         });
     expected.add(
-        new ArrayList<Integer>() {
+        new ArrayList<>() {
           {
             add(3);
             add(2);

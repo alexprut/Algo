@@ -16,8 +16,8 @@ public class AVLTreeTest {
 
     Assert.assertNotNull(tree.root());
     Assert.assertNull(tree.root().parent());
-    Assert.assertEquals(new Integer(0), tree.minimum().value());
-    Assert.assertEquals(new Integer(99), tree.maximum().value());
+    Assert.assertEquals(Integer.valueOf(0), tree.minimum().value());
+    Assert.assertEquals(Integer.valueOf(99), tree.maximum().value());
   }
 
   @Test
@@ -63,12 +63,12 @@ public class AVLTreeTest {
     Assert.assertEquals(z, y.right());
     Assert.assertEquals(w, x.left());
     Assert.assertEquals(u, x.right());
-    Assert.assertEquals(null, z.left());
-    Assert.assertEquals(null, z.right());
-    Assert.assertEquals(null, u.left());
-    Assert.assertEquals(null, u.right());
-    Assert.assertEquals(null, w.left());
-    Assert.assertEquals(null, w.right());
+    Assert.assertNull(z.left());
+    Assert.assertNull(z.right());
+    Assert.assertNull(u.left());
+    Assert.assertNull(u.right());
+    Assert.assertNull(w.left());
+    Assert.assertNull(w.right());
   }
 
   @Test
@@ -99,12 +99,12 @@ public class AVLTreeTest {
     Assert.assertEquals(y, x.right());
     Assert.assertEquals(u, y.left());
     Assert.assertEquals(z, y.right());
-    Assert.assertEquals(null, w.left());
-    Assert.assertEquals(null, w.right());
-    Assert.assertEquals(null, u.left());
-    Assert.assertEquals(null, u.right());
-    Assert.assertEquals(null, z.left());
-    Assert.assertEquals(null, z.right());
+    Assert.assertNull(w.left());
+    Assert.assertNull(w.right());
+    Assert.assertNull(u.left());
+    Assert.assertNull(u.right());
+    Assert.assertNull(z.left());
+    Assert.assertNull(z.right());
   }
 
   @Test

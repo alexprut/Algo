@@ -41,7 +41,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
    * @param value the new element value
    */
   public void insert(T value) {
-    BinaryNode<T> node = new BinaryNode<T>(value);
+    BinaryNode<T> node = new BinaryNode<>(value);
 
     if (root == null) {
       root = node;
