@@ -8,7 +8,13 @@ import java.util.HashMap;
  * (non-overlapping) subsets. It provides near-constant-time operations. To improve the running
  * time, the following heuristics are used: union by rank and path compression.
  *
- * <p>TODO add example
+ * <p>Example: 3 sets, 1st set contains: {1,2,5,6,8}, 2nd set contains: {3,4}, 3rd set contains: {7}
+ *
+ * <pre>
+ *    |-----------------|   |--------|   |-----|
+ *    |  1  2  5  6  8  |   |  3  4  |   |  7  |
+ *    |-----------------|   |--------|   |-----|
+ * </pre>
  *
  * @see <a
  *     href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure">https://en.wikipedia.org/wiki/Disjoint-set_data_structure</a>
