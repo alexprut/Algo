@@ -38,7 +38,6 @@ public class DoubleLinkedList<T> {
       head = node;
       tail = node;
     } else {
-      node.next = head;
       head.prev = node;
       head = node;
     }
@@ -60,7 +59,6 @@ public class DoubleLinkedList<T> {
     if (head == null) {
       head = node;
     } else {
-      node.prev = tail;
       tail.next = node;
     }
     tail = node;
@@ -69,7 +67,7 @@ public class DoubleLinkedList<T> {
   }
 
   /**
-   * Check if the the list is empty.
+   * Check if the list is empty.
    *
    * <p>Time complexity: Θ(1)
    *
@@ -79,6 +77,28 @@ public class DoubleLinkedList<T> {
    */
   public boolean empty() {
     return size == 0;
+  }
+
+  /**
+   * Search for an element.
+   *
+   * <p>Time complexity: O(n)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param element to be searched
+   * @return true if the element is present
+   */
+  public boolean search(T element) {
+    Node<T> current = head;
+    while (current != null) {
+      if (current.value == element) {
+        return true;
+      }
+      current = current.next;
+    }
+
+    return false;
   }
 
   /**

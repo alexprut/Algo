@@ -57,4 +57,21 @@ public class DoubleLinkedListTest {
     Assertions.assertEquals(3, (int) list.head().getNext().getValue());
     Assertions.assertNull(list.head().getPrev());
   }
+
+  @Test
+  public void shouldInsertAndSearch() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<>();
+    list.insertFront(1);
+    list.insertBack(2);
+    Assertions.assertNull(list.head().getPrev());
+    Assertions.assertNull(list.tail().getNext());
+    list.insertBack(3);
+
+    Assertions.assertEquals(3, list.size());
+    Assertions.assertTrue(list.search(1));
+    Assertions.assertTrue(list.search(2));
+    Assertions.assertTrue(list.search(3));
+    Assertions.assertFalse(list.search(4));
+    Assertions.assertFalse(list.search(5));
+  }
 }
