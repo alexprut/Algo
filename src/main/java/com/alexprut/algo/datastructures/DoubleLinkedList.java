@@ -159,7 +159,43 @@ public class DoubleLinkedList<T> {
     return node.value;
   }
 
-  // TODO implement the remove node method
+  /**
+   * If present, removes the element from the DoubleLinkedList.
+   *
+   * <p>Time complexity: Θ(n)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param element to be removed
+   * @return boolean true if the element was removed
+   */
+  public boolean remove(T element) {
+    if (!search(element)) {
+      return false;
+    }
+
+    Node<T> current = head;
+    while (current.value != element) {
+      current = current.next;
+    }
+
+    // Case Head node
+    if (current.prev == null) {
+      head = head.next;
+    } else if (current.next == null) {
+      // Case Tail node
+      tail = current.prev;
+      tail.next = null;
+    } else {
+      // Case Internal Node
+      Node<T> tmp = current.next;
+      current.prev = tmp;
+      tmp.prev = current.prev;
+    }
+
+    size--;
+    return true;
+  }
 
   /**
    * Returns the element in head of the LinkedList.
