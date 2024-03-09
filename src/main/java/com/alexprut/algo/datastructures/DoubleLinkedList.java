@@ -209,7 +209,7 @@ public class DoubleLinkedList<T> {
     public Node(T value, Node<T> next, Node<T> prev) {
       this.value = value;
       this.next = next;
-      this.next = prev;
+      this.prev = prev;
     }
 
     protected void setNext(Node<T> next) {
