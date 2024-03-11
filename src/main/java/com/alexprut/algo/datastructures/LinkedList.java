@@ -93,6 +93,41 @@ public class LinkedList<T> {
   }
 
   /**
+   * If present, removes the element from the LinkedList.
+   *
+   * <p>Time complexity: Θ(n)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param element to be removed
+   * @return boolean true if the element was removed
+   */
+  public boolean remove(T element) {
+    if (!search(element)) {
+      return false;
+    }
+
+    Node<T> prev = null;
+    Node<T> current = head;
+    while (current.value != element) {
+      prev = current;
+      current = current.next;
+    }
+
+    // Case Head node
+    if (current == head) {
+      head = current.next;
+    } else {
+      // Case Tail node
+      // Case Internal Node
+      prev.next = current.next;
+    }
+
+    size--;
+    return true;
+  }
+
+  /**
    * Returns the element in head of the LinkedList.
    *
    * <p>Time complexity: Θ(1)

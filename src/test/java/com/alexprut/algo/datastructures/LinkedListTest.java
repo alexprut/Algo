@@ -46,4 +46,23 @@ public class LinkedListTest {
     Assertions.assertFalse(list.search(4));
     Assertions.assertFalse(list.search(5));
   }
+
+  @Test
+  public void shouldInsertAndRemove() {
+    DoubleLinkedList<Integer> list = new DoubleLinkedList<>();
+    list.insertFront(1);
+    list.insertBack(2);
+    list.insertBack(3);
+    list.insertBack(4);
+
+    Assertions.assertEquals(4, list.size());
+    Assertions.assertFalse(list.remove(5));
+    Assertions.assertTrue(list.remove(1));
+    Assertions.assertEquals(3, list.size());
+    Assertions.assertTrue(list.remove(4));
+    Assertions.assertEquals(2, list.size());
+    Assertions.assertTrue(list.remove(2));
+    Assertions.assertTrue(list.remove(3));
+    Assertions.assertEquals(0, list.size());
+  }
 }
