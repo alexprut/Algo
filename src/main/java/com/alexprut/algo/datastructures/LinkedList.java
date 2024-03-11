@@ -50,6 +50,28 @@ public class LinkedList<T> {
   }
 
   /**
+   * Search for an element.
+   *
+   * <p>Time complexity: O(n)
+   *
+   * <p>Space complexity: Θ(1)
+   *
+   * @param element to be searched
+   * @return true if the element is present
+   */
+  public boolean search(T element) {
+    Node<T> current = head;
+    while (current != null) {
+      if (current.value == element) {
+        return true;
+      }
+      current = current.next;
+    }
+
+    return false;
+  }
+
+  /**
    * Removes the element in front of the LinkedList.
    *
    * <p>Time complexity: Θ(1)

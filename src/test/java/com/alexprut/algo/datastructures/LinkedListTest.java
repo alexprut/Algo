@@ -31,4 +31,19 @@ public class LinkedListTest {
     Assertions.assertEquals(Integer.valueOf(2), list.head().getValue());
     Assertions.assertEquals(Integer.valueOf(1), list.head().getNext().getValue());
   }
+
+  @Test
+  public void shouldInsertAndSearch() {
+    LinkedList<Integer> list = new LinkedList<>();
+    list.insertFront(1);
+    list.insertFront(2);
+    list.insertFront(3);
+
+    Assertions.assertEquals(3, list.size());
+    Assertions.assertTrue(list.search(1));
+    Assertions.assertTrue(list.search(2));
+    Assertions.assertTrue(list.search(3));
+    Assertions.assertFalse(list.search(4));
+    Assertions.assertFalse(list.search(5));
+  }
 }
