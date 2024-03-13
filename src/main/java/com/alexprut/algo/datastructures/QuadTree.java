@@ -9,6 +9,19 @@ import java.util.List;
  * into four quadrants or regions. The data associated with a leaf cell varies by application, but
  * the leaf cell represents a "unit of interesting spatial information".
  *
+ * <p>Example: Area size between 0 and 50, with 2 points: P1 in (25,10) and P2 in (40,40)
+ *
+ * <pre>
+ *   |--------|--------| (50,50)
+ *   |        |    .P2 |
+ *   |        |        |
+ *   |--------|--------| (0,25)
+ *   |        |        |
+ *   |  .P1   |        |
+ *   |--------|--------|
+ * (0,0)   (25,0)   (50,0)
+ * </pre>
+ *
  * @see <a href="https://en.wikipedia.org/wiki/Quadtree">https://en.wikipedia.org/wiki/Quadtree</a>
  */
 public class QuadTree {
@@ -246,6 +259,13 @@ public class QuadTree {
 
     public float getY() {
       return second();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+      Point that = (Point) o;
+      return this.getX() == that.getX() && this.getY() == that.getY();
     }
   }
 }
