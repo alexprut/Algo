@@ -68,7 +68,7 @@ Data Structures
 |[Segment Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/SegmentTree.java)|```build()``` - O(n), ```update()``` - O(logn), ```search()``` - O(logn)|
 |[AVL Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/AVLTree.java)|```insert()``` - O(logn), ```search()``` - O(logn), ```delete()``` - O(logn), ```minimum()``` - O(logn), ```maximum()``` - O(logn), ```successor()``` - O(logn)|
 |[B-Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BTree.java)|```insert()``` - O(th), ```search()``` - O(th), ```delete()``` - O(th), ```successor()``` - O(th), ```predecessor()``` - O(th)|
-|[QuadTree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/QuadTree.java)|```insert()``` - O(n), ```search()``` - O(n), ```size()``` - Θ(1)|
+|[QuadTree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/QuadTree.java)|```insert()``` - O(logn), ```search()``` - O(logn), ```size()``` - Θ(1)|
 |[Fibonacci Heap](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/FibonacciHeap.java)|```insert()``` - O(1), ```minimum()``` - O(1), ```extractMin()``` - O(logn), ```decreaseKey()``` - O(1), ```delete()``` - O(logn)|
 |[Merkle Tree](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/MerkleTree.java)|```build()``` - O(n), ```verify()``` - O(logn), ```getProofPath()``` - O(logn)|
 |[Bloom Filter](https://github.com/alexprut/Algo/blob/master/src/main/java/com/alexprut/algo/datastructures/BloomFilter.java)|```search()``` - O(k), ```insert()``` - O(k)|
