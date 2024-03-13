@@ -40,7 +40,7 @@ public class QuadTree {
   /**
    * Insert an element within the quadtree.
    *
-   * <p>Time complexity: O(n) worst case
+   * <p>Time complexity: O(logn), O(n) worst case
    *
    * <p>Space complexity: O(n)
    *
@@ -79,7 +79,7 @@ public class QuadTree {
   /**
    * Utility method, add the point to one of the four quadrants.
    *
-   * <p>Time complexity: O(n) in worst case
+   * <p>Time complexity: O(logn), O(n) in worst case
    *
    * <p>Space complexity: O(n)
    *
@@ -115,7 +115,7 @@ public class QuadTree {
   /**
    * Retrieve all the points withing a range.
    *
-   * <p>Time complexity: O(n)
+   * <p>Time complexity: O(logn), O(n) in worst case
    *
    * <p>Space complexity: O(n)
    *
@@ -233,7 +233,7 @@ public class QuadTree {
     }
   }
 
-  /** */
+  /** A point within the Quadtree */
   public static class Point extends Pair<Float, Float> {
 
     public Point(float x, float y) {
