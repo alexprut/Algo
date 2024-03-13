@@ -48,8 +48,6 @@ public class QuadTree {
     this.area = region;
   }
 
-  // TODO delete an element from QuadTree
-
   /**
    * Insert an element within the quadtree.
    *
@@ -157,6 +155,37 @@ public class QuadTree {
     return matches;
   }
 
+  /**
+   * Delete a Point from the QuadTree if exists.
+   *
+   * <p>Time complexity: O(logn), O(n) in worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param point to be deleted
+   * @return true if the point was deleted, false otherwise
+   */
+  public boolean delete(Point point) {
+    if (!area.containsPoint(point)) {
+      return false;
+    }
+
+    boolean removed = points.remove(point);
+    if (removed) {
+      size--;
+      return true;
+    }
+
+    for (QuadTree quadTree : quadTrees) {
+      if (quadTree.delete(point)) {
+        size--;
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   /** Utility class, specifies a region within the tree. */
   protected static class Region {
     private final float x1;
@@ -260,7 +289,6 @@ public class QuadTree {
     public float getY() {
       return second();
     }
-
 
     @Override
     public boolean equals(Object o) {
