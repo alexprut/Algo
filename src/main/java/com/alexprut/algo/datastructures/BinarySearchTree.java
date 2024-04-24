@@ -138,7 +138,37 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return y;
   }
 
-  // TODO predecessor
+  /**
+   * Get the predecessor of element node.
+   *
+   * <p>Time complexity: O(logn) if the tree is balanced, O(n) in the worst case
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param x the current node
+   * @return the predecessor node
+   */
+  protected BinaryNode<T> predecessor(BinaryNode<T> x) {
+    if (x == null) {
+      return null;
+    }
+
+    if (x.left != null) {
+      BinaryNode<T> tmp = x.left;
+      while (tmp.right != null) {
+        tmp = tmp.right;
+      }
+      return tmp;
+    }
+
+    BinaryNode<T> parent = x.parent;
+    while (parent != null && x == parent.left) {
+      x = parent;
+      parent = parent.parent;
+    }
+
+    return parent;
+  }
 
   /**
    * Pre-Order visit of the BST.
