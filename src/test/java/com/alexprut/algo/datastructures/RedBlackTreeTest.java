@@ -245,4 +245,34 @@ public class RedBlackTreeTest {
 
     Assertions.assertEquals(0, tree.size());
   }
+
+  @Test
+  public void shouldFindPredecessorAndDelete() {
+    RedBlackTree<Integer> tree = new RedBlackTree<>();
+    tree.insert(5);
+    tree.insert(6);
+    tree.insert(7);
+    tree.insert(8);
+    tree.insert(9);
+    tree.insert(1);
+    tree.insert(2);
+    tree.insert(3);
+    tree.insert(4);
+    tree.insert(0);
+
+    Assertions.assertNull(tree.predecessor(tree.search(tree.root, 0)));
+    Assertions.assertEquals(0, (int) tree.predecessor(tree.search(tree.root, 1)).value());
+    Assertions.assertEquals(1, (int) tree.predecessor(tree.search(tree.root, 2)).value());
+    Assertions.assertEquals(2, (int) tree.predecessor(tree.search(tree.root, 3)).value());
+    Assertions.assertEquals(3, (int) tree.predecessor(tree.search(tree.root, 4)).value());
+    Assertions.assertEquals(4, (int) tree.predecessor(tree.search(tree.root, 5)).value());
+    Assertions.assertEquals(5, (int) tree.predecessor(tree.search(tree.root, 6)).value());
+
+    tree.delete(4);
+    tree.delete(6);
+    tree.delete(3);
+    tree.delete(5);
+    tree.delete(7);
+    Assertions.assertEquals(2, (int) tree.predecessor(tree.search(tree.root, 8)).value());
+  }
 }
