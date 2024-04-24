@@ -171,4 +171,37 @@ public class BinarySearchTreeTest {
 
     Assertions.assertEquals(0, bst.size());
   }
+
+  @Test
+  public void shouldGetPredecessorAndDelete() {
+    /*
+             4
+          /    \
+         2      6
+        / \    / \
+       1   3  5   7
+    */
+    BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+    bst.insert(4);
+    bst.insert(2);
+    bst.insert(1);
+    bst.insert(3);
+    bst.insert(6);
+    bst.insert(5);
+    bst.insert(7);
+
+    Assertions.assertNull(bst.predecessor(bst.search(1)));
+    Assertions.assertEquals(1, (int) bst.predecessor(bst.search(2)).value());
+    Assertions.assertEquals(2, (int) bst.predecessor(bst.search(3)).value());
+    Assertions.assertEquals(3, (int) bst.predecessor(bst.search(4)).value());
+    Assertions.assertEquals(4, (int) bst.predecessor(bst.search(5)).value());
+    Assertions.assertEquals(5, (int) bst.predecessor(bst.search(6)).value());
+    Assertions.assertEquals(6, (int) bst.predecessor(bst.search(7)).value());
+
+    bst.delete(bst.search(6));
+    bst.delete(bst.search(3));
+    bst.delete(bst.search(2));
+    bst.delete(bst.search(4));
+    Assertions.assertEquals(5, (int) bst.predecessor(bst.search(7)).value());
+  }
 }
