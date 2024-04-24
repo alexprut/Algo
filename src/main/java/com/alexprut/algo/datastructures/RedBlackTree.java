@@ -410,6 +410,38 @@ public class RedBlackTree<T extends Comparable<T>> {
   }
 
   /**
+   * Get the predecessor of element node.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the current node
+   * @return the predecessor node
+   */
+  public Node<T> predecessor(Node<T> node) {
+    if (node == null) {
+      return null;
+    }
+
+    if (node.left != null) {
+      Node<T> tmp = node.left;
+      while (tmp.right != null) {
+        tmp = tmp.right;
+      }
+      return tmp;
+    }
+
+    Node<T> parent = node.parent;
+    while (parent != null && node == parent.left) {
+      node = parent;
+      parent = parent.parent;
+    }
+
+    return parent;
+  }
+
+  /**
    * Get the number of elements contained within the tree.
    *
    * <p>Time complexity: Θ(1)
@@ -495,8 +527,6 @@ public class RedBlackTree<T extends Comparable<T>> {
     y.right = x;
     x.parent = y;
   }
-
-  // TODO implement functions: predecessor
 
   protected static class Node<T extends Comparable<T>> {
 
