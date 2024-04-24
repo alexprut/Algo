@@ -82,6 +82,10 @@ public class IntervalTreeTest {
         17, tree.successor(tree.search(tree.root(), new IntervalNode(16, 21))).value());
     Assertions.assertEquals(
         25, tree.successor(tree.search(tree.root(), new IntervalNode(19, 20))).value());
+    Assertions.assertEquals(
+        15, tree.predecessor(tree.search(tree.root(), new IntervalNode(16, 21))).value());
+    Assertions.assertEquals(
+        17, tree.predecessor(tree.search(tree.root(), new IntervalNode(19, 20))).value());
 
     tree.delete(16, 21);
     tree.delete(5, 8);

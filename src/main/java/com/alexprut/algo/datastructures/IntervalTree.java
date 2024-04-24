@@ -526,6 +526,38 @@ public class IntervalTree {
   }
 
   /**
+   * Get the predecessor of element node.
+   *
+   * <p>Time complexity: O(logn)
+   *
+   * <p>Space complexity: O(1)
+   *
+   * @param node the current node
+   * @return the predecessor node
+   */
+  public IntervalNode predecessor(IntervalNode node) {
+    if (node == null) {
+      return null;
+    }
+
+    if (node.left != null) {
+      IntervalNode tmp = node.left;
+      while (tmp.right != null) {
+        tmp = tmp.right;
+      }
+      return tmp;
+    }
+
+    IntervalNode parent = node.parent;
+    while (parent != null && node == parent.left) {
+      node = parent;
+      parent = parent.parent;
+    }
+
+    return parent;
+  }
+
+  /**
    * Get the number of elements contained within the tree.
    *
    * <p>Time complexity: Θ(1)
@@ -650,8 +682,6 @@ public class IntervalTree {
     maxCalculate(x);
     maxCalculate(x.parent);
   }
-
-  // TODO implement functions: predecessor
 
   // TODO reuse / extend the Red-Black Tree data structure
 
