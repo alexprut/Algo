@@ -89,7 +89,9 @@ public class Math {
    * <p>Example: given the elements {3,1,2} the list of permutations are: [(1,2,3), (1,3,2),
    * (2,1,3), (2,3,1), (3,1,2), (3,2,1)].
    *
-   * <p>TODO time and space complexity
+   * <p>Time complexity: O(n * n!)
+   *
+   * <p>Space complexity: O(n!)
    *
    * @see <a
    *     href="https://en.wikipedia.org/wiki/Permutation">https://en.wikipedia.org/wiki/Permutation</a>
@@ -130,7 +132,9 @@ public class Math {
    * <p>Example: given the elements {1,1,2} the list of permutations are: [(1,1,2), (1,2,1),
    * (2,1,1)].
    *
-   * <p>TODO time and space complexity
+   * <p>Time complexity: O(n * n!)
+   *
+   * <p>Space complexity: O(n!)
    *
    * @param elem the elements to permute
    * @param <T> type of the elements
@@ -150,6 +154,10 @@ public class Math {
 
   /**
    * Helper method used in {@link #permuteUnique(Object[])}
+   *
+   * <p>Time complexity: O(n!)
+   *
+   * <p>Space complexity: O(n^2 * n!)
    *
    * @param c accumulator list
    * @param n remaining elements
