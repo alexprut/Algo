@@ -73,7 +73,7 @@ public class UtilsTest {
   }
 
   @Test
-  public void shoouldGetDigitAtIndex() {
+  public void shouldGetDigitAtIndex() {
     int number = 32981;
     Assertions.assertEquals(1, Utils.getDigitAtIndex(number, 1));
     Assertions.assertEquals(8, Utils.getDigitAtIndex(number, 2));
